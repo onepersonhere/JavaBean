@@ -4,7 +4,7 @@ using System;
 public class Player : KinematicBody2D
 {
     [Export]
-    private int Speed = 100;
+    private int Speed = 500;
     public override void _Ready() {
         
     }

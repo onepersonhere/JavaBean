@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="Player UI" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 128.0
+margin_bottom = 128.0

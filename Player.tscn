@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Sprite/Sprite-0002.png" type="Texture" id=1]
 [ext_resource path="res://Player.cs" type="Script" id=2]
+[ext_resource path="res://UI.tscn" type="PackedScene" id=3]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -18,7 +19,7 @@ animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ) ],
 "loop": true,
 "name": "walk",
-"speed": 2.0
+"speed": 10.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=4]
@@ -38,3 +39,5 @@ animation = "walk"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 6, 3 )
 shape = SubResource( 4 )
+
+[node name="UI" parent="." instance=ExtResource( 3 )]
