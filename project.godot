@@ -28,6 +28,10 @@ config/icon="res://icon.png"
 
 singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
 
+[global]
+
+canvas=false
+
 [importer_defaults]
 
 texture={

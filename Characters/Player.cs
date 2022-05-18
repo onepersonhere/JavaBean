@@ -26,10 +26,10 @@ public class Player : KinematicBody2D
         }
 
         Position += velocity * delta;
-        Position = new Vector2(
-            x: Mathf.Clamp(Position.x, 0, GetViewportRect().Size.x),
-            y: Mathf.Clamp(Position.y, 0, GetViewportRect().Size.y)
-        );
+        // Position = new Vector2(
+        //     x: Mathf.Clamp(Position.x, 0, GetViewportRect().Size.x),
+        //     y: Mathf.Clamp(Position.y, 0, GetViewportRect().Size.y)
+        // );
 
         if (velocity.x != 0) {
 			animatedSprite.Animation = "walk";
