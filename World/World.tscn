@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://TileSets/BetterRPG/Vector/RPGpack_vector.svg" type="Texture" id=1]
-[ext_resource path="res://TileSets/BetterRPG/PNG/rpgTile029.png" type="Texture" id=2]
+[ext_resource path="res://Assets/TileSets/BetterRPG/Vector/RPGpack_vector.svg" type="Texture" id=1]
+[ext_resource path="res://Assets/TileSets/BetterRPG/PNG/rpgTile029.png" type="Texture" id=2]
 
 [sub_resource type="TileSet" id=1]
 0/name = "RPGpack_vector.svg 0"
