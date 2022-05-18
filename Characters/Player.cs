@@ -1,44 +1,47 @@
 using Godot;
 using System;
 
-public class Player : KinematicBody2D
-{
+public class Player : KinematicBody2D {
     [Export]
-    private int Speed = 500;
+    private int Max_Speed = 500;
+    [Export]
+    private int Acceleration = 2500;
+    [Export]
+    private int Friction = 2500;
+    private Vector2 velocity = Vector2.Zero;
     public override void _Ready() {
         
     }
-    public override void _Process(float delta) {
-        var velocity = Vector2.Zero; // The player's movement vector (0,0)
+    public override void _PhysicsProcess(float delta) {
+        var input_vector = Vector2.Zero; // The player's movement vector (0,0)
 		
-		if (Input.IsActionPressed("move_right")) velocity.x++;
-		if (Input.IsActionPressed("move_left")) velocity.x--;
-		if (Input.IsActionPressed("move_up")) velocity.y--;
-		if (Input.IsActionPressed("move_down")) velocity.y++;
-		
+        input_vector.x = Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
+        input_vector.y = Input.GetActionStrength("move_down") - Input.GetActionStrength("move_up");
+
 		var animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
 
-        if(velocity.Length() > 0) {
-            velocity = velocity.Normalized() * Speed;
+        if (input_vector.Length() > 0) {
+            input_vector = input_vector.Normalized();
             animatedSprite.Play();
         } else {
             animatedSprite.Stop();
         }
 
-        Position += velocity * delta;
-        // Position = new Vector2(
-        //     x: Mathf.Clamp(Position.x, 0, GetViewportRect().Size.x),
-        //     y: Mathf.Clamp(Position.y, 0, GetViewportRect().Size.y)
-        // );
+        if (input_vector != Vector2.Zero) {
+            velocity = velocity.MoveToward(input_vector * Max_Speed, Acceleration * delta); 
+        } else {
+            velocity = velocity.MoveToward(Vector2.Zero, Friction * delta);
+        }
 
-        if (velocity.x != 0) {
+        if (input_vector.x != 0) {
 			animatedSprite.Animation = "walk";
 			animatedSprite.FlipV = false;
 			animatedSprite.FlipH = velocity.x < 0;
-		} else if (velocity.y != 0) {
+		} else if (input_vector.y != 0) {
 			animatedSprite.Animation = "walk";
 			animatedSprite.FlipV = velocity.y > 0;
 		}
-        
+
+        velocity = MoveAndSlide(velocity);
     }
 }
