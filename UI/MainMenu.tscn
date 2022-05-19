@@ -7,7 +7,7 @@
 [ext_resource path="res://UI/assets/main_menu/label_options.png" type="Texture" id=5]
 [ext_resource path="res://UI/assets/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://UI/MainMenu.cs" type="Script" id=7]
-[ext_resource path="res://Assets/Video/forest.webm" type="VideoStream" id=8]
+[ext_resource path="res://Assets/Video/8 Bit Video.webm" type="VideoStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 6 )
@@ -107,6 +107,7 @@ margin_bottom = 530.0
 texture = ExtResource( 1 )
 stretch_mode = 3
 
+[connection signal="finished" from="." to="." method="_on_MainMenu_finished"]
 [connection signal="gui_input" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Continue" to="." method="OnContinueGuiInput"]
 [connection signal="mouse_entered" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Continue" to="." method="_on_Continue_mouse_entered"]
 [connection signal="mouse_exited" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Continue" to="." method="_on_Continue_mouse_exited"]
