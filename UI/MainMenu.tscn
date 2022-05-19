@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://JavaBean.svg" type="Texture" id=1]
 [ext_resource path="res://UI/assets/main_menu/label_new_game.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://UI/assets/main_menu/label_continue.png" type="Texture" id=4]
 [ext_resource path="res://UI/assets/main_menu/label_options.png" type="Texture" id=5]
 [ext_resource path="res://UI/assets/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://UI/MainMenu.cs" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 6 )
@@ -14,10 +15,11 @@ font_data = ExtResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 0.866667
 margin_left = -640.0
-margin_top = -362.0
+margin_top = -360.0
 margin_right = -640.0
-margin_bottom = -266.0
+margin_bottom = -264.0
 color = Color( 0.588235, 0.517647, 0.517647, 1 )
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_use_anchors_": true
@@ -60,22 +62,25 @@ alignment = 1
 
 [node name="Continue" type="TextureRect" parent="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer"]
 margin_top = 127.0
-margin_right = 500.0
+margin_right = 191.0
 margin_bottom = 163.0
+size_flags_horizontal = 0
 texture = ExtResource( 4 )
 stretch_mode = 3
 
 [node name="NewGame" type="TextureRect" parent="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer"]
 margin_top = 193.0
-margin_right = 500.0
+margin_right = 238.0
 margin_bottom = 229.0
+size_flags_horizontal = 0
 texture = ExtResource( 2 )
 stretch_mode = 3
 
 [node name="Options" type="TextureRect" parent="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer"]
 margin_top = 259.0
-margin_right = 500.0
+margin_right = 166.0
 margin_bottom = 305.0
+size_flags_horizontal = 0
 texture = ExtResource( 5 )
 stretch_mode = 3
 
@@ -100,3 +105,10 @@ margin_right = 535.0
 margin_bottom = 530.0
 texture = ExtResource( 1 )
 stretch_mode = 3
+
+[connection signal="gui_input" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Continue" to="." method="OnContinueGuiInput"]
+[connection signal="mouse_entered" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Continue" to="." method="_on_Continue_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Continue" to="." method="_on_Continue_mouse_exited"]
+[connection signal="gui_input" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/NewGame" to="." method="OnNewGameGuiInput"]
+[connection signal="mouse_entered" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/NewGame" to="." method="_on_NewGame_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/NewGame" to="." method="_on_NewGame_mouse_exited"]

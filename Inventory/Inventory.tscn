@@ -1,17 +1,17 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Inventory/Other/Container.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Inventory/Other/AddItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Inventory/Other/ContainerWindow.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Inventory/Other/AddItem.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Inventory/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Inventory/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Inventory/Other/Container.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Inventory/Items/Item_Apple.gd" type="Script" id=5]
 [ext_resource path="res://Inventory/Items/Item_Mushroom.gd" type="Script" id=6]
 
 [node name="World" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource( 4 )]
+[node name="Player" parent="." instance=ExtResource( 3 )]
 
-[node name="Container" parent="." instance=ExtResource( 1 )]
+[node name="Container" parent="." instance=ExtResource( 4 )]
 margin_left = 58.4958
 margin_top = 19.0931
 margin_right = 133.496
@@ -29,42 +29,42 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AddItem" parent="Items" instance=ExtResource( 3 )]
+[node name="AddItem" parent="Items" instance=ExtResource( 1 )]
 directory = ExtResource( 5 )
 
-[node name="AddItem2" parent="Items" instance=ExtResource( 3 )]
+[node name="AddItem2" parent="Items" instance=ExtResource( 1 )]
 directory = ExtResource( 5 )
 
-[node name="AddItem3" parent="Items" instance=ExtResource( 3 )]
+[node name="AddItem3" parent="Items" instance=ExtResource( 1 )]
 directory = ExtResource( 5 )
 
-[node name="AddItem4" parent="Items" instance=ExtResource( 3 )]
+[node name="AddItem4" parent="Items" instance=ExtResource( 1 )]
 directory = ExtResource( 5 )
 
-[node name="AddItem5" parent="Items" instance=ExtResource( 3 )]
+[node name="AddItem5" parent="Items" instance=ExtResource( 1 )]
 directory = ExtResource( 5 )
 
-[node name="AddItem6" parent="Items" instance=ExtResource( 3 )]
+[node name="AddItem6" parent="Items" instance=ExtResource( 1 )]
 margin_top = 50.0
 margin_bottom = 90.0
 directory = ExtResource( 6 )
 
-[node name="AddItem7" parent="Items" instance=ExtResource( 3 )]
+[node name="AddItem7" parent="Items" instance=ExtResource( 1 )]
 margin_top = 50.0
 margin_bottom = 90.0
 directory = ExtResource( 6 )
 
-[node name="AddItem8" parent="Items" instance=ExtResource( 3 )]
+[node name="AddItem8" parent="Items" instance=ExtResource( 1 )]
 margin_top = 50.0
 margin_bottom = 90.0
 directory = ExtResource( 6 )
 
-[node name="AddItem9" parent="Items" instance=ExtResource( 3 )]
+[node name="AddItem9" parent="Items" instance=ExtResource( 1 )]
 margin_top = 50.0
 margin_bottom = 90.0
 directory = ExtResource( 6 )
 
-[node name="AddItem10" parent="Items" instance=ExtResource( 3 )]
+[node name="AddItem10" parent="Items" instance=ExtResource( 1 )]
 margin_top = 50.0
 margin_bottom = 90.0
 directory = ExtResource( 6 )
