@@ -3,7 +3,7 @@ extends Node
 
 
 var i_name := "ItemName"
-var i_image: StreamTexture = load("res://icon.png")
+var i_image: StreamTexture = load("res://JavaBean.png")
 var i_description := "Short Description"
 var i_consumable := true
 var i_stackable := true

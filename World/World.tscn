@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/TileSets/BetterRPG/Vector/RPGpack_vector.svg" type="Texture" id=1]
 [ext_resource path="res://Assets/TileSets/BetterRPG/PNG/rpgTile029.png" type="Texture" id=2]
 [ext_resource path="res://World/Tree1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Characters/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/Chest.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=1]
 0/name = "RPGpack_vector.svg 0"
@@ -146,6 +147,9 @@ format = 1
 tile_data = PoolIntArray( 2686998, 0, 196610, 2686999, 0, 196611, 2752534, 0, 262146, 2752535, 0, 262147, 2752536, 0, 196609, 2818070, 0, 262146, 2818071, 0, 262147, 2818072, 0, 262145, 2883606, 0, 262146, 2883607, 0, 262147, 2883608, 0, 262145, 2949142, 0, 327682, 2949143, 0, 327683, 2949144, 0, 327681, 2949148, 0, 458753, 3014678, 0, 589837, 3014680, 0, 589837, 3014684, 0, 524289, 3080213, 0, 458756, 3080214, 0, 589831, 3080215, 0, 589838, 3080216, 0, 589831, 3080217, 0, 458757, 3080219, 0, 196614, 3080220, 0, 458758, 3145749, 0, 524292, 3145753, 0, 524293, 3145755, 0, 196612, 3211291, 0, 458764, 3211292, 0, 458759 )
 
 [node name="YSort" type="YSort" parent="."]
+
+[node name="Chest" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 2107, 3162 )
 
 [node name="Tree" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 2100, 3020 )
