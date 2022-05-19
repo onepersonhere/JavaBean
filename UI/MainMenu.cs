@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class MainMenu : ColorRect {
+public class MainMenu : VideoPlayer {
 	public override void _Ready() {
 		
 	}
