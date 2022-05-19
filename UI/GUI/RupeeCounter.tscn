@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/assets/GUI/rupees_icon.png" type="Texture" id=1]
+[ext_resource path="res://UI/GUI/Counter.tscn" type="PackedScene" id=2]
+
+[node name="RupeeCounter" instance=ExtResource( 2 )]
+
+[node name="Icon" parent="Background" index="0"]
+texture = ExtResource( 1 )
