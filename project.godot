@@ -34,7 +34,9 @@ _global_script_class_icons={
 
 config/name="JavaBean"
 run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
+config/icon="res://JavaBean.svg"
+config/macos_native_icon="res://JavaBean.svg"
+config/windows_native_icon="res://JavaBean.svg"
 
 [display]
 
