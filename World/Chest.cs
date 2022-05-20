@@ -31,4 +31,6 @@ public class Chest : StaticBody2D {
             Played = false;
         }
     }
+
+    
 }
