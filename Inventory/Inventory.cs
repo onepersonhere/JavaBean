@@ -7,16 +7,10 @@ public class Inventory : Node2D
     Item holdingItem = null;
     public override void _Ready()
     {
-        invSlots = (GridContainer)GetNode("GridContainer");
-        foreach(Panel Slot in invSlots.GetChildren()) {
-            Slot.Connect("gui_input", this, "slot_gui_input", new Godot.Collections.Array() { Slot });
-        }
-    }
-
-    public override void _Input(InputEvent @event)
-    {
-        if(holdingItem != null) {
-            holdingItem.GlobalPosition = GetGlobalMousePosition();
+        GD.Load("res://Inventory/Slot.cs");
+        invSlots = GetNode<GridContainer>("GridContainer");
+        foreach(Panel slot in invSlots.GetChildren()) {
+            slot.Connect("gui_input", this, "slot_gui_input", new Godot.Collections.Array() {slot});
         }
     }
 
@@ -26,7 +20,7 @@ public class Inventory : Node2D
                 if (slot.item == null) {
                     slot.putIntoSlot(holdingItem);
                     holdingItem = null;
-                } else {
+                } else { //swap
                     var temp = slot.item;
                     slot.pickedFromSlot();
                     InputEventMouseButton mouseEvent = (InputEventMouseButton)@event;
@@ -41,4 +35,11 @@ public class Inventory : Node2D
             }
         }
     }
+    public override void _Input(InputEvent @event)
+    {
+        if(holdingItem != null) {
+            holdingItem.GlobalPosition = GetGlobalMousePosition();
+        } 
+    }
 }
+
