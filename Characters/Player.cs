@@ -4,11 +4,12 @@ using System.Collections.Generic;
 
 public class Player : KinematicBody2D {
 	[Export]
-	private int Max_Speed = 500;
+	private int Max_Speed = 200;
 	[Export]
 	private int Acceleration = 2500;
 	[Export]
-	private int Friction = 2500;
+	private int Friction = 1000;
+
 	private Vector2 velocity = Vector2.Zero;
 
 	private bool isRight = true;
@@ -17,15 +18,11 @@ public class Player : KinematicBody2D {
 	}
 	public override void _PhysicsProcess(float delta) {
 		var input_vector = Vector2.Zero; // The player's movement vector (0,0)
-		
 		input_vector.x = Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
 		input_vector.y = Input.GetActionStrength("move_down") - Input.GetActionStrength("move_up");
+		input_vector = input_vector.Normalized();
 
 		var animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
-
-		if (input_vector.Length() > 0) {
-			input_vector = input_vector.Normalized();
-		}
 
 		animatedSprite.Play();
 

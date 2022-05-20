@@ -4,7 +4,6 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.0
-height = 32.0
 
 [node name="Tree" type="StaticBody2D"]
 
@@ -17,8 +16,6 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, 24.5 )
+position = Vector2( 0, 43 )
+rotation = 1.5708
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}

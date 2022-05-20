@@ -281,7 +281,6 @@ script = ExtResource( 2 )
 position = Vector2( -8, -16 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
-animation = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
