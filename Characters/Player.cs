@@ -10,6 +10,8 @@ public class Player : KinematicBody2D {
 	[Export]
 	private int Friction = 2500;
 	private Vector2 velocity = Vector2.Zero;
+
+	private bool isRight = true;
 	public override void _Ready() {
 		
 	}
@@ -23,10 +25,9 @@ public class Player : KinematicBody2D {
 
 		if (input_vector.Length() > 0) {
 			input_vector = input_vector.Normalized();
-			animatedSprite.Play();
-		} else {
-			animatedSprite.Stop();
 		}
+
+		animatedSprite.Play();
 
 		if (input_vector != Vector2.Zero) {
 			velocity = velocity.MoveToward(input_vector * Max_Speed, Acceleration * delta); 
@@ -34,13 +35,27 @@ public class Player : KinematicBody2D {
 			velocity = velocity.MoveToward(Vector2.Zero, Friction * delta);
 		}
 
-		if (input_vector.x != 0) {
-			animatedSprite.Animation = "walk";
-			animatedSprite.FlipV = false;
-			animatedSprite.FlipH = velocity.x < 0;
-		} else if (input_vector.y != 0) {
-			animatedSprite.Animation = "walk";
-			animatedSprite.FlipV = velocity.y > 0;
+		if (input_vector.x > 0) {
+			isRight = true;
+			animatedSprite.Animation = "Move Right";
+		} else if (input_vector.x < 0) {
+			isRight = false;
+			animatedSprite.Animation = "Move Left";
+		} else {
+			if (isRight) {
+				if (input_vector.y != 0) {
+					animatedSprite.Animation = "Move Right";
+				} else {
+					animatedSprite.Animation = "Idle Right";
+				}
+			} else {
+				if (input_vector.y != 0) {
+					animatedSprite.Animation = "Move Left";
+				} else {
+					animatedSprite.Animation = "Idle Left";
+				}
+			}
+			
 		}
 
 		velocity = MoveAndSlide(velocity);
