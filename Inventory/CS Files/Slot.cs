@@ -11,8 +11,8 @@ public class Slot : Panel
     PackedScene itemScene = (PackedScene)GD.Load("res://Inventory/Item.tscn");
     public Item item = null;
 
-    Texture defaultTex = (Texture)GD.Load("res://Inventory/images/item_slot_default_background.png");
-    Texture emptyTex = (Texture)GD.Load("res://Inventory/images/item_slot_empty_background.png");
+    Texture defaultTex = (Texture)GD.Load("res://Inventory/Images/item_slot_default_background.png");
+    Texture emptyTex = (Texture)GD.Load("res://Inventory/Images/item_slot_empty_background.png");
     StyleBoxTexture defaultStyle = null;
     StyleBoxTexture emptyStyle = null;
     public override void _Ready()

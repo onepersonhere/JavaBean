@@ -7,7 +7,7 @@ public class Inventory : Node2D
     Item holdingItem = null;
     public override void _Ready()
     {
-        GD.Load("res://Inventory/Slot.cs");
+        GD.Load("res://Inventory/CS Files/Slot.cs");
         invSlots = GetNode<GridContainer>("GridContainer");
         foreach(Panel slot in invSlots.GetChildren()) {
             slot.Connect("gui_input", this, "slot_gui_input", new Godot.Collections.Array() {slot});
@@ -17,7 +17,7 @@ public class Inventory : Node2D
     public void slot_gui_input(InputEvent @event, Slot slot){
         if (@event is InputEventMouseButton && @event.IsActionPressed("left_click")) {
             if (holdingItem != null) {
-                if (slot.item == null) {
+                if (slot.item != null) {
                     slot.putIntoSlot(holdingItem);
                     holdingItem = null;
                 } else { //swap
