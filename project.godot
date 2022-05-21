@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "",
+"base": "EditorVCSInterface",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
@@ -25,6 +25,10 @@ run/main_scene="res://Main.tscn"
 config/icon="res://JavaBean.svg"
 config/macos_native_icon="res://JavaBean.jpg"
 config/windows_native_icon="res://JavaBean.ico"
+
+[autoload]
+
+JsonData="*res://Inventory/JSONData.gd"
 
 [display]
 

@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Inventory/Item.gd" type="Script" id=1]
-[ext_resource path="res://Inventory/Icons/item0.png" type="Texture" id=2]
+[ext_resource path="res://Inventory/Icons/Iron Sword.png" type="Texture" id=2]
+[ext_resource path="res://Inventory/Fonts/m5x7.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
 
 [node name="Item" type="Node2D"]
 z_index = 1
@@ -12,6 +16,11 @@ margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 2
 texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 8.0
+margin_right = 26.0
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 1 )
+text = "99"
