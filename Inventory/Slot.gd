@@ -6,7 +6,7 @@ var empty_tex = preload("res://Inventory/Images/item_slot_empty_background.png")
 var default_style: StyleBoxTexture = null
 var empty_style: StyleBoxTexture = null
 
-var ItemClass = preload("res://Inventory/Item.tscn")
+var ItemClass = preload("res://Inventory/Items/Item.tscn")
 var item = null
 
 func _ready():
@@ -15,9 +15,9 @@ func _ready():
 	default_style.texture = default_tex
 	empty_style.texture = empty_tex
 	
-	if randi() % 2 == 0:
-		item = ItemClass.instance()
-		add_child(item)
+	#if randi() % 2 == 0:
+	#	item = ItemClass.instance()
+	#	add_child(item)
 	refresh_style()
 		
 func refresh_style():
@@ -39,4 +39,13 @@ func putIntoSlot(new_item):
 	var inventoryNode = find_parent("Inventory")
 	inventoryNode.remove_child(item)
 	add_child(item)
+	refresh_style()
+	
+func initialise_items(item_name, item_quantity):
+	if item == null:
+		item = ItemClass.instance()
+		add_child(item)
+		item.set_item(item_name, item_quantity)
+	else:
+		item.set_item(item_name, item_quantity)
 	refresh_style()

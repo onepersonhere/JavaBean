@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Inventory/Item.gd" type="Script" id=1]
+[ext_resource path="res://Inventory/Items/Item.gd" type="Script" id=1]
 [ext_resource path="res://Inventory/Icons/Iron Sword.png" type="Texture" id=2]
 [ext_resource path="res://Inventory/Fonts/m5x7.ttf" type="DynamicFontData" id=3]
 
