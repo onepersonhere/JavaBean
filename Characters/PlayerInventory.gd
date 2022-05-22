@@ -1,8 +1,11 @@
 extends Node
 
+signal active_item_updated
+
 const SlotClass = preload("res://Inventory/Slot.gd")
 const ItemClass = preload("res://Inventory/Items/Item.gd")
 const NUM_INVENTORY_SLOTS = 20
+const NUM_HOTBAR_SLOTS = 8
 
 var inventory = {
 	0: ["Iron Sword", 1],
@@ -15,6 +18,8 @@ var hotbar = {
 	1: ["Slime Potion", 98],
 	2: ["Slime Potion", 45],
 }
+
+var active_item_slot_index = 0
 
 func add_item(item_name, item_quantity):
 	for item in inventory:
@@ -51,3 +56,14 @@ func add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
 
 func add_item_quantity(slot: SlotClass, quantity_to_add: int):
 	inventory[slot.slot_index] += quantity_to_add
+
+func active_item_scroll_up():
+	active_item_slot_index = (active_item_slot_index + 1) % NUM_HOTBAR_SLOTS
+	emit_signal("active_item_updated")
+
+func active_item_scroll_down():
+	if active_item_slot_index == 0:
+		active_item_slot_index = NUM_HOTBAR_SLOTS - 1
+	else:
+		active_item_slot_index -= 1
+	emit_signal("active_item_updated")
