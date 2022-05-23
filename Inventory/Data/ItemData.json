@@ -17,5 +17,20 @@
         "ItemSpeed" : 0.75,
         "StackSize" : 1,
         "Description" : "Quite a rusty sword, but should be able to get teh job done."
+    },
+    "Brown Shirt" : {
+        "ItemCategory" : "Shirt",
+        "StackSize" : 1,
+        "Description" : "A Brown Shirt!!"
+    },
+    "Blue Jeans" : {
+        "ItemCategory" : "Pants",
+        "StackSize" : 1,
+        "Description" : "Blue Jeans!!"
+    },
+    "Brown Boots" : {
+        "ItemCategory" : "Shoes",
+        "StackSize" : 1,
+        "Description" : "Some dirty boots"
     }
 }
