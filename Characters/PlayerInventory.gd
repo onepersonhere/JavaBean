@@ -48,14 +48,23 @@ func update_slot_visual(slot_index, item_name, new_quantity):
 		slot.item.set_item(item_name, new_quantity)
 	else:
 		slot.initialise_item(item_name, new_quantity)
-func remove_item(slot: SlotClass):
-	inventory.erase(slot.slot_index)
+func remove_item(slot: SlotClass, is_hotbar: bool = false):
+	if is_hotbar:
+		hotbar.erase(slot.slot_index)
+	else:
+		inventory.erase(slot.slot_index)
 	
-func add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
-	inventory[slot.slot_index] = [item.item_name, item.item_quantity]
+func add_item_to_empty_slot(item: ItemClass, slot: SlotClass, is_hotbar: bool = false):
+	if is_hotbar:
+		hotbar[slot.slot_index] = [item.item_name, item.item_quantity]
+	else:
+		inventory[slot.slot_index] = [item.item_name, item.item_quantity]
 
-func add_item_quantity(slot: SlotClass, quantity_to_add: int):
-	inventory[slot.slot_index] += quantity_to_add
+func add_item_quantity(slot: SlotClass, quantity_to_add: int, is_hotbar: bool = true):
+	if is_hotbar:
+		hotbar[slot.slot_index][1] += quantity_to_add
+	else:
+		inventory[slot.slot_index][1] += quantity_to_add
 
 func active_item_scroll_up():
 	active_item_slot_index = (active_item_slot_index + 1) % NUM_HOTBAR_SLOTS

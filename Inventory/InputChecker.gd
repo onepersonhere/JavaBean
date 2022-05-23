@@ -4,6 +4,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+var holding_item
 
 func _input(event):
 	if event.is_action_pressed("inventory"):
