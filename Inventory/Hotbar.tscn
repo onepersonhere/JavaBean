@@ -11,7 +11,6 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
 [node name="Hotbar" type="Node2D"]
-scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true

@@ -27,6 +27,7 @@ anchor_bottom = 1.04348
 
 [node name="UserInterface" type="Node2D" parent="."]
 position = Vector2( -632, -402 )
+scale = Vector2( 5, 5 )
 z_index = 1
 script = ExtResource( 3 )
 __meta__ = {
@@ -35,6 +36,8 @@ __meta__ = {
 
 [node name="Inventory" parent="UserInterface" instance=ExtResource( 4 )]
 visible = false
+position = Vector2( 9.6, 11.2 )
 
 [node name="Hotbar" parent="UserInterface" instance=ExtResource( 5 )]
-position = Vector2( 392, 680 )
+position = Vector2( 62.4, 132.8 )
+scale = Vector2( 0.8, 0.8 )
