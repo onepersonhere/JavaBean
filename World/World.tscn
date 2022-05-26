@@ -3,10 +3,10 @@
 [ext_resource path="res://Assets/TileSets/BetterRPG/Vector/RPGpack_vector.svg" type="Texture" id=1]
 [ext_resource path="res://Assets/TileSets/BetterRPG/PNG/rpgTile029.png" type="Texture" id=2]
 [ext_resource path="res://World/Tree1.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Characters/NewPlayer.tscn" type="PackedScene" id=4]
 [ext_resource path="res://World/Chest.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Inventory/Items/ItemDrop.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Characters/MainCharacter.tscn" type="PackedScene" id=8]
 
 [sub_resource type="TileSet" id=1]
 0/name = "RPGpack_vector.svg 0"
@@ -127,9 +127,8 @@ tile_data = PoolIntArray( 2686998, 0, 196610, 2686999, 0, 196611, 2752534, 0, 26
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Player" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 1878, 3382 )
-collision_mask = 1
+[node name="Player" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 1825, 3494 )
 
 [node name="Chest" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 2107, 3162 )
