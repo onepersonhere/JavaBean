@@ -103,3 +103,7 @@ func attack_state(_delta):
 	
 func attack_animation_finished():
 	state = WALK
+	
+func _input(event):
+	if event.is_action_pressed("pickup"):
+		$PickupZone.pickup(self)
