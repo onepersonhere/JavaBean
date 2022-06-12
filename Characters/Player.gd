@@ -16,6 +16,7 @@ var velocity = Vector2.ZERO
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
+onready var swordHitbox = $HitBoxDirection/SwordHitBox
 
 func _physics_process(delta):
 	match state:
@@ -35,11 +36,13 @@ func walk_state(delta):
 	if input_vector != Vector2.ZERO:
 		if input_vector.x > 0:
 			is_right = true
+			swordHitbox.knockback_vector = Vector2(1, 0)
 			animationTree.set("parameters/Walk/blend_position", Vector2(1, 0))
 			animationTree.set("parameters/Sprint/blend_position", Vector2(1, 0))
 			animationTree.set("parameters/Attack/blend_position", Vector2(1, 0))
 		elif input_vector.x < 0:
 			is_right = false
+			swordHitbox.knockback_vector = Vector2(-1, 0)
 			animationTree.set("parameters/Walk/blend_position", Vector2(-1, 0))
 			animationTree.set("parameters/Sprint/blend_position", Vector2(-1, 0))
 			animationTree.set("parameters/Attack/blend_position", Vector2(-1, 0))
@@ -71,11 +74,13 @@ func sprint_state(delta):
 	if input_vector != Vector2.ZERO:
 		if input_vector.x > 0:
 			is_right = true
+			swordHitbox.knockback_vector = Vector2(1, 0)
 			animationTree.set("parameters/Walk/blend_position", Vector2(1, 0))
 			animationTree.set("parameters/Sprint/blend_position", Vector2(1, 0))
 			animationTree.set("parameters/Attack/blend_position", Vector2(1, 0))
 		elif input_vector.x < 0:
 			is_right = false
+			swordHitbox.knockback_vector = Vector2(-1, 0)
 			animationTree.set("parameters/Walk/blend_position", Vector2(-1, 0))
 			animationTree.set("parameters/Sprint/blend_position", Vector2(-1, 0))
 			animationTree.set("parameters/Attack/blend_position", Vector2(-1, 0))

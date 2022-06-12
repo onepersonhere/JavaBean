@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://Characters/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Main-Characte.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Inventory/Icons/Iron Sword.png" type="Texture" id=6]
 [ext_resource path="res://Hitboxes and Hurtboxes/Hitbox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Hitboxes and Hurtboxes/Hurtbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Characters/SwordHitbox.gd" type="Script" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 16.0
@@ -68,7 +69,7 @@ tracks/3/keys = {
 "values": [ 315.0, 300.0, 270.0, 240.0, 225.0, 180.0, 180.0, 165.0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("HitBox Direction:rotation_degrees")
+tracks/4/path = NodePath("HitBoxDirection:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -80,7 +81,7 @@ tracks/4/keys = {
 "values": [ 0.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("HitBox Direction/Sword HitBox/CollisionShape2D:disabled")
+tracks/5/path = NodePath("HitBoxDirection/SwordHitBox/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -147,7 +148,7 @@ tracks/3/keys = {
 "values": [ 315.0, 330.0, 359.999, 389.999, 419.999, 434.999, 449.999, 464.999 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("HitBox Direction:rotation_degrees")
+tracks/4/path = NodePath("HitBoxDirection:rotation_degrees")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -159,7 +160,7 @@ tracks/4/keys = {
 "values": [ 180.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("HitBox Direction/Sword HitBox/CollisionShape2D:disabled")
+tracks/5/path = NodePath("HitBoxDirection/SwordHitBox/CollisionShape2D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -211,7 +212,7 @@ tracks/2/keys = {
 "values": [ 135.0, 135.0, 135.0, 135.0, 135.0, 135.0, 135.0, 135.0, 135.0, 135.0, 135.0, 135.0, 135.0, 135.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("HitBox Direction/Sword HitBox/CollisionShape2D:disabled")
+tracks/3/path = NodePath("HitBoxDirection/SwordHitBox/CollisionShape2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -350,7 +351,7 @@ tracks/6/keys = {
 "values": [ false ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("HitBox Direction:rotation_degrees")
+tracks/7/path = NodePath("HitBoxDirection:rotation_degrees")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -362,7 +363,7 @@ tracks/7/keys = {
 "values": [ 0.0 ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("HitBox Direction/Sword HitBox/CollisionShape2D:disabled")
+tracks/8/path = NodePath("HitBoxDirection/SwordHitBox/CollisionShape2D:disabled")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -735,25 +736,26 @@ show_behind_parent = true
 scale = Vector2( 1.3125, 1 )
 texture = ExtResource( 5 )
 
-[node name="HitBox Direction" type="Position2D" parent="."]
+[node name="HitBoxDirection" type="Position2D" parent="."]
 position = Vector2( 0, -49 )
 
-[node name="Sword HitBox" parent="HitBox Direction" instance=ExtResource( 7 )]
+[node name="SwordHitBox" parent="HitBoxDirection" instance=ExtResource( 7 )]
 collision_mask = 16
+script = ExtResource( 9 )
 
-[node name="CollisionShape2D" parent="HitBox Direction/Sword HitBox" index="0"]
+[node name="CollisionShape2D" parent="HitBoxDirection/SwordHitBox" index="0"]
 position = Vector2( -31, 0 )
 shape = SubResource( 55 )
 
-[node name="Player HurtBox" parent="." instance=ExtResource( 8 )]
+[node name="PlayerHurtBox" parent="." instance=ExtResource( 8 )]
 collision_layer = 8
 
-[node name="CollisionShape2D" parent="Player HurtBox" index="0"]
+[node name="CollisionShape2D" parent="PlayerHurtBox" index="0"]
 position = Vector2( 0, -52 )
 shape = SubResource( 56 )
 
 [connection signal="body_entered" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_entered"]
 [connection signal="body_exited" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_exited"]
 
-[editable path="HitBox Direction/Sword HitBox"]
-[editable path="Player HurtBox"]
+[editable path="HitBoxDirection/SwordHitBox"]
+[editable path="PlayerHurtBox"]
