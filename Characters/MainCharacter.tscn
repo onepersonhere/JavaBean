@@ -4,7 +4,7 @@
 [ext_resource path="res://Characters/Main-Characte.png" type="Texture" id=2]
 [ext_resource path="res://Characters/PickupZone.gd" type="Script" id=3]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Import form Youtube/Shadows/LargeShadow.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Imported Assets/Shadows/LargeShadow.png" type="Texture" id=5]
 [ext_resource path="res://Inventory/Icons/Iron Sword.png" type="Texture" id=6]
 [ext_resource path="res://Hitboxes and Hurtboxes/Hitbox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Hitboxes and Hurtboxes/Hurtbox.tscn" type="PackedScene" id=8]
@@ -718,7 +718,6 @@ parameters/Sprint/blend_position = Vector2( 0, 0 )
 parameters/Walk/blend_position = Vector2( 0, 0 )
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
-visible = false
 margin_top = 0.0
 margin_right = 1280.0
 margin_bottom = 720.0
