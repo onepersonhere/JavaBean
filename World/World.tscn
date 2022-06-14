@@ -18,25 +18,25 @@ __meta__ = {
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 1718, 1222 )
+position = Vector2( 1867, 964 )
 
 [node name="Chest" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 2503, 1729 )
+position = Vector2( 2752, 1009 )
 
 [node name="Tree" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 2544, 1039 )
+position = Vector2( 3709, 846 )
 
 [node name="ItemDrop" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 1885, 2172 )
+position = Vector2( 1966, 1025 )
 
 [node name="ItemDrop2" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 1565, 1832 )
+position = Vector2( 1898, 1053 )
 
 [node name="Bat" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 1415, 1327 )
+position = Vector2( 2520, 982 )
 
 [node name="Bat2" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 2764, 1389 )
+position = Vector2( 2442, 995 )
 
 [node name="Bat3" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 2001, 1855 )
+position = Vector2( 2345, 1039 )
