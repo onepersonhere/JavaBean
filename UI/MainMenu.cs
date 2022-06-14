@@ -10,32 +10,36 @@ public class MainMenu : VideoPlayer {
 	}
 	
 	private void OnNewGameGuiInput(InputEvent @event) {
-		if (@event.IsActionPressed("left_click"))
+		if (@event.IsActionPressed("left_click")) {
 			Hide();
+			GetNode<MarginContainer>("../Main Menu").Hide();
+		}
 	}
 	
 	private void OnContinueGuiInput(InputEvent @event) {
-		if (@event.IsActionPressed("left_click"))
+		if (@event.IsActionPressed("left_click")) {
 			Hide();
+			GetNode<MarginContainer>("../Main Menu").Hide();
+		}
 	}
 	
 	private void _on_Continue_mouse_entered() {
-		GetNode<TextureRect>("Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Continue").FlipV = true;
+		GetNode<TextureRect>("../Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Continue").FlipV = true;
 		GetNode<VideoPlayer>(".").Paused = true;
 	}
 
 	private void _on_Continue_mouse_exited() {
-		GetNode<TextureRect>("Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Continue").FlipV = false;
+		GetNode<TextureRect>("../Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Continue").FlipV = false;
 		GetNode<VideoPlayer>(".").Paused = false;
 	}
 
 	private void _on_NewGame_mouse_entered() {
-		GetNode<TextureRect>("Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/NewGame").FlipV = true;
+		GetNode<TextureRect>("../Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/NewGame").FlipV = true;
 		GetNode<VideoPlayer>(".").Paused = true;
 	}
 
 	private void _on_NewGame_mouse_exited() {
-		GetNode<TextureRect>("Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/NewGame").FlipV = false;
+		GetNode<TextureRect>("../Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/NewGame").FlipV = false;
 		GetNode<VideoPlayer>(".").Paused = false;
 	}
 

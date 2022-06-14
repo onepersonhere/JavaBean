@@ -48,6 +48,7 @@ singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
 [global]
 
 canvas=false
+viewport=false
 
 [importer_defaults]
 

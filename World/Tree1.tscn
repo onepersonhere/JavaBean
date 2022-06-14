@@ -7,10 +7,10 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 3.0
-height = 5.99999
+height = 10.0
 
 [node name="Tree" type="StaticBody2D"]
-position = Vector2( 0, -3 )
+position = Vector2( 0, -6 )
 scale = Vector2( 2, 2 )
 __meta__ = {
 "_edit_group_": true
@@ -37,5 +37,5 @@ position = Vector2( 15, 207 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 9 )
+position = Vector2( 0, 8 )
 shape = SubResource( 1 )

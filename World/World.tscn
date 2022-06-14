@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://World/Background.tscn" type="PackedScene" id=1]
+[ext_resource path="res://World/Bush.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Tree1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/Chest.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Inventory/Items/ItemDrop.tscn" type="PackedScene" id=6]
@@ -18,13 +19,42 @@ __meta__ = {
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 8 )]
-position = Vector2( 1867, 964 )
+position = Vector2( 1936, 968 )
 
 [node name="Chest" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 1977, 943 )
 
-[node name="Tree" parent="YSort" instance=ExtResource( 3 )]
+[node name="Vegetation" type="YSort" parent="YSort"]
+
+[node name="Bush" parent="YSort/Vegetation" instance=ExtResource( 2 )]
+position = Vector2( 2096, 944 )
+
+[node name="Tree4" parent="YSort/Vegetation" instance=ExtResource( 3 )]
+position = Vector2( 1856, 800 )
+
+[node name="Tree3" parent="YSort/Vegetation" instance=ExtResource( 3 )]
+position = Vector2( 1952, 832 )
+
+[node name="Tree2" parent="YSort/Vegetation" instance=ExtResource( 3 )]
+position = Vector2( 1984, 864 )
+
+[node name="Tree" parent="YSort/Vegetation" instance=ExtResource( 3 )]
 position = Vector2( 2080, 896 )
+
+[node name="Tree5" parent="YSort/Vegetation" instance=ExtResource( 3 )]
+position = Vector2( 1792, 1056 )
+
+[node name="Tree6" parent="YSort/Vegetation" instance=ExtResource( 3 )]
+position = Vector2( 1856, 1088 )
+
+[node name="Tree7" parent="YSort/Vegetation" instance=ExtResource( 3 )]
+position = Vector2( 1984, 1120 )
+
+[node name="Tree8" parent="YSort/Vegetation" instance=ExtResource( 3 )]
+position = Vector2( 2016, 1152 )
+
+[node name="Tree9" parent="YSort/Vegetation" instance=ExtResource( 3 )]
+position = Vector2( 1984, 1184 )
 
 [node name="ItemDrop" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 1966, 1025 )

@@ -14,15 +14,19 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=7]
 radius = 11.0
-height = 6.00004
+height = 6.00006
 
 [sub_resource type="CapsuleShape2D" id=6]
 radius = 45.0
 height = 0.0
 
 [node name="Chest" type="StaticBody2D"]
+position = Vector2( 0, -10 )
 input_pickable = true
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, 8 )
@@ -30,13 +34,14 @@ frames = SubResource( 4 )
 animation = "Chest Open"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 11 )
+position = Vector2( 0, 12 )
 rotation = 1.5708
 shape = SubResource( 7 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2( 0, 8 )
 rotation = 1.5708
 shape = SubResource( 6 )
