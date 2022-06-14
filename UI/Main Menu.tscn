@@ -18,6 +18,7 @@ scale = Vector2( 0.536, 0.523 )
 transform = Transform2D( 0.536, 0, 0, 0.523, 0, 0 )
 
 [node name="Video" type="VideoPlayer" parent="."]
+visible = false
 anchor_right = 1.25
 anchor_bottom = 1.04348
 margin_right = 1280.0
@@ -32,6 +33,7 @@ __meta__ = {
 }
 
 [node name="Main Menu" type="MarginContainer" parent="."]
+visible = false
 margin_top = 2.0
 margin_right = 1314.0
 margin_bottom = 722.0
