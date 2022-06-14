@@ -1,9 +1,9 @@
 extends KinematicBody2D
 
-const ACCELERATION = 2000
-const WALK_SPEED = 200
-const SPRINT_SPEED = 500
-const FRICTION = 2000
+const ACCELERATION = 1000
+const WALK_SPEED = 150
+const SPRINT_SPEED = 250
+const FRICTION = 1000
 
 enum {
 	WALK, SPRINT, ATTACK
