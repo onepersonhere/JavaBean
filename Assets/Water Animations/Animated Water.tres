@@ -11,6 +11,7 @@
 
 [resource]
 frames = 8
+pause = true
 fps = 8.5
 frame_0/texture = ExtResource( 1 )
 frame_1/texture = ExtResource( 5 )
