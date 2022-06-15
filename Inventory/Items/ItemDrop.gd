@@ -10,6 +10,7 @@ var being_picked_up = false
 
 func _ready():
 	item_name = "Slime Potion"
+	$Timer.start()
 
 func _physics_process(delta):
 	if being_picked_up == true:
@@ -25,3 +26,7 @@ func _physics_process(delta):
 func pick_up_item(body):
 	player = body
 	being_picked_up = true
+
+
+func _on_Timer_timeout():
+	queue_free()

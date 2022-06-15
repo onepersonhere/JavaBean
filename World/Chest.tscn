@@ -39,7 +39,7 @@ rotation = 1.5708
 shape = SubResource( 7 )
 
 [node name="ItemDropArea" type="Area2D" parent="."]
-position = Vector2( 0, -78 )
+position = Vector2( 0, 10 )
 collision_layer = 4
 collision_mask = 4
 
