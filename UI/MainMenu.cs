@@ -12,14 +12,16 @@ public class MainMenu : VideoPlayer {
 	private void OnNewGameGuiInput(InputEvent @event) {
 		if (@event.IsActionPressed("left_click")) {
 			Hide();
-			GetNode<MarginContainer>("../Main Menu").Hide();
+			GetNode<MarginContainer>("../Main Menu").QueueFree();
+			GetNode<Node2D>("/root/Main/World").Show();
 		}
 	}
 	
 	private void OnContinueGuiInput(InputEvent @event) {
 		if (@event.IsActionPressed("left_click")) {
 			Hide();
-			GetNode<MarginContainer>("../Main Menu").Hide();
+			GetNode<MarginContainer>("../Main Menu").QueueFree();
+			GetNode<Node2D>("/root/Main/World").Show();
 		}
 	}
 	
