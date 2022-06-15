@@ -11,3 +11,4 @@ lib/
 # Others
 export_presets.cfg
 .mono/
+PrivateKey.gd
