@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Pipoya RPG Tileset 32x32/Individual/[Base]BaseChip_pipo_indv871.png" type="Texture" id=1]
 [ext_resource path="res://World/Chest.cs" type="Script" id=2]
 [ext_resource path="res://Assets/Pipoya RPG Tileset 32x32/Individual/[Base]BaseChip_pipo_indv863.png" type="Texture" id=3]
-[ext_resource path="res://Inventory/ChestInventory.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
@@ -39,17 +38,18 @@ position = Vector2( 0, 12 )
 rotation = 1.5708
 shape = SubResource( 7 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="ItemDropArea" type="Area2D" parent="."]
+position = Vector2( 0, -78 )
+collision_layer = 4
+collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
 visible = false
 position = Vector2( 0, 8 )
 rotation = 1.5708
 shape = SubResource( 6 )
 
-[node name="ChestInventory" parent="." instance=ExtResource( 4 )]
-visible = false
-position = Vector2( -54, -37 )
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="InteractArea" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="InteractArea" to="." method="_on_Area2D_body_exited"]

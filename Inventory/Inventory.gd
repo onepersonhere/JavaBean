@@ -68,6 +68,7 @@ func able_to_put_into_slot(slot: SlotClass):
 	elif slot.slot_type == SlotClass.SlotType.SHOES:
 		return holding_item_category == "Shoes"
 	return true
+	
 func left_click_empty_slot(slot: SlotClass):
 	if able_to_put_into_slot(slot):
 		PlayerInventory.add_item_to_empty_slot(find_parent("UserInterface").holding_item, slot)

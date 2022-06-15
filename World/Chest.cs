@@ -25,11 +25,19 @@ public class Chest : StaticBody2D {
         if (@event.IsActionPressed("interact") && Bool && !Played) {
             GetNode<AnimatedSprite>("AnimatedSprite").Frame = 1;
             Played = true;
+            dropItems();
         }
         else if (@event.IsActionPressed("interact") && Bool && Played) {
             GetNode<AnimatedSprite>("AnimatedSprite").Frame = 0;
             Played = false;
         }
+    }
+
+    private void dropItems() {
+        Area2D ItemDropArea = GetNode<Area2D>("ItemDropArea");
+        var item = GD.Load<PackedScene>("res://Inventory/Items/ItemDrop.tscn");
+        var itemInstance = item.Instance();
+        ItemDropArea.AddChild(itemInstance);
     }
 
     
