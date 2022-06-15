@@ -28,3 +28,7 @@ func _on_Register_pressed():
 		notification.popup()
 	else:
 		Firebase.register(username.text, password.text, http)
+
+
+func _on_Back_pressed():
+	get_tree().change_scene("res://Main.tscn")

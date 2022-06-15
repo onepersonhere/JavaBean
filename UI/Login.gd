@@ -16,7 +16,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		notification.dialog_text = response_body.result.error.message.capitalize()
 		notification.popup()
 	else:
-		yield(get_tree().create_timer(2.0), "timeout")
+		yield(get_tree().create_timer(0.5), "timeout")
 		get_tree().change_scene("res://World/World.tscn")
 
 
@@ -27,3 +27,7 @@ func _on_Login_pressed():
 		notification.popup()
 	else:
 		Firebase.login(username.text, password.text, http)
+
+
+func _on_Back_pressed():
+	get_tree().change_scene("res://Main.tscn")
