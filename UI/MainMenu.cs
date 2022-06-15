@@ -9,39 +9,39 @@ public class MainMenu : VideoPlayer {
 		
 	}
 	
-	private void OnNewGameGuiInput(InputEvent @event) {
+	private void OnLoginGuiInput(InputEvent @event) {
 		if (@event.IsActionPressed("left_click")) {
-			Hide();
+			QueueFree();
 			GetNode<MarginContainer>("../Main Menu").QueueFree();
-			GetNode<Node2D>("/root/Main/World").Show();
+			GetTree().ChangeScene("res://UI/Login.tscn");
 		}
 	}
 	
-	private void OnContinueGuiInput(InputEvent @event) {
+	private void OnRegisterGuiInput(InputEvent @event) {
 		if (@event.IsActionPressed("left_click")) {
-			Hide();
+			QueueFree();
 			GetNode<MarginContainer>("../Main Menu").QueueFree();
-			GetNode<Node2D>("/root/Main/World").Show();
+			GetTree().ChangeScene("res://World/World.tscn");
 		}
 	}
 	
-	private void _on_Continue_mouse_entered() {
-		GetNode<TextureRect>("../Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Continue").FlipV = true;
+	private void _on_Register_mouse_entered() {
+		GetNode<TextureRect>("../Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Register").FlipV = true;
 		GetNode<VideoPlayer>(".").Paused = true;
 	}
 
-	private void _on_Continue_mouse_exited() {
-		GetNode<TextureRect>("../Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Continue").FlipV = false;
+	private void _on_Register_mouse_exited() {
+		GetNode<TextureRect>("../Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Register").FlipV = false;
 		GetNode<VideoPlayer>(".").Paused = false;
 	}
 
-	private void _on_NewGame_mouse_entered() {
-		GetNode<TextureRect>("../Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/NewGame").FlipV = true;
+	private void _on_Login_mouse_entered() {
+		GetNode<TextureRect>("../Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Login").FlipV = true;
 		GetNode<VideoPlayer>(".").Paused = true;
 	}
 
-	private void _on_NewGame_mouse_exited() {
-		GetNode<TextureRect>("../Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/NewGame").FlipV = false;
+	private void _on_Login_mouse_exited() {
+		GetNode<TextureRect>("../Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Login").FlipV = false;
 		GetNode<VideoPlayer>(".").Paused = false;
 	}
 

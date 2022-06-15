@@ -4,9 +4,9 @@
 [ext_resource path="res://UI/MainMenu.cs" type="Script" id=2]
 [ext_resource path="res://JavaBean.svg" type="Texture" id=3]
 [ext_resource path="res://UI/assets/main_menu/label_options.png" type="Texture" id=4]
-[ext_resource path="res://UI/assets/main_menu/label_continue.png" type="Texture" id=5]
+[ext_resource path="res://UI/assets/main_menu/Register.png" type="Texture" id=5]
 [ext_resource path="res://JavaBeanLong.svg" type="Texture" id=6]
-[ext_resource path="res://UI/assets/main_menu/label_new_game.png" type="Texture" id=7]
+[ext_resource path="res://UI/assets/main_menu/Login.png" type="Texture" id=7]
 [ext_resource path="res://UI/assets/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="DynamicFont" id=1]
@@ -66,26 +66,26 @@ size_flags_vertical = 3
 custom_constants/separation = 30
 alignment = 1
 
-[node name="Continue" type="TextureRect" parent="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer"]
-margin_top = 110.0
-margin_right = 191.0
-margin_bottom = 146.0
-size_flags_horizontal = 0
-texture = ExtResource( 5 )
-stretch_mode = 3
-
-[node name="NewGame" type="TextureRect" parent="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer"]
-margin_top = 176.0
-margin_right = 238.0
-margin_bottom = 212.0
+[node name="Login" type="TextureRect" parent="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 71.0
+margin_right = 500.0
+margin_bottom = 171.0
 size_flags_horizontal = 0
 texture = ExtResource( 7 )
 stretch_mode = 3
 
+[node name="Register" type="TextureRect" parent="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer"]
+margin_top = 201.0
+margin_right = 350.0
+margin_bottom = 251.0
+size_flags_horizontal = 0
+texture = ExtResource( 5 )
+stretch_mode = 3
+
 [node name="Options" type="TextureRect" parent="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer"]
-margin_top = 242.0
+margin_top = 281.0
 margin_right = 166.0
-margin_bottom = 288.0
+margin_bottom = 327.0
 size_flags_horizontal = 0
 texture = ExtResource( 4 )
 stretch_mode = 3
@@ -112,9 +112,9 @@ texture = ExtResource( 3 )
 stretch_mode = 3
 
 [connection signal="finished" from="Video" to="Video" method="_on_MainMenu_finished"]
-[connection signal="gui_input" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Continue" to="Video" method="OnContinueGuiInput"]
-[connection signal="mouse_entered" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Continue" to="Video" method="_on_Continue_mouse_entered"]
-[connection signal="mouse_exited" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Continue" to="Video" method="_on_Continue_mouse_exited"]
-[connection signal="gui_input" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/NewGame" to="Video" method="OnNewGameGuiInput"]
-[connection signal="mouse_entered" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/NewGame" to="Video" method="_on_NewGame_mouse_entered"]
-[connection signal="mouse_exited" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/NewGame" to="Video" method="_on_NewGame_mouse_exited"]
+[connection signal="gui_input" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Login" to="Video" method="OnLoginGuiInput"]
+[connection signal="mouse_entered" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Login" to="Video" method="_on_Login_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Login" to="Video" method="_on_Login_mouse_exited"]
+[connection signal="gui_input" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Register" to="Video" method="OnRegisterGuiInput"]
+[connection signal="mouse_entered" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Register" to="Video" method="_on_Register_mouse_entered"]
+[connection signal="mouse_exited" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Register" to="Video" method="_on_Register_mouse_exited"]

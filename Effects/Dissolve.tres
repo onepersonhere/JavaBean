@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=9 format=2]
 
-[ext_resource path="res://World/noisetexture.tres" type="Texture" id=1]
+[ext_resource path="res://Effects/noisetexture.tres" type="Texture" id=1]
 
 [sub_resource type="VisualShaderNodeInput" id=1]
 output_port_for_preview = 0
