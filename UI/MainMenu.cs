@@ -21,7 +21,7 @@ public class MainMenu : VideoPlayer {
 		if (@event.IsActionPressed("left_click")) {
 			QueueFree();
 			GetNode<MarginContainer>("../Main Menu").QueueFree();
-			GetTree().ChangeScene("res://World/World.tscn");
+			GetTree().ChangeScene("res://UI/Registration.tscn");
 		}
 	}
 	
