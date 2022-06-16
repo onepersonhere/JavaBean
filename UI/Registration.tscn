@@ -25,12 +25,13 @@ alignment = 1
 margin_top = 79.0
 margin_right = 292.0
 margin_bottom = 103.0
+custom_constants/separation = 35
 
 [node name="Label" type="Label" parent="VBoxContainer/Username"]
 margin_top = 5.0
-margin_right = 70.0
+margin_right = 39.0
 margin_bottom = 19.0
-text = "Username:"
+text = "Email:"
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/Username"]
 margin_left = 74.0

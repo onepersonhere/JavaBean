@@ -95,7 +95,7 @@ margin_top = 507.0
 margin_right = 500.0
 margin_bottom = 526.0
 custom_fonts/font = SubResource( 1 )
-text = "ver 0.0.1 Prototype"
+text = "ver 0.0.2 Prototype"
 
 [node name="CenterContainer" type="CenterContainer" parent="Main Menu/HBoxContainer"]
 margin_left = 504.0
