@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Video/8 Bit Video.webm" type="VideoStream" id=1]
 [ext_resource path="res://UI/MainMenu.cs" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://JavaBeanLong.svg" type="Texture" id=6]
 [ext_resource path="res://UI/assets/main_menu/Login.png" type="Texture" id=7]
 [ext_resource path="res://UI/assets/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://UI/assets/main_menu/label_options_pressed.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 8 )
@@ -82,12 +83,14 @@ size_flags_horizontal = 0
 texture = ExtResource( 5 )
 stretch_mode = 3
 
-[node name="Options" type="TextureRect" parent="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="Options" type="TextureButton" parent="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer"]
 margin_top = 281.0
 margin_right = 166.0
 margin_bottom = 327.0
 size_flags_horizontal = 0
-texture = ExtResource( 4 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 9 )
 stretch_mode = 3
 
 [node name="Version" type="Label" parent="Main Menu/HBoxContainer/VBoxContainer"]
@@ -118,3 +121,4 @@ stretch_mode = 3
 [connection signal="gui_input" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Register" to="Video" method="OnRegisterGuiInput"]
 [connection signal="mouse_entered" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Register" to="Video" method="_on_Register_mouse_entered"]
 [connection signal="mouse_exited" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Register" to="Video" method="_on_Register_mouse_exited"]
+[connection signal="pressed" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Options" to="Video" method="_on_Options_pressed"]

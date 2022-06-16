@@ -48,4 +48,10 @@ public class MainMenu : VideoPlayer {
 	private void _on_MainMenu_finished() {
 		GetNode<VideoPlayer>(".").Play();
 	}
+
+	private void _on_Options_pressed() {
+		QueueFree();
+		GetNode<MarginContainer>("../Main Menu").QueueFree();
+		GetTree().ChangeScene("res://UI/Options.tscn");
+	}
 }
