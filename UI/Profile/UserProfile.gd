@@ -91,9 +91,9 @@ func set_profile(value: Dictionary) -> void:
 	character_class.text = profile.character_class.stringValue
 	location.text = profile.location.stringValue
 	max_hp.text = profile.max_hp.integerValue
-	max_sp.text = max_sp.nickname.integerValue
-	curr_hp.text = profile.curr_hp.integerValue
-	curr_sp.text = profile.curr_sp.integerValue
+	max_sp.text = profile.max_sp.integerValue
+	curr_hp = profile.curr_hp.integerValue
+	curr_sp = profile.curr_sp.integerValue
 	strength.text = profile.strength.integerValue
 	intelligence.text = profile.intelligence.integerValue
 	dexterity.text = profile.dexterity.integerValue

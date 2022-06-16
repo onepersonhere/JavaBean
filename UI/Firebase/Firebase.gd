@@ -4,7 +4,7 @@ const PROJECT_ID = "javabean-1"
 
 var login_url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + PrivateKey.API_KEY
 var register_url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" + PrivateKey.API_KEY
-const FIRESTORE_URL = "https://firestore.googleapis.com/v1/projects/%s/databases/(default)/documents" % PROJECT_ID
+const FIRESTORE_URL = "https://firestore.googleapis.com/v1/projects/%s/databases/(default)/documents/" % PROJECT_ID
 
 var user_info = {
 	"token": "",
