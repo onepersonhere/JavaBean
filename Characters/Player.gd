@@ -5,6 +5,19 @@ export var WALK_SPEED = 120
 export var SPRINT_SPEED = 220
 export var FRICTION = 1000
 
+export var DAMAGE = 0
+export var DEFENSE = 0
+export var CURR_HEALTH = 0
+export var MAX_HEALTH = 0
+export var CURR_SP = 0
+export var MAX_SP = 0
+export var REGEN = 0
+export var IS_ALIVE = true
+export var EXPERIENCE = 0
+export var LEVEL = 0
+export var COINS = 0
+export var GEMS = 0
+
 enum {
 	WALK, SPRINT, ATTACK
 }
