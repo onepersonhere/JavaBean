@@ -6,13 +6,16 @@ var login_url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPa
 var register_url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" + PrivateKey.API_KEY
 const FIRESTORE_URL = "https://firestore.googleapis.com/v1/projects/%s/databases/(default)/documents" % PROJECT_ID
 
-var user_info = {}
+var user_info = {
+	"token": "",
+	"id": ""
+}
 
 func get_user_info(result: Array) -> Dictionary:
 	var result_body = JSON.parse(result[3].get_string_from_ascii()).result as Dictionary
 	return {
 		"token": result_body.idToken,
-		"id": result_body.localID
+		"id": result_body.localId
 	}
 
 func get_req_headers() -> PoolStringArray:
@@ -52,7 +55,7 @@ func save_document(path: String, fields: Dictionary, http: HTTPRequest) -> void:
 	
 	http.request(url, get_req_headers(), false, HTTPClient.METHOD_POST, body)
 	
-func load_document(path: String, http: HTTPRequest) -> void:
+func get_document(path: String, http: HTTPRequest) -> void:
 	var url = FIRESTORE_URL + path
 	http.request(url, get_req_headers(), false, HTTPClient.METHOD_GET)
 
