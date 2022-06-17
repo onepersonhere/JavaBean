@@ -1,76 +1,143 @@
-[gd_scene format=2]
+[gd_scene load_steps=33 format=2]
 
-[node name="OptionsMenu" type="PopupMenu"]
-visible = true
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -87.0
-margin_top = -144.0
-margin_right = 87.0
-margin_bottom = 144.0
-popup_exclusive = true
+[ext_resource path="res://UI/OptionsMenu.gd" type="Script" id=1]
+[ext_resource path="res://UI/assets/buttons/Save Game/SG Pressed.png" type="Texture" id=2]
+[ext_resource path="res://UI/assets/esc menu.png" type="Texture" id=3]
+[ext_resource path="res://UI/assets/buttons/Settings/Button Hover.png" type="Texture" id=4]
+[ext_resource path="res://UI/assets/buttons/Settings/Button Normal.png" type="Texture" id=5]
+[ext_resource path="res://UI/assets/buttons/Quests/Button Pressed.png" type="Texture" id=6]
+[ext_resource path="res://UI/assets/buttons/Map/Button Normal.png" type="Texture" id=7]
+[ext_resource path="res://UI/assets/buttons/Map/Button Pressed.png" type="Texture" id=8]
+[ext_resource path="res://UI/assets/buttons/Shop/Button Hover.png" type="Texture" id=9]
+[ext_resource path="res://UI/assets/buttons/Shop/Button Normal.png" type="Texture" id=10]
+[ext_resource path="res://UI/assets/buttons/Shop/Button Pressed.png" type="Texture" id=11]
+[ext_resource path="res://UI/assets/buttons/Inventory/Button Normal.png" type="Texture" id=12]
+[ext_resource path="res://UI/assets/buttons/Map/Button Hover.png" type="Texture" id=13]
+[ext_resource path="res://UI/assets/buttons/Inventory/Button Pressed.png" type="Texture" id=14]
+[ext_resource path="res://UI/assets/buttons/Help/Button Hover.png" type="Texture" id=15]
+[ext_resource path="res://UI/assets/buttons/Help/Button Pressed.png" type="Texture" id=16]
+[ext_resource path="res://UI/assets/buttons/Main Menu/Button Normal.png" type="Texture" id=17]
+[ext_resource path="res://UI/assets/buttons/Main Menu/Button Pressed.png" type="Texture" id=18]
+[ext_resource path="res://UI/assets/buttons/Exit/Button Hover.png" type="Texture" id=19]
+[ext_resource path="res://UI/assets/buttons/Exit/Button Normal.png" type="Texture" id=20]
+[ext_resource path="res://UI/assets/buttons/Inventory/Button Hover.png" type="Texture" id=21]
+[ext_resource path="res://UI/assets/buttons/Main Menu/Button Hover.png" type="Texture" id=22]
+[ext_resource path="res://UI/assets/buttons/Exit/Button Pressed.png" type="Texture" id=23]
+[ext_resource path="res://UI/assets/buttons/Help/Button Normal.png" type="Texture" id=24]
+[ext_resource path="res://UI/assets/buttons/Save Game/SG Normal.png" type="Texture" id=25]
+[ext_resource path="res://UI/assets/buttons/Settings/Button Pressed.png" type="Texture" id=26]
+[ext_resource path="res://UI/assets/buttons/Save Game/SG Hover.png" type="Texture" id=27]
+[ext_resource path="res://UI/assets/buttons/Quests/Button Hover.png" type="Texture" id=28]
+[ext_resource path="res://UI/assets/buttons/Quests/Button Normal.png" type="Texture" id=29]
+[ext_resource path="res://UI/assets/buttons/Close/Button Hover.png" type="Texture" id=30]
+[ext_resource path="res://UI/assets/buttons/Close/Button Normal.png" type="Texture" id=31]
+[ext_resource path="res://UI/assets/buttons/Close/Button Pressed.png" type="Texture" id=32]
+
+[node name="OptionsMenu" type="Node2D"]
+z_index = 1
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -116.0
+margin_top = -245.0
+margin_right = 117.0
+margin_bottom = 245.0
+texture = ExtResource( 3 )
+stretch_mode = 3
+
 [node name="HBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 22.0
-margin_top = 18.0
-margin_right = 154.0
-margin_bottom = 270.0
-custom_constants/separation = 9
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -71.5
+margin_top = -204.5
+margin_right = 71.5
+margin_bottom = 204.5
+custom_constants/separation = 1
 
-[node name="SaveGame" type="Button" parent="HBoxContainer"]
-margin_right = 132.0
-margin_bottom = 20.0
-text = "Save Game"
+[node name="SaveGame" type="TextureButton" parent="HBoxContainer"]
+margin_right = 143.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 25 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 27 )
 
-[node name="Settings" type="Button" parent="HBoxContainer"]
-margin_top = 29.0
-margin_right = 132.0
-margin_bottom = 49.0
-text = "Settings"
+[node name="Settings" type="TextureButton" parent="HBoxContainer"]
+margin_top = 41.0
+margin_right = 143.0
+margin_bottom = 81.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 26 )
+texture_hover = ExtResource( 4 )
 
-[node name="Quests" type="Button" parent="HBoxContainer"]
-margin_top = 58.0
-margin_right = 132.0
-margin_bottom = 78.0
-text = "Quests"
+[node name="Quests" type="TextureButton" parent="HBoxContainer"]
+margin_top = 82.0
+margin_right = 143.0
+margin_bottom = 122.0
+texture_normal = ExtResource( 29 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 28 )
 
-[node name="Map" type="Button" parent="HBoxContainer"]
-margin_top = 87.0
-margin_right = 132.0
-margin_bottom = 107.0
-text = "Map"
+[node name="Shop" type="TextureButton" parent="HBoxContainer"]
+margin_top = 123.0
+margin_right = 143.0
+margin_bottom = 163.0
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 11 )
+texture_hover = ExtResource( 9 )
 
-[node name="Inventory" type="Button" parent="HBoxContainer"]
-margin_top = 116.0
-margin_right = 132.0
-margin_bottom = 136.0
-text = "Inventory"
+[node name="Map" type="TextureButton" parent="HBoxContainer"]
+margin_top = 164.0
+margin_right = 143.0
+margin_bottom = 204.0
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 13 )
 
-[node name="Help" type="Button" parent="HBoxContainer"]
-margin_top = 145.0
-margin_right = 132.0
-margin_bottom = 165.0
-text = "Help"
+[node name="Inventory" type="TextureButton" parent="HBoxContainer"]
+margin_top = 205.0
+margin_right = 143.0
+margin_bottom = 245.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 21 )
 
-[node name="Quit" type="Button" parent="HBoxContainer"]
-margin_top = 174.0
-margin_right = 132.0
-margin_bottom = 194.0
-text = "Quit to Main Menu"
+[node name="Help" type="TextureButton" parent="HBoxContainer"]
+margin_top = 246.0
+margin_right = 143.0
+margin_bottom = 286.0
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 16 )
+texture_hover = ExtResource( 15 )
 
-[node name="Exit" type="Button" parent="HBoxContainer"]
-margin_top = 203.0
-margin_right = 132.0
-margin_bottom = 223.0
-text = "Exit Game"
+[node name="Main Menu" type="TextureButton" parent="HBoxContainer"]
+margin_top = 287.0
+margin_right = 143.0
+margin_bottom = 327.0
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 18 )
+texture_hover = ExtResource( 22 )
 
-[node name="Close" type="Button" parent="HBoxContainer"]
-margin_top = 232.0
-margin_right = 132.0
-margin_bottom = 252.0
-text = "Close"
+[node name="Exit" type="TextureButton" parent="HBoxContainer"]
+margin_top = 328.0
+margin_right = 143.0
+margin_bottom = 368.0
+texture_normal = ExtResource( 20 )
+texture_pressed = ExtResource( 23 )
+texture_hover = ExtResource( 19 )
+
+[node name="Close" type="TextureButton" parent="HBoxContainer"]
+margin_top = 369.0
+margin_right = 143.0
+margin_bottom = 409.0
+texture_normal = ExtResource( 31 )
+texture_pressed = ExtResource( 32 )
+texture_hover = ExtResource( 30 )

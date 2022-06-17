@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/GUI/GUI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/OptionsMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Inventory/InputChecker.gd" type="Script" id=3]
 [ext_resource path="res://Inventory/Inventory.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Inventory/Hotbar.tscn" type="PackedScene" id=5]
@@ -20,6 +21,7 @@ margin_bottom = -225.0
 current = true
 
 [node name="UserInterface" type="Node2D" parent="."]
+pause_mode = 2
 show_behind_parent = true
 position = Vector2( -632, -402 )
 scale = Vector2( 5, 5 )
@@ -27,6 +29,13 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="OptionsMenu" parent="UserInterface" instance=ExtResource( 2 )]
+pause_mode = 2
+visible = false
+position = Vector2( 126.4, 80.4 )
+scale = Vector2( 0.27, 0.27 )
+z_index = 2
 
 [node name="Inventory" parent="UserInterface" instance=ExtResource( 4 )]
 visible = false

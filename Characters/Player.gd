@@ -128,5 +128,3 @@ func attack_animation_finished():
 func _input(event):
 	if event.is_action_pressed("pickup"):
 		$PickupZone.pickup(self)
-	if event.is_action_pressed("esc"):
-		$OptionsMenu.popup()
