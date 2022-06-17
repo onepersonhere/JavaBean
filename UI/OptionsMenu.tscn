@@ -1,0 +1,76 @@
+[gd_scene format=2]
+
+[node name="OptionsMenu" type="PopupMenu"]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -87.0
+margin_top = -144.0
+margin_right = 87.0
+margin_bottom = 144.0
+popup_exclusive = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 22.0
+margin_top = 18.0
+margin_right = 154.0
+margin_bottom = 270.0
+custom_constants/separation = 9
+
+[node name="SaveGame" type="Button" parent="HBoxContainer"]
+margin_right = 132.0
+margin_bottom = 20.0
+text = "Save Game"
+
+[node name="Settings" type="Button" parent="HBoxContainer"]
+margin_top = 29.0
+margin_right = 132.0
+margin_bottom = 49.0
+text = "Settings"
+
+[node name="Quests" type="Button" parent="HBoxContainer"]
+margin_top = 58.0
+margin_right = 132.0
+margin_bottom = 78.0
+text = "Quests"
+
+[node name="Map" type="Button" parent="HBoxContainer"]
+margin_top = 87.0
+margin_right = 132.0
+margin_bottom = 107.0
+text = "Map"
+
+[node name="Inventory" type="Button" parent="HBoxContainer"]
+margin_top = 116.0
+margin_right = 132.0
+margin_bottom = 136.0
+text = "Inventory"
+
+[node name="Help" type="Button" parent="HBoxContainer"]
+margin_top = 145.0
+margin_right = 132.0
+margin_bottom = 165.0
+text = "Help"
+
+[node name="Quit" type="Button" parent="HBoxContainer"]
+margin_top = 174.0
+margin_right = 132.0
+margin_bottom = 194.0
+text = "Quit to Main Menu"
+
+[node name="Exit" type="Button" parent="HBoxContainer"]
+margin_top = 203.0
+margin_right = 132.0
+margin_bottom = 223.0
+text = "Exit Game"
+
+[node name="Close" type="Button" parent="HBoxContainer"]
+margin_top = 232.0
+margin_right = 132.0
+margin_bottom = 252.0
+text = "Close"
