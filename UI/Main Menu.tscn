@@ -2,10 +2,10 @@
 
 [ext_resource path="res://Assets/Video/8 Bit Video.webm" type="VideoStream" id=1]
 [ext_resource path="res://UI/MainMenu.cs" type="Script" id=2]
-[ext_resource path="res://JavaBean.svg" type="Texture" id=3]
+[ext_resource path="res://Assets/Logo/JavaBean (New).png" type="Texture" id=3]
 [ext_resource path="res://UI/assets/main_menu/label_options.png" type="Texture" id=4]
 [ext_resource path="res://UI/assets/main_menu/Register.png" type="Texture" id=5]
-[ext_resource path="res://JavaBeanLong.svg" type="Texture" id=6]
+[ext_resource path="res://Assets/Logo/JavaBeanLong.svg" type="Texture" id=6]
 [ext_resource path="res://UI/assets/main_menu/Login.png" type="Texture" id=7]
 [ext_resource path="res://UI/assets/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://UI/assets/main_menu/label_options_pressed.png" type="Texture" id=9]
@@ -108,9 +108,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="MainLogo" type="TextureRect" parent="Main Menu/HBoxContainer/CenterContainer"]
-margin_top = 13.0
-margin_right = 500.0
-margin_bottom = 513.0
+margin_left = 100.0
+margin_top = 113.0
+margin_right = 400.0
+margin_bottom = 413.0
 texture = ExtResource( 3 )
 stretch_mode = 3
 

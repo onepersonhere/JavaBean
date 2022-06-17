@@ -22,8 +22,8 @@ _global_script_class_icons={
 
 config/name="JavaBean"
 run/main_scene="res://Main.tscn"
-config/icon="res://JavaBean.svg"
-config/macos_native_icon="res://JavaBean.jpg"
+config/icon="res://Assets/Logo/JavaBean.svg"
+config/macos_native_icon="res://Assets/Logo/JavaBean.jpg"
 config/windows_native_icon="res://JavaBean.ico"
 
 [autoload]
