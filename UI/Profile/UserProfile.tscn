@@ -38,13 +38,13 @@ margin_bottom = 358.0
 custom_constants/separation = 10
 
 [node name="Col1" type="VBoxContainer" parent="MainContainer"]
-margin_right = 183.0
+margin_right = 182.0
 margin_bottom = 340.0
 rect_pivot_offset = Vector2( -89, 127 )
 custom_constants/separation = 10
 
 [node name="Nickname" type="HBoxContainer" parent="MainContainer/Col1"]
-margin_right = 183.0
+margin_right = 182.0
 margin_bottom = 24.0
 custom_constants/separation = 1
 
@@ -63,9 +63,9 @@ custom_constants/minimum_spaces = 25
 
 [node name="Class" type="HBoxContainer" parent="MainContainer/Col1"]
 margin_top = 34.0
-margin_right = 183.0
+margin_right = 182.0
 margin_bottom = 54.0
-custom_constants/separation = 61
+custom_constants/separation = 46
 
 [node name="Label" type="Label" parent="MainContainer/Col1/Class"]
 margin_top = 1.0
@@ -75,21 +75,21 @@ custom_fonts/font = ExtResource( 5 )
 text = "Class: "
 
 [node name="OptionButton" type="OptionButton" parent="MainContainer/Col1/Class"]
-margin_left = 107.0
-margin_right = 183.0
+margin_left = 92.0
+margin_right = 168.0
 margin_bottom = 20.0
 text = "Warrior"
 flat = true
 
 [node name="Stats" type="VBoxContainer" parent="MainContainer/Col1"]
 margin_top = 64.0
-margin_right = 183.0
+margin_right = 182.0
 margin_bottom = 146.0
 rect_pivot_offset = Vector2( -91, 69 )
 custom_constants/separation = 5
 
 [node name="Strength" type="HBoxContainer" parent="MainContainer/Col1/Stats"]
-margin_right = 183.0
+margin_right = 182.0
 margin_bottom = 24.0
 custom_constants/separation = 37
 
@@ -109,7 +109,7 @@ editable = false
 
 [node name="Intelligence" type="HBoxContainer" parent="MainContainer/Col1/Stats"]
 margin_top = 29.0
-margin_right = 183.0
+margin_right = 182.0
 margin_bottom = 53.0
 custom_constants/separation = 16
 
@@ -129,7 +129,7 @@ editable = false
 
 [node name="Dexterity" type="HBoxContainer" parent="MainContainer/Col1/Stats"]
 margin_top = 58.0
-margin_right = 183.0
+margin_right = 182.0
 margin_bottom = 82.0
 custom_constants/separation = 33
 
@@ -149,7 +149,7 @@ editable = false
 
 [node name="Inventory" type="HBoxContainer" parent="MainContainer/Col1"]
 margin_top = 156.0
-margin_right = 183.0
+margin_right = 182.0
 margin_bottom = 176.0
 custom_constants/separation = 33
 
@@ -165,8 +165,8 @@ margin_bottom = 20.0
 text = "RESET"
 
 [node name="Col2" type="VBoxContainer" parent="MainContainer"]
-margin_left = 193.0
-margin_right = 314.0
+margin_left = 192.0
+margin_right = 313.0
 margin_bottom = 340.0
 custom_constants/separation = 7
 
@@ -268,14 +268,14 @@ text = "0"
 editable = false
 
 [node name="MarginContainer" type="MarginContainer" parent="MainContainer"]
-margin_left = 324.0
-margin_right = 370.0
+margin_left = 323.0
+margin_right = 387.0
 margin_bottom = 340.0
-custom_constants/margin_left = 46
+custom_constants/margin_left = 64
 
 [node name="CenterContainer" type="CenterContainer" parent="MainContainer"]
-margin_left = 380.0
-margin_right = 510.0
+margin_left = 397.0
+margin_right = 527.0
 margin_bottom = 340.0
 
 [node name="Col3" type="VBoxContainer" parent="MainContainer/CenterContainer"]

@@ -23,9 +23,8 @@ func load(profile):
 	# location
 	var location: String = profile["location"]["stringValue"]
 	var map: String = location.split(" ")[0]
-	var pos_x: int = int(location.split(" ")[1].split(",")[0].left(1))
-	var pos_y: int = int(location.split(" ")[1].split(",")[1].left(0))
-	
+	var pos_x: int = int(location.split(" ")[1].split(",")[0].split("(")[1])
+	var pos_y: int = int(location.split(" ")[1].split(",")[1].split(")")[0])
 	player.set_position(Vector2(pos_x, pos_y))
 	
 	# movement
