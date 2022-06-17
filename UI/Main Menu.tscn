@@ -14,7 +14,7 @@
 font_data = ExtResource( 8 )
 
 [node name="Main Menu" type="CanvasLayer"]
-layer = 2
+pause_mode = 2
 scale = Vector2( 0.536, 0.523 )
 transform = Transform2D( 0.536, 0, 0, 0.523, 0, 0 )
 

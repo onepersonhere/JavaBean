@@ -35,7 +35,7 @@ pause_mode = 2
 visible = false
 position = Vector2( 126.4, 80.4 )
 scale = Vector2( 0.27, 0.27 )
-z_index = 2
+z_index = 3
 
 [node name="Inventory" parent="UserInterface" instance=ExtResource( 4 )]
 visible = false
@@ -47,3 +47,5 @@ show_behind_parent = true
 position = Vector2( 62.4, 132.8 )
 scale = Vector2( 0.8, 0.8 )
 z_index = 1
+
+[connection signal="visibility_changed" from="UserInterface/OptionsMenu" to="UserInterface" method="_on_OptionsMenu_visibility_changed"]

@@ -3,7 +3,7 @@ using System;
 
 public class MainMenu : VideoPlayer {
 	public override void _Ready() {
-		
+		Autoplay = true;
 	}
 	public override void _Process(float delta) {
 		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://UI/OptionsMenu.gd" type="Script" id=1]
 [ext_resource path="res://UI/assets/buttons/Save Game/SG Pressed.png" type="Texture" id=2]
@@ -32,6 +32,15 @@
 [ext_resource path="res://UI/assets/buttons/Close/Button Hover.png" type="Texture" id=30]
 [ext_resource path="res://UI/assets/buttons/Close/Button Normal.png" type="Texture" id=31]
 [ext_resource path="res://UI/assets/buttons/Close/Button Pressed.png" type="Texture" id=32]
+[ext_resource path="res://Inventory/Fonts/m5x7.ttf" type="DynamicFontData" id=33]
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+outline_size = 1
+outline_color = Color( 0.00392157, 0.00392157, 0.00392157, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 33 )
 
 [node name="OptionsMenu" type="Node2D"]
 z_index = 1
@@ -141,3 +150,31 @@ margin_bottom = 409.0
 texture_normal = ExtResource( 31 )
 texture_pressed = ExtResource( 32 )
 texture_hover = ExtResource( 30 )
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = 48.0
+margin_right = 112.0
+margin_bottom = 69.0
+custom_colors/font_color = Color( 0.988235, 0.917647, 0.756863, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "test"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="HBoxContainer/SaveGame" to="." method="_on_SaveGame_pressed"]
+[connection signal="pressed" from="HBoxContainer/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="pressed" from="HBoxContainer/Quests" to="." method="_on_Quests_pressed"]
+[connection signal="pressed" from="HBoxContainer/Shop" to="." method="_on_Shop_pressed"]
+[connection signal="pressed" from="HBoxContainer/Map" to="." method="_on_Map_pressed"]
+[connection signal="pressed" from="HBoxContainer/Inventory" to="." method="_on_Inventory_pressed"]
+[connection signal="pressed" from="HBoxContainer/Help" to="." method="_on_Help_pressed"]
+[connection signal="pressed" from="HBoxContainer/Main Menu" to="." method="_on_Main_Menu_pressed"]
+[connection signal="pressed" from="HBoxContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="HBoxContainer/Close" to="." method="_on_Close_pressed"]
