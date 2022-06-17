@@ -31,6 +31,7 @@ config/windows_native_icon="res://JavaBean.ico"
 JsonData="*res://Inventory/JSONData.gd"
 PlayerInventory="*res://Characters/PlayerInventory.gd"
 Firebase="*res://UI/Firebase/Firebase.gd"
+Load="*res://World/Load.gd"
 
 [display]
 

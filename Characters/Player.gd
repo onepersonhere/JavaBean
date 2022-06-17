@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+export var NICKNAME = ""
+export var CHARACTER_CLASS = ""
+
 export var ACCELERATION = 1000
 export var WALK_SPEED = 120
 export var SPRINT_SPEED = 220

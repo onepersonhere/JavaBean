@@ -3,7 +3,7 @@ extends Control
 onready var http: HTTPRequest = $HTTPRequest
 onready var notification: AcceptDialog = $Notification
 var information_sent = false
-
+var delete = false
 # info
 var new_profile = false
 onready var nickname: LineEdit = $MainContainer/Col1/Nickname/LineEdit
@@ -23,7 +23,7 @@ onready var dexterity: LineEdit = $MainContainer/Col1/Stats/Dexterity/LineEdit
 onready var coins: LineEdit = $MainContainer/Col2/Coins/LineEdit
 onready var gems: LineEdit = $MainContainer/Col2/Gems/LineEdit
 
-onready var profile_pic: TextureRect = $MainContainer/Col3/CenterContainer/Profile
+onready var profile_pic: TextureRect = $MainContainer/CenterContainer/Col3/CenterContainer/Profile
 
 var profile = {
 	"nickname": {},
@@ -42,9 +42,10 @@ var profile = {
 
 func _ready():
 	Firebase.get_document("users/%s" % Firebase.user_info.id, http)
+	if !new_profile:
+		character_class.disabled = true
 	
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
-	print_debug(body.get_string_from_ascii())
 	var result_body = JSON.parse(body.get_string_from_ascii()).result
 	match response_code:
 		404:
@@ -57,7 +58,8 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 				notification.dialog_text = "Information saved successfully"
 				notification.popup_centered()
 				information_sent = false
-			self.profile = result_body.fields
+			if !delete:
+				self.profile = result_body.fields
 
 func _on_Confirm_pressed():
 	if nickname.text.empty() or character_class.text.empty():
@@ -84,6 +86,10 @@ func _on_Confirm_pressed():
 		false:
 			Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 	information_sent = true
+	yield(get_tree().create_timer(1), "timeout")
+	Load.load(profile)
+	yield(get_tree().create_timer(1), "timeout")
+	queue_free()
 
 func set_profile(value: Dictionary) -> void:
 	profile = value
@@ -99,3 +105,24 @@ func set_profile(value: Dictionary) -> void:
 	dexterity.text = profile.dexterity.integerValue
 	coins.text = profile.coins.integerValue
 	gems.text = profile.gems.integerValue
+
+
+func _on_Inventory_pressed():
+	pass # Replace with function body.
+
+
+func _on_Edit_pressed():
+	pass # Replace with function body.
+
+
+func _on_RESET_pressed():
+	var confirm = $ConfirmationDialog
+	confirm.popup_centered()
+	
+
+func _on_ConfirmationDialog_confirmed():
+	delete = true
+	Firebase.delete_document("users/%s" % Firebase.user_info.id, http)
+	yield(get_tree().create_timer(1), "timeout")
+	queue_free()
+	get_tree().change_scene("res://UI/Profile/UserProfile.tscn")
