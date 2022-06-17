@@ -152,15 +152,14 @@ texture_pressed = ExtResource( 32 )
 texture_hover = ExtResource( 30 )
 
 [node name="Label" type="Label" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -112.0
-margin_top = 48.0
+margin_top = -232.0
 margin_right = 112.0
-margin_bottom = 69.0
+margin_bottom = -211.0
 custom_colors/font_color = Color( 0.988235, 0.917647, 0.756863, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )

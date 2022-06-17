@@ -64,5 +64,10 @@ func load(profile):
 	# gems
 	player.GEMS = int(profile["gems"]["integerValue"])
 	
+	# stats
+	player.STRENGTH = int(profile["strength"]["integerValue"])
+	player.INTELLIGENCE = int(profile["intelligence"]["integerValue"])
+	player.DEXTERITY = int(profile["dexterity"]["integerValue"])
+	
 	get_tree().get_root().add_child(world)
 	print_debug("loaded")

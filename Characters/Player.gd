@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export var NICKNAME = ""
-export var CHARACTER_CLASS = ""
+export var CHARACTER_CLASS = "Warrior"
 
 export var ACCELERATION = 1000
 export var WALK_SPEED = 120
@@ -20,6 +20,12 @@ export var EXPERIENCE = 0
 export var LEVEL = 0
 export var COINS = 0
 export var GEMS = 0
+
+export var STRENGTH = 0
+export var INTELLIGENCE = 0
+export var DEXTERITY = 0
+
+export var MAP = "Lombok"
 
 enum {
 	WALK, SPRINT, ATTACK

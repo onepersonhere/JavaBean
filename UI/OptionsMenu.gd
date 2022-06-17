@@ -11,7 +11,13 @@ func _ready():
 
 
 func _on_SaveGame_pressed():
-	pass # Replace with function body.
+	var save = load("res://World/Save.tscn").instance()
+	add_child(save)
+	$Label.text = "Done"
+	$Label.visible = true
+	yield(get_tree().create_timer(1), "timeout")
+	$Label.visible = false
+	remove_child(get_node("Save"))
 
 
 func _on_Settings_pressed():
