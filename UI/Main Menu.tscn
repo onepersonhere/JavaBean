@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Video/8 Bit Video.webm" type="VideoStream" id=1]
 [ext_resource path="res://UI/MainMenu.cs" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://UI/assets/main_menu/label_options_pressed.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Logo/JavaBean (New)(1).png" type="Texture" id=10]
 [ext_resource path="res://Assets/Logo/JavaBean (New)(2).png" type="Texture" id=11]
+[ext_resource path="res://Assets/Audio/Marvel Of The Century.mp3" type="AudioStream" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 8 )
@@ -117,6 +118,10 @@ texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 10 )
 stretch_mode = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+autoplay = true
 
 [connection signal="finished" from="Video" to="Video" method="_on_MainMenu_finished"]
 [connection signal="gui_input" from="Main Menu/HBoxContainer/VBoxContainer/VBoxContainer/Login" to="Video" method="OnLoginGuiInput"]
