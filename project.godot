@@ -32,6 +32,7 @@ JsonData="*res://Inventory/JSONData.gd"
 PlayerInventory="*res://Characters/PlayerInventory.gd"
 Firebase="*res://UI/Firebase/Firebase.gd"
 Load="*res://World/Load.gd"
+PlayerStats="*res://Characters/PlayerStats.tscn"
 
 [display]
 
@@ -152,8 +153,8 @@ esc={
 2d_render/layer_1="Player"
 2d_render/layer_2="World"
 2d_render/layer_3="ItemDrop"
-2d_physics/layer_1="Player"
-2d_physics/layer_2="World"
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
 2d_physics/layer_3="ItemDrop"
 2d_physics/layer_4="PlayerHurtbox"
 2d_physics/layer_5="EnemyHurtbox"
