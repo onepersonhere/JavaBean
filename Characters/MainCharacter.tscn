@@ -760,9 +760,13 @@ collision_layer = 8
 position = Vector2( 0, -50 )
 shape = SubResource( 56 )
 
+[connection signal="no_health" from="UI/GUI/HBoxContainer/Bars/LifeBar" to="." method="_on_LifeBar_no_health"]
 [connection signal="body_entered" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_entered"]
 [connection signal="body_exited" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_exited"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_PlayerHurtBox_area_entered"]
 
+[editable path="UI"]
+[editable path="UI/GUI"]
+[editable path="UI/GUI/HBoxContainer/Bars/LifeBar"]
 [editable path="HitBoxDirection/SwordHitBox"]
 [editable path="PlayerHurtBox"]

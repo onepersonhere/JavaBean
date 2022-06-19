@@ -2,9 +2,10 @@ extends KinematicBody2D
 
 const DeathEffect = preload("res://Effects/BatDeathEffect.tscn")
 
-export var ACCELERATION = 500
-export var MAX_SPEED = 80
-export var FRICTION = 150
+var ACCELERATION = 500
+var MAX_SPEED = 80
+var FRICTION = 150
+var DAMAGE = 5
 
 enum {
 	IDLE,
