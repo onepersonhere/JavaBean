@@ -727,6 +727,7 @@ parameters/Walk/blend_position = Vector2( 0, 0 )
 margin_top = 0.0
 margin_right = 1280.0
 margin_bottom = 720.0
+rect_scale = Vector2( 1.1, 1.1 )
 
 [node name="PickupZone" type="Area2D" parent="."]
 collision_layer = 0
