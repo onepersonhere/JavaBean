@@ -730,7 +730,7 @@ margin_bottom = 720.0
 rect_scale = Vector2( 1.1, 1.1 )
 
 [node name="PickupZone" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 0
 collision_mask = 4
 script = ExtResource( 3 )
 
