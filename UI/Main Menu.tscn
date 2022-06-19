@@ -121,6 +121,7 @@ stretch_mode = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+volume_db = -15.104
 autoplay = true
 
 [connection signal="finished" from="Video" to="Video" method="_on_MainMenu_finished"]
