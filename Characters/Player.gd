@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+var stats = PlayerStats
 export var NICKNAME = ""
 export var CHARACTER_CLASS = "Warrior"
 
@@ -39,6 +40,9 @@ onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitBoxDirection/SwordHitBox
+
+func _ready():
+	stats.connect("no_health", self, "queue_free")
 
 func _physics_process(delta):
 	match state:
@@ -134,3 +138,7 @@ func attack_animation_finished():
 func _input(event):
 	if event.is_action_pressed("pickup"):
 		$PickupZone.pickup(self)
+
+
+func _on_PlayerHurtBox_area_entered(area):
+	stats.health -= 1
