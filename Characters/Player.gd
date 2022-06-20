@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Player
 
 export var NICKNAME = ""
 export var CHARACTER_CLASS = "Warrior"
@@ -16,7 +17,7 @@ onready var MAX_HEALTH = $UI/GUI/HBoxContainer/Bars/LifeBar.MAX_HEALTH
 
 onready var CURR_SP = $UI/GUI/HBoxContainer/Bars/EnergyBar.CURRENT_SP
 onready var MAX_SP = $UI/GUI/HBoxContainer/Bars/EnergyBar.MAX_SP
-onready var RECHARGE = $UI/GUI/HBoxContainer/Bars/EnergyBar.RECHARGE
+onready var REGEN = $UI/GUI/HBoxContainer/Bars/EnergyBar.RECHARGE
 
 var can_sprint = true
 var IS_ALIVE = true

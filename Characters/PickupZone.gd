@@ -30,3 +30,4 @@ func pickup(this):
 		var pickup_item = items_in_range.values()[0]
 		pickup_item.pick_up_item(this)
 		items_in_range.erase(pickup_item)
+

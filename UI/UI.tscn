@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/GUI/GUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/OptionsMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Inventory/InputChecker.gd" type="Script" id=3]
 [ext_resource path="res://Inventory/Inventory.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Inventory/Hotbar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Quest/Quest GUI.tscn" type="PackedScene" id=6]
 
 [node name="UI" type="Control"]
 margin_top = 2.0
@@ -47,5 +48,7 @@ show_behind_parent = true
 position = Vector2( 62.4, 132.8 )
 scale = Vector2( 0.8, 0.8 )
 z_index = 1
+
+[node name="Quest GUI" parent="." instance=ExtResource( 6 )]
 
 [connection signal="visibility_changed" from="UserInterface/OptionsMenu" to="UserInterface" method="_on_OptionsMenu_visibility_changed"]

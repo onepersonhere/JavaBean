@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "CompleteQuestAction",
+"language": "GDScript",
+"path": "res://Characters/Actions/CompleteQuestAction.gd"
+}, {
 "base": "Reference",
 "class": "DTS",
 "language": "GDScript",
@@ -59,17 +64,63 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialogic/Other/DialogicUtil.gd"
 }, {
+"base": "CanvasLayer",
+"class": "GUI",
+"language": "GDScript",
+"path": "res://Quest/Quest GUI.gd"
+}, {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
 }, {
+"base": "Node",
+"class": "GiveQuestAction",
+"language": "GDScript",
+"path": "res://Characters/Actions/GiveQuestAction.gd"
+}, {
 "base": "PanelContainer",
 "class": "HistoryRow",
 "language": "GDScript",
 "path": "res://addons/dialogic/Example Assets/History/HistoryRow.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Characters/Player.gd"
+}, {
+"base": "Node",
+"class": "Quest",
+"language": "GDScript",
+"path": "res://Quest/Quest.gd"
+}, {
+"base": "QuestObjective",
+"class": "QuestInteractObjective",
+"language": "GDScript",
+"path": "res://Quest/objectives/QuestInteractObjective.gd"
+}, {
+"base": "Node",
+"class": "QuestItemReward",
+"language": "GDScript",
+"path": "res://Quest/QuestItemReward.gd"
+}, {
+"base": "Control",
+"class": "QuestJournal",
+"language": "GDScript",
+"path": "res://Quest/QuestJournal.gd"
+}, {
+"base": "Node",
+"class": "QuestObjective",
+"language": "GDScript",
+"path": "res://Quest/objectives/QuestObjective.gd"
+}, {
+"base": "QuestObjective",
+"class": "QuestSlayObjective",
+"language": "GDScript",
+"path": "res://Quest/objectives/QuestSlayObjective.gd"
 } ]
 _global_script_class_icons={
+"CompleteQuestAction": "",
 "DTS": "",
 "Dialogic": "",
 "DialogicAnimaPropertiesHelper": "",
@@ -80,8 +131,17 @@ _global_script_class_icons={
 "DialogicParser": "",
 "DialogicResources": "",
 "DialogicUtil": "",
+"GUI": "",
 "GitAPI": "",
-"HistoryRow": ""
+"GiveQuestAction": "",
+"HistoryRow": "",
+"Player": "",
+"Quest": "",
+"QuestInteractObjective": "",
+"QuestItemReward": "",
+"QuestJournal": "",
+"QuestObjective": "",
+"QuestSlayObjective": ""
 }
 
 [application]
@@ -99,6 +159,7 @@ PlayerInventory="*res://Characters/PlayerInventory.gd"
 Firebase="*res://UI/Firebase/Firebase.gd"
 Load="*res://World/Load.gd"
 PlayerStats="*res://Characters/PlayerStats.tscn"
+QuestSystem="*res://Quest/QuestSystem.tscn"
 
 [display]
 
@@ -250,3 +311,7 @@ common/enable_pause_aware_picking=true
 quality/filters/anisotropic_filter_level=8
 quality/filters/msaa=3
 environment/default_environment="res://default_env.tres"
+
+[world]
+
+2d/cell_size=32
