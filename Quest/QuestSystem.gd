@@ -38,7 +38,7 @@ func deliver(quest: Quest):
 	var rewards = quest.get_rewards()
 	# TODO: Tie in with curr inv system
 	for item in rewards['items']:
-		player.inventory.add(item.item, item.amount)
+		PlayerInventory.add_item(item.item_name, item.amount)
 	
 	assert (quest.get_parent() == completed_quests)
 	completed_quests.remove_child(quest)
