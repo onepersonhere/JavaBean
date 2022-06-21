@@ -56,13 +56,6 @@ script = ExtResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "Fly"
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-frame = 3
-=======
->>>>>>> d4aed046fa8d2d0a0499838261915f60cd3c59fe
->>>>>>> Stashed changes
 playing = true
 offset = Vector2( 0, -12 )
 
