@@ -14,7 +14,7 @@ func deal_damage(value):
 		CURRENT_HEALTH -= value
 	$TextureProgress.value = CURRENT_HEALTH
 	$Count/Background/Number.text = str(int(CURRENT_HEALTH))
-	if value <= 0:
+	if CURRENT_HEALTH <= 0:
 		emit_signal("no_health")
 		
 func heal(value):

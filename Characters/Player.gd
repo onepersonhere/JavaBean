@@ -150,6 +150,7 @@ func _input(event):
 
 func _on_PlayerHurtBox_area_entered(area):
 	$UI/GUI/HBoxContainer/Bars/LifeBar.deal_damage(area.damage)
+	CURR_HEALTH = $UI/GUI/HBoxContainer/Bars/LifeBar.CURRENT_HEALTH
 
 func _on_LifeBar_no_health():
 	queue_free()
