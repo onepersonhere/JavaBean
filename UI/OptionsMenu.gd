@@ -2,7 +2,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$Label.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,12 +21,16 @@ func _on_SaveGame_pressed():
 
 
 func _on_Settings_pressed():
-	get_tree().change_scene("res://UI/Options.tscn")
+	$Label.text = "WIP"
+	$Label.visible = true
+	yield(get_tree().create_timer(1), "timeout")
+	$Label.visible = false
+	# get_tree().change_scene("res://UI/Options.tscn")
 
 
 func _on_Quests_pressed():
-	pass # Replace with function body.
-
+	get_node("/root/World/YSort/Player/UI/Quest GUI")._on_QuestButton_pressed()
+	_on_Close_pressed()
 
 func _on_Shop_pressed():
 	pass # Replace with function body.
@@ -41,6 +45,7 @@ func _on_Inventory_pressed():
 	ev.action = "inventory"
 	ev.pressed = true
 	Input.parse_input_event(ev)
+	_on_Close_pressed()
 
 
 func _on_Help_pressed():
