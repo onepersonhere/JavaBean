@@ -8,29 +8,29 @@
 [ext_resource path="res://Enemies/PlayerDetectionZone.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Hitboxes and Hurtboxes/Hitbox.tscn" type="PackedScene" id=7]
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 2 )
 region = Rect2( 16, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 2 )
 region = Rect2( 32, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 2 )
 region = Rect2( 48, 0, 16, 24 )
 
-[sub_resource type="AtlasTexture" id=13]
+[sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 2 )
 region = Rect2( 64, 0, 16, 24 )
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
 "loop": true,
 "name": "Fly",
 "speed": 10.0
@@ -49,13 +49,14 @@ radius = 95.0053
 [sub_resource type="CircleShape2D" id=15]
 radius = 3.0
 
-[node name="Bat" type="KinematicBody2D"]
+[node name="Bat" type="KinematicBody2D" groups=["enemies"]]
 collision_layer = 32
 script = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "Fly"
+frame = 1
 playing = true
 offset = Vector2( 0, -12 )
 
