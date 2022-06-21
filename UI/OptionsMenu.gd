@@ -37,7 +37,12 @@ func _on_Shop_pressed():
 
 
 func _on_Map_pressed():
-	pass # Replace with function body.
+	var parent = get_node("/root/World/YSort/Player/UI")
+	var minimap = load("res://UI/Minimap/Minimap.tscn").instance()
+	parent.add_child(minimap)
+	get_node("/root/World/YSort/Player/UI/CanvasLayer/UserInterface/Hotbar").visible = false
+	_on_Close_pressed()
+	get_tree().paused = true
 
 
 func _on_Inventory_pressed():

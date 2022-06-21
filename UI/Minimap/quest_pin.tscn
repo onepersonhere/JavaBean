@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Icons/npc_quest_finished.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Icons/npc_quest_available.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Icons/npc_quest_active.png" type="Texture" id=3]
+[ext_resource path="res://UI/Minimap/quest_pin.gd" type="Script" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "quest_active",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "quest_available",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "quest_complete",
+"speed": 5.0
+} ]
+
+[node name="quest_pin" type="Node2D"]
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "quest_complete"
