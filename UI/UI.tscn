@@ -21,34 +21,36 @@ margin_bottom = -225.0
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
-[node name="UserInterface" type="Node2D" parent="."]
+[node name="Quest GUI" parent="." instance=ExtResource( 6 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UserInterface" type="Node2D" parent="CanvasLayer"]
 pause_mode = 2
 show_behind_parent = true
-position = Vector2( -632, -402 )
-scale = Vector2( 5, 5 )
+position = Vector2( 10, -25 )
+scale = Vector2( 2.5, 2.5 )
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="OptionsMenu" parent="UserInterface" instance=ExtResource( 2 )]
+[node name="OptionsMenu" parent="CanvasLayer/UserInterface" instance=ExtResource( 2 )]
 pause_mode = 2
 visible = false
 position = Vector2( 126.4, 80.4 )
 scale = Vector2( 0.27, 0.27 )
 z_index = 3
 
-[node name="Inventory" parent="UserInterface" instance=ExtResource( 4 )]
+[node name="Inventory" parent="CanvasLayer/UserInterface" instance=ExtResource( 4 )]
 visible = false
 position = Vector2( 9.6, 11.2 )
 z_index = 1
 
-[node name="Hotbar" parent="UserInterface" instance=ExtResource( 5 )]
+[node name="Hotbar" parent="CanvasLayer/UserInterface" instance=ExtResource( 5 )]
 show_behind_parent = true
 position = Vector2( 62.4, 132.8 )
 scale = Vector2( 0.8, 0.8 )
 z_index = 1
 
-[node name="Quest GUI" parent="." instance=ExtResource( 6 )]
-
-[connection signal="visibility_changed" from="UserInterface/OptionsMenu" to="UserInterface" method="_on_OptionsMenu_visibility_changed"]
+[connection signal="visibility_changed" from="CanvasLayer/UserInterface/OptionsMenu" to="CanvasLayer/UserInterface" method="_on_OptionsMenu_visibility_changed"]
