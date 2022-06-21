@@ -1,4 +1,8 @@
 extends Node2D
+signal combat_started
 
 func _ready():
-	pass # Replace with function body.
+	QuestSystem.initialise(self, $YSort/Player)
+
+func combat_start():
+	emit_signal("combat_started")

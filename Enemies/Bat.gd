@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 const DeathEffect = preload("res://Effects/BatDeathEffect.tscn")
 
+signal died(battler)
+
 var ACCELERATION = 500
 var MAX_SPEED = 80
 var FRICTION = 150
@@ -49,6 +51,7 @@ func seek_player():
 		state = CHASE
 
 func _on_Bat_HurtBox_area_entered(area):
+	get_node("/root/World").combat_start()
 	knockback = area.knockback_vector * 150
 	stats.health -= area.damage
 
@@ -57,5 +60,6 @@ func _on_Stats_no_health():
 	var batDeathEffect = DeathEffect.instance()
 	get_parent().add_child(batDeathEffect)
 	batDeathEffect.global_position = global_position
+	emit_signal("died", self)
 	
 	

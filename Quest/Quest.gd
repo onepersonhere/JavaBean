@@ -34,7 +34,7 @@ func _on_Objective_completed(objective) -> void:
 	if get_completed_objectives().size() == get_objectives().size():
 		emit_signal("completed")
 
-func deliver():
+func _deliver():
 	emit_signal("delivered")
 
 func notify_slay_objectives() -> void:
