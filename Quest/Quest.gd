@@ -7,8 +7,8 @@ signal delivered()
 
 onready var objectives = $Objectives
 
-export var title: String = "Test Quest"
-export var description: String = "Hello"
+export var title: String
+export var description: String
 
 export var reward_on_delivery = false
 export var _reward_experience: int
@@ -50,5 +50,5 @@ func get_rewards_as_text() -> Array:
 	var text := []
 	text.append(" - Experience: %s" % str(_reward_experience))
 	for item in _reward_items.get_children():
-		text.append(" - [%s] x (%s)\n" % [item.item.name, str(item.amount)])
+		text.append(" - [%s] x (%s)\n" % [item.item_name, str(item.amount)])
 	return text
