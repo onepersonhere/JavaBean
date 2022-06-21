@@ -1,3 +1,3 @@
 extends Area2D
 
-var damage = 1
+var damage = 5

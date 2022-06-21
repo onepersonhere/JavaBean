@@ -7,7 +7,7 @@ signal died(battler)
 var ACCELERATION = 500
 var MAX_SPEED = 80
 var FRICTION = 150
-var DAMAGE = 5
+onready var DAMAGE = $HitBox.damage
 
 enum {
 	IDLE,
