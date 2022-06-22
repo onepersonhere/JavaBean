@@ -33,9 +33,14 @@ func _on_Quests_pressed():
 	_on_Close_pressed()
 
 func _on_Shop_pressed():
-	pass # Replace with function body.
-
-
+	var shop_nft = load("res://NFT/Openseas.tscn").instance()
+	var parent = get_node("/root/World/YSort/Player/UI")
+	parent.add_child(shop_nft)
+	get_node("/root/World/YSort/Player/UI/Quest GUI/Container").visible = false
+	get_node("/root/World/YSort/Player/UI/CanvasLayer/UserInterface/Hotbar").visible = false
+	_on_Close_pressed()
+	get_tree().paused = true
+	
 func _on_Map_pressed():
 	var parent = get_node("/root/World/YSort/Player/UI")
 	var minimap = load("res://UI/Minimap/Minimap.tscn").instance()
