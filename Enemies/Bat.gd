@@ -23,6 +23,7 @@ onready var timer = $Timer
 onready var stats = $Stats
 onready var sprite = $AnimatedSprite
 onready var playerDetectionZone = $PlayerDetectionZone
+onready var softCollision = $SoftCollision
 
 func _ready():
 	timer.one_shot = true
@@ -48,6 +49,9 @@ func _physics_process(delta):
 				state = IDLE
 			sprite.flip_h = velocity.x < 0
 			
+			
+	if softCollision.is_colliding():
+		velocity = softCollision.get_push_vector() * delta * 200
 	velocity = move_and_slide(velocity)
 		
 func seek_player():

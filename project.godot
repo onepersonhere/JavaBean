@@ -185,7 +185,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg", "res://addons/gut/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/dialogic/plugin.cfg" )
 
 [gdnative]
 
@@ -312,6 +312,7 @@ dialogic_default_action={
 2d_physics/layer_5="EnemyHurtbox"
 2d_physics/layer_6="Enemy"
 2d_physics/layer_7="EnemyHitbox"
+2d_physics/layer_8="SoftCollision"
 
 [physics]
 
