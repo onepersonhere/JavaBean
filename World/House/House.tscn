@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://World/floor.tres" type="TileSet" id=1]
-[ext_resource path="res://World/wall.tres" type="TileSet" id=2]
-[ext_resource path="res://World/door.tres" type="TileSet" id=3]
-[ext_resource path="res://World/stairs.tres" type="TileSet" id=4]
-[ext_resource path="res://World/deco.tres" type="TileSet" id=5]
+[ext_resource path="res://World/House/floor.tres" type="TileSet" id=1]
+[ext_resource path="res://World/House/wall.tres" type="TileSet" id=2]
+[ext_resource path="res://World/House/door.tres" type="TileSet" id=3]
+[ext_resource path="res://World/House/stairs.tres" type="TileSet" id=4]
+[ext_resource path="res://World/House/deco.tres" type="TileSet" id=5]
 [ext_resource path="res://Assets/Pipoya RPG Tileset 32x32/[Base]BaseChip_pipo.png" type="Texture" id=6]
 
 [sub_resource type="TileSet" id=1]
