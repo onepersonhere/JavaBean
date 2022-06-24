@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=2]
@@ -11,13 +11,7 @@
 [ext_resource path="res://Characters/NPCs/QuestGiver.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/House/Entrance.tscn" type="PackedScene" id=10]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15.5, 10 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 10 )
-
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" groups=["map"]]
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true,
@@ -107,25 +101,24 @@ position = Vector2( 2218, 1052 )
 
 [node name="Doors" type="YSort" parent="YSort"]
 
-[node name="Entrance1" parent="YSort/Doors" instance=ExtResource( 10 )]
-position = Vector2( 2529, 919 )
-
-[node name="CollisionShape2D" parent="YSort/Doors/Entrance1" index="0"]
-position = Vector2( -17, -35 )
-shape = SubResource( 1 )
+[node name="Entrance" parent="YSort/Doors" instance=ExtResource( 10 )]
+position = Vector2( 2512, 880 )
+pos_x = 112
+pos_y = 304
+entering_area = "res://World/House/House.tscn"
+entering_area_name = "House"
+exit_area_name = "World"
 
 [node name="Entrance2" parent="YSort/Doors" instance=ExtResource( 10 )]
-position = Vector2( 2769, 887 )
-
-[node name="CollisionShape2D" parent="YSort/Doors/Entrance2" index="0"]
-position = Vector2( -1, -2 )
-shape = SubResource( 2 )
+position = Vector2( 2768, 880 )
+pos_x = 528
+pos_y = 304
+entering_area = "res://World/House/House.tscn"
+entering_area_name = "House"
+exit_area_name = "World"
 
 [node name="QuestGiver" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1800, 988 )
 
 [node name="QuestReceiver" parent="." instance=ExtResource( 6 )]
 position = Vector2( 1707, 1012 )
-
-[editable path="YSort/Doors/Entrance1"]
-[editable path="YSort/Doors/Entrance2"]
