@@ -24,9 +24,9 @@ jobs:
           path: UI/Firebase/PrivateKey.gd
 
 
-      - name: Docker test
-        uses: ceceppa/godot-gut-ci@master
-        with:
-          godot_version: 3.4.4
-          integration_test: res://Test/Unit
-          unit_test: res://Test/Unit
+      #- name: Docker test
+      #  uses: ceceppa/godot-gut-ci@master
+      #  with:
+      #    godot_version: 3.4.4
+      #    integration_test: res://Test/Unit
+      #    unit_test: res://Test/Unit
