@@ -46,6 +46,9 @@ onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitBoxDirection/SwordHitBox
 
+func _ready():
+	randomize()
+
 func _physics_process(delta):
 	match state:
 		WALK:
