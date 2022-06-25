@@ -8,17 +8,17 @@ jobs:
     steps:
       - name: print secrets
         run: |
-          $PrivateKey.gd >> UI/Firebase
-          cat UI/Firebase
+          echo $DEV_ENV_FILE >> UI/Firebase/PrivateKey.gd
+          cat UI/Firebase/PrivateKey.gd
         shell: bash
         env:
-          PrivateKey.gd : ${{secrets.FIREBASE_API_KEY}}
+          DEV_ENV_FILE : ${{secrets.FIREBASE_API_KEY}}
           
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: PrivateKey.gd
-          path: UI/Firebase
+          name: DEV_ENV_FILE
+          path: UI/Firebase/PrivateKey.gd
           
       - name: Checkout
         uses: actions/checkout@v2
