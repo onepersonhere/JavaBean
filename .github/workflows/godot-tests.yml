@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: print secrets
         run: |
-          ls -d */
+          ls -d
           echo $DEV_ENV_FILE > UI/Firebase/PrivateKey.gd
           cat UI/Firebase/PrivateKey.gd
         shell: bash
