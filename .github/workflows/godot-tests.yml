@@ -11,7 +11,7 @@ jobs:
         
       - name: print secrets
         run: |
-          echo "extends Node\n" + $DEV_ENV_FILE > UI/Firebase/PrivateKey.gd
+          echo "extends Node\nconst API_KEY := \"" + $DEV_ENV_FILE + "\"" > UI/Firebase/PrivateKey.gd
           cat UI/Firebase/PrivateKey.gd
         shell: bash
         env:
