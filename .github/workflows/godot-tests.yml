@@ -21,7 +21,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: DEV_ENV_FILE
-          path: ../UI/Firebase/PrivateKey.gd
+          path: UI/Firebase/PrivateKey.gd
 
 
       - name: Docker test
