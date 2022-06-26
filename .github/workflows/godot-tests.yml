@@ -29,14 +29,14 @@ jobs:
           release_type: "rc2"
           is-mono: "true"
           # the folder with your projects.godot file in it
-          path: "."
+          path: ""
           # how long to spend importing assets before tests are run
-          import-time: "1000"
+          import-time: "120"
           # how long tests can run in seconds
           test-timeout: "45"
           # the ratio of tests that must pass for this action to pass
           # e.g. 0.6 means 60% of your tests must pass
-          minimum-pass: "0.6"
+          minimum-pass: "0.5"
           # the directory containing Gut tests
           test-dir: "res://Test/Unit"
           # instead of running GUT's command line tool, you can run a GUT test scene if you have one
