@@ -35,6 +35,11 @@
 			"transition_duration": 1
 		},
 		{
+			"custom_slot": "",
+			"event_id": "dialogic_026",
+			"use_default_slot": true
+		},
+		{
 			"change_scene": "",
 			"event_id": "dialogic_041"
 		},
@@ -45,6 +50,10 @@
 			"event_name": "AudioEvent",
 			"file": "",
 			"volume": 0
+		},
+		{
+			"change_timeline": "timeline-1656663085.json",
+			"event_id": "dialogic_020"
 		}
 	],
 	"metadata": {
