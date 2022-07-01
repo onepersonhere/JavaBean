@@ -1,0 +1,64 @@
+{
+	"events": [
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hey I saw you are lying on the floor, are you alright?"
+		},
+		{
+			"character": "character-1656661598.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Oow... I feel terrible."
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Do you remember anything?"
+		},
+		{
+			"character": "character-1656661598.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "No... My head feels terrible"
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ah it seems like you have amenesia, you will need some time to rest. Come let me guide you to my house."
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		},
+		{
+			"custom_slot": "",
+			"event_id": "dialogic_026",
+			"use_default_slot": true
+		},
+		{
+			"change_scene": "",
+			"event_id": "dialogic_041"
+		},
+		{
+			"audio": "play",
+			"audio_bus": "Master",
+			"event_id": "dialogic_030",
+			"event_name": "AudioEvent",
+			"file": "",
+			"volume": 0
+		},
+		{
+			"change_timeline": "timeline-1656663085.json",
+			"event_id": "dialogic_020"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.2 - Dev",
+		"file": "timeline-1656661676.json",
+		"name": "Tutorial"
+	}
+}
