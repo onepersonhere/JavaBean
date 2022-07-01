@@ -1,14 +1,19 @@
 extends Node
 
 
-func load(profile):
+func load(profile, world_name):
 	# var save_nodes = get_tree().get_nodes_in_group("Persist")
 	# for i in save_nodes:
 	# 	i.queue_free()
 	
-	var world: Node2D = load("res://World/World.tscn").instance()
-	var player: KinematicBody2D = world.find_node("Player")
+	var world: Node2D = load("res://World/"+ world_name +".tscn").instance()
+	var player: KinematicBody2D = load("res://Characters/MainCharacter.tscn").instance()
 	
+	# get YSort
+	var ysort = world.find_node("YSort")
+	ysort.add_child(player)
+	player.scale = Vector2(0.45, 0.45)
+	player.find_node("Camera2D").zoom = Vector2(0.45, 0.45)
 	# is alive
 	player.IS_ALIVE = true
 	

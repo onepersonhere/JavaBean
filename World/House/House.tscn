@@ -305,7 +305,7 @@ position = Vector2( 112, 336 )
 pos_x = 2512
 pos_y = 912
 entering_area = "res://World/World.tscn"
-entering_area_name = "World"
+entering_area_name = "World/YSort"
 exit_area_name = "House"
 
 [node name="Entrance2" parent="." instance=ExtResource( 9 )]
@@ -313,5 +313,5 @@ position = Vector2( 528, 336 )
 pos_x = 2776
 pos_y = 912
 entering_area = "res://World/World.tscn"
-entering_area_name = "World"
+entering_area_name = "World/YSort"
 exit_area_name = "House"
