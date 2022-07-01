@@ -679,8 +679,7 @@ radius = 14.0
 height = 44.0
 
 [node name="Player" type="KinematicBody2D" groups=["Persist"]]
-position = Vector2( 320, 184 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 616, 368 )
 collision_layer = 2
 script = ExtResource( 1 )
 __meta__ = {
@@ -724,10 +723,10 @@ parameters/Sprint/blend_position = Vector2( 0, 0 )
 parameters/Walk/blend_position = Vector2( 0, 0 )
 
 [node name="UI" parent="." instance=ExtResource( 4 )]
-margin_top = 0.0
-margin_right = 1280.0
-margin_bottom = 720.0
-rect_scale = Vector2( 1.1, 1.1 )
+margin_left = -616.0
+margin_top = -368.0
+margin_right = -616.0
+margin_bottom = -368.0
 
 [node name="PickupZone" type="Area2D" parent="."]
 collision_layer = 0
@@ -762,13 +761,9 @@ collision_mask = 64
 position = Vector2( 0, -50 )
 shape = SubResource( 56 )
 
-[connection signal="no_health" from="UI/GUI/HBoxContainer/Bars/LifeBar" to="." method="_on_LifeBar_no_health"]
 [connection signal="body_entered" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_entered"]
 [connection signal="body_exited" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_exited"]
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_PlayerHurtBox_area_entered"]
 
-[editable path="UI"]
-[editable path="UI/GUI"]
-[editable path="UI/GUI/HBoxContainer/Bars/LifeBar"]
 [editable path="HitBoxDirection/SwordHitBox"]
 [editable path="PlayerHurtBox"]

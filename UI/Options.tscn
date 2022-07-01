@@ -4,6 +4,8 @@
 [ext_resource path="res://UI/Options.gd" type="Script" id=2]
 
 [node name="Options" type="CanvasLayer"]
+scale = Vector2( 2, 2 )
+transform = Transform2D( 2, 0, 0, 2, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="Background" type="TextureRect" parent="."]

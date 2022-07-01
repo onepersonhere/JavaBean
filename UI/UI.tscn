@@ -8,22 +8,21 @@
 [ext_resource path="res://Quest/Quest GUI.tscn" type="PackedScene" id=6]
 
 [node name="UI" type="Control"]
-margin_top = 2.0
-margin_right = 1024.0
-margin_bottom = 600.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="GUI" parent="." instance=ExtResource( 1 )]
-margin_left = -640.0
-margin_top = -362.0
-margin_right = 640.0
-margin_bottom = -225.0
+margin_bottom = 137.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 640, 360 )
 current = true
 
 [node name="Quest GUI" parent="." instance=ExtResource( 6 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2( 2, 2 )
+transform = Transform2D( 2, 0, 0, 2, 0, 0 )
 
 [node name="UserInterface" type="Node2D" parent="CanvasLayer"]
 pause_mode = 2

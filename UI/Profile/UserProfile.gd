@@ -87,7 +87,7 @@ func _on_Confirm_pressed():
 			Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 	information_sent = true
 	yield(get_tree().create_timer(1), "timeout")
-	Load.load(profile)
+	Load.load(profile, "World")
 	yield(get_tree().create_timer(1), "timeout")
 	queue_free()
 
