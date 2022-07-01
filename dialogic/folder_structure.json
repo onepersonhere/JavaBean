@@ -8,7 +8,46 @@
 
 			],
 			"folders": {
+				"Chapter 1": {
+					"files": [
+						"character-1656661598.json",
+						"character-1656662326.json"
+					],
+					"folders": {
+						"Hollandaise": {
+							"files": [
+								"character-1656661991.json",
+								"character-1656661762.json",
+								"character-1656662178.json"
+							],
+							"folders": {
 
+							},
+							"metadata": {
+								"color": null,
+								"folded": false
+							}
+						},
+						"Javanese": {
+							"files": [
+								"character-1656661792.json",
+								"character-1656662136.json",
+								"character-1656662369.json"
+							],
+							"folders": {
+
+							},
+							"metadata": {
+								"color": null,
+								"folded": false
+							}
+						}
+					},
+					"metadata": {
+						"color": null,
+						"folded": false
+					}
+				}
 			},
 			"metadata": {
 				"color": null,
@@ -44,7 +83,18 @@
 
 			],
 			"folders": {
+				"Chapter 1": {
+					"files": [
+						"timeline-1656661676.json"
+					],
+					"folders": {
 
+					},
+					"metadata": {
+						"color": null,
+						"folded": false
+					}
+				}
 			},
 			"metadata": {
 				"color": null,

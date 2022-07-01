@@ -1,0 +1,21 @@
+{
+	"color": "#ffffffff",
+	"description": "He is the protector of the castle.",
+	"display_name": "Guard",
+	"display_name_bool": true,
+	"id": "character-1656661991.json",
+	"mirror_portraits": false,
+	"name": "Guard",
+	"nickname": "Aart Hein",
+	"nickname_bool": true,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": ""
+		}
+	],
+	"scale": 100,
+	"theme": ""
+}
