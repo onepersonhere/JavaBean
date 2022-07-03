@@ -1207,5 +1207,4 @@ pause_mode = 0
 position = Vector2( 1707, 1012 )
 
 [node name="Merchant" parent="YSort/NPC" instance=ExtResource( 14 )]
-pause_mode = 0
 position = Vector2( 1648, 880 )

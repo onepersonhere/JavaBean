@@ -1,4 +1,5 @@
 extends Action
+class_name ShopAction
 
 onready var rng = RandomNumberGenerator.new()
 onready var inventory_stuff = $Popup/Inventory/ScrollContainer/VBoxContainer
@@ -7,11 +8,13 @@ func _ready():
 
 
 func interact():
+	get_tree().paused = !get_tree().paused
 	if active:
 		$Popup.popup_centered()
 		active = false
 		
 		update_val()
+		load_inventory_stuff()
 	else:
 		$Popup.hide()
 		emit_signal("finished")
@@ -22,7 +25,6 @@ func update_val():
 	$Popup/Coins/Coins_value.text = str(player.COINS)
 	$Popup/Gems/Gems_value.text = str(player.GEMS)
 	
-	load_inventory_stuff()
 
 func load_inventory_stuff():
 	var inventory = PlayerInventory.inventory

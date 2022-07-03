@@ -9,13 +9,12 @@ outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
-[node name="ShopAction" type="CanvasLayer"]
+[node name="ShopAction" type="CanvasLayer" groups=["ShopAction"]]
 pause_mode = 2
 layer = 2
 script = ExtResource( 1 )
 
 [node name="Popup" type="Popup" parent="."]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 

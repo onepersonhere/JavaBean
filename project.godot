@@ -133,6 +133,11 @@ _global_script_classes=[ {
 "class": "QuestSlayObjective",
 "language": "GDScript",
 "path": "res://Quest/objectives/QuestSlayObjective.gd"
+}, {
+"base": "Action",
+"class": "ShopAction",
+"language": "GDScript",
+"path": "res://Characters/Actions/ShopAction.gd"
 } ]
 _global_script_class_icons={
 "Action": "",
@@ -159,7 +164,8 @@ _global_script_class_icons={
 "QuestItemReward": "",
 "QuestJournal": "",
 "QuestObjective": "",
-"QuestSlayObjective": ""
+"QuestSlayObjective": "",
+"ShopAction": ""
 }
 
 [application]
