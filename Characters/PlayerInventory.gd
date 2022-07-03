@@ -55,6 +55,7 @@ func update_slot_visual(slot_index, item_name, new_quantity):
 		slot.item.set_item(item_name, new_quantity)
 	else:
 		slot.initialise_item(item_name, new_quantity)
+		
 func remove_item(slot: SlotClass):
 	match slot.SlotType:
 		SlotClass.SlotType.HOTBAR:

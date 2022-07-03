@@ -47,6 +47,7 @@ onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitBoxDirection/SwordHitBox
 
 func _ready():
+	update_stat_vals();
 	randomize()
 
 func _physics_process(delta):
@@ -150,6 +151,11 @@ func attack_animation_finished():
 func _input(event):
 	if event.is_action_pressed("pickup"):
 		$PickupZone.pickup(self)
+	
+	# cheats for debugging purposes
+	if event.is_action_pressed("add_money"):
+		COINS += 1;
+		update_stat_vals()
 
 func _on_PlayerHurtBox_area_entered(area):
 	$UI/GUI/HBoxContainer/Bars/LifeBar.deal_damage(area.damage)
@@ -163,3 +169,7 @@ func _on_EnergyBar_got_stamina():
 
 func _on_EnergyBar_no_stamina():
 	can_sprint = false
+
+func update_stat_vals():
+	$UI/GUI/HBoxContainer/Counters/CoinCounter/Background/Number.text = str(COINS);
+	$UI/GUI/HBoxContainer/Counters/GemCounter/Background/Number.text = str(GEMS);

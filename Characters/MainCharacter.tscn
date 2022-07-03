@@ -678,7 +678,7 @@ height = 48.0
 radius = 14.0
 height = 44.0
 
-[node name="Player" type="KinematicBody2D" groups=["Persist"]]
+[node name="Player" type="KinematicBody2D" groups=["Persist", "Player"]]
 position = Vector2( 616, 368 )
 collision_layer = 2
 script = ExtResource( 1 )

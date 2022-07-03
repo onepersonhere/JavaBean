@@ -36,5 +36,6 @@ visible = false
 [node name="AnimatedSprite" parent="." index="1"]
 pause_mode = 2
 frames = SubResource( 8 )
+frame = 1
 
 [node name="ShopAction" parent="Actions" index="0" instance=ExtResource( 2 )]
