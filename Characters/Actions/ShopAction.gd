@@ -45,3 +45,5 @@ func add_as_panel(stuff, location):
 	# TODO: Construct a pricing system based on weightage of the price of the object.
 	panel.find_node("Price_val").text = str(rng.randi_range(1, 100)) + " coin(s)"
 	inventory_stuff.add_child(panel)
+
+# TODO: Complete the buy and sell script.
