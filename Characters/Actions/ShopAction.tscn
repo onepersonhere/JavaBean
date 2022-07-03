@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Characters/Actions/ShopAction.gd" type="Script" id=1]
+[ext_resource path="res://NFT/ObjectPanel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Inventory/Fonts/m5x7.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 52
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
 
 [node name="ShopAction" type="CanvasLayer"]
 pause_mode = 2
@@ -11,12 +19,96 @@ script = ExtResource( 1 )
 visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 64.0
-margin_top = 64.0
-margin_right = -64.0
-margin_bottom = -80.0
 
 [node name="ColorRect" type="ColorRect" parent="Popup"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.470588, 0.447059, 0.447059, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Popup"]
+margin_right = 640.0
+margin_bottom = 720.0
+color = Color( 0.666667, 0.666667, 0.666667, 1 )
+
+[node name="Shop" type="Control" parent="Popup"]
+margin_right = 640.0
+margin_bottom = 720.0
+
+[node name="Label" type="Label" parent="Popup/Shop"]
+margin_right = 640.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 1 )
+text = "Shop"
+align = 1
+valign = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Popup/Shop"]
+margin_left = 24.0
+margin_top = 64.0
+margin_right = 616.0
+margin_bottom = 696.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/Shop/ScrollContainer"]
+margin_right = 100.0
+margin_bottom = 100.0
+
+[node name="Panel" parent="Popup/Shop/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 100.0
+margin_bottom = 100.0
+
+[node name="Inventory" type="Control" parent="Popup"]
+margin_left = 640.0
+margin_right = 1280.0
+margin_bottom = 720.0
+
+[node name="Label" type="Label" parent="Popup/Inventory"]
+margin_right = 640.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 1 )
+text = "Inventory"
+align = 1
+valign = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Popup/Inventory"]
+margin_left = 24.0
+margin_top = 64.0
+margin_right = 616.0
+margin_bottom = 640.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/Inventory/ScrollContainer"]
+
+[node name="Coins" type="Label" parent="Popup"]
+margin_left = 664.0
+margin_top = 640.0
+margin_right = 768.0
+margin_bottom = 720.0
+custom_fonts/font = SubResource( 1 )
+text = "Coins:"
+valign = 1
+
+[node name="Coins_value" type="Label" parent="Popup/Coins"]
+margin_left = 120.0
+margin_right = 232.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+valign = 1
+
+[node name="Gems" type="Label" parent="Popup"]
+margin_left = 896.0
+margin_top = 640.0
+margin_right = 1000.0
+margin_bottom = 720.0
+custom_fonts/font = SubResource( 1 )
+text = "Gems:"
+valign = 1
+
+[node name="Gems_value" type="Label" parent="Popup/Gems"]
+margin_left = 120.0
+margin_right = 232.0
+margin_bottom = 80.0
+custom_fonts/font = SubResource( 1 )
+text = "0"
+valign = 1
