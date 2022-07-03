@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "Action",
+"language": "GDScript",
+"path": "res://Characters/Actions/Action.gd"
+}, {
+"base": "Action",
 "class": "CompleteQuestAction",
 "language": "GDScript",
 "path": "res://Characters/Actions/CompleteQuestAction.gd"
@@ -74,7 +79,7 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
 }, {
-"base": "Node",
+"base": "Action",
 "class": "GiveQuestAction",
 "language": "GDScript",
 "path": "res://Characters/Actions/GiveQuestAction.gd"
@@ -130,6 +135,7 @@ _global_script_classes=[ {
 "path": "res://Quest/objectives/QuestSlayObjective.gd"
 } ]
 _global_script_class_icons={
+"Action": "",
 "CompleteQuestAction": "",
 "DTS": "",
 "Dialogic": "",

@@ -1,10 +1,8 @@
-extends Node
+extends Action
 class_name GiveQuestAction
 
-signal finished
 export var quest_reference: PackedScene
 var quest: Quest = null
-var active: bool = true
 
 func _ready() -> void:
 	assert(quest_reference)
