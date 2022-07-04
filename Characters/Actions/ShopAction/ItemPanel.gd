@@ -60,6 +60,7 @@ func update_vals():
 func update_inventory():
 	if int(amt) == 0:
 		PlayerInventory.remove_item(slot)
+		get_tree().get_nodes_in_group("Inventory")[0].initialise_inventory()
 		get_tree().get_nodes_in_group("Hotbar")[0].initialise_hotbar()
 	else:
 		if odd:

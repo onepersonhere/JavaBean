@@ -2,6 +2,7 @@ extends Panel
 onready var player = get_tree().get_nodes_in_group("Player")[0]
 onready var price = $Price/Price_val.text
 onready var amt = $Amt/Amt_val.text
+onready var parent = get_parent().get_parent().get_parent();
 var item_name;
 
 func _ready():
@@ -34,10 +35,13 @@ func _on_Buy_All_pressed():
 		update_inventory(amount)
 	
 func check_empty():
+	
 	if player.COINS <= 0:
 		toggle_disabled(true)
 	else:
 		toggle_disabled(false)
+	
+	check_stack()
 	
 	if int(amt) < 2:
 		$"Buy Half".disabled = true;
@@ -50,31 +54,33 @@ func update_vals():
 	get_tree().get_nodes_in_group("ShopAction")[0].update_val()
 	player.update_stat_vals();
 	
-
 func update_inventory(amt_bought):
-	var idx = PlayerInventory.inventory.size();
-	var idx_hotbar = PlayerInventory.hotbar.size();
-	
-	if (idx < PlayerInventory.NUM_INVENTORY_SLOTS): #BUG: item is not added to hotbar when inv is full, also items are not stacked.
-		PlayerInventory.inventory[idx] = [item_name, int(amt_bought)]
-	elif (idx_hotbar < PlayerInventory.NUM_HOTBAR_SLOTS):
-		PlayerInventory.hotbar[idx] = [item_name, int(amt_bought)]
-	
-	
-	var parent = player.get_node("UI").get_node("CanvasLayer").get_node("UserInterface")
-	RefreshInv.refresh(parent, item_name)
-	
+	PlayerInventory.add_item(item_name, amt_bought)
+	get_tree().get_nodes_in_group("Inventory")[0].initialise_inventory()
+	get_tree().get_nodes_in_group("Hotbar")[0].initialise_hotbar()
 	# load inventory stuff
 	get_tree().get_nodes_in_group("shop_inventory")[0].load_inventory_stuff()
-	
+	is_full()
 	
 func is_affordable(cost):
 	# Also check if full
 	var idx = PlayerInventory.inventory.size();
-	var idx_hotbar = PlayerInventory.hotbar.size(); #BUG: does not detect if inventory is full, also did not take note of the stack size
+	var idx_hotbar = PlayerInventory.hotbar.size(); 
 	return player.COINS - cost >= 0 && (idx < PlayerInventory.NUM_INVENTORY_SLOTS || idx_hotbar < PlayerInventory.NUM_HOTBAR_SLOTS);
 
 func toggle_disabled(boolean):
 	$"Buy 1".disabled = boolean;
 	$"Buy Half".disabled = boolean;
 	$"Buy All".disabled = boolean;
+
+func check_stack():
+	var stack_size = int(JsonData.item_data[item_name]["StackSize"])
+	if stack_size <= 1:
+		$"Buy Half".disabled = true
+		$"Buy All".disabled = true
+
+func is_full():
+	# TODO: Distribute items to hotbar once inventory is full
+	if PlayerInventory.inventory.size() >= PlayerInventory.NUM_INVENTORY_SLOTS:
+		# full
+		parent.toggle_disabled_global(true)

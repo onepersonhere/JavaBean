@@ -14,6 +14,9 @@ func load_shop_stuff():
 			if (rng.randi_range(1, 10) < 5):
 				add_item_to_shop(item, items);
 		loaded = true
+	else:
+		for child in shop_stuff.get_children():
+			child.check_empty()
 
 func add_item_to_shop(item, items):
 	var item_name = item;
@@ -28,3 +31,7 @@ func add_item_to_shop(item, items):
 	# TODO: Construct a pricing system based on weightage of the price of the object.
 	panel.find_node("Price_val").text = str(rng.randi_range(1, 100)) + " coin(s)"
 	shop_stuff.add_child(panel)
+
+func toggle_disabled_global(boolean):
+	for child in shop_stuff.get_children():
+		child.toggle_disabled(boolean)

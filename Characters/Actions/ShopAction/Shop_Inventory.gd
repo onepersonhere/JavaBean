@@ -12,16 +12,18 @@ func load_inventory_stuff():
 	var hotbar = get_tree().get_nodes_in_group("Hotbar")[0]
 	
 	# reset the shop
+	# bug: the potion is there when its not suppose to be there after selling everything and buying something
 	for child in inventory_stuff.get_children():
 		child.queue_free()
-		
+	
 	for slot in inventory.inventory_slots.get_children():
 		if exist(slot):
 			add_as_panel(slot, inventory, "inventory")
-		
-	for slot in hotbar.slots:
-		if exist(slot):
-			add_as_panel(slot, hotbar, "hotbar")
+	
+	#WIP future expansion
+	#for slot in hotbar.slots:
+	#	if exist(slot):
+	#		add_as_panel(slot, hotbar, "hotbar")
 	
 
 func add_as_panel(slot, location, location_name):
