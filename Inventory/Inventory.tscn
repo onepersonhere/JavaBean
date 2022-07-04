@@ -16,7 +16,7 @@ region_rect = Rect2( 0, 0, 18, 18 )
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 18, 18 )
 
-[node name="Inventory" type="Node2D"]
+[node name="Inventory" type="Node2D" groups=["Inventory"]]
 position = Vector2( 32, 64 )
 script = ExtResource( 4 )
 __meta__ = {
