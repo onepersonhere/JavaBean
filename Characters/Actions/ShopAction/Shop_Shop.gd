@@ -23,6 +23,7 @@ func add_item_to_shop(item, items):
 	panel.find_node("TextureRect").texture = load("res://Inventory/Icons/" + item_name + ".png")
 	panel.find_node("Name_val").text = item_name
 	panel.find_node("Amt_val").text = str(amt)
+	panel.item_name = item_name
 	
 	# TODO: Construct a pricing system based on weightage of the price of the object.
 	panel.find_node("Price_val").text = str(rng.randi_range(1, 100)) + " coin(s)"

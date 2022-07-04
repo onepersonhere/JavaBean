@@ -10,7 +10,7 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 50
 corner_detail = 13
 
-[node name="ItemPanel" type="Panel"]
+[node name="ItemPanel" type="Panel" groups=["item_panel"]]
 margin_right = 576.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 576, 128 )

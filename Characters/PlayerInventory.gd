@@ -4,7 +4,7 @@ signal active_item_updated
 
 const SlotClass = preload("res://Inventory/Slot.gd")
 const ItemClass = preload("res://Inventory/Items/Item.gd")
-const NUM_INVENTORY_SLOTS = 20
+const NUM_INVENTORY_SLOTS = 20 
 const NUM_HOTBAR_SLOTS = 8
 
 var active_item_slot_index = 0
