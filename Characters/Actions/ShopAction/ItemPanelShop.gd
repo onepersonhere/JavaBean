@@ -55,14 +55,14 @@ func update_inventory(amt_bought):
 	var idx = PlayerInventory.inventory.size();
 	var idx_hotbar = PlayerInventory.hotbar.size();
 	
-	if (idx < PlayerInventory.NUM_INVENTORY_SLOTS): #BUG: item is not added to hotbar when inv is full
+	if (idx < PlayerInventory.NUM_INVENTORY_SLOTS): #BUG: item is not added to hotbar when inv is full, also items are not stacked.
 		PlayerInventory.inventory[idx] = [item_name, int(amt_bought)]
 	elif (idx_hotbar < PlayerInventory.NUM_HOTBAR_SLOTS):
 		PlayerInventory.hotbar[idx] = [item_name, int(amt_bought)]
 	
 	
 	var parent = player.get_node("UI").get_node("CanvasLayer").get_node("UserInterface")
-	RefreshInv.refresh(parent)
+	RefreshInv.refresh(parent, item_name)
 	
 	# load inventory stuff
 	get_tree().get_nodes_in_group("shop_inventory")[0].load_inventory_stuff()

@@ -5,6 +5,7 @@ onready var price = $Price/Price_val.text
 onready var amt = $Amt/Amt_val.text
 var location;
 var stuff;
+var item_name;
 
 func _ready():
 	check_empty()
@@ -61,7 +62,7 @@ func update_inventory():
 				PlayerInventory.hotbar[stuff][1] = amt
 				
 	var parent = player.get_node("UI").get_node("CanvasLayer").get_node("UserInterface")
-	RefreshInv.refresh(parent)
+	RefreshInv.refresh(parent, item_name)
 		
 	
 func add_to_shop():
