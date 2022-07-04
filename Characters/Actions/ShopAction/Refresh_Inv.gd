@@ -27,3 +27,7 @@ func refresh(parent):
 	
 	parent.add_child(inventory, true);
 	parent.add_child(hotbar, true);
+
+# stack items in the inventory
+func stack_items():
+	pass

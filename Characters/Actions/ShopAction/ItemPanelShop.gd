@@ -38,7 +38,7 @@ func check_empty():
 		toggle_disabled(false)
 	
 	if int(amt) < 2:
-		$"Sell Half".disabled = true;
+		$"Buy Half".disabled = true;
 	if amt == str(0):
 		queue_free()
 	update_vals()
@@ -53,9 +53,9 @@ func update_inventory(amt_bought):
 	var idx = PlayerInventory.inventory.size();
 	var idx_hotbar = PlayerInventory.hotbar.size();
 	
-	if (idx <= PlayerInventory.NUM_INVENTORY_SLOTS):
+	if (idx < PlayerInventory.NUM_INVENTORY_SLOTS): #BUG: item is not added to hotbar when inv is full
 		PlayerInventory.inventory[idx] = [item_name, int(amt_bought)]
-	elif (idx_hotbar <= PlayerInventory.NUM_HOTBAR_SLOTS):
+	elif (idx_hotbar < PlayerInventory.NUM_HOTBAR_SLOTS):
 		PlayerInventory.hotbar[idx] = [item_name, int(amt_bought)]
 	
 	
@@ -67,9 +67,12 @@ func update_inventory(amt_bought):
 	
 	
 func is_affordable(cost):
-	return player.COINS - cost >= 0;
+	# Also check if full
+	var idx = PlayerInventory.inventory.size();
+	var idx_hotbar = PlayerInventory.hotbar.size(); #BUG: does not detect if inventory is full
+	return player.COINS - cost >= 0 && (idx < PlayerInventory.NUM_INVENTORY_SLOTS || idx_hotbar < PlayerInventory.NUM_HOTBAR_SLOTS);
 
 func toggle_disabled(boolean):
-	$"Sell 1".disabled = boolean;
-	$"Sell Half".disabled = boolean;
-	$"Sell All".disabled = boolean;
+	$"Buy 1".disabled = boolean;
+	$"Buy Half".disabled = boolean;
+	$"Buy All".disabled = boolean;
