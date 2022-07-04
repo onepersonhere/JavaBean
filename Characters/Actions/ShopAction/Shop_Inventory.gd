@@ -11,12 +11,16 @@ func load_inventory_stuff():
 	var inventory = get_tree().get_nodes_in_group("Inventory")[0]
 	var hotbar = get_tree().get_nodes_in_group("Hotbar")[0]
 	
+	# reset the shop
+	for child in inventory_stuff.get_children():
+		child.queue_free()
+		
 	for slot in inventory.inventory_slots.get_children():
-		if not check_if_exist(slot, "inventory"):
+		if exist(slot):
 			add_as_panel(slot, inventory, "inventory")
 		
 	for slot in hotbar.slots:
-		if not check_if_exist(slot, "hotbar"):
+		if exist(slot):
 			add_as_panel(slot, hotbar, "hotbar")
 	
 
@@ -35,9 +39,5 @@ func add_as_panel(slot, location, location_name):
 	panel.find_node("Price_val").text = str(rng.randi_range(1, 100)) + " coin(s)"
 	inventory_stuff.add_child(panel)
 
-func check_if_exist(cslot, clocation):
-	var children = inventory_stuff.get_children()
-	for child in children:
-		if child.slot == cslot && child.location == clocation:
-			return true
-	return cslot.item == null
+func exist(slot):
+	return slot.item != null

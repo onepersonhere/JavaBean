@@ -7,29 +7,35 @@ var amt_sold = 0;
 var location;
 var slot;
 var item_name;
+var odd = false;
 
 func _ready():
 	check_empty()
 		
 func _on_Sell_1_pressed():
-	player.COINS += int(price);
 	amt_sold = 1;
-	amt = str(int(amt) - 1);
+	player.COINS += int(price);
+	
+	amt = str(int(amt) - amt_sold);
 	check_empty()
 	update_inventory()
 	update_shop_panels()
 	
 func _on_Sell_Half_pressed():
-	player.COINS += int(price) * (int(amt) / 2);
-	amt_sold = int(amt)/2
-	amt = str(int(amt)/2);
+	if int(amt) % 2 != 0:
+		odd = true
+	amt_sold = floor(float(amt)/2)
+	player.COINS += int(price) * int(amt_sold);
+	
+	amt = str(amt_sold);
 	check_empty()
 	update_inventory()
 	update_shop_panels()
 	
 func _on_Sell_All_pressed():
-	player.COINS += int(price) * int(amt);
 	amt_sold = int(amt)
+	player.COINS += int(price) * amt_sold;
+	
 	amt = str(0);
 	check_empty()
 	update_inventory()
@@ -54,8 +60,13 @@ func update_vals():
 func update_inventory():
 	if int(amt) == 0:
 		PlayerInventory.remove_item(slot)
+		get_tree().get_nodes_in_group("Hotbar")[0].initialise_hotbar()
 	else:
-		PlayerInventory.add_item_quantity(slot, -1 * amt_sold)
+		if odd:
+			PlayerInventory.add_item_quantity(slot, -1 * (amt_sold + 1))
+			odd = false;
+		else:
+			PlayerInventory.add_item_quantity(slot, -1 * amt_sold)
 	
 func add_to_shop():
 	# TODO
