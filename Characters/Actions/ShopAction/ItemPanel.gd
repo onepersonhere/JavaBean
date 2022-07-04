@@ -7,6 +7,7 @@ var location;
 var stuff;
 
 func _ready():
+	randomize()
 	check_empty()
 		
 func _on_Sell_1_pressed():

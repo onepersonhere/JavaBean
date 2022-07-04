@@ -137,7 +137,7 @@ _global_script_classes=[ {
 "base": "Action",
 "class": "ShopAction",
 "language": "GDScript",
-"path": "res://Characters/Actions/ShopAction.gd"
+"path": "res://Characters/Actions/ShopAction/ShopAction.gd"
 } ]
 _global_script_class_icons={
 "Action": "",

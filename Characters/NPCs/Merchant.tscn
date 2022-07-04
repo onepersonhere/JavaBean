@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Characters/NPCs/NPC.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Characters/Actions/ShopAction.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Characters/Actions/ShopAction/ShopAction.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/PIPOYA FREE RPG Character Sprites 32x32/Male/Male 03-1.png" type="Texture" id=3]
 
 [sub_resource type="AtlasTexture" id=5]
