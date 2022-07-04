@@ -3,8 +3,9 @@ extends Panel
 onready var player = get_tree().get_nodes_in_group("Player")[0]
 onready var price = $Price/Price_val.text
 onready var amt = $Amt/Amt_val.text
+var amt_sold = 0;
 var location;
-var stuff;
+var slot;
 var item_name;
 
 func _ready():
@@ -12,6 +13,7 @@ func _ready():
 		
 func _on_Sell_1_pressed():
 	player.COINS += int(price);
+	amt_sold = 1;
 	amt = str(int(amt) - 1);
 	check_empty()
 	update_inventory()
@@ -19,6 +21,7 @@ func _on_Sell_1_pressed():
 	
 func _on_Sell_Half_pressed():
 	player.COINS += int(price) * (int(amt) / 2);
+	amt_sold = int(amt)/2
 	amt = str(int(amt)/2);
 	check_empty()
 	update_inventory()
@@ -26,6 +29,7 @@ func _on_Sell_Half_pressed():
 	
 func _on_Sell_All_pressed():
 	player.COINS += int(price) * int(amt);
+	amt_sold = int(amt)
 	amt = str(0);
 	check_empty()
 	update_inventory()
@@ -49,21 +53,9 @@ func update_vals():
 
 func update_inventory():
 	if int(amt) == 0:
-		match location:
-			"inventory":
-				PlayerInventory.inventory.erase(stuff)
-			"hotbar":
-				PlayerInventory.hotbar.erase(stuff)
+		PlayerInventory.remove_item(slot)
 	else:
-		match location:
-			"inventory":
-				PlayerInventory.inventory[stuff][1] = amt
-			"hotbar":
-				PlayerInventory.hotbar[stuff][1] = amt
-				
-	var parent = player.get_node("UI").get_node("CanvasLayer").get_node("UserInterface")
-	RefreshInv.refresh(parent, item_name)
-		
+		PlayerInventory.add_item_quantity(slot, -1 * amt_sold)
 	
 func add_to_shop():
 	# TODO

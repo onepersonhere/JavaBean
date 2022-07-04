@@ -25,6 +25,8 @@ func initialise_inventory():
 	for i in range(slots.size()):
 		if PlayerInventory.inventory.has(i):
 			slots[i].initialise_items(PlayerInventory.inventory[i][0], PlayerInventory.inventory[i][1])
+		else:
+			slots[i].pickFromSlot()
 
 func initialise_equip_slots():
 	for i in range(equip_slots.size()):
