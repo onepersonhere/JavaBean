@@ -47,6 +47,7 @@ position = Vector2( 9.6, 11.2 )
 z_index = 1
 
 [node name="Hotbar" parent="CanvasLayer/UserInterface" instance=ExtResource( 5 )]
+pause_mode = 2
 show_behind_parent = true
 position = Vector2( 62.4, 132.8 )
 scale = Vector2( 0.8, 0.8 )
