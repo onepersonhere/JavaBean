@@ -3,6 +3,7 @@ extends Panel
 onready var player = get_tree().get_nodes_in_group("Player")[0]
 onready var price = $Price/Price_val.text
 onready var amt = $Amt/Amt_val.text
+onready var rng = RandomNumberGenerator.new()
 var amt_sold = 0;
 var location;
 var slot;
@@ -10,6 +11,7 @@ var item_name;
 var odd = false;
 
 func _ready():
+	rng.randomize()
 	check_empty()
 		
 func _on_Sell_1_pressed():
@@ -71,8 +73,9 @@ func update_inventory():
 	
 func add_to_shop():
 	# TODO
-	pass
-
+	var shop = get_parent().get_parent().get_parent().get_parent().find_node("Shop")
+	shop.add_item_to_shop(item_name, amt_sold, str(int(price) + rng.randi_range(1, 100)))
+	
 func update_shop_panels():
 	var nodes = get_tree().get_nodes_in_group("item_panel_shop")
 	for node in nodes:
