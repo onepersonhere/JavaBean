@@ -23,7 +23,9 @@ func update_active_item_label():
 func initialise_hotbar():
 	for i in range(slots.size()):
 		if PlayerInventory.hotbar.has(i):
-			slots[i].initialise_items(PlayerInventory.hotbar[i][0], PlayerInventory.hotbar[i][1])
+			slots[i].initialise_item(PlayerInventory.hotbar[i][0], PlayerInventory.hotbar[i][1])
+		else:
+			slots[i].reset()
 			
 func slot_gui_input(event: InputEvent, slot: SlotClass):
 	if event is InputEventMouseButton:

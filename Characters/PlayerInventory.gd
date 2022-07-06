@@ -4,7 +4,7 @@ signal active_item_updated
 
 const SlotClass = preload("res://Inventory/Slot.gd")
 const ItemClass = preload("res://Inventory/Items/Item.gd")
-const NUM_INVENTORY_SLOTS = 20
+const NUM_INVENTORY_SLOTS = 20 
 const NUM_HOTBAR_SLOTS = 8
 
 var active_item_slot_index = 0
@@ -55,8 +55,9 @@ func update_slot_visual(slot_index, item_name, new_quantity):
 		slot.item.set_item(item_name, new_quantity)
 	else:
 		slot.initialise_item(item_name, new_quantity)
+		
 func remove_item(slot: SlotClass):
-	match slot.SlotType:
+	match slot.slot_type:
 		SlotClass.SlotType.HOTBAR:
 			hotbar.erase(slot.slot_index)
 		SlotClass.SlotType.INVENTORY:
@@ -65,7 +66,7 @@ func remove_item(slot: SlotClass):
 			equips.erase(slot.slot_index)
 	
 func add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
-	match slot.SlotType:
+	match slot.slot_type:
 		SlotClass.SlotType.HOTBAR:
 			hotbar[slot.slot_index] = [item.item_name, item.item_quantity]
 		SlotClass.SlotType.INVENTORY:
@@ -74,7 +75,7 @@ func add_item_to_empty_slot(item: ItemClass, slot: SlotClass):
 			equips[slot.slot_index] = [item.item_name, item.item_quantity]
 
 func add_item_quantity(slot: SlotClass, quantity_to_add: int):
-	match slot.SlotType:
+	match slot.slot_type:
 		SlotClass.SlotType.HOTBAR:
 			hotbar[slot.slot_index][1] += quantity_to_add
 		SlotClass.SlotType.INVENTORY:

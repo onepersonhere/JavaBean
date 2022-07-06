@@ -8,8 +8,8 @@ var holding_item
 
 func _input(event):
 	if event.is_action_pressed("inventory"):
-		$Inventory.visible = !$Inventory.visible
-		$Inventory.initialise_inventory()
+		get_node("Inventory").visible = !get_node("Inventory").visible
+		get_node("Inventory").initialise_inventory()
 		get_tree().paused = !get_tree().paused
 	
 	if event.is_action_pressed("scroll_up"):
