@@ -31,6 +31,10 @@
 			"text": "Ah it seems like you have amenesia, you will need some time to rest. Come let me guide you to my house."
 		},
 		{
+			"emit_signal": "end",
+			"event_id": "dialogic_040"
+		},
+		{
 			"event_id": "dialogic_022",
 			"transition_duration": 1
 		},

@@ -69,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialogic/Other/DialogicUtil.gd"
 }, {
+"base": "Action",
+"class": "DialogueAction",
+"language": "GDScript",
+"path": "res://Characters/Actions/DialogueAction.gd"
+}, {
 "base": "CanvasLayer",
 "class": "GUI",
 "language": "GDScript",
@@ -152,6 +157,7 @@ _global_script_class_icons={
 "DialogicParser": "",
 "DialogicResources": "",
 "DialogicUtil": "",
+"DialogueAction": "",
 "GUI": "",
 "GitAPI": "",
 "GiveQuestAction": "",
