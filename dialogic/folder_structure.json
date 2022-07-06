@@ -5,49 +5,17 @@
 	"folders": {
 		"Characters": {
 			"files": [
-
+				"character-1656661598.json",
+				"character-1656661762.json",
+				"character-1656661792.json",
+				"character-1656661991.json",
+				"character-1656662136.json",
+				"character-1656662178.json",
+				"character-1656662326.json",
+				"character-1656662369.json"
 			],
 			"folders": {
-				"Chapter 1": {
-					"files": [
-						"character-1656661598.json",
-						"character-1656662326.json"
-					],
-					"folders": {
-						"Hollandaise": {
-							"files": [
-								"character-1656661991.json",
-								"character-1656661762.json",
-								"character-1656662178.json"
-							],
-							"folders": {
 
-							},
-							"metadata": {
-								"color": null,
-								"folded": true
-							}
-						},
-						"Javanese": {
-							"files": [
-								"character-1656661792.json",
-								"character-1656662136.json",
-								"character-1656662369.json"
-							],
-							"folders": {
-
-							},
-							"metadata": {
-								"color": null,
-								"folded": true
-							}
-						}
-					},
-					"metadata": {
-						"color": null,
-						"folded": true
-					}
-				}
 			},
 			"metadata": {
 				"color": null,
@@ -80,16 +48,11 @@
 		},
 		"Timelines": {
 			"files": [
-
+				"timeline-1656661676.json",
+				"timeline-1656663085.json",
+				"timeline-1656663602.json"
 			],
 			"folders": {
-				"Chapter 1": {
-					"files": [
-						"timeline-1656661676.json",
-						"timeline-1656663085.json",
-						"timeline-1656663602.json"
-					],
-					"folders": {
 
 			},
 			"metadata": {
