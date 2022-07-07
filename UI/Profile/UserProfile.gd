@@ -62,6 +62,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 				self.profile = result_body.fields
 
 func _on_Confirm_pressed():
+	$MainContainer/CenterContainer/Col3/HBoxContainer/Confirm.disabled = true
 	if nickname.text.empty() or character_class.text.empty():
 		notification.dialog_text = "Please enter your nickname and class!"
 		notification.popup_centered()

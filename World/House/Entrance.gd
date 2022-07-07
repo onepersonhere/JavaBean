@@ -11,7 +11,9 @@ func _on_Entrance_body_entered(body):
 		return
 	if body.name == "Player":
 		var root = get_node("/root")
-		get_node("/root/" + exit_area_name).queue_free()
+		var exit_area = get_node("/root/" + exit_area_name)
+		#save(exit_area)
+		exit_area.queue_free()
 		call_deferred("add_player")
 		
 
@@ -24,3 +26,7 @@ func add_player():
 	
 	player.scale = Vector2(0.45, 0.45)
 	player.find_node("Camera2D").zoom = Vector2(0.45,0.45)
+
+# TODO: Save when going in
+func save(area):
+	Save.save();

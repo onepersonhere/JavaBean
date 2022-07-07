@@ -11,8 +11,7 @@ func _ready():
 
 
 func _on_SaveGame_pressed():
-	var save = load("res://World/Save.tscn").instance()
-	add_child(save)
+	Save.save()
 	$Label.text = "Done"
 	$Label.visible = true
 	yield(get_tree().create_timer(1), "timeout")
