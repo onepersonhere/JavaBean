@@ -15,8 +15,6 @@ func _ready() -> void:
 		# set quest bubble
 		var quest_bubble = get_parent().get_parent().get_node("QuestBubble")
 		quest_bubble._on_Quest_started()
-		# set journal
-		set_journal()
 		# set has_spoken
 		set_has_spoken()
 		
@@ -37,9 +35,6 @@ func interact() -> void:
 
 func is_quest_in_progress():
 	return QuestSystem.is_active(quest_reference.instance())
-
-func set_journal(): #TODO: update with latest kills/progress
-	pass
 
 func set_has_spoken():
 	var dialogue = get_parent().find_node("DialogueAction")

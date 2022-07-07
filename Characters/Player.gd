@@ -12,12 +12,17 @@ var FRICTION = 1000
 onready var DAMAGE = $HitBoxDirection/SwordHitBox.damage
 var DEFENSE = 0
 
-onready var CURR_HEALTH = $UI/GUI/HBoxContainer/Bars/LifeBar.CURRENT_HEALTH
-onready var MAX_HEALTH = $UI/GUI/HBoxContainer/Bars/LifeBar.MAX_HEALTH
+onready var UI = get_tree().get_nodes_in_group("UI")[0].get_node("GUI").get_node("HBoxContainer")
 
-onready var CURR_SP = $UI/GUI/HBoxContainer/Bars/EnergyBar.CURRENT_SP
-onready var MAX_SP = $UI/GUI/HBoxContainer/Bars/EnergyBar.MAX_SP
-onready var REGEN = $UI/GUI/HBoxContainer/Bars/EnergyBar.RECHARGE
+onready var life_bar = UI.find_node("LifeBar")
+onready var energy_bar = UI.find_node("EnergyBar")
+
+onready var CURR_HEALTH = life_bar.CURRENT_HEALTH
+onready var MAX_HEALTH = life_bar.MAX_HEALTH
+
+onready var CURR_SP = energy_bar.CURRENT_SP
+onready var MAX_SP = energy_bar.MAX_SP
+onready var REGEN = energy_bar.RECHARGE
 
 var can_sprint = true
 var IS_ALIVE = true
@@ -93,7 +98,7 @@ func walk_state(delta):
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
 	
-	if $UI/GUI/HBoxContainer/Bars/EnergyBar.CURRENT_SP > 0 && Input.is_action_pressed("sprint"):
+	if energy_bar.CURRENT_SP > 0 && Input.is_action_pressed("sprint"):
 		state = SPRINT
 	
 func sprint_state(delta):
@@ -103,7 +108,7 @@ func sprint_state(delta):
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
-		$UI/GUI/HBoxContainer/Bars/EnergyBar.sprint(3 * delta)
+		energy_bar.sprint(3 * delta)
 		if input_vector.x > 0:
 			is_right = true
 			swordHitbox.knockback_vector = Vector2(1, 0)
@@ -117,13 +122,13 @@ func sprint_state(delta):
 			animationTree.set("parameters/Sprint/blend_position", Vector2(-1, 0))
 			animationTree.set("parameters/Attack/blend_position", Vector2(-1, 0))
 		animationState.travel("Sprint")
-		if $UI/GUI/HBoxContainer/Bars/EnergyBar.CURRENT_SP > 0:
+		if energy_bar.CURRENT_SP > 0:
 			velocity = velocity.move_toward(input_vector * SPRINT_SPEED, ACCELERATION * delta)
 		else:
-			$UI/GUI/HBoxContainer/Bars/EnergyBar.stopped()
+			energy_bar.stopped()
 			velocity = velocity.move_toward(input_vector * WALK_SPEED, ACCELERATION * delta)
 	else:
-		$UI/GUI/HBoxContainer/Bars/EnergyBar.stopped()
+		energy_bar.stopped()
 		if is_right == true:
 			animationTree.set("parameters/Idle/blend_position", Vector2(1, 0))
 		else:
@@ -134,11 +139,11 @@ func sprint_state(delta):
 	velocity = move_and_slide(velocity)
 	
 	if Input.is_action_just_pressed("attack"):
-		$UI/GUI/HBoxContainer/Bars/EnergyBar.stopped()
+		energy_bar.stopped()
 		state = ATTACK
 	
 	if !Input.is_action_pressed("sprint"):
-		$UI/GUI/HBoxContainer/Bars/EnergyBar.stopped()
+		energy_bar.stopped()
 		state = WALK
 
 func attack_state(_delta):
@@ -158,8 +163,8 @@ func _input(event):
 		update_stat_vals()
 
 func _on_PlayerHurtBox_area_entered(area):
-	$UI/GUI/HBoxContainer/Bars/LifeBar.deal_damage(area.damage)
-	CURR_HEALTH = $UI/GUI/HBoxContainer/Bars/LifeBar.CURRENT_HEALTH
+	life_bar.deal_damage(area.damage)
+	CURR_HEALTH = life_bar.CURRENT_HEALTH
 
 func _on_LifeBar_no_health():
 	queue_free()
@@ -171,5 +176,5 @@ func _on_EnergyBar_no_stamina():
 	can_sprint = false
 
 func update_stat_vals():
-	$UI/GUI/HBoxContainer/Counters/CoinCounter/Background/Number.text = str(COINS);
-	$UI/GUI/HBoxContainer/Counters/GemCounter/Background/Number.text = str(GEMS);
+	UI.find_node("CoinCounter").get_node("Background").get_node("Number").text = str(COINS);
+	UI.find_node("GemCounter").get_node("Background").get_node("Number").text = str(GEMS);
