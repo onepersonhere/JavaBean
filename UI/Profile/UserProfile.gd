@@ -62,6 +62,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 				self.profile = result_body.fields
 
 func _on_Confirm_pressed():
+	$MainContainer/CenterContainer/Col3/HBoxContainer/Confirm.disabled = true
 	if nickname.text.empty() or character_class.text.empty():
 		notification.dialog_text = "Please enter your nickname and class!"
 		notification.popup_centered()
@@ -87,10 +88,11 @@ func _on_Confirm_pressed():
 			Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 	information_sent = true
 	yield(get_tree().create_timer(1), "timeout")
+	get_tree().root.add_child(load("res://UI/UI.tscn").instance())
 	Load.load(profile, "World")
-	yield(get_tree().create_timer(1), "timeout")
 	queue_free()
-
+	
+	
 func set_profile(value: Dictionary) -> void:
 	profile = value
 	nickname.text = profile.nickname.stringValue

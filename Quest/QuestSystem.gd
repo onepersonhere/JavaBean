@@ -4,7 +4,7 @@ extends Node
 onready var available_quests = $Available
 onready var active_quests = $Active
 onready var completed_quests = $Completed
-onready var delievered_quests = $Delivered
+onready var delivered_quests = $Delivered
 
 var player: Player
 
@@ -43,8 +43,14 @@ func deliver(quest: Quest):
 	
 	assert (quest.get_parent() == completed_quests)
 	completed_quests.remove_child(quest)
-	delievered_quests.add_child(quest)
+	delivered_quests.add_child(quest)
 
 func _on_Game_combat_started() -> void:
 	for quest in active_quests.get_quests():
 		quest.notify_slay_objectives()
+
+func is_active(reference: Quest) -> bool:
+	return active_quests.find(reference) != null
+
+func find_active(reference: Quest) -> Quest:
+	return active_quests.find(reference)

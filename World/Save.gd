@@ -18,10 +18,24 @@ var profile = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	save()
+	pass
 
 
 func save():
+	save_stats()
+	save_quests()
+	
+	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
+
+
+func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+	if response_code == 200:
+		print_debug("saved")
+	else:
+		print_debug(body)
+
+# TODO: SAVE the following: Quest System
+func save_stats():
 	var player = get_node("/root/World/YSort/Player")
 	
 	profile.nickname = {"stringValue": player.NICKNAME}
@@ -36,12 +50,6 @@ func save():
 	profile.dexterity = {"integerValue": player.DEXTERITY}
 	profile.coins = {"integerValue": player.COINS}
 	profile.gems = {"integerValue": player.GEMS}
-	
-	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 
-
-func _on_HTTPRequest_request_completed(result, response_code, headers, body):
-	if response_code == 200:
-		print_debug("saved")
-	else:
-		print_debug(body)
+func save_quests():
+	pass

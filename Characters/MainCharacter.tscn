@@ -1,9 +1,8 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://Characters/Player.gd" type="Script" id=1]
 [ext_resource path="res://Characters/Main-Characte.png" type="Texture" id=2]
 [ext_resource path="res://Characters/PickupZone.gd" type="Script" id=3]
-[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Imported Assets/Shadows/LargeShadow.png" type="Texture" id=5]
 [ext_resource path="res://Inventory/Icons/Iron Sword.png" type="Texture" id=6]
 [ext_resource path="res://Hitboxes and Hurtboxes/Hitbox.tscn" type="PackedScene" id=7]
@@ -679,7 +678,7 @@ radius = 14.0
 height = 44.0
 
 [node name="Player" type="KinematicBody2D" groups=["Persist", "Player"]]
-position = Vector2( 616, 368 )
+position = Vector2( 0, 40 )
 collision_layer = 2
 script = ExtResource( 1 )
 __meta__ = {
@@ -722,12 +721,6 @@ parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Sprint/blend_position = Vector2( 0, 0 )
 parameters/Walk/blend_position = Vector2( 0, 0 )
 
-[node name="UI" parent="." instance=ExtResource( 4 )]
-margin_left = -616.0
-margin_top = -368.0
-margin_right = -616.0
-margin_bottom = -368.0
-
 [node name="PickupZone" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
@@ -760,6 +753,9 @@ collision_mask = 64
 [node name="CollisionShape2D" parent="PlayerHurtBox" index="0"]
 position = Vector2( 0, -50 )
 shape = SubResource( 56 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
 
 [connection signal="body_entered" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_entered"]
 [connection signal="body_exited" from="PickupZone" to="PickupZone" method="_on_PickupZone_body_exited"]

@@ -1,12 +1,13 @@
 extends Action
 class_name DialogueAction
 export var timeline: String;
+var has_spoken = false;
 
 func _ready():
 	pass
 
 func interact() -> void:
-	if active:
+	if active && not has_spoken:
 		get_tree().paused = true
 		active = false
 		var dialogue = Dialogic.start(timeline)

@@ -191,6 +191,7 @@ Load="*res://World/Load.gd"
 PlayerStats="*res://Characters/PlayerStats.tscn"
 QuestSystem="*res://Quest/QuestSystem.tscn"
 RefreshInv="*res://Characters/Actions/ShopAction/Refresh_Inv.gd"
+Save="*res://World/Save.tscn"
 
 [display]
 
