@@ -10,7 +10,9 @@
 [node name="UI" type="CanvasLayer" groups=["UI"]]
 layer = 2
 
-[node name="GUI" parent="." instance=ExtResource( 1 )]
+[node name="Stats" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="Stats" instance=ExtResource( 1 )]
 margin_bottom = 137.0
 
 [node name="Quest GUI" parent="." instance=ExtResource( 6 )]

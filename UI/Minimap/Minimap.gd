@@ -29,15 +29,17 @@ func _input(event):
 	if event.is_action_pressed("esc"):
 		queue_free()
 		get_tree().paused = false
-		get_node("/root/World/YSort/Player/UI/CanvasLayer/UserInterface/Hotbar").visible = true
+		get_node("/root/UI/CanvasLayer/UserInterface/Hotbar").visible = true
 		
 	if event.is_action_pressed("scroll_up"):
-		camera.zoom.x = camera.zoom.x / 1.1
-		camera.zoom.y = camera.zoom.y / 1.1
+		if camera.zoom.x > 0.1:
+			camera.zoom.x = camera.zoom.x / 1.1
+			camera.zoom.y = camera.zoom.y / 1.1
 	
 	if event.is_action_pressed("scroll_down"):
-		camera.zoom.x = camera.zoom.x / 0.9
-		camera.zoom.y = camera.zoom.y / 0.9
+		if camera.zoom.x <= 1:
+			camera.zoom.x = camera.zoom.x / 0.9
+			camera.zoom.y = camera.zoom.y / 0.9
 		
 const move_speed = 20
 

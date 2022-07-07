@@ -18,6 +18,6 @@ func _ready():
 
 func _on_Back_pressed():
 	get_parent().queue_free()
-	get_node("/root/World/YSort/Player/UI/CanvasLayer/UserInterface/Hotbar").visible = true
-	get_node("/root/World/YSort/Player/UI/Quest GUI/Container").visible = true
+	get_node("/root/UI/CanvasLayer/UserInterface/Hotbar").visible = true
+	get_node("/root/UI/Quest GUI/Container").visible = true
 	get_tree().paused = false

@@ -12,7 +12,7 @@ var FRICTION = 1000
 onready var DAMAGE = $HitBoxDirection/SwordHitBox.damage
 var DEFENSE = 0
 
-onready var UI = get_tree().get_nodes_in_group("UI")[0].get_node("GUI").get_node("HBoxContainer")
+onready var UI = get_tree().get_nodes_in_group("UI")[0].get_node("Stats/GUI/HBoxContainer")
 
 onready var life_bar = UI.find_node("LifeBar")
 onready var energy_bar = UI.find_node("EnergyBar")
