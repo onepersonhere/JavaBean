@@ -11,10 +11,15 @@ func _ready() -> void:
 		quest.connect("started", self, "_on_Quest_started")
 	else:
 		quest = QuestSystem.find_active(quest_reference.instance())
-		quest.connect("started", self, "_on_Quest_started")
 		_on_Quest_started()
+		# set quest bubble
+		var quest_bubble = get_parent().get_parent().get_node("QuestBubble")
+		quest_bubble._on_Quest_started()
+		# set journal
+		set_journal()
+		# set has_spoken
+		set_has_spoken()
 		
-
 func _on_Quest_started():
 	active = false
 
@@ -32,3 +37,11 @@ func interact() -> void:
 
 func is_quest_in_progress():
 	return QuestSystem.is_active(quest_reference.instance())
+
+func set_journal(): #TODO: update with latest kills/progress
+	pass
+
+func set_has_spoken():
+	var dialogue = get_parent().find_node("DialogueAction")
+	if dialogue != null:
+		dialogue.has_spoken = true
