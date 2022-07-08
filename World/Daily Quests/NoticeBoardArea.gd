@@ -28,5 +28,4 @@ func open_noticeboard():
 
 func close_noticeboard():
 	get_tree().paused = false
-	print_debug(noticeboard)
 	noticeboard.queue_free()

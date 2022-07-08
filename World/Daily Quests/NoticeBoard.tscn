@@ -64,6 +64,7 @@ custom_constants/margin_right = 66
 margin_left = 70.0
 margin_right = 182.0
 margin_bottom = 40.0
+disabled = true
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 2 )
@@ -98,6 +99,7 @@ custom_constants/margin_right = 66
 margin_left = 70.0
 margin_right = 182.0
 margin_bottom = 40.0
+disabled = true
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 2 )
@@ -132,6 +134,7 @@ custom_constants/margin_right = 66
 margin_left = 70.0
 margin_right = 182.0
 margin_bottom = 40.0
+disabled = true
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 2 )
@@ -140,7 +143,10 @@ stretch_mode = 2
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
+[node name="HTTPRequest2" type="HTTPRequest" parent="."]
+
 [connection signal="pressed" from="Control/Col1/HBoxContainer/TextureButton1" to="." method="_on_TextureButton1_pressed"]
 [connection signal="pressed" from="Control/Col2/HBoxContainer/TextureButton2" to="." method="_on_TextureButton2_pressed"]
 [connection signal="pressed" from="Control/Col3/HBoxContainer/TextureButton3" to="." method="_on_TextureButton3_pressed"]
 [connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
+[connection signal="request_completed" from="HTTPRequest2" to="." method="_on_HTTPRequest2_request_completed"]
