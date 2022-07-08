@@ -51,7 +51,11 @@ onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitBoxDirection/SwordHitBox
 
 func _ready():
-	swordHitbox.knockback_vector = Vector2.LEFT
+	swordHitbox.knockback_vector = Vector2.DOWN
+	animationTree.set("parameters/Idle/blend_position", Vector2.DOWN)
+	animationTree.set("parameters/Walk/blend_position", Vector2.DOWN)
+	animationTree.set("parameters/Run/blend_position", Vector2.DOWN)
+	animationTree.set("parameters/Attack/blend_position", Vector2.DOWN)
 	animationTree.active = true
 	update_stat_vals()
 	randomize()
