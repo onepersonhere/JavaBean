@@ -101,6 +101,7 @@ margin_bottom = 40.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 2 )
+texture_disabled = ExtResource( 6 )
 stretch_mode = 2
 
 [node name="Col3" type="VBoxContainer" parent="Control"]
@@ -134,6 +135,7 @@ margin_bottom = 40.0
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 2 )
 texture_hover = ExtResource( 2 )
+texture_disabled = ExtResource( 6 )
 stretch_mode = 2
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]

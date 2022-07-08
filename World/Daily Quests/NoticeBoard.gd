@@ -22,28 +22,30 @@ func _ready():
 
 func _on_TextureButton1_pressed():
 	on_quest_done("quest_1")
-
+	$Control/Col1/HBoxContainer/TextureButton1.disabled = true
 
 func _on_TextureButton2_pressed():
 	on_quest_done("quest_2")
-
+	$Control/Col2/HBoxContainer/TextureButton2.disabled = true
 
 func _on_TextureButton3_pressed():
 	on_quest_done("quest_3")
+	$Control/Col3/HBoxContainer/TextureButton3.disabled = true
 
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
-	if at_check_quest_done:
-		if response_code == 200:
-			set_quest_done(body)
-		else:
-			Firebase.save_document("daily_quests_done/%s" % user_id, quest_done, http)
-	else:
-		if response_code != 200:
-			print_debug(response_code)
-		else:
-			update_notice_board()
-
+	#if at_check_quest_done:
+	#	if response_code == 200:
+	#		set_quest_done(body)
+	#	else:
+	#		Firebase.save_document("daily_quests_done/%s" % user_id, quest_done, http)
+	#else:
+	#	if response_code != 200:
+	#		print_debug(response_code)
+	#	else:
+	#		update_notice_board()
+	pass
+	
 func set_quest_done(body):
 	var result_body = JSON.parse(body.get_string_from_ascii()).result
 	self.quest_done = result_body.fields
