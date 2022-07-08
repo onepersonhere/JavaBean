@@ -9,8 +9,9 @@ var quest_done = {
 "quest_2": {val : "Not Done"},
 "quest_3": {val : "Not Done"}
 }
-onready var user_id = Firebase.user_info.id
-onready var time = OS.get_datetime()["weekday"]
+onready var datetime = OS.get_datetime()
+onready var time = datetime["weekday"]
+onready var user_id = Firebase.user_info.id + str(datetime["day"]) + str(datetime["month"]) + str(datetime["year"])
 
 onready var text_field_1 = $Control/Col1/RichTextLabel
 onready var text_field_2 = $Control/Col2/RichTextLabel
@@ -22,7 +23,7 @@ func _ready():
 	
 	Firebase.get_document(link, http)
 	
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	at_check_quest_done = true
 	Firebase.get_document("daily_quests_done/%s" % user_id, http)
 	
@@ -30,25 +31,28 @@ func _ready():
 func _on_TextureButton1_pressed():
 	on_quest_done("quest_1")
 	$Control/Col1/HBoxContainer/TextureButton1.disabled = true
-
+	# add quest to player's quest system
+	
 func _on_TextureButton2_pressed():
 	on_quest_done("quest_2")
 	$Control/Col2/HBoxContainer/TextureButton2.disabled = true
-
+	# add quest to player's quest system
+	
 func _on_TextureButton3_pressed():
 	on_quest_done("quest_3")
 	$Control/Col3/HBoxContainer/TextureButton3.disabled = true
-
+	# add quest to player's quest system
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	if at_check_quest_done:
 		if response_code == 200:
 			set_quest_done(body)
 		else:
-			Firebase.save_document("daily_quests_done/%s" % user_id, quest_done, http2)
+			Firebase.save_document("daily_quests_done?documentId=%s" % user_id, quest_done, http2)
 	else:
 		if response_code != 200:
-			print_debug(response_code)
+			var response_body = JSON.parse(body.get_string_from_ascii())
+			print_debug(response_body.result.error.message.capitalize())
 		else:
 			update_notice_board(body)
 			
@@ -56,7 +60,8 @@ func _on_HTTPRequest2_request_completed(result, response_code, headers, body):
 	if response_code == 200:
 		set_quest_done(body)
 	else:
-		print_debug(response_code)
+		var response_body = JSON.parse(body.get_string_from_ascii())
+		print_debug(response_body.result.error.message.capitalize())
 		
 func set_quest_done(body):
 	var result_body = JSON.parse(body.get_string_from_ascii()).result.fields
@@ -85,5 +90,10 @@ func update_notice_board(body):
 	
 func value_parser(field, value):
 	field.text = value
+	# parses the value
+	# create a Quest Node
+	# rewards
+	# objectives
+	# instantiated when accepted
 
 
