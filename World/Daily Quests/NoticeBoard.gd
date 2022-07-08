@@ -11,7 +11,7 @@ var quest_done = {
 }
 onready var datetime = OS.get_datetime()
 onready var time = datetime["weekday"]
-onready var user_id = Firebase.user_info.id + str(datetime["day"]) + str(datetime["month"]) + str(datetime["year"])
+onready var user_id = str(datetime["day"]) + str(datetime["month"]) + str(datetime["year"]) + Firebase.user_info.id
 
 onready var text_field_1 = $Control/Col1/RichTextLabel
 onready var text_field_2 = $Control/Col2/RichTextLabel
