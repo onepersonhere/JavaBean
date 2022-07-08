@@ -23,6 +23,7 @@ func get_req_headers() -> PoolStringArray:
 		"Content-Type: application/json",
 		"Authorization: Bearer %s" % user_info.token
 	])
+
 func register(email:String, password: String, http: HTTPRequest) -> void:
 	var body = {
 		"email": email,
