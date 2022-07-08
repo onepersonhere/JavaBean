@@ -3,7 +3,7 @@
 [ext_resource path="res://UI/assets/LoginReg page.png" type="Texture" id=1]
 [ext_resource path="res://UI/Login.gd" type="Script" id=2]
 
-[node name="Login" type="Control" groups=["Login"]]
+[node name="Login" type="Control"]
 anchor_right = 0.5
 anchor_bottom = 0.5
 rect_scale = Vector2( 2, 2 )

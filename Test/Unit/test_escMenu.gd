@@ -4,13 +4,11 @@ var escMenu = load("res://UI/OptionsMenu.tscn")
 var _escMenu = null
 
 func before_each():
-	#_escMenu = escMenu.instance()
-	#get_tree().root.add_child(_escMenu)
-	pass
+	_escMenu = escMenu.instance()
+	get_tree().root.add_child(_escMenu)
 
 func after_each():
-	#_escMenu.queue_free()
-	pass
+	_escMenu.queue_free()
 
 func test_SaveGame():
 	pass
