@@ -35,23 +35,29 @@ func _on_TextureButton1_pressed():
 	on_quest_done("quest_1")
 	$Control/Col1/HBoxContainer/TextureButton1.disabled = true
 	# add quest to player's quest system
+	add_quest(quest_node_1)
 	
 func _on_TextureButton2_pressed():
 	on_quest_done("quest_2")
 	$Control/Col2/HBoxContainer/TextureButton2.disabled = true
 	# add quest to player's quest system
+	add_quest(quest_node_2)
 	
 func _on_TextureButton3_pressed():
 	on_quest_done("quest_3")
 	$Control/Col3/HBoxContainer/TextureButton3.disabled = true
 	# add quest to player's quest system
-
+	add_quest(quest_node_3)
+	
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	if at_check_quest_done:
 		if response_code == 200:
 			set_quest_done(body)
-		else:
+		elif response_code == 404:
 			Firebase.save_document("daily_quests_done?documentId=%s" % user_id, quest_done, http2)
+		else:
+			var response_body = JSON.parse(body.get_string_from_ascii())
+			print_debug(response_body.result.error.message.capitalize())
 	else:
 		if response_code != 200:
 			var response_body = JSON.parse(body.get_string_from_ascii())
@@ -82,7 +88,7 @@ func set_quest_done(body):
 		$Control/Col3/HBoxContainer/TextureButton3.disabled = false
 
 func on_quest_done(quest):
-	quest_done[quest][val] = "Done"
+	quest_done[quest]["stringValue"] = "Done"
 	Firebase.update_document("daily_quests_done/%s" % user_id, quest_done, http)
 
 func update_notice_board(body):
@@ -115,11 +121,16 @@ func value_parser(quest_no, field, value):
 	create_quest_node(quest_no, description, name, objective, rewards, type)
 		
 func create_quest_node(quest_no, description, name, objective, rewards, type):
-	print_debug("reached")
-# parses the value
-# create a Quest Node
-# rewards
-# objectives
-# instantiated when accepted
+	
+	match quest_no:
+		"quest_1":
+			quest_node_1 = QuestManager.create_quest(name, description, objective, rewards, type)
+		"quest_2":
+			quest_node_2 = QuestManager.create_quest(name, description, objective, rewards, type)
+		"quest_3":
+			quest_node_3 = QuestManager.create_quest(name, description, objective, rewards, type)
+
+func add_quest(quest):
+	QuestManager.add_quest(quest)
 
 
