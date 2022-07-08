@@ -12,7 +12,7 @@ func load(profile, world_name):
 	# get YSort
 	var ysort = world.find_node("YSort")
 	ysort.add_child(player)
-	player.scale = Vector2(0.45, 0.45)
+	player.scale = Vector2(1, 1)
 	player.find_node("Camera2D").zoom = Vector2(0.45, 0.45)
 	# is alive
 	player.IS_ALIVE = true
@@ -36,7 +36,7 @@ func load(profile, world_name):
 	player.ACCELERATION = 1000 + 1 * int(profile["dexterity"]["integerValue"])
 	player.FRICTION = 1000 + 1 * int(profile["dexterity"]["integerValue"])
 	player.WALK_SPEED = 120 + 0.1 * int(profile["dexterity"]["integerValue"])
-	player.SPRINT_SPEED = 220 + 0.1 * int(profile["dexterity"]["integerValue"])
+	player.RUN_SPEED = 220 + 0.1 * int(profile["dexterity"]["integerValue"])
 	
 	# hp
 	player.MAX_HEALTH = int(profile["max_hp"]["integerValue"])

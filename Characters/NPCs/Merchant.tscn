@@ -35,6 +35,7 @@ visible = false
 
 [node name="AnimatedSprite" parent="." index="1"]
 pause_mode = 2
+scale = Vector2( 1, 1 )
 frames = SubResource( 8 )
 frame = 0
 
