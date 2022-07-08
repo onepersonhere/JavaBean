@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://World/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://World/Bush_Dark.tscn" type="PackedScene" id=12]
 [ext_resource path="res://World/Tree_Dark.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Characters/NPCs/Merchant.tscn" type="PackedScene" id=14]
+[ext_resource path="res://World/Daily Quests/NoticeBoardArea.tscn" type="PackedScene" id=15]
 
 [node name="World" type="Node2D" groups=["map"]]
 script = ExtResource( 4 )
@@ -1208,3 +1209,6 @@ position = Vector2( 1707, 1012 )
 
 [node name="Merchant" parent="YSort/NPC" instance=ExtResource( 14 )]
 position = Vector2( 1648, 880 )
+
+[node name="NoticeBoard" parent="YSort" instance=ExtResource( 15 )]
+position = Vector2( 1920, 912 )
