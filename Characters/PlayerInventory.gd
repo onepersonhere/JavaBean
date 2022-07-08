@@ -50,7 +50,7 @@ func add_item(item_name, item_quantity):
 			return
 
 func update_slot_visual(slot_index, item_name, new_quantity):
-	var slot = get_tree().root.get_node("/root/World/YSort/Player/UI/CanvasLayer/UserInterface/Inventory/GridContainer/Slot" + str(slot_index + 1))
+	var slot = get_tree().root.get_node("/root/UI/CanvasLayer/UserInterface/Inventory/GridContainer/Slot" + str(slot_index + 1))
 	if slot.item != null:
 		slot.item.set_item(item_name, new_quantity)
 	else:
