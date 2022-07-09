@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 onready var map = $Control/ViewportContainer/Viewport/Background
-onready var player_location = $Control/ViewportContainer/Viewport/PlayerLocation
+onready var player_pin = $Control/ViewportContainer/Viewport/Pins/PlayerLocation
 onready var camera = $Control/ViewportContainer/Viewport/Camera2D
 onready var viewport = $Control/ViewportContainer/Viewport
 
@@ -12,7 +12,7 @@ func _ready():
 	var player = get_node("/root/World/YSort/Player")
 	var pos_x = player.position.x
 	var pos_y = player.position.y 
-	player_location.set_position(Vector2(pos_x + offset_x, pos_y + offset_y))
+	player_pin.set_position(Vector2(pos_x + offset_x, pos_y + offset_y))
 	
 	for quest_npc in get_tree().get_nodes_in_group("quest"):
 		if quest_npc.quest_bubble.visible:
@@ -21,7 +21,7 @@ func _ready():
 			quest_pin.animation(bubble_pic)
 			quest_pin.set_position(Vector2(quest_npc.position.x + offset_x, quest_npc.position.y + offset_y))
 			
-			viewport.add_child(quest_pin)
+			viewport.get_node("Pins").add_child(quest_pin)
 		
 	
 
