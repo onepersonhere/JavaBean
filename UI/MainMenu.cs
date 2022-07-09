@@ -2,11 +2,10 @@ using Godot;
 using System;
 
 public class MainMenu : VideoPlayer {
-	public override void _Ready() {
+	public async override void _Ready() {
 		Autoplay = true;
-	}
-	public override void _Process(float delta) {
-		
+		await ToSignal(GetTree().CreateTimer(0.1f), "timeout");
+		GetNode<TextureRect>("../TextureRect").Hide();
 	}
 	
 	private void OnLoginGuiInput(InputEvent @event) {
