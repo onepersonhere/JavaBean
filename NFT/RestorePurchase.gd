@@ -51,4 +51,8 @@ func check(result_body):
 	notification.popup_centered()
 
 func add_item_to_inventory(quantity):
+	# grab item pic
+	# parse item traits
+	# add them as JSON
+	# add them to inventory
 	return true
