@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/Video/8 Bit Video.webm" type="VideoStream" id=1]
 [ext_resource path="res://UI/MainMenu.cs" type="Script" id=2]
@@ -13,6 +13,15 @@
 [ext_resource path="res://Assets/Logo/JavaBean (New)(2).png" type="Texture" id=11]
 [ext_resource path="res://Assets/Audio/Marvel Of The Century.mp3" type="AudioStream" id=12]
 [ext_resource path="res://UI/assets/8 Bit Video_Moment.jpg" type="Texture" id=13]
+[ext_resource path="res://Shaders/glitch_effect.tres" type="Shader" id=14]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 14 )
+shader_param/shake_power = 0.05
+shader_param/shake_rate = 0.2
+shader_param/shake_speed = 0.5
+shader_param/shake_block_size = 30.5
+shader_param/shake_color_rate = 0.01
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 8 )
@@ -43,6 +52,13 @@ margin_right = -0.23999
 margin_bottom = 0.0799561
 texture = ExtResource( 13 )
 expand = true
+
+[node name="Shader" type="ColorRect" parent="."]
+material = SubResource( 2 )
+anchor_right = 0.927
+anchor_bottom = 0.958
+margin_right = 7.43994
+margin_bottom = 0.239929
 
 [node name="Main Menu" type="MarginContainer" parent="."]
 margin_top = 2.0
