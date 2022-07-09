@@ -10,3 +10,8 @@ func _on_Back_pressed():
 	get_node("/root/UI/Quest GUI/Container").visible = true
 	get_tree().paused = false
 
+
+
+func _on_Restore_pressed():
+	var restore_scene = load("res://NFT/RestorePurchase.tscn").instance()
+	get_parent().get_parent().add_child(restore_scene)

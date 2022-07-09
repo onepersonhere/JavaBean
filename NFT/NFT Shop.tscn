@@ -18,7 +18,7 @@ margin_bottom = 360.0
 color = Color( 0.411765, 0.411765, 0.411765, 1 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control"]
-margin_right = 632.0
+margin_right = 564.0
 margin_bottom = 360.0
 follow_focus = true
 scroll_horizontal_enabled = false
@@ -49,10 +49,18 @@ margin_right = 100.0
 margin_bottom = 104.0
 
 [node name="Back" type="Button" parent="Control"]
-margin_left = 576.0
+margin_left = 572.0
 margin_top = 336.0
-margin_right = 632.0
+margin_right = 636.0
 margin_bottom = 356.0
 text = "Exit"
 
+[node name="Restore" type="Button" parent="Control"]
+margin_left = 572.0
+margin_top = 312.0
+margin_right = 636.0
+margin_bottom = 332.0
+text = "Restore"
+
 [connection signal="pressed" from="Control/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="Control/Restore" to="." method="_on_Restore_pressed"]

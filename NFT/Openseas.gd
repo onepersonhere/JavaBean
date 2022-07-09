@@ -53,18 +53,18 @@ func parse_assets(assets):
 			var image = asset["image_url"]
 			var link = asset["permalink"]
 			var token_id = asset["token_id"]
+			var contract = asset["asset_contract"]["address"]
 			
-			yield(add_panels(name, description, traits, image, link, token_id), "completed")
+			yield(add_panels(name, description, traits, image, link, token_id, contract), "completed")
 			# redundant info for now 
 			var id = asset["id"]
-			var contract = asset["asset_contract"]["address"]
 			var asset_contract_address = base_url + "asset_contract/" + contract
 			
 
-func add_panels(name, desc, traits, img, link, token_id):
+func add_panels(name, desc, traits, img, link, token_id, contract):
 	var panel = load("res://NFT/ObjectPanel.tscn").instance()
 	
-	panel.connect("buy_opened", self, "check_purchase", [token_id])
+	panel.connect("buy_opened", self, "check_purchase", [token_id, contract])
 	
 	# image stuff
 	shop.add_child(panel)
@@ -83,5 +83,7 @@ func add_panels(name, desc, traits, img, link, token_id):
 	panel.view_link = img
 	panel.enable()
 
-func check_purchase(token_id):
-	print_debug(token_id)
+func check_purchase(token_id, contract):
+	var purchase_scanner = load("res://NFT/PurchaseScanner.tscn").instance()
+	add_child(purchase_scanner)
+	purchase_scanner.initialise(token_id, contract)
