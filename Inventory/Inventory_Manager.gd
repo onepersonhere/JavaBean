@@ -10,7 +10,7 @@ func add_new_item(item_name, quantity, traits: Dictionary, texture):
 	JsonData.item_data[item_name] = traits
 	JsonData.SaveData(JsonData.path)
 	
-	PlayerInventory.add_item(item_name, quantity)
+	PlayerInventory.add_item(item_name, int(quantity))
 
 func parse_traits(traits: Array, description):
 	# convert from array to dictionary
@@ -43,4 +43,4 @@ func save_img(item_name, img):
 	else:
 		print_debug("saved")
 		img.save_png(path)
-	# edit/add "ItemCategory": "Sword
+		yield(get_tree().create_timer(1), "timeout")

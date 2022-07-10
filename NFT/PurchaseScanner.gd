@@ -47,7 +47,7 @@ func check(result_body):
 			
 		elif add_item_to_inventory(result_body["name"], result_body["description"],
 		 quantity, result_body["traits"], result_body["image_url"]):
-			notification.dialog_text = "item(s) added to inventory"
+			notification.dialog_text = "item(s) added to inventory, restart to see item(s) in inventory"
 		else:
 			notification.dialog_text = "item(s) already in inventory"
 	else:
