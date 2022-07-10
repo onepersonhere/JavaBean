@@ -35,14 +35,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		else:
 			print_debug(response_code)
 	else:
-		var image = Image.new()
-		var image_error = image.load_png_from_buffer(body)
-		if image_error != OK:
-			print("An error occurred while trying to display the image.")
-		else:
-			var texture = ImageTexture.new()
-			texture.create_from_image(image)
-			curr_pointer.texture = texture 
+		curr_pointer.texture = InventoryManager.image_loader(body, false, null)
 		pic = false
 	
 func parse_assets(assets):

@@ -24,6 +24,7 @@ func _ready():
 func set_item(name, quantity):
 	item_name = name
 	item_quantity = quantity
+	
 	$TextureRect.texture = load("res://Inventory/Icons/" + item_name + ".png")
 	
 	var stack_size = int(JsonData.item_data[item_name]["StackSize"])
@@ -40,3 +41,4 @@ func add_item_quantity(amount_to_add):
 func decrease_item_quantity(amount_to_remove):
 	item_quantity -= amount_to_remove
 	$Label.text = String(item_quantity)
+
