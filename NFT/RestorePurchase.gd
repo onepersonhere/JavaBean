@@ -42,7 +42,7 @@ func check(result_body):
 			break;
 	
 	if found && created:
-		if add_item_to_inventory(quantity):
+		if add_item_to_inventory(quantity, result_body["traits"]):
 			notification.dialog_text = "item(s) added to inventory"
 		else:
 			notification.dialog_text = "item(s) already in inventory"
@@ -50,7 +50,7 @@ func check(result_body):
 		notification.dialog_text = "item does not exist"
 	notification.popup_centered()
 
-func add_item_to_inventory(quantity):
+func add_item_to_inventory(quantity, traits):
 	# grab item pic
 	# parse item traits
 	# add them as JSON

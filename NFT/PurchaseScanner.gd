@@ -38,7 +38,9 @@ func check(result_body):
 			break;
 	
 	if found:
-		if add_item_to_inventory(quantity):
+		if InventoryManager.is_full():
+			notification.dialog_text = "inventory is full!"
+		elif add_item_to_inventory(result_body["name"], result_body["description"], quantity, result_body["traits"]):
 			notification.dialog_text = "item(s) added to inventory"
 		else:
 			notification.dialog_text = "item(s) already in inventory"
@@ -46,8 +48,5 @@ func check(result_body):
 		notification.dialog_text = "item not bought"
 	notification.popup_centered()
 
-func add_item_to_inventory(quantity):
-	# parse item traits
-	# add them as JSON
-	# add them to inventory
-	return true
+func add_item_to_inventory(name, desc, quantity, traits):
+	InventoryManager.add_new_item(name, quantity, InventoryManager.parse_traits(traits, desc))
