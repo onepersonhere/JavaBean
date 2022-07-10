@@ -193,6 +193,7 @@ QuestSystem="*res://Quest/QuestSystem.tscn"
 RefreshInv="*res://Characters/Actions/ShopAction/Refresh_Inv.gd"
 Save="*res://World/Save.tscn"
 QuestManager="*res://Quest/QuestManager.gd"
+InventoryManager="*res://Inventory/Inventory_Manager.gd"
 
 [display]
 

@@ -17,6 +17,9 @@ func load_shop_stuff():
 	else:
 		for child in shop_stuff.get_children():
 			child.check_empty()
+		
+	if InventoryManager.is_full():
+		toggle_disabled_global(true)
 
 func add_item_to_shop(item, amt, price):
 	var item_name = item;
