@@ -6,6 +6,8 @@ var information_sent = false
 var delete = false
 # info
 var new_profile = false
+
+onready var nft_addr: Label = $Address/Label
 onready var nickname: LineEdit = $MainContainer/Col1/Nickname/LineEdit
 onready var character_class: OptionButton = $MainContainer/Col1/Class/OptionButton
 onready var location: Label = $MainContainer/Col2/Location/Location
@@ -26,6 +28,7 @@ onready var gems: LineEdit = $MainContainer/Col2/Gems/LineEdit
 onready var profile_pic: TextureRect = $MainContainer/CenterContainer/Col3/CenterContainer/Profile
 
 var profile = {
+	"nft_addr": {},
 	"nickname": {},
 	"character_class": {},
 	"location": {},
@@ -49,6 +52,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	var result_body = JSON.parse(body.get_string_from_ascii()).result
 	match response_code:
 		404:
+			nft_addr.text = GlobalVar.get_nft_addr()
 			notification.dialog_text = "Please enter your information"
 			notification.popup_centered()
 			new_profile = true
@@ -68,6 +72,8 @@ func _on_Confirm_pressed():
 		notification.popup_centered()
 		return
 	
+	GlobalVar.set_nft_addr(nft_addr.text)
+	profile.nft_addr = {"stringValue": nft_addr.text}
 	profile.nickname = {"stringValue": nickname.text}
 	profile.character_class = {"stringValue": character_class.text}
 	profile.location = {"stringValue": location.text}
@@ -95,6 +101,7 @@ func _on_Confirm_pressed():
 	
 func set_profile(value: Dictionary) -> void:
 	profile = value
+	nft_addr.text = profile.nft_addr.stringValue
 	nickname.text = profile.nickname.stringValue
 	character_class.text = profile.character_class.stringValue
 	location.text = profile.location.stringValue

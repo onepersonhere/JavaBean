@@ -13,7 +13,7 @@ var img
 
 func _ready():
 	$ConfirmationDialog.popup_centered()
-
+	wallet_addr.text = GlobalVar.get_nft_addr()
 
 func _on_ConfirmationDialog_confirmed():
 	var url = base_url + "/" + contract_addr.text + "/" + token_id.text;

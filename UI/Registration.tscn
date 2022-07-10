@@ -23,9 +23,9 @@ custom_constants/separation = 10
 alignment = 1
 
 [node name="Username" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 79.0
+margin_top = 62.0
 margin_right = 292.0
-margin_bottom = 103.0
+margin_bottom = 86.0
 custom_constants/separation = 35
 
 [node name="Label" type="Label" parent="VBoxContainer/Username"]
@@ -42,9 +42,9 @@ custom_constants/minimum_spaces = 50
 caret_blink = true
 
 [node name="Password" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 113.0
+margin_top = 96.0
 margin_right = 292.0
-margin_bottom = 137.0
+margin_bottom = 120.0
 custom_constants/separation = 10
 
 [node name="Label" type="Label" parent="VBoxContainer/Password"]
@@ -62,9 +62,9 @@ secret = true
 caret_blink = true
 
 [node name="Confirm" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 147.0
+margin_top = 130.0
 margin_right = 292.0
-margin_bottom = 171.0
+margin_bottom = 154.0
 custom_constants/separation = 20
 
 [node name="Label" type="Label" parent="VBoxContainer/Confirm"]
@@ -81,10 +81,30 @@ custom_constants/minimum_spaces = 50
 secret = true
 caret_blink = true
 
-[node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 181.0
+[node name="address" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 164.0
 margin_right = 292.0
-margin_bottom = 201.0
+margin_bottom = 188.0
+custom_constants/separation = 20
+
+[node name="Label" type="Label" parent="VBoxContainer/address"]
+margin_top = 5.0
+margin_right = 82.0
+margin_bottom = 19.0
+text = "NFT address:"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/address"]
+margin_left = 102.0
+margin_right = 284.0
+margin_bottom = 24.0
+custom_constants/minimum_spaces = 43
+secret = true
+caret_blink = true
+
+[node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 198.0
+margin_right = 292.0
+margin_bottom = 218.0
 
 [node name="Register" type="Button" parent="VBoxContainer/Buttons"]
 margin_right = 64.0
@@ -100,10 +120,15 @@ text = "Back"
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [node name="Notification" type="AcceptDialog" parent="."]
-margin_left = 248.0
-margin_top = 144.0
-margin_right = 331.0
-margin_bottom = 202.0
+anchor_left = 0.251
+anchor_top = 0.244
+anchor_right = 0.251
+anchor_bottom = 0.244
+margin_left = -97.28
+margin_top = -51.68
+margin_right = -0.280029
+margin_bottom = 6.31999
+rect_scale = Vector2( 2, 2 )
 dialog_text = "Debug Mode"
 
 [connection signal="pressed" from="VBoxContainer/Buttons/Register" to="." method="_on_Register_pressed"]

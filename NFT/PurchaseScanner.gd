@@ -15,6 +15,7 @@ func initialise(token_id, contract):
 	$ConfirmationDialog.popup_centered()
 	self.token_id = token_id
 	self.contract_addr = contract
+	wallet_addr.text = GlobalVar.get_nft_addr()
 
 func _on_ConfirmationDialog_confirmed():
 	# check if wallet addr matches the "top_ownerships" owners addresses
