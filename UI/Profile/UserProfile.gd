@@ -146,7 +146,7 @@ func _on_Inventory_pressed():
 
 
 func _on_Edit_pressed():
-	pass # Replace with function body.
+	pass # Future expansion perhaps?
 
 
 func _on_RESET_pressed():
