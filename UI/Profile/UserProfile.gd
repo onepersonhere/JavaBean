@@ -117,7 +117,32 @@ func set_profile(value: Dictionary) -> void:
 
 
 func _on_Inventory_pressed():
-	pass # Replace with function body.
+	var label = $PopupPanel/RichTextLabel
+	label.text = "Inventory:"
+	var inv = PlayerInventory.inventory
+	var hb = PlayerInventory.hotbar
+	var eq = PlayerInventory.equips
+	
+	for item in inv:
+		var item_name = inv[item][0]
+		var quantity = str(inv[item][1])
+		label.text += "\n\t" + item_name + ", " + quantity
+		
+	label.text += "\n\nHotbar:"
+	
+	for item in hb:
+		var item_name = hb[item][0]
+		var quantity = str(hb[item][1])
+		label.text += "\n\t" + item_name + ", " + quantity
+	
+	label.text += "\n\nEquips:"
+	
+	for item in eq:
+		var item_name = eq[item][0]
+		var quantity = str(eq[item][1])
+		label.text += "\n\t" + item_name + ", " + quantity
+	
+	$PopupPanel.popup()
 
 
 func _on_Edit_pressed():
