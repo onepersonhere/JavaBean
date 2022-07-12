@@ -5,7 +5,7 @@ var WALK_SPEED = 120
 var RUN_SPEED = 220
 var FRICTION = 1000
 
-onready var DAMAGE = get_node("../HitBoxDirection/SwordHitBox.damage")
+var DAMAGE = 0
 var DEFENSE = 0
 
 onready var UI = get_tree().get_nodes_in_group("UI")[0].get_node("Stats/GUI/HBoxContainer")
