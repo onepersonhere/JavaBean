@@ -1181,6 +1181,14 @@ position = Vector2( 2218, 1052 )
 
 [node name="Doors" type="YSort" parent="YSort"]
 
+[node name="Entrance3" parent="YSort/Doors" instance=ExtResource( 10 )]
+position = Vector2( 1968, 360 )
+pos_x = 304
+pos_y = 312
+entering_area = "res://World/FarmHouse/FarmHouse.tscn"
+entering_area_name = "FarmHouse"
+exit_area_name = "World"
+
 [node name="Entrance" parent="YSort/Doors" instance=ExtResource( 10 )]
 position = Vector2( 2512, 880 )
 pos_x = 112
@@ -1211,4 +1219,4 @@ position = Vector2( 1707, 1012 )
 position = Vector2( 1648, 880 )
 
 [node name="NoticeBoard" parent="YSort" instance=ExtResource( 15 )]
-position = Vector2( 1920, 912 )
+position = Vector2( 1936, 920 )
