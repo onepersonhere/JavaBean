@@ -1183,7 +1183,7 @@ position = Vector2( 2218, 1052 )
 
 [node name="Entrance3" parent="YSort/Doors" instance=ExtResource( 10 )]
 position = Vector2( 1968, 360 )
-pos_x = 304
+pos_x = 297
 pos_y = 312
 entering_area = "res://World/FarmHouse/FarmHouse.tscn"
 entering_area_name = "FarmHouse"
