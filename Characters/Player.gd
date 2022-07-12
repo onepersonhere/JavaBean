@@ -6,7 +6,7 @@ export var CHARACTER_CLASS = "Warrior"
 
 var ACCELERATION = 1000
 var WALK_SPEED = 120
-var SPRINT_SPEED = 220
+var RUN_SPEED = 220
 var FRICTION = 1000
 
 onready var DAMAGE = $HitBoxDirection/SwordHitBox.damage
@@ -39,10 +39,9 @@ var DEXTERITY = 0
 var MAP = "Lombok"
 
 enum {
-	WALK, SPRINT, ATTACK
+	WALK, RUN, ATTACK
 }
 
-var is_right = false
 var state = WALK
 var velocity = Vector2.ZERO
 
@@ -52,15 +51,21 @@ onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitBoxDirection/SwordHitBox
 
 func _ready():
-	update_stat_vals();
+	swordHitbox.knockback_vector = Vector2.DOWN
+	animationTree.set("parameters/Idle/blend_position", Vector2.DOWN)
+	animationTree.set("parameters/Walk/blend_position", Vector2.DOWN)
+	animationTree.set("parameters/Run/blend_position", Vector2.DOWN)
+	animationTree.set("parameters/Attack/blend_position", Vector2.DOWN)
+	animationTree.active = true
+	update_stat_vals()
 	randomize()
 
 func _physics_process(delta):
 	match state:
 		WALK:
 			walk_state(delta)
-		SPRINT:
-			sprint_state(delta)
+		RUN:
+			run_state(delta)
 		ATTACK:
 			attack_state(delta)
 
@@ -71,25 +76,14 @@ func walk_state(delta):
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
-		if input_vector.x > 0:
-			is_right = true
-			swordHitbox.knockback_vector = Vector2(1, 0)
-			animationTree.set("parameters/Walk/blend_position", Vector2(1, 0))
-			animationTree.set("parameters/Sprint/blend_position", Vector2(1, 0))
-			animationTree.set("parameters/Attack/blend_position", Vector2(1, 0))
-		elif input_vector.x < 0:
-			is_right = false
-			swordHitbox.knockback_vector = Vector2(-1, 0)
-			animationTree.set("parameters/Walk/blend_position", Vector2(-1, 0))
-			animationTree.set("parameters/Sprint/blend_position", Vector2(-1, 0))
-			animationTree.set("parameters/Attack/blend_position", Vector2(-1, 0))
+		swordHitbox.knockback_vector = input_vector
+		animationTree.set("parameters/Idle/blend_position", input_vector)
+		animationTree.set("parameters/Walk/blend_position", input_vector)
+		animationTree.set("parameters/Run/blend_position", input_vector)
+		animationTree.set("parameters/Attack/blend_position", input_vector)
 		animationState.travel("Walk")
 		velocity = velocity.move_toward(input_vector * WALK_SPEED, ACCELERATION * delta)
 	else:
-		if is_right == true:
-			animationTree.set("parameters/Idle/blend_position", Vector2(1, 0))
-		else:
-			animationTree.set("parameters/Idle/blend_position", Vector2(-1, 0))
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 		
@@ -98,10 +92,10 @@ func walk_state(delta):
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
 	
-	if energy_bar.CURRENT_SP > 0 && Input.is_action_pressed("sprint"):
-		state = SPRINT
+	if energy_bar.CURRENT_SP > 0 && Input.is_action_pressed("run"):
+		state = RUN
 	
-func sprint_state(delta):
+func run_state(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_vector.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
@@ -109,30 +103,20 @@ func sprint_state(delta):
 	
 	if input_vector != Vector2.ZERO:
 		energy_bar.sprint(3 * delta)
-		if input_vector.x > 0:
-			is_right = true
-			swordHitbox.knockback_vector = Vector2(1, 0)
-			animationTree.set("parameters/Walk/blend_position", Vector2(1, 0))
-			animationTree.set("parameters/Sprint/blend_position", Vector2(1, 0))
-			animationTree.set("parameters/Attack/blend_position", Vector2(1, 0))
-		elif input_vector.x < 0:
-			is_right = false
-			swordHitbox.knockback_vector = Vector2(-1, 0)
-			animationTree.set("parameters/Walk/blend_position", Vector2(-1, 0))
-			animationTree.set("parameters/Sprint/blend_position", Vector2(-1, 0))
-			animationTree.set("parameters/Attack/blend_position", Vector2(-1, 0))
-		animationState.travel("Sprint")
+		swordHitbox.knockback_vector = input_vector
+		animationTree.set("parameters/Idle/blend_position", input_vector)
+		animationTree.set("parameters/Walk/blend_position", input_vector)
+		animationTree.set("parameters/Run/blend_position", input_vector)
+		animationTree.set("parameters/Attack/blend_position", input_vector)
+		animationState.travel("Run")
 		if energy_bar.CURRENT_SP > 0:
-			velocity = velocity.move_toward(input_vector * SPRINT_SPEED, ACCELERATION * delta)
+			velocity = velocity.move_toward(input_vector * RUN_SPEED, ACCELERATION * delta)
 		else:
 			energy_bar.stopped()
+			animationState.travel("Walk")
 			velocity = velocity.move_toward(input_vector * WALK_SPEED, ACCELERATION * delta)
 	else:
 		energy_bar.stopped()
-		if is_right == true:
-			animationTree.set("parameters/Idle/blend_position", Vector2(1, 0))
-		else:
-			animationTree.set("parameters/Idle/blend_position", Vector2(-1, 0))
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 		
@@ -142,7 +126,7 @@ func sprint_state(delta):
 		energy_bar.stopped()
 		state = ATTACK
 	
-	if !Input.is_action_pressed("sprint"):
+	if !Input.is_action_pressed("run"):
 		energy_bar.stopped()
 		state = WALK
 
@@ -154,7 +138,7 @@ func attack_animation_finished():
 	state = WALK
 	
 func _input(event):
-	if event.is_action_pressed("pickup"):
+	if event.is_action_pressed("interact"):
 		$PickupZone.pickup(self)
 	
 	# cheats for debugging purposes

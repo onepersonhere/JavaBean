@@ -24,7 +24,7 @@ func add_player():
 	get_node("/root/" + entering_area_name).add_child(player)
 	player.set_position(Vector2(pos_x, pos_y))
 	
-	player.scale = Vector2(0.45, 0.45)
+	player.scale = Vector2(1, 1)
 	player.find_node("Camera2D").zoom = Vector2(0.45,0.45)
 
 # TODO: Save when going in
