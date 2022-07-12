@@ -33,27 +33,27 @@ func load(profile, world_name):
 	player.set_position(Vector2(pos_x, pos_y))
 	
 	# movement
-	player.get_node("PlayerStats").ACCELERATION = 1000 + 1 * int(profile["dexterity"]["integerValue"])
-	player.get_node("PlayerStats").FRICTION = 1000 + 1 * int(profile["dexterity"]["integerValue"])
-	player.get_node("PlayerStats").WALK_SPEED = 120 + 0.1 * int(profile["dexterity"]["integerValue"])
-	player.get_node("PlayerStats").RUN_SPEED = 220 + 0.1 * int(profile["dexterity"]["integerValue"])
+	player.get_node("PlayerStats").BASE_ACCELERATION = 1000 + 1 * int(profile["dexterity"]["integerValue"])
+	player.get_node("PlayerStats").BASE_FRICTION = 1000 + 1 * int(profile["dexterity"]["integerValue"])
+	player.get_node("PlayerStats").BASE_WALK_SPEED = 120 + 0.1 * int(profile["dexterity"]["integerValue"])
+	player.get_node("PlayerStats").BASE_RUN_SPEED = 220 + 0.1 * int(profile["dexterity"]["integerValue"])
 	
 	# hp
-	player.get_node("PlayerStats").MAX_HEALTH = int(profile["max_hp"]["integerValue"])
+	player.get_node("PlayerStats").BASE_MAX_HEALTH = int(profile["max_hp"]["integerValue"])
 	player.get_node("PlayerStats").CURR_HEALTH = int(profile["curr_hp"]["integerValue"])
 	
 	# sp
-	player.get_node("PlayerStats").MAX_SP = int(profile["max_sp"]["integerValue"])
+	player.get_node("PlayerStats").BASE_MAX_SP = int(profile["max_sp"]["integerValue"])
 	player.get_node("PlayerStats").CURR_SP = int(profile["curr_sp"]["integerValue"])
 	
 	# damage
-	player.get_node("PlayerStats").DAMAGE = 10 + int(profile["strength"]["integerValue"])
+	player.get_node("PlayerStats").BASE_DAMAGE = 10 + int(profile["strength"]["integerValue"])
 	
 	# defense
-	player.get_node("PlayerStats").DEFENSE = 10 + int(profile["intelligence"]["integerValue"])
+	player.get_node("PlayerStats").BASE_DEFENSE = 10 + int(profile["intelligence"]["integerValue"])
 	
 	# regen
-	player.get_node("PlayerStats").REGEN = 10 + int(profile["intelligence"]["integerValue"])
+	player.get_node("PlayerStats").BASE_REGEN = 10 + int(profile["intelligence"]["integerValue"])
 	
 	# experience
 	player.get_node("PlayerStats").EXPERIENCE = int(profile["strength"]["integerValue"]) 
