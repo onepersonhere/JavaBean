@@ -74,6 +74,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Characters/Actions/DialogueAction.gd"
 }, {
+"base": "Node",
+"class": "EnemySpawner",
+"language": "GDScript",
+"path": "res://Enemies/EnemySpawner.gd"
+}, {
 "base": "CanvasLayer",
 "class": "GUI",
 "language": "GDScript",
@@ -158,6 +163,7 @@ _global_script_class_icons={
 "DialogicResources": "",
 "DialogicUtil": "",
 "DialogueAction": "",
+"EnemySpawner": "",
 "GUI": "",
 "GitAPI": "",
 "GiveQuestAction": "",
