@@ -44,3 +44,10 @@ func save_img(item_name, img):
 		print_debug("saved")
 		img.save_png(path)
 		yield(get_tree().create_timer(1), "timeout")
+
+func get_active_item_stats():
+	var item_name = PlayerInventory.hotbar[PlayerInventory.active_item_slot_index]
+	var stats = JsonData.item_data[item_name];
+	return stats;
+	
+# To extract damage stats eg. 

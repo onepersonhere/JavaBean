@@ -93,4 +93,3 @@ func active_item_scroll_down():
 	else:
 		active_item_slot_index -= 1
 	emit_signal("active_item_updated")
-
