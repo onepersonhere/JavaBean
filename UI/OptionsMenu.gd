@@ -17,11 +17,7 @@ func _on_SaveGame_pressed():
 
 
 func _on_Settings_pressed():
-	$Label.text = "WIP"
-	$Label.visible = true
-	yield(get_tree().create_timer(1), "timeout")
-	$Label.visible = false
-	# get_tree().change_scene("res://UI/Options.tscn")
+	get_tree().get_root().add_child(load("res://UI/Options.tscn").instance())
 
 
 func _on_Quests_pressed():

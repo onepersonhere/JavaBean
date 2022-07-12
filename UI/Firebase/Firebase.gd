@@ -5,7 +5,7 @@ const PROJECT_ID = "javabean-1"
 var login_url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + PrivateKey.API_KEY
 var register_url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" + PrivateKey.API_KEY
 const FIRESTORE_URL = "https://firestore.googleapis.com/v1/projects/%s/databases/(default)/documents/" % PROJECT_ID
-
+# TODO: associate player's NFT address to the account
 var user_info = {
 	"token": "",
 	"id": ""
@@ -23,6 +23,7 @@ func get_req_headers() -> PoolStringArray:
 		"Content-Type: application/json",
 		"Authorization: Bearer %s" % user_info.token
 	])
+
 func register(email:String, password: String, http: HTTPRequest) -> void:
 	var body = {
 		"email": email,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/Profile/Profile Page.svg" type="Texture" id=1]
 [ext_resource path="res://UI/Profile/Placeholder.png" type="Texture" id=2]
@@ -19,28 +19,37 @@ outline_size = 1
 outline_color = Color( 0.0392157, 0.0352941, 0.0352941, 1 )
 font_data = ExtResource( 3 )
 
+[sub_resource type="DynamicFont" id=3]
+outline_size = 1
+outline_color = Color( 0.00392157, 0.00392157, 0.00392157, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+outline_size = 1
+outline_color = Color( 0.00392157, 0.00392157, 0.00392157, 1 )
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 3 )
+
 [node name="UserProfile" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -640.0
-margin_bottom = -360.0
-rect_scale = Vector2( 2, 2 )
 script = ExtResource( 4 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_right = 640.0
-margin_bottom = 360.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 texture = ExtResource( 1 )
 expand = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="MainContainer" type="HBoxContainer" parent="."]
 margin_left = 19.0
 margin_top = 18.0
 margin_right = 637.0
 margin_bottom = 358.0
+rect_scale = Vector2( 2, 2 )
 custom_constants/separation = 10
 __meta__ = {
 "_edit_group_": true
@@ -278,23 +287,29 @@ editable = false
 
 [node name="MarginContainer" type="MarginContainer" parent="MainContainer"]
 margin_left = 323.0
-margin_right = 387.0
+margin_right = 399.0
 margin_bottom = 340.0
-custom_constants/margin_left = 64
+custom_constants/margin_left = 76
 
 [node name="CenterContainer" type="CenterContainer" parent="MainContainer"]
-margin_left = 397.0
-margin_right = 527.0
+margin_left = 409.0
+margin_right = 539.0
 margin_bottom = 340.0
 
 [node name="Col3" type="VBoxContainer" parent="MainContainer/CenterContainer"]
-margin_top = 17.0
+margin_top = 4.0
 margin_right = 130.0
-margin_bottom = 323.0
+margin_bottom = 336.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MainContainer/CenterContainer/Col3"]
+margin_right = 130.0
+margin_bottom = 22.0
+custom_constants/margin_top = 22
 
 [node name="CenterContainer" type="CenterContainer" parent="MainContainer/CenterContainer/Col3"]
+margin_top = 26.0
 margin_right = 130.0
-margin_bottom = 275.0
+margin_bottom = 301.0
 rect_min_size = Vector2( 50, 275 )
 
 [node name="Profile" type="TextureRect" parent="MainContainer/CenterContainer/Col3/CenterContainer"]
@@ -305,9 +320,9 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/CenterContainer/Col3"]
-margin_top = 279.0
+margin_top = 305.0
 margin_right = 130.0
-margin_bottom = 306.0
+margin_bottom = 332.0
 alignment = 1
 
 [node name="Edit" type="Button" parent="MainContainer/CenterContainer/Col3/HBoxContainer"]
@@ -341,11 +356,42 @@ margin_top = 122.0
 margin_right = 464.0
 margin_bottom = 227.0
 rect_min_size = Vector2( 300, 105 )
+rect_scale = Vector2( 2, 2 )
 popup_exclusive = true
 window_title = "Are you sure?!"
 dialog_text = "                     CONFIRM RESET??! 
        ALL YOUR PROGRESS WILL BE LOST!
                 (FOR A VERY LONG TIME)"
+
+[node name="Address" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 680.0
+margin_right = 83.0
+margin_bottom = 694.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = SubResource( 3 )
+text = "NFT ADDRESS:"
+
+[node name="Label" type="Label" parent="Address"]
+margin_left = 72.0
+margin_right = 112.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 4 )
+text = "0x00000000000000000000000000000000000000000"
+
+[node name="PopupPanel" type="PopupPanel" parent="."]
+margin_left = 16.0
+margin_top = 384.0
+margin_right = 616.0
+margin_bottom = 672.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PopupPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
 
 [connection signal="pressed" from="MainContainer/Col1/Inventory/Inventory" to="." method="_on_Inventory_pressed"]
 [connection signal="pressed" from="MainContainer/Col1/Inventory/RESET" to="." method="_on_RESET_pressed"]

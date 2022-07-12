@@ -54,3 +54,6 @@ func is_active(reference: Quest) -> bool:
 
 func find_active(reference: Quest) -> Quest:
 	return active_quests.find(reference)
+	
+func add_available_quest(reference: Quest):
+	available_quests.add_child(reference)

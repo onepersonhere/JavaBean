@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Assets/Video/8 Bit Video.webm" type="VideoStream" id=1]
 [ext_resource path="res://UI/MainMenu.cs" type="Script" id=2]
@@ -12,6 +12,16 @@
 [ext_resource path="res://Assets/Logo/JavaBean (New)(1).png" type="Texture" id=10]
 [ext_resource path="res://Assets/Logo/JavaBean (New)(2).png" type="Texture" id=11]
 [ext_resource path="res://Assets/Audio/Marvel Of The Century.mp3" type="AudioStream" id=12]
+[ext_resource path="res://UI/assets/8 Bit Video_Moment.jpg" type="Texture" id=13]
+[ext_resource path="res://Shaders/glitch_effect.tres" type="Shader" id=14]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 14 )
+shader_param/shake_power = 0.05
+shader_param/shake_rate = 0.1
+shader_param/shake_speed = 0.5
+shader_param/shake_block_size = 30.5
+shader_param/shake_color_rate = 0.01
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 8 )
@@ -24,6 +34,8 @@ transform = Transform2D( 1.072, 0, 0, 1.043, 0, 0 )
 [node name="Video" type="VideoPlayer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 640.0
+margin_bottom = 360.0
 rect_scale = Vector2( 0.622, 0.641 )
 stream = ExtResource( 1 )
 autoplay = true
@@ -32,6 +44,21 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 0.933
+anchor_bottom = 0.961
+margin_right = -0.23999
+margin_bottom = 0.0799561
+texture = ExtResource( 13 )
+expand = true
+
+[node name="Shader" type="ColorRect" parent="."]
+material = SubResource( 2 )
+anchor_right = 0.927
+anchor_bottom = 0.958
+margin_right = 7.43994
+margin_bottom = 0.239929
 
 [node name="Main Menu" type="MarginContainer" parent="."]
 margin_top = 2.0
@@ -99,7 +126,7 @@ margin_top = 507.0
 margin_right = 550.0
 margin_bottom = 526.0
 custom_fonts/font = SubResource( 1 )
-text = "ver 0.0.2 Prototype"
+text = "ver 0.0.3 Prototype"
 
 [node name="CenterContainer" type="CenterContainer" parent="Main Menu/HBoxContainer"]
 margin_left = 554.0

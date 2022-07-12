@@ -71,3 +71,4 @@ func reset():
 		remove_child(item)
 	item = null
 	refresh_style()
+

@@ -60,7 +60,11 @@ func update_inventory(amt_bought):
 	get_tree().get_nodes_in_group("Hotbar")[0].initialise_hotbar()
 	# load inventory stuff
 	get_tree().get_nodes_in_group("shop_inventory")[0].load_inventory_stuff()
-	is_full()
+	
+	# TODO: Distribute items to hotbar once inventory is full
+	if InventoryManager.is_full():
+		# full
+		parent.toggle_disabled_global(true)
 	
 func is_affordable(cost):
 	# Also check if full
@@ -78,9 +82,3 @@ func check_stack():
 	if stack_size <= 1:
 		$"Buy Half".disabled = true
 		$"Buy All".disabled = true
-
-func is_full():
-	# TODO: Distribute items to hotbar once inventory is full
-	if PlayerInventory.inventory.size() >= PlayerInventory.NUM_INVENTORY_SLOTS:
-		# full
-		parent.toggle_disabled_global(true)
