@@ -50,11 +50,11 @@ var DEXTERITY = 0
 var MAP = "Lombok"
 
 func _ready():
-	initialise();
+	reset();
 	update();
 	PlayerInventory.connect("active_item_updated", self, "update");
 
-func initialise():
+func reset():
 	ACCELERATION = BASE_ACCELERATION
 	WALK_SPEED = BASE_WALK_SPEED
 	RUN_SPEED = BASE_RUN_SPEED
@@ -73,6 +73,8 @@ func update():
 	var active_item = InventoryManager.get_active_item_stats()
 	if is_weapon(active_item):
 		set_stats_weapon(active_item);
+	else:
+		reset();
 
 func set_stats_weapon(item):
 	if item.has("Damage"):
@@ -83,7 +85,7 @@ func set_stats_weapon(item):
 		DMG_SPEED = BASE_DMG_SPEED + int(item["Speed"])
 	if item.has("Critic"):
 		CRITIC_PERCENTAGE = BASE_CRITIC_PERCENTAGE + int(item["Critic"])
-
+	
 func is_weapon(item):
 	match item["ItemCategory"]:
 		"Sword":

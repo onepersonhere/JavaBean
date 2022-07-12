@@ -5,4 +5,3 @@ onready var playerStats = get_node("../../PlayerStats")
 
 func _ready():
 	damage = playerStats.DAMAGE
-	print(damage)
