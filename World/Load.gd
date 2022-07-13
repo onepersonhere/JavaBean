@@ -75,5 +75,4 @@ func load(profile, world_name):
 	PlayerStats.DEXTERITY = int(profile["dexterity"]["integerValue"])
 	
 	get_tree().get_root().add_child(world)
-	PlayerStats.initialize()
 	print_debug("loaded")
