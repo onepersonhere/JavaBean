@@ -1219,4 +1219,4 @@ position = Vector2( 1707, 1012 )
 position = Vector2( 1648, 880 )
 
 [node name="NoticeBoard" parent="YSort" instance=ExtResource( 15 )]
-position = Vector2( 1936, 920 )
+position = Vector2( 1920, 920 )

@@ -95,6 +95,8 @@ func _on_Confirm_pressed():
 	information_sent = true
 	yield(get_tree().create_timer(1), "timeout")
 	get_tree().root.add_child(load("res://UI/UI.tscn").instance())
+	
+	PlayerStats.initialize()
 	Load.load(profile, "World")
 	queue_free()
 	

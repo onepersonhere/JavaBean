@@ -1,7 +1,10 @@
 extends "res://Hitboxes and Hurtboxes/Hitbox.gd"
 
 var knockback_vector = Vector2.ZERO
-onready var playerStats = get_node("../../PlayerStats")
 
 func _ready():
-	damage = playerStats.DAMAGE
+	damage = PlayerStats.DAMAGE
+	PlayerStats.connect("update", self, "update")
+
+func update():
+	damage = PlayerStats.DAMAGE

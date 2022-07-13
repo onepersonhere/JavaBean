@@ -1,4 +1,5 @@
 extends Node
+signal update
 
 var ACCELERATION = 1000
 var WALK_SPEED = 120
@@ -20,20 +21,20 @@ var BASE_DMG_SPEED = 0
 var BASE_DEFENSE = 0
 var BASE_CRITIC_PERCENTAGE = 0
 
-onready var UI = get_tree().get_nodes_in_group("UI")[0].get_node("Stats/GUI/HBoxContainer")
-onready var life_bar = UI.find_node("LifeBar")
-onready var energy_bar = UI.find_node("EnergyBar")
+var UI 
+var life_bar
+var energy_bar 
 
-onready var CURR_HEALTH = life_bar.CURRENT_HEALTH
-onready var MAX_HEALTH = life_bar.MAX_HEALTH
-onready var BASE_MAX_HEALTH
+var CURR_HEALTH 
+var MAX_HEALTH 
+var BASE_MAX_HEALTH
 
-onready var CURR_SP = energy_bar.CURRENT_SP
-onready var MAX_SP = energy_bar.MAX_SP
-onready var BASE_MAX_SP
+var CURR_SP 
+var MAX_SP 
+var BASE_MAX_SP
 
-onready var REGEN = energy_bar.RECHARGE
-onready var BASE_REGEN
+var REGEN 
+var BASE_REGEN
 
 var can_sprint = true
 var IS_ALIVE = true
@@ -49,10 +50,25 @@ var DEXTERITY = 0
 
 var MAP = "Lombok"
 
-func _ready():
-	reset();
-	update();
+func initialize():
 	PlayerInventory.connect("active_item_updated", self, "update");
+	UI_created()
+	
+func base_stat_assigned():
+	reset()
+	update();
+	
+func UI_created():
+	UI = get_tree().get_nodes_in_group("UI")[0].get_node("Stats/GUI/HBoxContainer")
+	life_bar = UI.find_node("LifeBar")
+	energy_bar = UI.find_node("EnergyBar")
+
+	CURR_HEALTH = life_bar.CURRENT_HEALTH
+	MAX_HEALTH = life_bar.MAX_HEALTH
+
+	CURR_SP = energy_bar.CURRENT_SP
+	MAX_SP = energy_bar.MAX_SP
+	REGEN = energy_bar.RECHARGE
 
 func reset():
 	ACCELERATION = BASE_ACCELERATION
@@ -75,6 +91,8 @@ func update():
 		set_stats_weapon(active_item);
 	else:
 		reset();
+		
+	emit_signal("update")
 
 func set_stats_weapon(item):
 	if item.has("Damage"):
@@ -87,6 +105,7 @@ func set_stats_weapon(item):
 		CRITIC_PERCENTAGE = BASE_CRITIC_PERCENTAGE + int(item["Critic"])
 	
 func is_weapon(item):
+	if item == null: return false;
 	match item["ItemCategory"]:
 		"Sword":
 			return true;
