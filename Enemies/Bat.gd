@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 const DeathEffect = preload("res://Effects/BatDeathEffect.tscn")
 const DamageIndicator = preload("res://UI/Indicators/DamageIndicator.tscn")
+const ExpIndicator = preload("res://UI/Indicators/ExpIndicator.tscn")
 
 signal died(battler)
 
@@ -93,7 +94,9 @@ func _on_Stats_no_health():
 	get_parent().add_child(batDeathEffect)
 	batDeathEffect.global_position = global_position
 	emit_signal("died", self)
-	PlayerStats.exp_bar.gain_exp(rand_range(MIN_EXP, MAX_EXP))
+	var exp_gain = floor(rand_range(MIN_EXP, MAX_EXP))
+	PlayerStats.exp_bar.gain_exp(exp_gain)
+	spawn_exp_indicator(exp_gain)
 
 func _on_Timer_timeout():
 	$HitBox/CollisionShape2D.set_disabled(false)
@@ -107,3 +110,9 @@ func spawn_damage_indicator(damage):
 	get_parent().add_child(damage_indicator)
 	damage_indicator.set_value(damage)
 	damage_indicator.global_position = global_position
+	
+func spawn_exp_indicator(value):
+	var exp_indicator = ExpIndicator.instance()
+	get_parent().add_child(exp_indicator)
+	exp_indicator.set_value(value)
+	exp_indicator.global_position = global_position

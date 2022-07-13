@@ -37,7 +37,6 @@ custom_fonts/font = SubResource( 2 )
 text = "0"
 align = 1
 valign = 1
-percent_visible = -1.0
 
 [node name="TextureProgress" parent="." index="1"]
 show_behind_parent = true
