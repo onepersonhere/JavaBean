@@ -1,9 +1,31 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/GUI/Bar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Fonts/Super Mario Bros. 2.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://UI/GUI/LifeBar.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
 
 [node name="LifeBar" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+
+[node name="Background" parent="Count" index="0"]
+margin_right = 100.0
+
+[node name="Title" parent="Count/Background" index="0"]
+margin_left = -2.0
+margin_right = 50.0
+
+[node name="Number" parent="Count/Background" index="1"]
+margin_left = 31.0
+margin_top = 7.0
+margin_right = -5.0
+margin_bottom = 3.0
+custom_fonts/font = SubResource( 1 )
+
+[node name="TextureProgress" parent="." index="1"]
+margin_left = 104.0
+margin_right = 500.0
 
 [node name="Timer" type="Timer" parent="." index="2"]

@@ -1,6 +1,9 @@
 extends KinematicBody2D
 class_name Player
 
+const HealIndicator = preload("res://UI/Indicators/HealIndicator.tscn")
+const ReceiveDamageIndicator = preload("res://UI/Indicators/ReceiveDamageIndicator.tscn")
+
 enum {
 	WALK, RUN, ATTACK
 }
@@ -119,11 +122,13 @@ func _input(event):
 			var slot = hotbar.slots[PlayerInventory.active_item_slot_index]
 			PlayerInventory.add_item_quantity(slot, -1)
 			PlayerStats.life_bar.heal(healValue)
+			spawn_heal_indicator("+" + str(healValue))
 			hotbar.initialise_hotbar()
 
 func _on_PlayerHurtBox_area_entered(area):
 	PlayerStats.life_bar.deal_damage(area.damage)
 	PlayerStats.CURR_HEALTH = PlayerStats.life_bar.CURRENT_HEALTH
+	spawn_receive_damage_indicator("-" + str(area.damage))
 
 func _on_LifeBar_no_health():
 	queue_free()
@@ -137,3 +142,15 @@ func _on_EnergyBar_no_stamina():
 func update_stat_vals():
 	PlayerStats.UI.find_node("CoinCounter").get_node("Background").get_node("Number").text = str(PlayerStats.COINS);
 	PlayerStats.UI.find_node("GemCounter").get_node("Background").get_node("Number").text = str(PlayerStats.GEMS);
+
+func spawn_heal_indicator(heal):
+	var heal_indicator = HealIndicator.instance()
+	get_parent().add_child(heal_indicator)
+	heal_indicator.set_value(heal)
+	heal_indicator.global_position = Vector2(global_position.x, global_position.y - 20)
+	
+func spawn_receive_damage_indicator(damage):
+	var receive_damage_indicator = ReceiveDamageIndicator.instance()
+	get_parent().add_child(receive_damage_indicator)
+	receive_damage_indicator.set_value(damage)
+	receive_damage_indicator.global_position = global_position

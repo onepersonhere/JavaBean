@@ -9,8 +9,8 @@ onready var label = $Label
 func _ready():
 	SHIFT_DIRECTION = Vector2(rand_range(-1, 1), rand_range(-1, 1))
 	
-func set_damage(damage):
-	label.text = str(int(damage))
+func set_value(value):
+	label.text = str(value)
 	
 func _process(delta):
 	global_position += SPEED * SHIFT_DIRECTION * delta

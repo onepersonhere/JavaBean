@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const DeathEffect = preload("res://Effects/BatDeathEffect.tscn")
-const DamageIndicator = preload("res://UI/DamageIndicator.tscn")
+const DamageIndicator = preload("res://UI/Indicators/DamageIndicator.tscn")
 
 signal died(battler)
 
@@ -102,5 +102,5 @@ func _on_HitBox_area_entered(area):
 func spawn_damage_indicator(damage):
 	var damage_indicator = DamageIndicator.instance()
 	get_parent().add_child(damage_indicator)
-	damage_indicator.set_damage(damage)
+	damage_indicator.set_value(damage)
 	damage_indicator.global_position = global_position
