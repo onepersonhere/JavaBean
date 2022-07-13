@@ -8,8 +8,6 @@ enum {
 export var NICKNAME = ""
 export var CHARACTER_CLASS = "Warrior"
 
-signal player_created
-
 var state = WALK
 var velocity = Vector2.ZERO
 
@@ -27,7 +25,6 @@ func _ready():
 	animationTree.active = true
 	update_stat_vals()
 	randomize()
-	emit_signal("player_created")
 
 func _physics_process(delta):
 	match state:

@@ -1,4 +1,5 @@
 extends Node
+signal update
 
 var ACCELERATION = 1000
 var WALK_SPEED = 120
@@ -53,10 +54,9 @@ func initialize():
 	reset();
 	update();
 	PlayerInventory.connect("active_item_updated", self, "update");
-	player_created()
+	UI_created()
 	
-func player_created():
-	print_debug(1234)
+func UI_created():
 	UI = get_tree().get_nodes_in_group("UI")[0].get_node("Stats/GUI/HBoxContainer")
 	life_bar = UI.find_node("LifeBar")
 	energy_bar = UI.find_node("EnergyBar")
@@ -89,6 +89,9 @@ func update():
 		set_stats_weapon(active_item);
 	else:
 		reset();
+		
+	print_debug(str(DAMAGE) + " " + str(BASE_DAMAGE))
+	emit_signal("update")
 
 func set_stats_weapon(item):
 	if item.has("Damage"):
@@ -101,6 +104,7 @@ func set_stats_weapon(item):
 		CRITIC_PERCENTAGE = BASE_CRITIC_PERCENTAGE + int(item["Critic"])
 	
 func is_weapon(item):
+	if item == null: return false;
 	match item["ItemCategory"]:
 		"Sword":
 			return true;
