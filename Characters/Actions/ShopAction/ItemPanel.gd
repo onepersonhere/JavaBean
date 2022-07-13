@@ -16,7 +16,7 @@ func _ready():
 		
 func _on_Sell_1_pressed():
 	amt_sold = 1;
-	player.COINS += int(price);
+	PlayerStats.COINS += int(price);
 	
 	amt = str(int(amt) - amt_sold);
 	check_empty()
@@ -27,7 +27,7 @@ func _on_Sell_Half_pressed():
 	if int(amt) % 2 != 0:
 		odd = true
 	amt_sold = floor(float(amt)/2)
-	player.COINS += int(price) * int(amt_sold);
+	PlayerStats.COINS += int(price) * int(amt_sold);
 	
 	amt = str(amt_sold);
 	check_empty()
@@ -36,7 +36,7 @@ func _on_Sell_Half_pressed():
 	
 func _on_Sell_All_pressed():
 	amt_sold = int(amt)
-	player.COINS += int(price) * amt_sold;
+	PlayerStats.COINS += int(price) * amt_sold;
 	
 	amt = str(0);
 	check_empty()

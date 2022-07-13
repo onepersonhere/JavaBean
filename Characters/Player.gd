@@ -113,7 +113,7 @@ func _input(event):
 		update_stat_vals()
 		
 	if event.is_action_pressed("use"):
-		if InventoryManager.get_active_item_name() == "Slime Potion":
+		if InventoryManager.get_active_item_name() == "Slime Potion" && !PlayerStats.life_bar.is_full_health():
 			var healValue = InventoryManager.get_active_item_stats()["AddHealth"]
 			var hotbar = get_tree().get_nodes_in_group("UI")[0].get_node("CanvasLayer/UserInterface/Hotbar")
 			var slot = hotbar.slots[PlayerInventory.active_item_slot_index]

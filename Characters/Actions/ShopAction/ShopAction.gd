@@ -21,7 +21,7 @@ func interact():
 
 func update_val():
 	var player = get_tree().get_nodes_in_group("Player")[0];
-	$Popup/Coins/Coins_value.text = str(player.COINS)
-	$Popup/Gems/Gems_value.text = str(player.GEMS)
+	$Popup/Coins/Coins_value.text = str(PlayerStats.COINS)
+	$Popup/Gems/Gems_value.text = str(PlayerStats.GEMS)
 	
 
