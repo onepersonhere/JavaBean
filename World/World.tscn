@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://World/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://World/Tree_Dark.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Characters/NPCs/Merchant.tscn" type="PackedScene" id=14]
 [ext_resource path="res://World/Daily Quests/NoticeBoardArea.tscn" type="PackedScene" id=15]
+[ext_resource path="res://World/Climbable.tscn" type="PackedScene" id=16]
 
 [node name="World" type="Node2D" groups=["map"]]
 script = ExtResource( 4 )
@@ -1220,3 +1221,17 @@ position = Vector2( 1648, 880 )
 
 [node name="NoticeBoard" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 1920, 920 )
+
+[node name="Climbable" type="YSort" parent="YSort"]
+
+[node name="Climbable" parent="YSort/Climbable" instance=ExtResource( 16 )]
+position = Vector2( 2607, 112 )
+
+[node name="Climbable2" parent="YSort/Climbable" instance=ExtResource( 16 )]
+position = Vector2( 3408, 400 )
+
+[node name="Climbable3" parent="YSort/Climbable" instance=ExtResource( 16 )]
+position = Vector2( 3184, 496 )
+
+[node name="Climbable4" parent="YSort/Climbable" instance=ExtResource( 16 )]
+position = Vector2( 2896, 592 )

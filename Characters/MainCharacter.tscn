@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Characters/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Imported Assets/Shadows/MediumShadow.png" type="Texture" id=2]
@@ -206,6 +206,48 @@ tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=105]
+resource_name = "Climbing"
+length = 2.0
+loop = true
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 1, 2, 3, 0 ]
@@ -933,6 +975,12 @@ blend_point_3/node = SubResource( 73 )
 blend_point_3/pos = Vector2( 0, -1 )
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id=106]
+animation = "Backward Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=107]
+animation = "Climbing"
+
 [sub_resource type="AnimationNodeAnimation" id=75]
 animation = "Left Idle"
 
@@ -1018,18 +1066,34 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=104]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=108]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=109]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=110]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=111]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=112]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=113]
+
 [sub_resource type="AnimationNodeStateMachine" id=98]
 states/Attack/node = SubResource( 74 )
 states/Attack/position = Vector2( 272.5, 131.5 )
+"states/Backward Idle/node" = SubResource( 106 )
+"states/Backward Idle/position" = Vector2( 788.301, 348.352 )
+states/Climbing/node = SubResource( 107 )
+states/Climbing/position = Vector2( 787.051, 246.989 )
 states/Idle/node = SubResource( 79 )
 states/Idle/position = Vector2( 466.5, 132 )
 states/Run/node = SubResource( 84 )
 states/Run/position = Vector2( 573.5, 248.625 )
 states/Walk/node = SubResource( 89 )
 states/Walk/position = Vector2( 673.5, 131 )
-transitions = [ "Idle", "Walk", SubResource( 90 ), "Walk", "Idle", SubResource( 91 ), "Idle", "Run", SubResource( 92 ), "Run", "Idle", SubResource( 93 ), "Run", "Walk", SubResource( 94 ), "Walk", "Run", SubResource( 95 ), "Idle", "Attack", SubResource( 97 ), "Attack", "Idle", SubResource( 104 ) ]
+transitions = [ "Idle", "Walk", SubResource( 90 ), "Walk", "Idle", SubResource( 91 ), "Idle", "Run", SubResource( 92 ), "Run", "Idle", SubResource( 93 ), "Run", "Walk", SubResource( 94 ), "Walk", "Run", SubResource( 95 ), "Idle", "Attack", SubResource( 97 ), "Attack", "Idle", SubResource( 104 ), "Walk", "Climbing", SubResource( 108 ), "Climbing", "Walk", SubResource( 109 ), "Run", "Climbing", SubResource( 110 ), "Climbing", "Run", SubResource( 111 ), "Climbing", "Backward Idle", SubResource( 112 ), "Backward Idle", "Climbing", SubResource( 113 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -3.93949e-07, 55.125 )
+graph_offset = Vector2( 83.5512, 162.852 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=99]
 
@@ -1046,6 +1110,7 @@ height = 10.0
 
 [node name="Player" type="KinematicBody2D" groups=["Persist", "Player"]]
 collision_layer = 2
+collision_mask = 257
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -1070,6 +1135,7 @@ shape = SubResource( 1 )
 "anims/Backward Idle" = SubResource( 58 )
 "anims/Backward Run" = SubResource( 100 )
 "anims/Backward Walk" = SubResource( 59 )
+anims/Climbing = SubResource( 105 )
 "anims/Forward Attack" = SubResource( 60 )
 "anims/Forward Idle" = SubResource( 61 )
 "anims/Forward Run" = SubResource( 101 )

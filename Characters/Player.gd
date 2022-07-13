@@ -5,7 +5,7 @@ const HealIndicator = preload("res://UI/Indicators/HealIndicator.tscn")
 const ReceiveDamageIndicator = preload("res://UI/Indicators/ReceiveDamageIndicator.tscn")
 
 enum {
-	WALK, RUN, ATTACK
+	WALK, RUN, CLIMB, ATTACK
 }
 
 export var NICKNAME = ""
@@ -35,6 +35,8 @@ func _physics_process(delta):
 			walk_state(delta)
 		RUN:
 			run_state(delta)
+		CLIMB:
+			climb_state(delta)
 		ATTACK:
 			attack_state(delta)
 
@@ -63,6 +65,9 @@ func walk_state(delta):
 	
 	if PlayerStats.energy_bar.CURRENT_SP > 0 && Input.is_action_pressed("run"):
 		state = RUN
+		
+	if PlayerStats.is_climbing:
+		state = CLIMB
 	
 func run_state(delta):
 	var input_vector = Vector2.ZERO
@@ -97,6 +102,27 @@ func run_state(delta):
 	
 	if !Input.is_action_pressed("run"):
 		PlayerStats.energy_bar.stopped()
+		state = WALK
+	
+	if PlayerStats.is_climbing:
+		PlayerStats.energy_bar.stopped()
+		state = CLIMB
+		
+func climb_state(delta):
+	var input_vector = Vector2.ZERO
+	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+	input_vector.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	input_vector = input_vector.normalized()
+	
+	if input_vector != Vector2.ZERO:
+		animationState.travel("Climbing")
+		velocity = velocity.move_toward(input_vector * PlayerStats.CLIMB_SPEED, PlayerStats.ACCELERATION * delta)
+	else:
+		animationState.travel("Backward Idle")
+		velocity = velocity.move_toward(Vector2.ZERO, PlayerStats.FRICTION * delta)
+		
+	velocity = move_and_slide(velocity)
+	if !PlayerStats.is_climbing:
 		state = WALK
 
 func attack_state(_delta):
@@ -154,3 +180,4 @@ func spawn_receive_damage_indicator(damage):
 	get_parent().add_child(receive_damage_indicator)
 	receive_damage_indicator.set_value(damage)
 	receive_damage_indicator.global_position = global_position
+

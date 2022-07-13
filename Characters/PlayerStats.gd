@@ -2,6 +2,7 @@ extends Node
 signal update
 
 var ACCELERATION = 1000
+var CLIMB_SPEED = 50
 var WALK_SPEED = 120
 var RUN_SPEED = 220
 var FRICTION = 1000
@@ -40,6 +41,7 @@ var MAX_EXP
 var REGEN 
 var BASE_REGEN
 
+var is_climbing = false
 var can_sprint = true
 var IS_ALIVE = true
 
