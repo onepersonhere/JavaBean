@@ -283,7 +283,7 @@ tile_data = PoolIntArray( -65536, 0, 0, -65535, 2, 0, -65534, 2, 0, -65533, 2, 0
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -65519, 1, 0, -65518, 0, 0, 17, 4, 0, 18, 2, 0, 65553, 4, 0, 65554, 2, 0, 131089, 5, 0, 131090, 3, 0 )
+tile_data = PoolIntArray( -65518, 8, 0, 18, 9, 0, 65554, 9, 0 )
 
 [node name="Furniture" type="TileMap" parent="Background"]
 tile_set = ExtResource( 5 )
@@ -322,5 +322,14 @@ exit_area_name = "House"
 [node name="CollisionShape2D" parent="Entrance2" index="0"]
 position = Vector2( 0, 38 )
 
+[node name="Entrance3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 593, 32 )
+pos_x = 265
+pos_y = 30
+entering_area = "res://World/House/HouseSecondFloor.tscn"
+entering_area_name = "HouseSecondFloor"
+exit_area_name = "House"
+
 [editable path="Entrance"]
 [editable path="Entrance2"]
+[editable path="Entrance3"]

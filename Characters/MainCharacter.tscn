@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://Characters/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Imported Assets/Shadows/MediumShadow.png" type="Texture" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://Characters/Player Animations/Backward Move.png" type="Texture" id=12]
 [ext_resource path="res://Characters/Player Animations/Forward Move.png" type="Texture" id=13]
 [ext_resource path="res://Characters/Player Animations/Left Attack.png" type="Texture" id=14]
-[ext_resource path="res://Characters/PlayerStats.gd" type="Script" id=15]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.0
@@ -1051,9 +1050,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-
-[node name="PlayerStats" type="Node" parent="."]
-script = ExtResource( 15 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0, -14 )

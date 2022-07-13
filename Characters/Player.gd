@@ -8,10 +8,11 @@ enum {
 export var NICKNAME = ""
 export var CHARACTER_CLASS = "Warrior"
 
+signal player_created
+
 var state = WALK
 var velocity = Vector2.ZERO
 
-onready var playerStats = $PlayerStats
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
@@ -26,6 +27,7 @@ func _ready():
 	animationTree.active = true
 	update_stat_vals()
 	randomize()
+	emit_signal("player_created")
 
 func _physics_process(delta):
 	match state:
@@ -49,17 +51,17 @@ func walk_state(delta):
 		animationTree.set("parameters/Run/blend_position", input_vector)
 		animationTree.set("parameters/Attack/blend_position", input_vector)
 		animationState.travel("Walk")
-		velocity = velocity.move_toward(input_vector * playerStats.WALK_SPEED, playerStats.ACCELERATION * delta)
+		velocity = velocity.move_toward(input_vector * PlayerStats.WALK_SPEED, PlayerStats.ACCELERATION * delta)
 	else:
 		animationState.travel("Idle")
-		velocity = velocity.move_toward(Vector2.ZERO, playerStats.FRICTION * delta)
+		velocity = velocity.move_toward(Vector2.ZERO, PlayerStats.FRICTION * delta)
 		
 	velocity = move_and_slide(velocity)
 	
 	if Input.is_action_just_pressed("attack"):
 		state = ATTACK
 	
-	if playerStats.energy_bar.CURRENT_SP > 0 && Input.is_action_pressed("run"):
+	if PlayerStats.energy_bar.CURRENT_SP > 0 && Input.is_action_pressed("run"):
 		state = RUN
 	
 func run_state(delta):
@@ -69,32 +71,32 @@ func run_state(delta):
 	input_vector = input_vector.normalized()
 	
 	if input_vector != Vector2.ZERO:
-		playerStats.energy_bar.sprint(3 * delta)
+		PlayerStats.energy_bar.sprint(3 * delta)
 		swordHitbox.knockback_vector = input_vector
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Walk/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
 		animationTree.set("parameters/Attack/blend_position", input_vector)
 		animationState.travel("Run")
-		if playerStats.energy_bar.CURRENT_SP > 0:
-			velocity = velocity.move_toward(input_vector * playerStats.RUN_SPEED, playerStats.ACCELERATION * delta)
+		if PlayerStats.energy_bar.CURRENT_SP > 0:
+			velocity = velocity.move_toward(input_vector * PlayerStats.RUN_SPEED, PlayerStats.ACCELERATION * delta)
 		else:
-			playerStats.energy_bar.stopped()
+			PlayerStats.energy_bar.stopped()
 			animationState.travel("Walk")
-			velocity = velocity.move_toward(input_vector * playerStats.WALK_SPEED, playerStats.ACCELERATION * delta)
+			velocity = velocity.move_toward(input_vector * PlayerStats.WALK_SPEED, PlayerStats.ACCELERATION * delta)
 	else:
-		playerStats.energy_bar.stopped()
+		PlayerStats.energy_bar.stopped()
 		animationState.travel("Idle")
-		velocity = velocity.move_toward(Vector2.ZERO, playerStats.FRICTION * delta)
+		velocity = velocity.move_toward(Vector2.ZERO, PlayerStats.FRICTION * delta)
 		
 	velocity = move_and_slide(velocity)
 	
 	if Input.is_action_just_pressed("attack"):
-		playerStats.energy_bar.stopped()
+		PlayerStats.energy_bar.stopped()
 		state = ATTACK
 	
 	if !Input.is_action_pressed("run"):
-		playerStats.energy_bar.stopped()
+		PlayerStats.energy_bar.stopped()
 		state = WALK
 
 func attack_state(_delta):
@@ -110,22 +112,22 @@ func _input(event):
 	
 	# cheats for debugging purposes
 	if event.is_action_pressed("add_money"):
-		playerStats.COINS += 1;
+		PlayerStats.COINS += 1;
 		update_stat_vals()
 
 func _on_PlayerHurtBox_area_entered(area):
-	playerStats.life_bar.deal_damage(area.damage)
-	playerStats.CURR_HEALTH = playerStats.life_bar.CURRENT_HEALTH
+	PlayerStats.life_bar.deal_damage(area.damage)
+	PlayerStats.CURR_HEALTH = PlayerStats.life_bar.CURRENT_HEALTH
 
 func _on_LifeBar_no_health():
 	queue_free()
 	
 func _on_EnergyBar_got_stamina():
-	playerStats.can_sprint = true
+	PlayerStats.can_sprint = true
 
 func _on_EnergyBar_no_stamina():
-	playerStats.can_sprint = false
+	PlayerStats.can_sprint = false
 
 func update_stat_vals():
-	playerStats.UI.find_node("CoinCounter").get_node("Background").get_node("Number").text = str(playerStats.COINS);
-	playerStats.UI.find_node("GemCounter").get_node("Background").get_node("Number").text = str(playerStats.GEMS);
+	PlayerStats.UI.find_node("CoinCounter").get_node("Background").get_node("Number").text = str(PlayerStats.COINS);
+	PlayerStats.UI.find_node("GemCounter").get_node("Background").get_node("Number").text = str(PlayerStats.GEMS);

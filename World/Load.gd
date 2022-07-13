@@ -15,7 +15,7 @@ func load(profile, world_name):
 	player.scale = Vector2(1, 1)
 	player.find_node("Camera2D").zoom = Vector2(0.45, 0.45)
 	# is alive
-	player.get_node("PlayerStats").IS_ALIVE = true
+	PlayerStats.IS_ALIVE = true
 	
 	# nickname
 	player.NICKNAME = profile["nickname"]["stringValue"]
@@ -33,46 +33,47 @@ func load(profile, world_name):
 	player.set_position(Vector2(pos_x, pos_y))
 	
 	# movement
-	player.get_node("PlayerStats").BASE_ACCELERATION = 1000 + 1 * int(profile["dexterity"]["integerValue"])
-	player.get_node("PlayerStats").BASE_FRICTION = 1000 + 1 * int(profile["dexterity"]["integerValue"])
-	player.get_node("PlayerStats").BASE_WALK_SPEED = 120 + 0.1 * int(profile["dexterity"]["integerValue"])
-	player.get_node("PlayerStats").BASE_RUN_SPEED = 220 + 0.1 * int(profile["dexterity"]["integerValue"])
+	PlayerStats.BASE_ACCELERATION = 1000 + 1 * int(profile["dexterity"]["integerValue"])
+	PlayerStats.BASE_FRICTION = 1000 + 1 * int(profile["dexterity"]["integerValue"])
+	PlayerStats.BASE_WALK_SPEED = 120 + 0.1 * int(profile["dexterity"]["integerValue"])
+	PlayerStats.BASE_RUN_SPEED = 220 + 0.1 * int(profile["dexterity"]["integerValue"])
 	
 	# hp
-	player.get_node("PlayerStats").BASE_MAX_HEALTH = int(profile["max_hp"]["integerValue"])
-	player.get_node("PlayerStats").CURR_HEALTH = int(profile["curr_hp"]["integerValue"])
+	PlayerStats.BASE_MAX_HEALTH = int(profile["max_hp"]["integerValue"])
+	PlayerStats.CURR_HEALTH = int(profile["curr_hp"]["integerValue"])
 	
 	# sp
-	player.get_node("PlayerStats").BASE_MAX_SP = int(profile["max_sp"]["integerValue"])
-	player.get_node("PlayerStats").CURR_SP = int(profile["curr_sp"]["integerValue"])
+	PlayerStats.BASE_MAX_SP = int(profile["max_sp"]["integerValue"])
+	PlayerStats.CURR_SP = int(profile["curr_sp"]["integerValue"])
 	
 	# damage
-	player.get_node("PlayerStats").BASE_DAMAGE = 10 + int(profile["strength"]["integerValue"])
+	PlayerStats.BASE_DAMAGE = 10 + int(profile["strength"]["integerValue"])
 	
 	# defense
-	player.get_node("PlayerStats").BASE_DEFENSE = 10 + int(profile["intelligence"]["integerValue"])
+	PlayerStats.BASE_DEFENSE = 10 + int(profile["intelligence"]["integerValue"])
 	
 	# regen
-	player.get_node("PlayerStats").BASE_REGEN = 10 + int(profile["intelligence"]["integerValue"])
+	PlayerStats.BASE_REGEN = 10 + int(profile["intelligence"]["integerValue"])
 	
 	# experience
-	player.get_node("PlayerStats").EXPERIENCE = int(profile["strength"]["integerValue"]) 
+	PlayerStats.EXPERIENCE = int(profile["strength"]["integerValue"]) 
 	+ int(profile["intelligence"]["integerValue"]) 
 	+ int(profile["dexterity"]["integerValue"])
 	
 	# level
-	player.get_node("PlayerStats").LEVEL = round(player.get_node("PlayerStats").EXPERIENCE / 10)
+	PlayerStats.LEVEL = round(PlayerStats.EXPERIENCE / 10)
 	
 	# coins
-	player.get_node("PlayerStats").COINS = int(profile["coins"]["integerValue"])
+	PlayerStats.COINS = int(profile["coins"]["integerValue"])
 	
 	# gems
-	player.get_node("PlayerStats").GEMS = int(profile["gems"]["integerValue"])
+	PlayerStats.GEMS = int(profile["gems"]["integerValue"])
 	
 	# stats
-	player.get_node("PlayerStats").STRENGTH = int(profile["strength"]["integerValue"])
-	player.get_node("PlayerStats").INTELLIGENCE = int(profile["intelligence"]["integerValue"])
-	player.get_node("PlayerStats").DEXTERITY = int(profile["dexterity"]["integerValue"])
+	PlayerStats.STRENGTH = int(profile["strength"]["integerValue"])
+	PlayerStats.INTELLIGENCE = int(profile["intelligence"]["integerValue"])
+	PlayerStats.DEXTERITY = int(profile["dexterity"]["integerValue"])
 	
 	get_tree().get_root().add_child(world)
+	PlayerStats.initialize()
 	print_debug("loaded")
