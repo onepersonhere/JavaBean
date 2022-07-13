@@ -51,10 +51,12 @@ var DEXTERITY = 0
 var MAP = "Lombok"
 
 func initialize():
-	reset();
-	update();
 	PlayerInventory.connect("active_item_updated", self, "update");
 	UI_created()
+	
+func base_stat_assigned():
+	reset()
+	update();
 	
 func UI_created():
 	UI = get_tree().get_nodes_in_group("UI")[0].get_node("Stats/GUI/HBoxContainer")

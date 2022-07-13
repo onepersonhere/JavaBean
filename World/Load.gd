@@ -74,5 +74,6 @@ func load(profile, world_name):
 	PlayerStats.INTELLIGENCE = int(profile["intelligence"]["integerValue"])
 	PlayerStats.DEXTERITY = int(profile["dexterity"]["integerValue"])
 	
+	PlayerStats.base_stat_assigned()
 	get_tree().get_root().add_child(world)
 	print_debug("loaded")
