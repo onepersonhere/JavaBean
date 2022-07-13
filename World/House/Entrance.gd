@@ -30,3 +30,14 @@ func add_player():
 # TODO: Save when going in
 func save(area):
 	Save.save();
+
+func scene_changer(pos_x, pos_y, entering_area, entering_area_name, exit_area_name):
+	print_debug("called")
+	self.pos_x = pos_x;
+	self.pos_y = pos_y;
+	self.entering_area = entering_area;
+	self.entering_area_name = entering_area_name;
+	self.exit_area_name = exit_area_name;
+	var player = get_tree().get_nodes_in_group("Player")[0];
+	
+	_on_Entrance_body_entered(player);

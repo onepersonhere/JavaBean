@@ -4,31 +4,41 @@
 			"character": "character-1656662326.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Hey I saw you are lying on the floor, are you alright?"
+			"text": "Hello"
 		},
 		{
 			"character": "character-1656661598.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Oow... I feel terrible."
-		},
-		{
-			"character": "character-1656662326.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "Do you remember anything?"
+			"text": "Hey I saw you lying on the floor, are you alright?"
 		},
 		{
 			"character": "character-1656661598.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "No... My head feels terrible"
+			"text": "..."
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Do you remember anything?"
+		},
+		{
+			"choice": "Yes (Skip Tutorial)",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
 		},
 		{
 			"character": "character-1656662326.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Ah it seems like you have amenesia, you will need some time to rest. Come let me guide you to my house."
+			"text": "Looks like you are fine, do visit me in my house sometimes!"
 		},
 		{
 			"emit_signal": "end",
@@ -39,25 +49,42 @@
 			"transition_duration": 1
 		},
 		{
-			"custom_slot": "",
-			"event_id": "dialogic_026",
-			"use_default_slot": true
+			"choice": "Oow... I feel terrible. Where am I? Who are you?",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
 		},
 		{
-			"change_scene": "",
-			"event_id": "dialogic_041"
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ah it seems like you have amnesia, you will need some time to rest. Come to my house and rest for a while."
 		},
 		{
-			"audio": "play",
-			"audio_bus": "Master",
-			"event_id": "dialogic_030",
-			"event_name": "AudioEvent",
-			"file": "",
-			"volume": 0
+			"call_node": {
+				"arguments": [
+					"168",
+					"112",
+					"res://World/House/House.tscn",
+					"House",
+					"World"
+				],
+				"method_name": "scene_changer",
+				"target_node_path": "../../../../../../Doors/Entrance"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"emit_signal": "end",
+			"event_id": "dialogic_040"
 		},
 		{
 			"change_timeline": "timeline-1656663085.json",
 			"event_id": "dialogic_020"
+		},
+		{
+			"event_id": "dialogic_013"
 		}
 	],
 	"metadata": {
