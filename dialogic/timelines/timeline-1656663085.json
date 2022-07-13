@@ -1,19 +1,6 @@
 {
 	"events": [
 		{
-			"audio_bus": "Master",
-			"background-music": "play",
-			"event_id": "dialogic_031",
-			"event_name": "BackgroundMusic",
-			"fade_length": 1,
-			"file": "",
-			"volume": 0
-		},
-		{
-			"background": "",
-			"event_id": "dialogic_021"
-		},
-		{
 			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
@@ -45,7 +32,7 @@
 			"character": "character-1656662326.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "A: You are on the island of Lombok,, along the border of the Hollandaise colonial zone. I am John Hancock, a fellow adventurer. "
+			"text": "You are on the island of Lombok,, along the border of the Hollandaise colonial zone. I am John Hancock, a fellow adventurer. "
 		},
 		{
 			"character": "character-1656662326.json",
