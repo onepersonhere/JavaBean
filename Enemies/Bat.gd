@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const DeathEffect = preload("res://Effects/BatDeathEffect.tscn")
+const DamageIndicator = preload("res://UI/DamageIndicator.tscn")
 
 signal died(battler)
 
@@ -80,6 +81,7 @@ func pick_random_state(state_list):
 
 func _on_Bat_HurtBox_area_entered(area):
 	get_node("/root/World").combat_start()
+	spawn_damage_indicator(area.damage)
 	knockback = area.knockback_vector * 150
 	stats.health -= area.damage
 
@@ -96,3 +98,9 @@ func _on_Timer_timeout():
 func _on_HitBox_area_entered(area):
 	$HitBox/CollisionShape2D.set_deferred("disabled", true)
 	timer.start(ATTACK_RATE)
+
+func spawn_damage_indicator(damage):
+	var damage_indicator = DamageIndicator.instance()
+	get_parent().add_child(damage_indicator)
+	damage_indicator.set_damage(damage)
+	damage_indicator.global_position = global_position
