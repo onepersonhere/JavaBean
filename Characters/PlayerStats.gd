@@ -24,6 +24,7 @@ var BASE_CRITIC_PERCENTAGE = 0
 var UI 
 var life_bar
 var energy_bar 
+var exp_bar
 
 var CURR_HEALTH 
 var MAX_HEALTH 
@@ -33,6 +34,9 @@ var CURR_SP
 var MAX_SP 
 var BASE_MAX_SP
 
+var CURR_EXP
+var MAX_EXP
+
 var REGEN 
 var BASE_REGEN
 
@@ -40,7 +44,7 @@ var can_sprint = true
 var IS_ALIVE = true
 
 var EXPERIENCE = 0
-var LEVEL = 0
+var LEVEL
 var COINS = 0
 var GEMS = 0
 
@@ -62,6 +66,7 @@ func UI_created():
 	UI = get_tree().get_nodes_in_group("UI")[0].get_node("Stats/GUI/HBoxContainer")
 	life_bar = UI.find_node("LifeBar")
 	energy_bar = UI.find_node("EnergyBar")
+	exp_bar = UI.find_node("ExpBar")
 
 	CURR_HEALTH = life_bar.CURRENT_HEALTH
 	MAX_HEALTH = life_bar.MAX_HEALTH
@@ -69,6 +74,11 @@ func UI_created():
 	CURR_SP = energy_bar.CURRENT_SP
 	MAX_SP = energy_bar.MAX_SP
 	REGEN = energy_bar.RECHARGE
+	
+	CURR_EXP = exp_bar.CURRENT_EXP
+	MAX_EXP = exp_bar.MAX_EXP
+	LEVEL = exp_bar.LEVEL
+	
 
 func reset():
 	ACCELERATION = BASE_ACCELERATION

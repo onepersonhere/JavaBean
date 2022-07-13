@@ -9,6 +9,8 @@ var ACCELERATION = 150
 var MAX_SPEED = 60
 var FRICTION = 150
 var ATTACK_RATE = 1
+var MIN_EXP = 4
+var MAX_EXP = 8
 
 enum {
 	IDLE,
@@ -91,6 +93,7 @@ func _on_Stats_no_health():
 	get_parent().add_child(batDeathEffect)
 	batDeathEffect.global_position = global_position
 	emit_signal("died", self)
+	PlayerStats.exp_bar.gain_exp(rand_range(MIN_EXP, MAX_EXP))
 
 func _on_Timer_timeout():
 	$HitBox/CollisionShape2D.set_disabled(false)
