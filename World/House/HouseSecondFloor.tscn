@@ -768,6 +768,29 @@
 32/shape_one_way_margin = 0.0
 32/shapes = [  ]
 32/z_index = 0
+33/name = "[Base]BaseChip_pipo.png 33"
+33/texture = ExtResource( 2 )
+33/tex_offset = Vector2( 0, 0 )
+33/modulate = Color( 1, 1, 1, 1 )
+33/region = Rect2( 0, 3392, 32, 32 )
+33/tile_mode = 1
+33/autotile/bitmask_mode = 0
+33/autotile/bitmask_flags = [  ]
+33/autotile/icon_coordinate = Vector2( 0, 0 )
+33/autotile/tile_size = Vector2( 32, 32 )
+33/autotile/spacing = 0
+33/autotile/occluder_map = [  ]
+33/autotile/navpoly_map = [  ]
+33/autotile/priority_map = [  ]
+33/autotile/z_index_map = [  ]
+33/occluder_offset = Vector2( 0, 0 )
+33/navigation_offset = Vector2( 0, 0 )
+33/shape_offset = Vector2( 0, 0 )
+33/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+33/shape_one_way = false
+33/shape_one_way_margin = 0.0
+33/shapes = [  ]
+33/z_index = 0
 
 [sub_resource type="TileSet" id=2]
 0/name = "[Base]BaseChip_pipo.png 0"
@@ -1055,7 +1078,7 @@ tile_data = PoolIntArray( -65519, 1, 0, -65518, 0, 0, 8, 6, 0, 17, 4, 0, 18, 2, 
 tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 5, 27, 0, 6, 27, 0, 65537, 0, 0, 65538, 1, 0, 65539, 2, 0, 65541, 26, 0, 65542, 26, 0, 131073, 3, 0, 131074, 4, 0, 131075, 5, 0, 196609, 8, 0, 196610, 7, 0, 196611, 6, 0, 327681, 25, 0, 327682, 24, 0, 327683, 31, 0, 327686, 31, 0, 327687, 25, 0, 327688, 24, 0, 393217, 22, 0, 393218, 23, 0, 393219, 32, 0, 393222, 32, 0, 393223, 22, 0, 393224, 23, 0, 524289, 20, 0, 524292, 21, 0, 524293, 21, 0, 524296, 18, 0, 589825, 19, 0, 589827, 9, 0, 589828, 10, 0, 589829, 10, 0, 589830, 11, 0, 589832, 18, 0, 655365, 29, 0, 720901, 30, 0 )
+tile_data = PoolIntArray( 5, 27, 0, 6, 27, 0, 65537, 0, 0, 65538, 1, 0, 65539, 2, 0, 65541, 26, 0, 65542, 26, 0, 131073, 3, 0, 131074, 4, 0, 131075, 5, 0, 131080, 33, 0, 196609, 8, 0, 196610, 7, 0, 196611, 6, 0, 327681, 25, 0, 327682, 24, 0, 327683, 31, 0, 327686, 31, 0, 327687, 25, 0, 327688, 24, 0, 393217, 22, 0, 393218, 23, 0, 393219, 32, 0, 393222, 32, 0, 393223, 22, 0, 393224, 23, 0, 524289, 20, 0, 524292, 21, 0, 524293, 21, 0, 524296, 18, 0, 589825, 19, 0, 589827, 9, 0, 589828, 10, 0, 589829, 10, 0, 589830, 11, 0, 589832, 18, 0, 655365, 29, 0, 720901, 30, 0 )
 
 [node name="OnTable" type="TileMap" parent="Background"]
 tile_set = SubResource( 2 )
@@ -1064,10 +1087,10 @@ format = 1
 tile_data = PoolIntArray( -65534, 9, 0, -65533, 7, 0, -65529, 5, 0, 2, 10, 0, 3, 8, 0, 7, 6, 0, 131074, 4, 0, 589827, 3, 0, 589828, 2, 0, 589829, 1, 0, 589830, 0, 0 )
 
 [node name="Invisible Collision Tile" parent="Background" instance=ExtResource( 7 )]
-tile_data = PoolIntArray( 65541, 0, 0, 65542, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 524296, 0, 0, 589825, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589832, 0, 0 )
+tile_data = PoolIntArray( 65541, 0, 0, 65542, 0, 0, 131080, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 524296, 0, 0, 589825, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589832, 0, 0 )
 
 [node name="Entrance" parent="." instance=ExtResource( 6 )]
-position = Vector2( 272, 62 )
+position = Vector2( 276, 68 )
 pos_x = 592
 pos_y = 60
 entering_area = "res://World/House/House.tscn"
