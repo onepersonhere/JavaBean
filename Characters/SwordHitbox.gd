@@ -8,4 +8,3 @@ func _ready():
 
 func update():
 	damage = PlayerStats.DAMAGE
-	print_debug(damage)

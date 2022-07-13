@@ -92,7 +92,6 @@ func update():
 	else:
 		reset();
 		
-	print_debug(str(DAMAGE) + " " + str(BASE_DAMAGE))
 	emit_signal("update")
 
 func set_stats_weapon(item):
