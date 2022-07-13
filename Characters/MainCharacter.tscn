@@ -1041,7 +1041,7 @@ height = 0.0
 height = 26.0
 
 [sub_resource type="CapsuleShape2D" id=56]
-radius = 6.0
+radius = 5.0
 height = 10.0
 
 [node name="Player" type="KinematicBody2D" groups=["Persist", "Player"]]
