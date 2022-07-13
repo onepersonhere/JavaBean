@@ -1072,7 +1072,7 @@ tile_data = PoolIntArray( -65536, 0, 0, -65535, 2, 0, -65534, 2, 0, -65533, 2, 0
 tile_set = ExtResource( 5 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( -65519, 1, 0, -65518, 0, 0, 8, 6, 0, 17, 4, 0, 18, 2, 0, 65544, 7, 0, 65553, 4, 0, 65554, 2, 0, 131089, 5, 0, 131090, 3, 0 )
+tile_data = PoolIntArray( 8, 6, 0, 65544, 7, 0 )
 
 [node name="Deco" type="TileMap" parent="Background"]
 tile_set = SubResource( 1 )

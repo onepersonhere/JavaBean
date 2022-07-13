@@ -111,6 +111,15 @@ func _input(event):
 	if event.is_action_pressed("add_money"):
 		PlayerStats.COINS += 1;
 		update_stat_vals()
+		
+	if event.is_action_pressed("use"):
+		if InventoryManager.get_active_item_name() == "Slime Potion":
+			var healValue = InventoryManager.get_active_item_stats()["AddHealth"]
+			var hotbar = get_tree().get_nodes_in_group("UI")[0].get_node("CanvasLayer/UserInterface/Hotbar")
+			var slot = hotbar.slots[PlayerInventory.active_item_slot_index]
+			PlayerInventory.add_item_quantity(slot, -1)
+			PlayerStats.life_bar.heal(healValue)
+			hotbar.initialise_hotbar()
 
 func _on_PlayerHurtBox_area_entered(area):
 	PlayerStats.life_bar.deal_damage(area.damage)

@@ -52,3 +52,8 @@ func get_active_item_stats():
 		return stats;
 	else: return null;
 	
+func get_active_item_name():
+	if PlayerInventory.active_item_slot_index < PlayerInventory.hotbar.size():
+		var item_name = PlayerInventory.hotbar[PlayerInventory.active_item_slot_index][0]
+		return item_name;
+	else: return null;

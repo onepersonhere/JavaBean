@@ -308,9 +308,6 @@ entering_area = "res://World/World.tscn"
 entering_area_name = "World/YSort"
 exit_area_name = "House"
 
-[node name="CollisionShape2D" parent="Entrance" index="0"]
-position = Vector2( 0, 37 )
-
 [node name="Entrance2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 528, 336 )
 pos_x = 2776
@@ -318,9 +315,6 @@ pos_y = 912
 entering_area = "res://World/World.tscn"
 entering_area_name = "World/YSort"
 exit_area_name = "House"
-
-[node name="CollisionShape2D" parent="Entrance2" index="0"]
-position = Vector2( 0, 38 )
 
 [node name="Entrance3" parent="." instance=ExtResource( 9 )]
 position = Vector2( 593, 25 )
