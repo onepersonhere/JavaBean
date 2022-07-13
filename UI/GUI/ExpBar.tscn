@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Shaders/colour_manipulator.tres" type="Shader" id=1]
-[ext_resource path="res://UI/GUI/Bar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/GUI/EnergyBar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/GUI/ExpBar.gd" type="Script" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
-shader_param/brightness = 0.0
-shader_param/contrast = 1.0
-shader_param/saturation = 1.0
-shader_param/redVal = 1.0
-shader_param/greenVal = 0.0
+shader_param/brightness = 0.38
+shader_param/contrast = 3.0
+shader_param/saturation = 3.0
+shader_param/redVal = 0.65
+shader_param/greenVal = 1.0
 shader_param/blueVal = 1.0
 shader_param/tint_color = Color( 1, 1, 1, 1 )
 shader_param/tint_effect_factor = 0.0
@@ -20,6 +20,9 @@ script = ExtResource( 3 )
 
 [node name="Title" parent="Count/Background" index="0"]
 text = "Lv"
+
+[node name="Number" parent="Count/Background" index="1"]
+text = "1"
 
 [node name="TextureProgress" parent="." index="1"]
 material = SubResource( 1 )
