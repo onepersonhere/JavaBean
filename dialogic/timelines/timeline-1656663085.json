@@ -7,8 +7,10 @@
 			"text": "After one hour..."
 		},
 		{
-			"background": "",
-			"event_id": "dialogic_021"
+			"event_id": "dialogic_023",
+			"hide_dialogbox": true,
+			"wait_seconds": 1,
+			"waiting_skippable": true
 		},
 		{
 			"character": "character-1656662326.json",
