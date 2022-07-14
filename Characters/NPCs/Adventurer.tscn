@@ -111,7 +111,6 @@ position = Vector2( 0, -27 )
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 18 )
-frame = 0
 
 [node name="TutorialAction" parent="Actions" index="0" instance=ExtResource( 2 )]
 

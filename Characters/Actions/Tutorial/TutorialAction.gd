@@ -1,15 +1,19 @@
 extends DialogueAction
 
-var dialogue
+var dialog_scene = "Tutorial"
+
 func _ready():
 	pass
 
 func interact():
+	if not GlobalVar.new_game:
+		dialog_scene = get_node("/root/QuestSystem/Active/TutorialQuest/Objectives/TutorialObjective").get_stage()
+		
 	if active && not has_spoken:
 		get_tree().paused = true
 		active = false
 		
-		dialogue = Dialogic.start("Tutorial")
+		var dialogue = Dialogic.start(dialog_scene)
 		dialogue.connect("dialogic_signal", self, "dialog_listener")
 		
 		add_child(dialogue)
@@ -17,25 +21,23 @@ func interact():
 
 func dialog_listener(string):
 	match string:
-		"Adventurer's house":
-			get_child(0).queue_free()
-			dialogue = Dialogic.start("Adventurer's House")
-			dialogue.connect("dialogic_signal", self, "dialog_listener")
-			get_child(0).layer = 3
-			
 		"Combat Tutorial":
-			get_child(0).queue_free()
-			dialogue = Dialogic.start("Combat Tutorial")
-			dialogue.connect("dialogic_signal", self, "dialog_listener")
-			get_child(0).layer = 3
-			
 			combat_tutorial();
-			get_tree().paused = false
 			
 		"end":
+			get_tree().paused = false
+			active = false
+			emit_signal("finished")
+		
+		"skipped":
+			var quest = QuestSystem.get_node("Available/TutorialQuest")
+			QuestSystem.skip_quest(quest)
 			get_tree().paused = false
 			active = false
 			emit_signal("finished")
 
 func combat_tutorial():
 	pass
+
+func change_dialog(new_scene):
+	dialog_scene = new_scene

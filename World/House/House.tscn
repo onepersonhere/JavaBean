@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://World/House/floor.tres" type="TileSet" id=1]
 [ext_resource path="res://World/House/wall.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://World/House/stairs.tres" type="TileSet" id=4]
 [ext_resource path="res://World/House/deco.tres" type="TileSet" id=5]
 [ext_resource path="res://Assets/Pipoya RPG Tileset 32x32/[Base]BaseChip_pipo.png" type="Texture" id=6]
+[ext_resource path="res://World/House/House.gd" type="Script" id=7]
 [ext_resource path="res://World/Invisible Collision Tile.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/House/Entrance.tscn" type="PackedScene" id=9]
 
@@ -252,6 +253,7 @@
 14/z_index = 0
 
 [node name="House" type="Node2D" groups=["map"]]
+script = ExtResource( 7 )
 
 [node name="Background" type="Node2D" parent="."]
 

@@ -1,11 +1,10 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://World/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/Bush.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Tree.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/World.gd" type="Script" id=4]
 [ext_resource path="res://World/Chest.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Characters/NPCs/Adventurer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=7]
 [ext_resource path="res://World/Bush_Dead.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/House/Entrance.tscn" type="PackedScene" id=10]
@@ -1182,6 +1181,7 @@ position = Vector2( 2218, 1052 )
 [node name="Doors" type="YSort" parent="YSort"]
 
 [node name="Entrance3" parent="YSort/Doors" instance=ExtResource( 10 )]
+pause_mode = 2
 position = Vector2( 1968, 360 )
 pos_x = 297
 pos_y = 312
@@ -1190,6 +1190,7 @@ entering_area_name = "FarmHouse"
 exit_area_name = "World"
 
 [node name="Entrance" parent="YSort/Doors" instance=ExtResource( 10 )]
+pause_mode = 2
 position = Vector2( 2512, 880 )
 pos_x = 112
 pos_y = 304
@@ -1198,6 +1199,7 @@ entering_area_name = "House"
 exit_area_name = "World"
 
 [node name="Entrance2" parent="YSort/Doors" instance=ExtResource( 10 )]
+pause_mode = 2
 position = Vector2( 2768, 880 )
 pos_x = 528
 pos_y = 304
@@ -1206,9 +1208,6 @@ entering_area_name = "House"
 exit_area_name = "World"
 
 [node name="NPC" type="YSort" parent="YSort"]
-
-[node name="Adventurer" parent="YSort/NPC" instance=ExtResource( 6 )]
-position = Vector2( 1816, 1000 )
 
 [node name="Merchant" parent="YSort/NPC" instance=ExtResource( 14 )]
 position = Vector2( 1648, 880 )

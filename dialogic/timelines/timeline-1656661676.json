@@ -37,6 +37,47 @@
 			"question": "Do you remember anything?"
 		},
 		{
+			"choice": "Oow... I feel terrible. Where am I? Who are you?",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ah it seems like you have amnesia, you will need some time to rest. Come to my house and rest for a while."
+		},
+		{
+			"emit_signal": "end",
+			"event_id": "dialogic_040"
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"Adventurer's House"
+				],
+				"method_name": "set_stage",
+				"target_node_path": "QuestSystem/Active/TutorialQuest/Objectives/TutorialObjective"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"168",
+					"112",
+					"res://World/House/House.tscn",
+					"House",
+					"World"
+				],
+				"method_name": "scene_changer",
+				"target_node_path": "../../../../../../Doors/Entrance"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
 			"choice": "Yes (Skip Tutorial)",
 			"condition": "",
 			"definition": "",
@@ -59,7 +100,7 @@
 			"text": "Looks like you are fine, do visit me in my house sometimes!"
 		},
 		{
-			"emit_signal": "end",
+			"emit_signal": "skipped",
 			"event_id": "dialogic_040"
 		},
 		{
@@ -67,38 +108,27 @@
 			"transition_duration": 1
 		},
 		{
-			"choice": "Oow... I feel terrible. Where am I? Who are you?",
-			"condition": "",
-			"definition": "",
-			"event_id": "dialogic_011",
-			"value": ""
-		},
-		{
-			"character": "character-1656662326.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "Ah it seems like you have amnesia, you will need some time to rest. Come to my house and rest for a while."
+			"event_id": "dialogic_013"
 		},
 		{
 			"call_node": {
 				"arguments": [
-					"168",
-					"112",
-					"res://World/House/House.tscn",
-					"House",
-					"World"
+
 				],
-				"method_name": "scene_changer",
-				"target_node_path": "../../../../../../Doors/Entrance"
+				"method_name": "",
+				"target_node_path": ""
 			},
 			"event_id": "dialogic_042"
 		},
 		{
-			"emit_signal": "end",
-			"event_id": "dialogic_040"
-		},
-		{
-			"event_id": "dialogic_013"
+			"call_node": {
+				"arguments": [
+
+				],
+				"method_name": "",
+				"target_node_path": ""
+			},
+			"event_id": "dialogic_042"
 		}
 	],
 	"metadata": {

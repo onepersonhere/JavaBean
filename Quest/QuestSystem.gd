@@ -37,7 +37,7 @@ func deliver(quest: Quest):
 	# used by other scripts to deliver the quest
 	quest._deliver()
 	var rewards = quest.get_rewards()
-	# TODO: Tie in with curr inv system
+	# Tie in with curr inv system
 	for item in rewards['items']:
 		PlayerInventory.add_item(item.item_name, item.amount)
 	
@@ -57,3 +57,8 @@ func find_active(reference: Quest) -> Quest:
 	
 func add_available_quest(reference: Quest):
 	available_quests.add_child(reference)
+	
+func skip_quest(reference: Quest):
+	start(reference)
+	_on_Quest_completed(reference)
+	deliver(reference)
