@@ -50,5 +50,6 @@ func change_dialog(new_scene):
 
 func skipped():
 	var parent = get_parent().get_parent()
+	parent.get_node("QuestBubble").hide()
 	parent.get_node("Press E").hide()
 	active = false
