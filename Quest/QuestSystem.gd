@@ -32,14 +32,23 @@ func _on_Quest_completed(quest):
 	print_debug("quest completed")
 	active_quests.remove_child(quest)
 	completed_quests.add_child(quest)
+	if quest.reward_on_delivery:
+		deliver(quest)
 	
 func deliver(quest: Quest):
 	# used by other scripts to deliver the quest
 	quest._deliver()
 	var rewards = quest.get_rewards()
-	# TODO: Tie in with curr inv system
+	# Tie in with curr inv system
 	for item in rewards['items']:
-		PlayerInventory.add_item(item.item_name, item.amount)
+		if item.item_name == "coins":
+			PlayerStats.COINS += item.amount;
+			player.update_stat_vals()
+		else:
+			PlayerInventory.add_item(item.item_name, item.amount)
+	
+	var exp_gain = rewards['experience'];
+	PlayerStats.exp_bar.gain_exp(exp_gain);
 	
 	assert (quest.get_parent() == completed_quests)
 	completed_quests.remove_child(quest)
@@ -57,3 +66,20 @@ func find_active(reference: Quest) -> Quest:
 	
 func add_available_quest(reference: Quest):
 	available_quests.add_child(reference)
+	
+func skip_quest(reference: Quest):
+	start(reference)
+	_on_Quest_completed(reference)
+	deliver(reference)
+
+func is_completed(reference: Quest):
+	return completed_quests.find(reference) != null;
+
+func is_delivered(reference: Quest):
+	return delivered_quests.find(reference) != null;
+
+func find_completed(reference: Quest) -> Quest:
+	return completed_quests.find(reference)
+
+func find_delivered(reference: Quest) -> Quest:
+	return delivered_quests.find(reference)

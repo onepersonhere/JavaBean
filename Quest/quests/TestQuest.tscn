@@ -6,9 +6,9 @@
 [ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=4]
 
 [node name="TestQuest" instance=ExtResource( 1 )]
-title = "Test Quest"
-description = "Lorem Ipsum"
-_reward_experience = 5
+title = "Bat Eradication"
+description = "Get rid of the bats!"
+_reward_experience = 10
 
 [node name="QuestItemReward" parent="ItemRewards" index="0" instance=ExtResource( 3 )]
 item_name = "Slime Potion"

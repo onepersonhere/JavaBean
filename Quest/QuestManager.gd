@@ -35,7 +35,7 @@ func create_slay_quest(name, description, objective, rewards):
 			quest_scene.get_node("ItemRewards").add_child(reward_scene)
 	
 	quest_scene.get_node("Objectives").add_child(objective_scene)
-	
+	quest_scene.reward_on_delivery = true
 	return quest_scene
 
 func create_interact_quest(name, description, objective, rewards):

@@ -1,6 +1,157 @@
 {
 	"events": [
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Your training starts now!"
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "To move around press [color=aqua][W][A][S][D][/color]"
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "To swing your sword, right click"
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "To open inventory, press [color=aqua][Z][/color]"
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "To restore health, drink the \"Slime Potion\" by pressing [color=aqua][F][/color]"
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Lets see if you can recall some of the tactics I taught you"
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_010",
+			"options": [
 
+			],
+			"portrait": "",
+			"question": "What do you do when you are hurt?"
+		},
+		{
+			"choice": "Drink Slime Potion by pressing [F]",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Correct, looks like you are well-verse in the art of adventuring!"
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It seems that you’ve mastered the basic combat skills very quickly."
+		},
+		{
+			"choice": "Do nothing",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Well it seems like you need more practice..."
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Now if you may recall, there is a chest at the village square. "
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Its a donation from the villagers for the protection of this village."
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Press [color=aqua][E][/color] to interact with the chest and press [color=aqua][E][/color] again to pick up the items. You may press [color=aqua][Z][/color] to check the items if you want. "
+		},
+		{
+			"character": "character-1656661598.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "How do I obtain more equipments for my adventures?"
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "There is a shop over that corner, you can buy from Vincent, the merchant there."
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Vincent is a good friend of mine, and he will help you whenever you need help. "
+		},
+		{
+			"character": "character-1656661598.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ok, thanks the for help."
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Grand Master Yusuf wants to meet you now. Go to his house, I think he has something important to tell you."
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "His house is near the farm, you can spot it easily."
+		},
+		{
+			"emit_signal": "end",
+			"event_id": "dialogic_040"
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"completed"
+				],
+				"method_name": "set_stage",
+				"target_node_path": "QuestSystem/Active/TutorialQuest/Objectives/TutorialObjective"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		}
 	],
 	"metadata": {
 		"dialogic-version": "1.4.2 - Dev",

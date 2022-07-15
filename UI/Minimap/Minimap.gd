@@ -9,11 +9,25 @@ const offset_x = -1100
 const offset_y = 100
 
 func _ready():
-	var player = get_node("/root/World/YSort/Player")
+	# set_map()
+	# set_offsets()
+	set_player_pin()
+	set_quest_pins()
+
+func set_map():
+	var _map = get_tree().get_nodes_in_group("Map")[0]
+	map = _map
+
+func set_offsets():
+	pass
+
+func set_player_pin():
+	var player = get_tree().get_nodes_in_group("Player")[0]
 	var pos_x = player.position.x
 	var pos_y = player.position.y 
 	player_pin.set_position(Vector2(pos_x + offset_x, pos_y + offset_y))
-	
+
+func set_quest_pins():
 	for quest_npc in get_tree().get_nodes_in_group("quest"):
 		if quest_npc.quest_bubble.visible:
 			var bubble_pic = quest_npc.quest_bubble.animated_sprite.animation
@@ -22,8 +36,6 @@ func _ready():
 			quest_pin.set_position(Vector2(quest_npc.position.x + offset_x, quest_npc.position.y + offset_y))
 			
 			viewport.get_node("Pins").add_child(quest_pin)
-		
-	
 
 func _input(event):
 	if event.is_action_pressed("esc"):
@@ -41,7 +53,7 @@ func _input(event):
 			camera.zoom.x = camera.zoom.x / 0.9
 			camera.zoom.y = camera.zoom.y / 0.9
 		
-const move_speed = 20
+const move_speed = 1
 
 func _process(delta):
 	if Input.is_action_pressed("move_left"):

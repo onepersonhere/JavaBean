@@ -11,8 +11,12 @@ func load_shop_stuff():
 	var items: Dictionary = JsonData.item_data;
 	if not loaded:
 		for item in items:
+			if items[item].has("Price(ETH)"):
+				continue;
+			if item == "Red Bean":
+				continue;
 			if (rng.randi_range(1, 10) < 5):
-				add_item_to_shop(item, rng.randi_range(1, 99), str(rng.randi_range(1, 100)));
+				add_item_to_shop(item, rng.randi_range(1, 99), str(rng.randi_range(1, 99)));
 		loaded = true
 	else:
 		for child in shop_stuff.get_children():

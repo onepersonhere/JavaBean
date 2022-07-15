@@ -1049,7 +1049,7 @@
 
 [node name="HouseSecondFloor" type="Node2D"]
 
-[node name="Background" type="Node2D" parent="."]
+[node name="Background" type="Node2D" parent="." groups=["Map"]]
 
 [node name="Floor" type="TileMap" parent="Background"]
 tile_set = ExtResource( 1 )

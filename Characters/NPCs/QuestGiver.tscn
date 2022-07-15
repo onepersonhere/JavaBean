@@ -7,9 +7,9 @@
 [node name="QuestGiver" groups=["quest"] instance=ExtResource( 2 )]
 
 [node name="AnimatedSprite" parent="." index="1"]
-frame = 2
+frame = 3
 
 [node name="DialogueAction" parent="Actions" index="0" instance=ExtResource( 3 )]
-timeline = "Tutorial"
+timeline = "Bats"
 
 [node name="GiveQuestAction" parent="Actions" index="1" instance=ExtResource( 1 )]

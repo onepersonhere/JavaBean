@@ -1,1 +1,66 @@
-{"Albion Sword":{"Attack Style":"Melee","Critic":5,"Damage":7,"Defense":6,"ItemCategory":"Sword","Price(ETH)":"0.0001","Range":"Mid-Range","Rarity":"Rare","Speed":5,"StackSize":"1","description":"A sword that is forged in the dark fiery hellscape."},"Blue Jeans":{"Description":"Blue Jeans!!","ItemCategory":"Pants","StackSize":1},"Brown Boots":{"Description":"Some dirty boots","ItemCategory":"Shoes","StackSize":1},"Brown Shirt":{"Description":"A Brown Shirt!!","ItemCategory":"Shirt","StackSize":1},"Iron Sword":{"Description":"Quite a rusty sword, but should be able to get teh job done.","Damage":3,"ItemCategory":"Sword","Speed":0.75,"StackSize":1},"Medieval Iron Sword":{"Attack Style":"Melee","Critic":3,"Damage":7,"Defense":6,"Price (ETH)":"0.01","Rarity":"Rare","Speed":3,"Sword":"Mid Range","description":"A very rustic sword"},"Slime Potion":{"AddEnergy":32,"AddHealth":5,"Description":"It smells like medicine.","ItemCategory":"Consumable","StackSize":99},"Tree Branch":{"Description":"A sturdy tree branch that can be used for crafting.","ItemCategory":"Resource","StackSize":99}}
+{
+    "Albion Sword": {
+        "Attack Style": "Melee",
+        "Critic": 5,
+        "Damage": 7,
+        "Defense": 6,
+        "ItemCategory": "Sword",
+        "Price(ETH)": "0.0001",
+        "Range": "Mid-Range",
+        "Rarity": "Rare",
+        "Speed": 5,
+        "StackSize": "1",
+        "description": "A sword that is forged in the dark fiery hellscape."
+    },
+    "Blue Jeans": {
+        "Description": "Blue Jeans!!",
+        "ItemCategory": "Pants",
+        "StackSize": 1
+    },
+    "Brown Boots": {
+        "Description": "Some dirty boots",
+        "ItemCategory": "Shoes",
+        "StackSize": 1
+    },
+    "Brown Shirt": {
+        "Description": "A Brown Shirt!!",
+        "ItemCategory": "Shirt",
+        "StackSize": 1
+    },
+    "Iron Sword": {
+        "Description": "Quite a rusty sword, but should be able to get teh job done.",
+        "Damage": 3,
+        "ItemCategory": "Sword",
+        "Speed": 0.75,
+        "StackSize": 1
+    },
+    "Medieval Iron Sword": {
+        "Attack Style": "Melee",
+        "Critic": 3,
+        "Damage": 7,
+        "Defense": 6,
+        "Price (ETH)": "0.01",
+        "Rarity": "Rare",
+        "Speed": 3,
+        "Sword": "Mid Range",
+        "description": "A very rustic sword",
+	"StackSize": 1
+    },
+    "Slime Potion": {
+        "AddEnergy": 32,
+        "AddHealth": 5,
+        "Description": "It smells like medicine.",
+        "ItemCategory": "Consumable",
+        "StackSize": 99
+    },
+    "Tree Branch": {
+        "Description": "A sturdy tree branch that can be used for crafting.",
+        "ItemCategory": "Resource",
+        "StackSize": 99
+    },
+    "Red Bean": {
+        "Description": "The legendary red bean",
+        "ItemCategory": "Resource",
+        "StackSize": 1
+    }
+}
