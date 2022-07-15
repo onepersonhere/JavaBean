@@ -3,7 +3,7 @@
 [ext_resource path="res://World/Daily Quests/NoticeBoardArea.gd" type="Script" id=1]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 41.0
+radius = 27.9999
 height = 44.0
 
 [node name="NoticeBoard" type="Area2D"]
