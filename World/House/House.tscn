@@ -255,7 +255,7 @@
 [node name="House" type="Node2D" groups=["map"]]
 script = ExtResource( 7 )
 
-[node name="Background" type="Node2D" parent="."]
+[node name="Background" type="Node2D" parent="." groups=["Map"]]
 
 [node name="Floor" type="TileMap" parent="Background"]
 tile_set = ExtResource( 1 )

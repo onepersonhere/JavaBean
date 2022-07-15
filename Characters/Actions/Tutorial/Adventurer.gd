@@ -1,5 +1,6 @@
 extends "res://Characters/NPCs/NPC.gd"
 
+export var respawn_on_interaction = true
 func _ready():
 	# Copied from parent, no super in gdscript
 	var quest_actions: Array = []
@@ -27,5 +28,10 @@ func _input(event):
 			yield(action, "finished")
 		emit_signal("interaction_finished", self)
 		if vanish_on_interaction:
+			queue_free()
+		if respawn_on_interaction:
+			var new_instance = load("res://Characters/NPCs/Adventurer.tscn").instance()
+			new_instance.set_position(get_position())  
+			get_parent().add_child(new_instance)
 			queue_free()
 

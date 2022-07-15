@@ -21,9 +21,6 @@ func interact():
 
 func dialog_listener(string):
 	match string:
-		"Combat Tutorial":
-			combat_tutorial();
-			
 		"end":
 			get_tree().paused = false
 			active = false
@@ -35,9 +32,6 @@ func dialog_listener(string):
 			get_tree().paused = false
 			active = false
 			emit_signal("finished")
-
-func combat_tutorial():
-	pass
 
 func change_dialog(new_scene):
 	dialog_scene = new_scene

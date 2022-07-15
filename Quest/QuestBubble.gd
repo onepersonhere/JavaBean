@@ -23,9 +23,11 @@ func initialize(quest_actions: Array):
 			action_complete = action
 
 	if action_give:
-		quest.connect("started", self, "_on_Quest_started")
+		if not quest.is_connected("started", self, "_on_Quest_started"):
+			quest.connect("started", self, "_on_Quest_started")
 		if not action_complete:
-			quest.connect("completed", self, "hide")
+			if not quest.is_connected("completed", self, "hide"):
+				quest.connect("completed", self, "hide")
 		show()
 		
 	if action_complete:

@@ -109,26 +109,6 @@
 		},
 		{
 			"event_id": "dialogic_013"
-		},
-		{
-			"call_node": {
-				"arguments": [
-
-				],
-				"method_name": "",
-				"target_node_path": ""
-			},
-			"event_id": "dialogic_042"
-		},
-		{
-			"call_node": {
-				"arguments": [
-
-				],
-				"method_name": "",
-				"target_node_path": ""
-			},
-			"event_id": "dialogic_042"
 		}
 	],
 	"metadata": {
