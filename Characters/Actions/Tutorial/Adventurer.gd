@@ -1,6 +1,6 @@
 extends "res://Characters/NPCs/NPC.gd"
 
-export var respawn_on_interaction = true
+export var respawn_on_interaction = false
 func _ready():
 	# Copied from parent, no super in gdscript
 	var quest_actions: Array = []

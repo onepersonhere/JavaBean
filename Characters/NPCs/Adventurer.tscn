@@ -143,7 +143,7 @@ position = Vector2( 0, -27 )
 
 [node name="AnimatedSprite" parent="." index="2"]
 frames = SubResource( 18 )
-frame = 3
+frame = 4
 
 [node name="TutorialAction" parent="Actions" index="0" instance=ExtResource( 2 )]
 

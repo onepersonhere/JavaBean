@@ -3,11 +3,22 @@ extends DialogueAction
 var dialog_scene = "Tutorial"
 
 func _ready():
-	pass
+	if not GlobalVar.new_game:
+		var dialog = get_node_or_null("/root/QuestSystem/Active/TutorialQuest/Objectives/TutorialObjective")
+		if dialog == null:
+			dialog = get_node_or_null("/root/QuestSystem/Delivered/TutorialQuest/Objectives/TutorialObjective")
+		dialog_scene = dialog.get_stage()
+		if dialog_scene == "skipped" || dialog_scene == "completed":
+			skipped()
 
 func interact():
 	if not GlobalVar.new_game:
-		dialog_scene = get_node("/root/QuestSystem/Active/TutorialQuest/Objectives/TutorialObjective").get_stage()
+		var dialog = get_node_or_null("/root/QuestSystem/Active/TutorialQuest/Objectives/TutorialObjective")
+		if dialog == null:
+			dialog = get_node_or_null("/root/QuestSystem/Delivered/TutorialQuest/Objectives/TutorialObjective")
+		dialog_scene = dialog.get_stage()
+		if dialog_scene == "skipped" || dialog_scene == "completed":
+			skipped()
 		
 	if active && not has_spoken:
 		get_tree().paused = true
@@ -32,6 +43,12 @@ func dialog_listener(string):
 			get_tree().paused = false
 			active = false
 			emit_signal("finished")
+			get_parent().get_parent().queue_free()
 
 func change_dialog(new_scene):
 	dialog_scene = new_scene
+
+func skipped():
+	var parent = get_parent().get_parent()
+	parent.get_node("Press E").hide()
+	active = false

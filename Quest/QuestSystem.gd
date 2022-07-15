@@ -62,3 +62,15 @@ func skip_quest(reference: Quest):
 	start(reference)
 	_on_Quest_completed(reference)
 	deliver(reference)
+
+func is_completed(reference: Quest):
+	return completed_quests.find(reference) != null;
+
+func is_delivered(reference: Quest):
+	return delivered_quests.find(reference) != null;
+
+func find_completed(reference: Quest) -> Quest:
+	return completed_quests.find(reference)
+
+func find_delivered(reference: Quest) -> Quest:
+	return delivered_quests.find(reference)
