@@ -24,6 +24,9 @@ func heal(value):
 		CURRENT_HEALTH += value
 	$TextureProgress.value = CURRENT_HEALTH
 	$Count/Background/Number.text = str(int(CURRENT_HEALTH))
+	
+func is_full_health():
+	return CURRENT_HEALTH == MAX_HEALTH
 
 signal no_health
 

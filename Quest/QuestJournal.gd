@@ -41,7 +41,7 @@ func _on_quest_started(quest: Quest) -> void:
 			objective_completed if objective.completed else objective_uncompleted,
 			objective
 		)
-		
+	
 	emit_signal("updated")
 
 
@@ -58,7 +58,6 @@ func _add_tree_item(
 	item.set_text(0, text)
 	item.set_selectable(0, selectable)
 	item.collapsed = collapsed
-	
 	if metadata != null:
 		item.set_metadata(0, metadata)
 	return item

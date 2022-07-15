@@ -7,23 +7,19 @@
 [ext_resource path="res://Inventory/Hotbar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Quest/Quest GUI.tscn" type="PackedScene" id=6]
 
-[node name="UI" type="Control"]
-margin_top = 2.0
-margin_right = 1024.0
-margin_bottom = 600.0
+[node name="UI" type="CanvasLayer" groups=["UI"]]
+layer = 2
 
-[node name="GUI" parent="." instance=ExtResource( 1 )]
-margin_left = -640.0
-margin_top = -362.0
-margin_right = 640.0
-margin_bottom = -225.0
+[node name="Stats" type="CanvasLayer" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
+[node name="GUI" parent="Stats" instance=ExtResource( 1 )]
+margin_bottom = 137.0
 
 [node name="Quest GUI" parent="." instance=ExtResource( 6 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2( 2, 2 )
+transform = Transform2D( 2, 0, 0, 2, 0, 0 )
 
 [node name="UserInterface" type="Node2D" parent="CanvasLayer"]
 pause_mode = 2
@@ -48,6 +44,7 @@ position = Vector2( 9.6, 11.2 )
 z_index = 1
 
 [node name="Hotbar" parent="CanvasLayer/UserInterface" instance=ExtResource( 5 )]
+pause_mode = 2
 show_behind_parent = true
 position = Vector2( 62.4, 132.8 )
 scale = Vector2( 0.8, 0.8 )

@@ -1,0 +1,112 @@
+{
+	"events": [
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "After one hour..."
+		},
+		{
+			"event_id": "dialogic_023",
+			"hide_dialogbox": true,
+			"wait_seconds": 1,
+			"waiting_skippable": true
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Do you feel better now?"
+		},
+		{
+			"character": "character-1656661598.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "A bit better..."
+		},
+		{
+			"character": "character-1656661598.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Where is this place?"
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You are on the island of Lombok, along the border of the Hollandaise colonial zone. I am John Hancock, a fellow adventurer. "
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "What is your name?"
+		},
+		{
+			"choice": "My name is...",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"event_id": "dialogic_013"
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": " Oh, you are the one that Grand Master Yusuf has mentioned in his talk. You are the chosen one! "
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "This country is in turmoil. We need you to save our country!"
+		},
+		{
+			"character": "character-1656661598.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "……but how can I help? I know nothing about combat skills and whatsoever…"
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Don’t worry. I am one of the best adventurers in this region, and I can teach you some combat basics."
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Follow me closely!"
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"Combat Tutorial"
+				],
+				"method_name": "set_stage",
+				"target_node_path": "QuestSystem/Active/TutorialQuest/Objectives/TutorialObjective"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"emit_signal": "end",
+			"event_id": "dialogic_040"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.2 - Dev",
+		"file": "timeline-1656663085.json",
+		"name": "Adventurer's House"
+	}
+}

@@ -1,0 +1,119 @@
+{
+	"events": [
+		{
+			"audio_bus": "Master",
+			"background-music": "play",
+			"event_id": "dialogic_031",
+			"event_name": "BackgroundMusic",
+			"fade_length": 1,
+			"file": "",
+			"volume": 0
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hello"
+		},
+		{
+			"character": "character-1656661598.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hey I saw you lying on the floor, are you alright?"
+		},
+		{
+			"character": "character-1656661598.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "..."
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_010",
+			"options": [
+
+			],
+			"portrait": "",
+			"question": "Do you remember anything?"
+		},
+		{
+			"choice": "Oow... I feel terrible. Where am I? Who are you?",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ah it seems like you have amnesia, you will need some time to rest. Come to my house and rest for a while."
+		},
+		{
+			"emit_signal": "end",
+			"event_id": "dialogic_040"
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"Adventurer's House"
+				],
+				"method_name": "set_stage",
+				"target_node_path": "QuestSystem/Active/TutorialQuest/Objectives/TutorialObjective"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"call_node": {
+				"arguments": [
+					"168",
+					"112",
+					"res://World/House/House.tscn",
+					"House",
+					"World"
+				],
+				"method_name": "scene_changer",
+				"target_node_path": "../../../../../../Doors/Entrance"
+			},
+			"event_id": "dialogic_042"
+		},
+		{
+			"choice": "Yes (Skip Tutorial)",
+			"condition": "",
+			"definition": "",
+			"event_id": "dialogic_011",
+			"value": ""
+		},
+		{
+			"audio_bus": "Master",
+			"background-music": "play",
+			"event_id": "dialogic_031",
+			"event_name": "BackgroundMusic",
+			"fade_length": 1,
+			"file": "",
+			"volume": 0
+		},
+		{
+			"character": "character-1656662326.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Looks like you are fine, do visit me in my house sometimes!"
+		},
+		{
+			"emit_signal": "skipped",
+			"event_id": "dialogic_040"
+		},
+		{
+			"event_id": "dialogic_022",
+			"transition_duration": 1
+		},
+		{
+			"event_id": "dialogic_013"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.2 - Dev",
+		"file": "timeline-1656661676.json",
+		"name": "Tutorial"
+	}
+}

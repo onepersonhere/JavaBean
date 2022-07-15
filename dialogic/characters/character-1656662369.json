@@ -1,0 +1,21 @@
+{
+	"color": "#ffffffff",
+	"description": "A Javanese villager",
+	"display_name": "Villager",
+	"display_name_bool": true,
+	"id": "character-1656662369.json",
+	"mirror_portraits": false,
+	"name": "Villager",
+	"nickname": " Harun Ahmad",
+	"nickname_bool": true,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": ""
+		}
+	],
+	"scale": 100,
+	"theme": ""
+}
