@@ -43,7 +43,8 @@
         "Rarity": "Rare",
         "Speed": 3,
         "Sword": "Mid Range",
-        "description": "A very rustic sword"
+        "description": "A very rustic sword",
+	"StackSize": 1
     },
     "Slime Potion": {
         "AddEnergy": 32,
