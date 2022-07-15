@@ -68,7 +68,7 @@
 			"character": "character-1656662136.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Bean 1: Colour [color=red]red[/color]. It is the embodiment of courage in the face of great adversity. \nBean 2: Colour [color=blue]blue[/color]. It enables the user to control the flow of water.\nBean 3: Colour [color=green]green[/color]. It represents truth among lies.\nBean 4: Colour [color=maroon]brown[/color]. It corrects sleep deprivation.\nBean 5: Colour [color=yellow]gold[/color]. It gives you wealth.\nBean 6: Colour [color=black]black[/color]. Great power flows through you.\nBean 7: Colour [color=white]unknown[/color]. It only exists in legends foretold."
+			"text": "Bean 1: Colour [color=red]red[/color]. It is the embodiment of courage in the face of great adversity. \nBean 2: Colour [color=#00BFFF]blue[/color]. It enables the user to control the flow of water.\nBean 3: Colour [color=green]green[/color]. It represents truth among lies.\nBean 4: Colour [color=#D2691E]brown[/color]. It corrects sleep deprivation.\nBean 5: Colour [color=#FFD700]gold[/color]. It gives you wealth.\nBean 6: Colour [color=black]black[/color]. Great power flows through you.\nBean 7: Colour [color=#E6E6FA]unknown[/color]. It only exists in legends foretold."
 		},
 		{
 			"character": "character-1656662136.json",
@@ -80,7 +80,7 @@
 			"character": "character-1656662136.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Now that you are prepared, let me officially welcome you to the Cult of the bean!"
+			"text": "Now that you are prepared, let me officially welcome you to... \nThe Cult of the Bean!"
 		},
 		{
 			"character": "character-1656662136.json",
@@ -92,7 +92,7 @@
 			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "[WIP]"
+			"text": "[color=aqua][WIP][/color]"
 		},
 		{
 			"emit_signal": "end",

@@ -10,7 +10,7 @@
 			"character": "character-1656662326.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "To move around press [W][A][S][D]"
+			"text": "To move around press [color=aqua][W][A][S][D][/color]"
 		},
 		{
 			"character": "character-1656662326.json",
@@ -22,13 +22,13 @@
 			"character": "character-1656662326.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "To open inventory, press [Z]"
+			"text": "To open inventory, press [color=aqua][Z][/color]"
 		},
 		{
 			"character": "character-1656662326.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "To restore health, drink the \"Slime Potion\" by pressing [F]"
+			"text": "To restore health, drink the \"Slime Potion\" by pressing [color=aqua][F][/color]"
 		},
 		{
 			"character": "character-1656662326.json",
@@ -96,7 +96,7 @@
 			"character": "character-1656662326.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Press [E] to interact with the chest and press [E] again to pick up the items. You may press [Z] to check the items if you want. "
+			"text": "Press [color=aqua][E][/color] to interact with the chest and press [color=aqua][E][/color] again to pick up the items. You may press [color=aqua][Z][/color] to check the items if you want. "
 		},
 		{
 			"character": "character-1656661598.json",
