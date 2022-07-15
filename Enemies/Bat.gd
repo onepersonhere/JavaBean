@@ -12,6 +12,8 @@ var FRICTION = 150
 var ATTACK_RATE = 1
 var MIN_EXP = 4
 var MAX_EXP = 8
+var MIN_COIN = 0
+var MAX_COIN = 10
 
 enum {
 	IDLE,
@@ -94,8 +96,14 @@ func _on_Stats_no_health():
 	get_parent().add_child(batDeathEffect)
 	batDeathEffect.global_position = global_position
 	emit_signal("died", self)
+	
 	var exp_gain = floor(rand_range(MIN_EXP, MAX_EXP))
 	PlayerStats.exp_bar.gain_exp(exp_gain)
+	
+	var coins_gain = floor(rand_range(MIN_COIN, MAX_COIN))
+	PlayerStats.COINS += coins_gain;
+	get_tree().get_nodes_in_group("Player")[0].update_stat_vals()
+	
 	spawn_exp_indicator(exp_gain)
 
 func _on_Timer_timeout():

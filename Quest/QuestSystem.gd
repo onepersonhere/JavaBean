@@ -39,7 +39,14 @@ func deliver(quest: Quest):
 	var rewards = quest.get_rewards()
 	# Tie in with curr inv system
 	for item in rewards['items']:
-		PlayerInventory.add_item(item.item_name, item.amount)
+		if item.item_name == "coins":
+			PlayerStats.COINS += item.amount;
+			player.update_stat_vals()
+		else:
+			PlayerInventory.add_item(item.item_name, item.amount)
+	
+	var exp_gain = rewards['experience'];
+	PlayerStats.exp_bar.gain_exp(exp_gain);
 	
 	assert (quest.get_parent() == completed_quests)
 	completed_quests.remove_child(quest)
