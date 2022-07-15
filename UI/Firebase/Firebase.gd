@@ -58,8 +58,11 @@ func save_document(path: String, fields: Dictionary, http: HTTPRequest) -> void:
 	
 func get_document(path: String, http: HTTPRequest) -> void:
 	var url = FIRESTORE_URL + path
-	http.request(url, get_req_headers(), false, HTTPClient.METHOD_GET)
-
+	if http.get_http_client_status() == 0:
+		http.request(url, get_req_headers(), false, HTTPClient.METHOD_GET)
+	else: 
+		yield(get_tree().create_timer(1), "timeout")
+		get_document(path, http)
 func update_document(path: String, fields: Dictionary, http: HTTPRequest) -> void:
 	var document = {"fields": fields}
 	var body = to_json(document)

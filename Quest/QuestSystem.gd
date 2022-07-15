@@ -32,6 +32,8 @@ func _on_Quest_completed(quest):
 	print_debug("quest completed")
 	active_quests.remove_child(quest)
 	completed_quests.add_child(quest)
+	if quest.reward_on_delivery:
+		deliver(quest)
 	
 func deliver(quest: Quest):
 	# used by other scripts to deliver the quest

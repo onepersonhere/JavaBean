@@ -26,7 +26,7 @@ func _ready():
 	
 	Firebase.get_document(link, http)
 	
-	yield(get_tree().create_timer(0.5), "timeout")
+	yield(get_tree().create_timer(1.5), "timeout")
 	at_check_quest_done = true
 	Firebase.get_document("daily_quests_done/%s" % user_id, http)
 	
@@ -74,7 +74,6 @@ func _on_HTTPRequest2_request_completed(result, response_code, headers, body):
 		
 func set_quest_done(body):
 	var result_body = JSON.parse(body.get_string_from_ascii()).result.fields
-	
 	# manually set them
 	quest_done["quest_1"]["stringValue"] = result_body["quest_1"]["stringValue"]
 	quest_done["quest_2"]["stringValue"] = result_body["quest_2"]["stringValue"]
