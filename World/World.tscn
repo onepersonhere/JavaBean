@@ -1172,13 +1172,34 @@ position = Vector2( 2512, 80 )
 [node name="Enemies" type="YSort" parent="YSort"]
 
 [node name="Bat" parent="YSort/Enemies" instance=ExtResource( 7 )]
-position = Vector2( 1515, 1669 )
+position = Vector2( 2344, 1016 )
 
 [node name="Bat2" parent="YSort/Enemies" instance=ExtResource( 7 )]
-position = Vector2( 1608, 1864 )
+position = Vector2( 2200, 1048 )
 
 [node name="Bat3" parent="YSort/Enemies" instance=ExtResource( 7 )]
-position = Vector2( 1779, 1948 )
+position = Vector2( 2464, 984 )
+
+[node name="Bat4" parent="YSort/Enemies" instance=ExtResource( 7 )]
+position = Vector2( 1552, 1784 )
+
+[node name="Bat5" parent="YSort/Enemies" instance=ExtResource( 7 )]
+position = Vector2( 1672, 1912 )
+
+[node name="Bat6" parent="YSort/Enemies" instance=ExtResource( 7 )]
+position = Vector2( 1800, 2064 )
+
+[node name="Bat7" parent="YSort/Enemies" instance=ExtResource( 7 )]
+position = Vector2( 1928, 2240 )
+
+[node name="Bat8" parent="YSort/Enemies" instance=ExtResource( 7 )]
+position = Vector2( 2120, 2016 )
+
+[node name="Bat9" parent="YSort/Enemies" instance=ExtResource( 7 )]
+position = Vector2( 2272, 2160 )
+
+[node name="Bat10" parent="YSort/Enemies" instance=ExtResource( 7 )]
+position = Vector2( 2400, 2304 )
 
 [node name="Doors" type="YSort" parent="YSort"]
 
@@ -1207,14 +1228,6 @@ pos_x = 528
 pos_y = 304
 entering_area = "res://World/House/House.tscn"
 entering_area_name = "House"
-exit_area_name = "World"
-
-[node name="FarmHouse Entrance" parent="YSort/Doors" instance=ExtResource( 10 )]
-position = Vector2( 1968, 360 )
-pos_x = 297
-pos_y = 312
-entering_area = "res://World/FarmHouse/FarmHouse.tscn"
-entering_area_name = "FarmHouse"
 exit_area_name = "World"
 
 [node name="NPC" type="YSort" parent="YSort"]
