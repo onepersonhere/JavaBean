@@ -1,5 +1,5 @@
 extends Area2D
-class_name NPC
+
 
 onready var quest_bubble: Node = $QuestBubble
 onready var actions: Node = $Actions

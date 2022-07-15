@@ -4,7 +4,7 @@
 [ext_resource path="res://Enemies/Bat.png" type="Texture" id=2]
 [ext_resource path="res://Enemies/Bat.gd" type="Script" id=3]
 [ext_resource path="res://Hitboxes and Hurtboxes/Hurtbox.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Enemies/Stats.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Characters/Stats.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies/PlayerDetectionZone.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Hitboxes and Hurtboxes/Hitbox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Hitboxes and Hurtboxes/SoftCollision.tscn" type="PackedScene" id=8]
@@ -46,7 +46,7 @@ radius = 6.5
 height = 5.0
 
 [sub_resource type="CircleShape2D" id=14]
-radius = 137.0
+radius = 95.0053
 
 [sub_resource type="CircleShape2D" id=15]
 radius = 3.0
@@ -62,7 +62,6 @@ script = ExtResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "Fly"
-frame = 4
 playing = true
 offset = Vector2( 0, -12 )
 

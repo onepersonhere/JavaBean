@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Quest/QuestSystem.gd" type="Script" id=1]
 [ext_resource path="res://Quest/QuestContainer.gd" type="Script" id=2]
 [ext_resource path="res://Quest/quests/TestQuest.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Quest/quests/TutorialQuest.tscn" type="PackedScene" id=4]
 
 [node name="QuestSystem" type="Node"]
 script = ExtResource( 1 )
@@ -12,8 +11,6 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="TestQuest" parent="Available" instance=ExtResource( 3 )]
-
-[node name="TutorialQuest" parent="Available" instance=ExtResource( 4 )]
 
 [node name="Active" type="Node" parent="."]
 script = ExtResource( 2 )

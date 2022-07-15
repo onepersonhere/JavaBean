@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-const ACCELERATION = 1000
-const MAX_SPEED = 100
+const ACCELERATION = 160
+const MAX_SPEED = 225
 var velocity = Vector2.ZERO
 var item_name
 
@@ -18,10 +18,10 @@ func _physics_process(delta):
 		velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
 		
 		var distance = global_position.distance_to(player.global_position)
-		if distance < 5:
+		if distance < 4:
 			PlayerInventory.add_item(item_name, 1)
 			queue_free()
-	velocity = move_and_slide(velocity)
+	velocity = move_and_slide(velocity, Vector2.UP)
 	
 func pick_up_item(body):
 	player = body

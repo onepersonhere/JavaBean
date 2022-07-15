@@ -10,7 +10,7 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
-[node name="Hotbar" type="Node2D" groups=["Hotbar"]]
+[node name="Hotbar" type="Node2D"]
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true

@@ -57,7 +57,7 @@ func putIntoSlot(new_item):
 	add_child(item)
 	refresh_style()
 	
-func initialise_item(item_name, item_quantity):
+func initialise_items(item_name, item_quantity):
 	if item == null:
 		item = ItemClass.instance()
 		add_child(item)
@@ -65,10 +65,3 @@ func initialise_item(item_name, item_quantity):
 	else:
 		item.set_item(item_name, item_quantity)
 	refresh_style()
-
-func reset():
-	if item != null:
-		remove_child(item)
-	item = null
-	refresh_style()
-

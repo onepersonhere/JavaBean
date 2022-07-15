@@ -15,7 +15,6 @@ func initialize(quest_actions: Array):
 	var name = get_parent().name
 	var action_give: GiveQuestAction
 	var action_complete: CompleteQuestAction
-	
 	for action in quest_actions:
 		if action is GiveQuestAction:
 			action_give = action
@@ -23,11 +22,9 @@ func initialize(quest_actions: Array):
 			action_complete = action
 
 	if action_give:
-		if not quest.is_connected("started", self, "_on_Quest_started"):
-			quest.connect("started", self, "_on_Quest_started")
+		quest.connect("started", self, "_on_Quest_started")
 		if not action_complete:
-			if not quest.is_connected("completed", self, "hide"):
-				quest.connect("completed", self, "hide")
+			quest.connect("completed", self, "hide")
 		show()
 		
 	if action_complete:

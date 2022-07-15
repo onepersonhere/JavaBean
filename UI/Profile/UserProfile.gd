@@ -6,8 +6,6 @@ var information_sent = false
 var delete = false
 # info
 var new_profile = false
-
-onready var nft_addr: Label = $Address/Label
 onready var nickname: LineEdit = $MainContainer/Col1/Nickname/LineEdit
 onready var character_class: OptionButton = $MainContainer/Col1/Class/OptionButton
 onready var location: Label = $MainContainer/Col2/Location/Location
@@ -28,7 +26,6 @@ onready var gems: LineEdit = $MainContainer/Col2/Gems/LineEdit
 onready var profile_pic: TextureRect = $MainContainer/CenterContainer/Col3/CenterContainer/Profile
 
 var profile = {
-	"nft_addr": {},
 	"nickname": {},
 	"character_class": {},
 	"location": {},
@@ -52,7 +49,6 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	var result_body = JSON.parse(body.get_string_from_ascii()).result
 	match response_code:
 		404:
-			nft_addr.text = GlobalVar.get_nft_addr()
 			notification.dialog_text = "Please enter your information"
 			notification.popup_centered()
 			new_profile = true
@@ -71,8 +67,6 @@ func _on_Confirm_pressed():
 		notification.popup_centered()
 		return
 	
-	GlobalVar.set_nft_addr(nft_addr.text)
-	profile.nft_addr = {"stringValue": nft_addr.text}
 	profile.nickname = {"stringValue": nickname.text}
 	profile.character_class = {"stringValue": character_class.text}
 	profile.location = {"stringValue": location.text}
@@ -93,16 +87,12 @@ func _on_Confirm_pressed():
 			Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 	information_sent = true
 	yield(get_tree().create_timer(1), "timeout")
-	get_tree().root.add_child(load("res://UI/UI.tscn").instance())
-	
-	PlayerStats.initialize()
-	Load.load(profile, "World")
+	Load.load(profile)
+	yield(get_tree().create_timer(1), "timeout")
 	queue_free()
-	
-	
+
 func set_profile(value: Dictionary) -> void:
 	profile = value
-	nft_addr.text = profile.nft_addr.stringValue
 	nickname.text = profile.nickname.stringValue
 	character_class.text = profile.character_class.stringValue
 	location.text = profile.location.stringValue
@@ -118,36 +108,11 @@ func set_profile(value: Dictionary) -> void:
 
 
 func _on_Inventory_pressed():
-	var label = $PopupPanel/RichTextLabel
-	label.text = "Inventory:"
-	var inv = PlayerInventory.inventory
-	var hb = PlayerInventory.hotbar
-	var eq = PlayerInventory.equips
-	
-	for item in inv:
-		var item_name = inv[item][0]
-		var quantity = str(inv[item][1])
-		label.text += "\n\t" + item_name + ", " + quantity
-		
-	label.text += "\n\nHotbar:"
-	
-	for item in hb:
-		var item_name = hb[item][0]
-		var quantity = str(hb[item][1])
-		label.text += "\n\t" + item_name + ", " + quantity
-	
-	label.text += "\n\nEquips:"
-	
-	for item in eq:
-		var item_name = eq[item][0]
-		var quantity = str(eq[item][1])
-		label.text += "\n\t" + item_name + ", " + quantity
-	
-	$PopupPanel.popup()
+	pass # Replace with function body.
 
 
 func _on_Edit_pressed():
-	pass # Future expansion perhaps?
+	pass # Replace with function body.
 
 
 func _on_RESET_pressed():

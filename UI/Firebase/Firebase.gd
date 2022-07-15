@@ -5,7 +5,7 @@ const PROJECT_ID = "javabean-1"
 var login_url = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + PrivateKey.API_KEY
 var register_url = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" + PrivateKey.API_KEY
 const FIRESTORE_URL = "https://firestore.googleapis.com/v1/projects/%s/databases/(default)/documents/" % PROJECT_ID
-# TODO: associate player's NFT address to the account
+
 var user_info = {
 	"token": "",
 	"id": ""
@@ -23,7 +23,6 @@ func get_req_headers() -> PoolStringArray:
 		"Content-Type: application/json",
 		"Authorization: Bearer %s" % user_info.token
 	])
-
 func register(email:String, password: String, http: HTTPRequest) -> void:
 	var body = {
 		"email": email,
@@ -58,11 +57,8 @@ func save_document(path: String, fields: Dictionary, http: HTTPRequest) -> void:
 	
 func get_document(path: String, http: HTTPRequest) -> void:
 	var url = FIRESTORE_URL + path
-	if http.get_http_client_status() == 0:
-		http.request(url, get_req_headers(), false, HTTPClient.METHOD_GET)
-	else: 
-		yield(get_tree().create_timer(1), "timeout")
-		get_document(path, http)
+	http.request(url, get_req_headers(), false, HTTPClient.METHOD_GET)
+
 func update_document(path: String, fields: Dictionary, http: HTTPRequest) -> void:
 	var document = {"fields": fields}
 	var body = to_json(document)

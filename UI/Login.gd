@@ -10,12 +10,9 @@ func _ready():
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	var response_body = JSON.parse(body.get_string_from_ascii())
-	if response_code == 0:
-		notification.dialog_text = "Please connect to the internet!!"
-		notification.popup_centered()
-	elif response_code != 200:
+	if response_code != 200:
 		notification.dialog_text = response_body.result.error.message.capitalize()
-		notification.popup_centered()
+		notification.popup()
 	else:
 		yield(get_tree().create_timer(0.5), "timeout")
 		get_tree().change_scene("res://UI/Profile/UserProfile.tscn")

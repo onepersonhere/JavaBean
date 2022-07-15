@@ -2,10 +2,11 @@ using Godot;
 using System;
 
 public class MainMenu : VideoPlayer {
-	public async override void _Ready() {
+	public override void _Ready() {
 		Autoplay = true;
-		await ToSignal(GetTree().CreateTimer(0.1f), "timeout");
-		GetNode<TextureRect>("../TextureRect").Hide();
+	}
+	public override void _Process(float delta) {
+		
 	}
 	
 	private void OnLoginGuiInput(InputEvent @event) {
@@ -49,7 +50,8 @@ public class MainMenu : VideoPlayer {
 	}
 
 	private void _on_Options_pressed() {
-		//GetNode<MarginContainer>("../Main Menu").QueueFree();
-		GetTree().Root.AddChild(GD.Load<PackedScene>("res://UI/Options.tscn").Instance());
+		QueueFree();
+		GetNode<MarginContainer>("../Main Menu").QueueFree();
+		GetTree().ChangeScene("res://UI/Options.tscn");
 	}
 }

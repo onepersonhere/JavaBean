@@ -1,66 +1,36 @@
 {
-    "Albion Sword": {
-        "Attack Style": "Melee",
-        "Critic": 5,
-        "Damage": 7,
-        "Defense": 6,
-        "ItemCategory": "Sword",
-        "Price(ETH)": "0.0001",
-        "Range": "Mid-Range",
-        "Rarity": "Rare",
-        "Speed": 5,
-        "StackSize": "1",
-        "description": "A sword that is forged in the dark fiery hellscape."
+    "Tree Branch" : {
+        "ItemCategory" : "Resource",
+        "StackSize" : 99,
+        "Description" : "A sturdy tree branch that can be used for crafting."
     },
-    "Blue Jeans": {
-        "Description": "Blue Jeans!!",
-        "ItemCategory": "Pants",
-        "StackSize": 1
+    "Slime Potion" : {
+        "ItemCategory" : "Consumable",
+        "AddHealth" : 5,
+        "AddEnergy" : 32,
+        "StackSize" : 99,
+        "Description" : "It smells like medicine."
     },
-    "Brown Boots": {
-        "Description": "Some dirty boots",
-        "ItemCategory": "Shoes",
-        "StackSize": 1
+    "Iron Sword" : {
+        "ItemCategory" : "Sword",
+        "ItemAttack" : 3,
+        "ItemSpeed" : 0.75,
+        "StackSize" : 1,
+        "Description" : "Quite a rusty sword, but should be able to get teh job done."
     },
-    "Brown Shirt": {
-        "Description": "A Brown Shirt!!",
-        "ItemCategory": "Shirt",
-        "StackSize": 1
+    "Brown Shirt" : {
+        "ItemCategory" : "Shirt",
+        "StackSize" : 1,
+        "Description" : "A Brown Shirt!!"
     },
-    "Iron Sword": {
-        "Description": "Quite a rusty sword, but should be able to get teh job done.",
-        "Damage": 3,
-        "ItemCategory": "Sword",
-        "Speed": 0.75,
-        "StackSize": 1
+    "Blue Jeans" : {
+        "ItemCategory" : "Pants",
+        "StackSize" : 1,
+        "Description" : "Blue Jeans!!"
     },
-    "Medieval Iron Sword": {
-        "Attack Style": "Melee",
-        "Critic": 3,
-        "Damage": 7,
-        "Defense": 6,
-        "Price (ETH)": "0.01",
-        "Rarity": "Rare",
-        "Speed": 3,
-        "Sword": "Mid Range",
-        "description": "A very rustic sword",
-	"StackSize": 1
-    },
-    "Slime Potion": {
-        "AddEnergy": 32,
-        "AddHealth": 5,
-        "Description": "It smells like medicine.",
-        "ItemCategory": "Consumable",
-        "StackSize": 99
-    },
-    "Tree Branch": {
-        "Description": "A sturdy tree branch that can be used for crafting.",
-        "ItemCategory": "Resource",
-        "StackSize": 99
-    },
-    "Red Bean": {
-        "Description": "The legendary red bean",
-        "ItemCategory": "Resource",
-        "StackSize": 1
+    "Brown Boots" : {
+        "ItemCategory" : "Shoes",
+        "StackSize" : 1,
+        "Description" : "Some dirty boots"
     }
 }

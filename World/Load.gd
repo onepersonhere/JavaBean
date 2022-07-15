@@ -1,21 +1,16 @@
 extends Node
 
 
-func load(profile, world_name):
+func load(profile):
 	# var save_nodes = get_tree().get_nodes_in_group("Persist")
 	# for i in save_nodes:
 	# 	i.queue_free()
 	
-	var world: Node2D = load("res://World/"+ world_name +".tscn").instance()
-	var player: KinematicBody2D = load("res://Characters/MainCharacter.tscn").instance()
+	var world: Node2D = load("res://World/World.tscn").instance()
+	var player: KinematicBody2D = world.find_node("Player")
 	
-	# get YSort
-	var ysort = world.find_node("YSort")
-	ysort.add_child(player)
-	player.scale = Vector2(1, 1)
-	player.find_node("Camera2D").zoom = Vector2(0.45, 0.45)
 	# is alive
-	PlayerStats.IS_ALIVE = true
+	player.IS_ALIVE = true
 	
 	# nickname
 	player.NICKNAME = profile["nickname"]["stringValue"]
@@ -33,47 +28,46 @@ func load(profile, world_name):
 	player.set_position(Vector2(pos_x, pos_y))
 	
 	# movement
-	PlayerStats.BASE_ACCELERATION = 1000 + 1 * int(profile["dexterity"]["integerValue"])
-	PlayerStats.BASE_FRICTION = 1000 + 1 * int(profile["dexterity"]["integerValue"])
-	PlayerStats.BASE_WALK_SPEED = 120 + 0.1 * int(profile["dexterity"]["integerValue"])
-	PlayerStats.BASE_RUN_SPEED = 220 + 0.1 * int(profile["dexterity"]["integerValue"])
+	player.ACCELERATION = 1000 + 1 * int(profile["dexterity"]["integerValue"])
+	player.FRICTION = 1000 + 1 * int(profile["dexterity"]["integerValue"])
+	player.WALK_SPEED = 120 + 0.1 * int(profile["dexterity"]["integerValue"])
+	player.SPRINT_SPEED = 220 + 0.1 * int(profile["dexterity"]["integerValue"])
 	
 	# hp
-	PlayerStats.BASE_MAX_HEALTH = int(profile["max_hp"]["integerValue"])
-	PlayerStats.CURR_HEALTH = int(profile["curr_hp"]["integerValue"])
+	player.MAX_HEALTH = int(profile["max_hp"]["integerValue"])
+	player.CURR_HEALTH = int(profile["curr_hp"]["integerValue"])
 	
 	# sp
-	PlayerStats.BASE_MAX_SP = int(profile["max_sp"]["integerValue"])
-	PlayerStats.CURR_SP = int(profile["curr_sp"]["integerValue"])
+	player.MAX_SP = int(profile["max_sp"]["integerValue"])
+	player.CURR_SP = int(profile["curr_sp"]["integerValue"])
 	
 	# damage
-	PlayerStats.BASE_DAMAGE = 10 + int(profile["strength"]["integerValue"])
+	player.DAMAGE = 10 + int(profile["strength"]["integerValue"])
 	
 	# defense
-	PlayerStats.BASE_DEFENSE = 10 + int(profile["intelligence"]["integerValue"])
+	player.DEFENSE = 10 + int(profile["intelligence"]["integerValue"])
 	
 	# regen
-	PlayerStats.BASE_REGEN = 10 + int(profile["intelligence"]["integerValue"])
+	player.REGEN = 10 + int(profile["intelligence"]["integerValue"])
 	
 	# experience
-	PlayerStats.EXPERIENCE = int(profile["strength"]["integerValue"]) 
+	player.EXPERIENCE = int(profile["strength"]["integerValue"]) 
 	+ int(profile["intelligence"]["integerValue"]) 
 	+ int(profile["dexterity"]["integerValue"])
 	
 	# level
-	PlayerStats.LEVEL = round(PlayerStats.EXPERIENCE / 10)
+	player.LEVEL = round(player.EXPERIENCE / 10)
 	
 	# coins
-	PlayerStats.COINS = int(profile["coins"]["integerValue"])
+	player.COINS = int(profile["coins"]["integerValue"])
 	
 	# gems
-	PlayerStats.GEMS = int(profile["gems"]["integerValue"])
+	player.GEMS = int(profile["gems"]["integerValue"])
 	
 	# stats
-	PlayerStats.STRENGTH = int(profile["strength"]["integerValue"])
-	PlayerStats.INTELLIGENCE = int(profile["intelligence"]["integerValue"])
-	PlayerStats.DEXTERITY = int(profile["dexterity"]["integerValue"])
+	player.STRENGTH = int(profile["strength"]["integerValue"])
+	player.INTELLIGENCE = int(profile["intelligence"]["integerValue"])
+	player.DEXTERITY = int(profile["dexterity"]["integerValue"])
 	
-	PlayerStats.base_stat_assigned()
 	get_tree().get_root().add_child(world)
 	print_debug("loaded")

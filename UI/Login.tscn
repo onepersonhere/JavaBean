@@ -3,10 +3,9 @@
 [ext_resource path="res://UI/assets/LoginReg page.png" type="Texture" id=1]
 [ext_resource path="res://UI/Login.gd" type="Script" id=2]
 
-[node name="Login" type="Control" groups=["Login"]]
-anchor_right = 0.5
-anchor_bottom = 0.5
-rect_scale = Vector2( 2, 2 )
+[node name="Login" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -85,7 +84,6 @@ margin_left = 248.0
 margin_top = 144.0
 margin_right = 331.0
 margin_bottom = 202.0
-rect_scale = Vector2( 2, 2 )
 dialog_text = "Debug Mode"
 
 [connection signal="pressed" from="VBoxContainer/Buttons/Login" to="." method="_on_Login_pressed"]
