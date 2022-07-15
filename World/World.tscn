@@ -1172,13 +1172,13 @@ position = Vector2( 2512, 80 )
 [node name="Enemies" type="YSort" parent="YSort"]
 
 [node name="Bat" parent="YSort/Enemies" instance=ExtResource( 7 )]
-position = Vector2( 2635, 980 )
+position = Vector2( 1515, 1669 )
 
 [node name="Bat2" parent="YSort/Enemies" instance=ExtResource( 7 )]
-position = Vector2( 2423, 1000 )
+position = Vector2( 1608, 1864 )
 
 [node name="Bat3" parent="YSort/Enemies" instance=ExtResource( 7 )]
-position = Vector2( 2218, 1052 )
+position = Vector2( 1779, 1948 )
 
 [node name="Doors" type="YSort" parent="YSort"]
 
@@ -1209,6 +1209,14 @@ entering_area = "res://World/House/House.tscn"
 entering_area_name = "House"
 exit_area_name = "World"
 
+[node name="FarmHouse Entrance" parent="YSort/Doors" instance=ExtResource( 10 )]
+position = Vector2( 1968, 360 )
+pos_x = 297
+pos_y = 312
+entering_area = "res://World/FarmHouse/FarmHouse.tscn"
+entering_area_name = "FarmHouse"
+exit_area_name = "World"
+
 [node name="NPC" type="YSort" parent="YSort"]
 
 [node name="Merchant" parent="YSort/NPC" instance=ExtResource( 14 )]
@@ -1236,3 +1244,9 @@ position = Vector2( 3184, 496 )
 
 [node name="Climbable4" parent="YSort/Climbable" instance=ExtResource( 16 )]
 position = Vector2( 2896, 592 )
+
+[node name="Climbable5" parent="YSort/Climbable" instance=ExtResource( 16 )]
+position = Vector2( 2960, 528 )
+
+[node name="Climbable6" parent="YSort/Climbable" instance=ExtResource( 16 )]
+position = Vector2( 2992, 528 )
