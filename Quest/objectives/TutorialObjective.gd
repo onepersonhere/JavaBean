@@ -11,7 +11,6 @@ func set_stage(stage):
 	
 	if stage == "completed":
 		finish()
-		QuestSystem.deliver(get_parent().get_parent())
 
 func get_stage():
 	return stage

@@ -26,7 +26,7 @@ func _ready():
 	
 	Firebase.get_document(link, http)
 	
-	yield(get_tree().create_timer(1.5), "timeout")
+	yield(http, "request_completed")
 	at_check_quest_done = true
 	Firebase.get_document("daily_quests_done/%s" % user_id, http)
 	
