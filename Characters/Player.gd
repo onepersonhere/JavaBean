@@ -18,6 +18,7 @@ onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitBoxDirection/SwordHitBox
+onready var audioPlayer = $AudioManager
 
 func _ready():
 	swordHitbox.knockback_vector = Vector2.DOWN
@@ -41,6 +42,7 @@ func _physics_process(delta):
 			attack_state(delta)
 
 func walk_state(delta):
+	audioPlayer.play_footsteps(WALK)
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_vector.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
@@ -61,6 +63,7 @@ func walk_state(delta):
 	velocity = move_and_slide(velocity)
 	
 	if Input.is_action_just_pressed("attack"):
+		audioPlayer.play_attack()
 		state = ATTACK
 	
 	if PlayerStats.energy_bar.CURRENT_SP > 0 && Input.is_action_pressed("run"):
@@ -70,6 +73,7 @@ func walk_state(delta):
 		state = CLIMB
 	
 func run_state(delta):
+	audioPlayer.play_footsteps(RUN)
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_vector.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
@@ -97,6 +101,7 @@ func run_state(delta):
 	velocity = move_and_slide(velocity)
 	
 	if Input.is_action_just_pressed("attack"):
+		audioPlayer.play_attack()
 		PlayerStats.energy_bar.stopped()
 		state = ATTACK
 	
@@ -109,6 +114,7 @@ func run_state(delta):
 		state = CLIMB
 		
 func climb_state(delta):
+	audioPlayer.play_footsteps(CLIMB)
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	input_vector.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
@@ -152,17 +158,20 @@ func _input(event):
 			hotbar.initialise_hotbar()
 
 func _on_PlayerHurtBox_area_entered(area):
+	audioPlayer.play_hurt()
 	PlayerStats.life_bar.deal_damage(area.damage)
 	PlayerStats.CURR_HEALTH = PlayerStats.life_bar.CURRENT_HEALTH
 	spawn_receive_damage_indicator("-" + str(area.damage))
 
 func _on_LifeBar_no_health():
+	audioPlayer.play_death()
 	queue_free()
 	
 func _on_EnergyBar_got_stamina():
 	PlayerStats.can_sprint = true
 
 func _on_EnergyBar_no_stamina():
+	audioPlayer.play_no_stamina()
 	PlayerStats.can_sprint = false
 
 func update_stat_vals():
@@ -170,6 +179,7 @@ func update_stat_vals():
 	PlayerStats.UI.find_node("GemCounter").get_node("Background").get_node("Number").text = str(PlayerStats.GEMS);
 
 func spawn_heal_indicator(heal):
+	audioPlayer.play_heal()
 	var heal_indicator = HealIndicator.instance()
 	get_parent().add_child(heal_indicator)
 	heal_indicator.set_value(heal)
@@ -180,4 +190,3 @@ func spawn_receive_damage_indicator(damage):
 	get_parent().add_child(receive_damage_indicator)
 	receive_damage_indicator.set_value(damage)
 	receive_damage_indicator.global_position = global_position
-
