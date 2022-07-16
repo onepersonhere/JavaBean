@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://World/Invisible Collision Tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Pipoya RPG Tileset 32x32/[Base]BaseChip_pipo.png" type="Texture" id=2]
 [ext_resource path="res://World/House/Entrance.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Characters/NPCs/Village Elder.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/BackgroundMusic.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=1]
 0/name = "[Base]BaseChip_pipo.png 0"
@@ -1665,3 +1666,5 @@ exit_area_name = "FarmHouse"
 
 [node name="Village Elder" parent="." instance=ExtResource( 4 )]
 position = Vector2( 264, 160 )
+
+[node name="BackgroundMusic" parent="." instance=ExtResource( 5 )]

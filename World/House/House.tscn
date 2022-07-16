@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://World/House/floor.tres" type="TileSet" id=1]
 [ext_resource path="res://World/House/wall.tres" type="TileSet" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://World/House/House.gd" type="Script" id=7]
 [ext_resource path="res://World/Invisible Collision Tile.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/House/Entrance.tscn" type="PackedScene" id=9]
+[ext_resource path="res://World/BackgroundMusic.tscn" type="PackedScene" id=10]
 
 [sub_resource type="TileSet" id=1]
 0/name = "[Base]BaseChip_pipo.png 0"
@@ -325,6 +326,8 @@ pos_y = 30
 entering_area = "res://World/House/HouseSecondFloor.tscn"
 entering_area_name = "HouseSecondFloor"
 exit_area_name = "House"
+
+[node name="BackgroundMusic" parent="." instance=ExtResource( 10 )]
 
 [editable path="Entrance"]
 [editable path="Entrance2"]

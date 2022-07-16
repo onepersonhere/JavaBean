@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://World/House/floor.tres" type="TileSet" id=1]
 [ext_resource path="res://Assets/Pipoya RPG Tileset 32x32/[Base]BaseChip_pipo.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://World/House/stairs.tres" type="TileSet" id=5]
 [ext_resource path="res://World/House/Entrance.tscn" type="PackedScene" id=6]
 [ext_resource path="res://World/Invisible Collision Tile.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World/BackgroundMusic.tscn" type="PackedScene" id=8]
 
 [sub_resource type="TileSet" id=1]
 0/name = "[Base]BaseChip_pipo.png 0"
@@ -1096,5 +1097,7 @@ pos_y = 60
 entering_area = "res://World/House/House.tscn"
 entering_area_name = "House"
 exit_area_name = "HouseSecondFloor"
+
+[node name="BackgroundMusic" parent="." instance=ExtResource( 8 )]
 
 [editable path="Entrance"]
