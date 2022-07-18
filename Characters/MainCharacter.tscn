@@ -1107,7 +1107,7 @@ height = 26.0
 
 [sub_resource type="CapsuleShape2D" id=56]
 radius = 5.0
-height = 10.0
+height = 6.0
 
 [node name="Player" type="KinematicBody2D" groups=["Persist", "Player"]]
 collision_layer = 2
