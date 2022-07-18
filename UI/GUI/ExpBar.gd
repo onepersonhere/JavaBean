@@ -12,18 +12,17 @@ func _ready():
 	$TextureProgress.value = CURRENT_EXP
 	$TextureProgress.max_value = MAX_EXP
 	
-func level_up(surplus):
-	LEVEL += 1
-	$Count/Background/Number.text = str(int(LEVEL))
-	CURRENT_EXP = surplus
-	MAX_EXP = floor(BASE_EXP * (pow(int(LEVEL), EXPONENT)))
-	$TextureProgress.value = CURRENT_EXP
-	$TextureProgress.max_value = MAX_EXP
-	$Count/Background/Progress.text = str(CURRENT_EXP) + "/" + str(MAX_EXP)
-	
 func gain_exp(value):
 	if value >= MAX_EXP - CURRENT_EXP:
-		level_up(value - (MAX_EXP - CURRENT_EXP))
+		var surplus = value - (MAX_EXP - CURRENT_EXP)
+		LEVEL += 1
+		$Count/Background/Number.text = str(int(LEVEL))
+		CURRENT_EXP = 0
+		MAX_EXP = floor(BASE_EXP * (pow(int(LEVEL), EXPONENT)))
+		$TextureProgress.value = CURRENT_EXP
+		$TextureProgress.max_value = MAX_EXP
+		$Count/Background/Progress.text = str(CURRENT_EXP) + "/" + str(MAX_EXP)
+		gain_exp(surplus)
 	else:
 		CURRENT_EXP += value
 		$TextureProgress.value = CURRENT_EXP

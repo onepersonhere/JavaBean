@@ -3,6 +3,7 @@ extends KinematicBody2D
 const DeathEffect = preload("res://Effects/BatDeathEffect.tscn")
 const DamageIndicator = preload("res://UI/Indicators/DamageIndicator.tscn")
 const ExpIndicator = preload("res://UI/Indicators/ExpIndicator.tscn")
+const CoinIndicator = preload("res://UI/Indicators/CoinIndicator.tscn")
 
 signal died(battler)
 
@@ -102,6 +103,7 @@ func _on_Stats_no_health():
 	
 	var coins_gain = floor(rand_range(MIN_COIN, MAX_COIN))
 	PlayerStats.COINS += coins_gain;
+	spawn_coin_indicator(coins_gain)
 	get_tree().get_nodes_in_group("Player")[0].update_stat_vals()
 	
 	spawn_exp_indicator(exp_gain)
@@ -124,3 +126,11 @@ func spawn_exp_indicator(value):
 	get_parent().add_child(exp_indicator)
 	exp_indicator.set_value(value)
 	exp_indicator.global_position = global_position
+	
+func spawn_coin_indicator(value):
+	var coin_indicator = CoinIndicator.instance()
+	get_parent().add_child(coin_indicator)
+	coin_indicator.set_value(value)
+	coin_indicator.global_position = global_position
+
+
