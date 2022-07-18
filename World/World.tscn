@@ -1204,15 +1204,6 @@ position = Vector2( 2400, 2304 )
 
 [node name="Doors" type="YSort" parent="YSort"]
 
-[node name="Entrance3" parent="YSort/Doors" instance=ExtResource( 10 )]
-pause_mode = 2
-position = Vector2( 1968, 360 )
-pos_x = 297
-pos_y = 312
-entering_area = "res://World/FarmHouse/FarmHouse.tscn"
-entering_area_name = "FarmHouse"
-exit_area_name = "World"
-
 [node name="Entrance" parent="YSort/Doors" instance=ExtResource( 10 )]
 pause_mode = 2
 position = Vector2( 2512, 880 )
@@ -1229,6 +1220,31 @@ pos_x = 528
 pos_y = 304
 entering_area = "res://World/House/House.tscn"
 entering_area_name = "House"
+exit_area_name = "World"
+
+[node name="Entrance3" parent="YSort/Doors" instance=ExtResource( 10 )]
+pause_mode = 2
+position = Vector2( 1968, 360 )
+pos_x = 297
+pos_y = 312
+entering_area = "res://World/FarmHouse/FarmHouse.tscn"
+entering_area_name = "FarmHouse"
+exit_area_name = "World"
+
+[node name="Entrance4" parent="YSort/Doors" instance=ExtResource( 10 )]
+position = Vector2( 3088, 1523 )
+pos_x = 305
+pos_y = 311
+entering_area = "res://World/FortifiedHouse/FortifiedHouse.tscn"
+entering_area_name = "FortifiedHouse"
+exit_area_name = "World"
+
+[node name="Entrance5" parent="YSort/Doors" instance=ExtResource( 10 )]
+position = Vector2( 3376, 1523 )
+pos_x = 111
+pos_y = 472
+entering_area = "res://World/Inn/Inn.tscn"
+entering_area_name = "Inn"
 exit_area_name = "World"
 
 [node name="NPC" type="YSort" parent="YSort"]
