@@ -14,7 +14,14 @@ var profile = {
 	"dexterity": {},
 	"coins": {},
 	"gems": {},
+	"inventory": {}
 } 
+
+var all_inv = {
+	"inventory": {},
+	"hotbar": {},
+	"equips": {}
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,7 +47,7 @@ func save_stats():
 	
 	profile.nickname = {"stringValue": player.NICKNAME}
 	profile.character_class = {"stringValue": player.CHARACTER_CLASS}
-	profile.location = {"stringValue": player.MAP + " (" + str(round(player.get_position().x)) + "," + str(round(player.get_position().y)) + ")"}
+	profile.location = {"stringValue": get_world_name() + " (" + str(round(player.get_position().x)) + "," + str(round(player.get_position().y)) + ")"}
 	profile.max_hp = {"integerValue": player.MAX_HEALTH}
 	profile.max_sp = {"integerValue": player.MAX_SP}
 	profile.curr_hp = {"integerValue": player.CURR_HEALTH}
@@ -50,6 +57,43 @@ func save_stats():
 	profile.dexterity = {"integerValue": player.DEXTERITY}
 	profile.coins = {"integerValue": player.COINS}
 	profile.gems = {"integerValue": player.GEMS}
+	
+	save_inventory()
+	profile.inventory = {"mapValue": all_inv}
+
+func get_world_name():
+	var map = get_tree().get_nodes_in_group("map")[0].get_name()
+	var world_name = "Lombok" # default
+	
+	match map:
+		"House":
+			world_name = "Lombok-House";
+		"HouseSecondFloor":
+			world_name = "Lombok-House-2"
+		"FarmHouse":
+			world_name = "Lombok-Farmhouse"
+		"FortifiedHouse":
+			world_name = "Lombok-Fort-House"
+		"Inn":
+			world_name = "Lombok-Fort-Inn"
+		"InnSecondFloor":
+			world_name = "Lombok-Fort-Inn-2"
+		# others can add below
+	return world_name
 
 func save_quests():
 	pass
+
+func save_inventory():
+	var inventory = PlayerInventory.inventory
+	var hotbar = PlayerInventory.hotbar
+	var equips = PlayerInventory.equips
+	
+	for item in inventory:
+		all_inv.inventory[item] = {"arrayValue": inventory[item]}
+	
+	for item in hotbar:
+		all_inv.hotbar[item] = {"arrayValue": hotbar[item]}
+	
+	for item in equips:
+		all_inv.equips[item] = {"arrayValue": equips[item]}

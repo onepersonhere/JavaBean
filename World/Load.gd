@@ -1,19 +1,21 @@
 extends Node
 
 
-func load(profile, world_name):
-	# var save_nodes = get_tree().get_nodes_in_group("Persist")
+func load(profile):
+	# var save_nodes = get_tree().get_nodes_in_group("persist")
 	# for i in save_nodes:
 	# 	i.queue_free()
 	
-	var world: Node2D = load("res://World/"+ world_name +".tscn").instance()
 	var player: KinematicBody2D = load("res://Characters/MainCharacter.tscn").instance()
+	# location
+	var world: Node2D = set_location(profile, player)
 	
 	# get YSort
 	var ysort = world.find_node("YSort")
 	ysort.add_child(player)
 	player.scale = Vector2(1, 1)
 	player.find_node("Camera2D").zoom = Vector2(0.45, 0.45)
+	
 	# is alive
 	PlayerStats.IS_ALIVE = true
 	
@@ -24,13 +26,6 @@ func load(profile, world_name):
 	match profile["character_class"]["stringValue"]:
 		"warrior":
 			player.CHARACTER_CLASS = "warrior"
-	
-	# location
-	var location: String = profile["location"]["stringValue"]
-	var map: String = location.split(" ")[0]
-	var pos_x: int = int(location.split(" ")[1].split(",")[0].split("(")[1])
-	var pos_y: int = int(location.split(" ")[1].split(",")[1].split(")")[0])
-	player.set_position(Vector2(pos_x, pos_y))
 	
 	# movement
 	PlayerStats.BASE_ACCELERATION = 1000 + 1 * int(profile["dexterity"]["integerValue"])
@@ -75,5 +70,40 @@ func load(profile, world_name):
 	PlayerStats.DEXTERITY = int(profile["dexterity"]["integerValue"])
 	
 	PlayerStats.base_stat_assigned()
+	
+	# inventory
+	load_inventory(profile);
+	
 	get_tree().get_root().add_child(world)
 	print_debug("loaded")
+
+func set_location(profile, player):
+	var world_name = "World" # default
+	var location: String = profile["location"]["stringValue"]
+	var map: String = location.split(" ")[0]
+	var pos_x: int = int(location.split(" ")[1].split(",")[0].split("(")[1])
+	var pos_y: int = int(location.split(" ")[1].split(",")[1].split(")")[0])
+	player.set_position(Vector2(pos_x, pos_y))
+	
+	match map:
+		"Lombok-House":
+			world_name = "House/House";
+		"Lombok-House-2":
+			world_name = "House/HouseSecondFloor"
+		"Lombok-Farmhouse":
+			world_name = "FarmHouse/FarmHouse"
+		"Lombok-Fort-House":
+			world_name = "FortifiedHouse/FortifiedHouse"
+		"Lombok-Fort-Inn":
+			world_name = "Inn/Inn"
+		"Lombok-Fort-Inn-2":
+			world_name = "Inn/InnSecondFloor"
+		# others can add below
+	return load("res://World/"+ world_name +".tscn").instance()
+	
+func load_inventory(profile):
+	if profile.inventory != null:
+		PlayerInventory.inventory = {}
+		for item in profile.inventory.inventory:
+			pass
+		

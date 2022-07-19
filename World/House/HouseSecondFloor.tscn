@@ -1048,7 +1048,7 @@
 10/shapes = [  ]
 10/z_index = 0
 
-[node name="HouseSecondFloor" type="Node2D"]
+[node name="HouseSecondFloor" type="Node2D" groups=["map"]]
 
 [node name="Background" type="Node2D" parent="." groups=["Map"]]
 

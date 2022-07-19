@@ -41,6 +41,7 @@ var profile = {
 	"dexterity": {},
 	"coins": {},
 	"gems": {},
+	"inventory": {},
 } setget set_profile
 
 func _ready():
@@ -85,6 +86,7 @@ func _on_Confirm_pressed():
 	profile.dexterity = {"integerValue": int(dexterity.text)}
 	profile.coins = {"integerValue": int(coins.text)}
 	profile.gems = {"integerValue": int(gems.text)}
+	# inventory remains the same
 	
 	match new_profile:
 		true:
@@ -96,7 +98,7 @@ func _on_Confirm_pressed():
 	get_tree().root.add_child(load("res://UI/UI.tscn").instance())
 	
 	PlayerStats.initialize()
-	Load.load(profile, "World")
+	Load.load(profile)
 	queue_free()
 	
 	
@@ -115,10 +117,38 @@ func set_profile(value: Dictionary) -> void:
 	dexterity.text = profile.dexterity.integerValue
 	coins.text = profile.coins.integerValue
 	gems.text = profile.gems.integerValue
+	set_inventory()
 
-
-func _on_Inventory_pressed():
+func set_inventory():
 	var label = $PopupPanel/RichTextLabel
+	label.text = "Inventory:"
+	if profile.inventory == null:
+		set_default_inventory(label)
+	else:
+		var inv = profile.inventory.inventory.mapValue
+		var hb = profile.inventory.hotbar.mapValue
+		var eq = profile.inventory.equips.mapValue
+		
+		for item in inv:
+			var item_name = inv[item]["integerValue"][0]["stringValue"]
+			var quantity = str(inv[item]["integerValue"][1]["integerValue"])
+			label.text += "\n\t" + item_name + ", " + quantity
+			
+		label.text += "\n\nHotbar:"
+		
+		for item in hb:
+			var item_name = hb[item]["integerValue"][0]["stringValue"]
+			var quantity = str(hb[item]["integerValue"][1]["integerValue"])
+			label.text += "\n\t" + item_name + ", " + quantity
+		
+		label.text += "\n\nEquips:"
+		
+		for item in eq:
+			var item_name = eq[item]["integerValue"][0]["stringValue"]
+			var quantity = str(eq[item]["integerValue"][1]["integerValue"])
+			label.text += "\n\t" + item_name + ", " + quantity
+	
+func set_default_inventory(label):
 	label.text = "Inventory:"
 	var inv = PlayerInventory.inventory
 	var hb = PlayerInventory.hotbar
@@ -142,7 +172,8 @@ func _on_Inventory_pressed():
 		var item_name = eq[item][0]
 		var quantity = str(eq[item][1])
 		label.text += "\n\t" + item_name + ", " + quantity
-	
+
+func _on_Inventory_pressed():
 	$PopupPanel.popup()
 
 
