@@ -2,6 +2,7 @@ extends Node
 
 onready var http = $HTTPRequest
 var profile = {
+	"nft_addr": {},
 	"nickname": {},
 	"character_class": {},
 	"location": {},
@@ -59,6 +60,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 func save_stats():
 	var player = get_node("/root/World/YSort/Player")
 	
+	profile.nft_addr = {"stringValue": GlobalVar.nft_addr}
 	profile.nickname = {"stringValue": player.NICKNAME}
 	profile.character_class = {"stringValue": player.CHARACTER_CLASS}
 	profile.location = {"stringValue": get_world_name() + " (" + str(round(player.get_position().x)) + "," + str(round(player.get_position().y)) + ")"}
@@ -103,10 +105,32 @@ func save_inventory():
 	var equips = PlayerInventory.equips
 	
 	for item in inventory:
-		profile.inventory[item] = {"arrayValue": inventory[item]}
+		profile.inventory.mapValue.fields.inventory.mapValue.fields[item] = {
+				"arrayValue": {
+						"values": [
+							{"stringValue": inventory[item][0]},
+							{"integerValue": inventory[item][1]}
+						]
+					}
+				}
 	
 	for item in hotbar:
-		profile.hotbar[item] = {"arrayValue": hotbar[item]}
+		profile.inventory.mapValue.fields.hotbar.mapValue.fields[item] = {
+				"arrayValue": {
+						"values": [
+							{"stringValue": hotbar[item][0]},
+							{"integerValue": hotbar[item][1]}
+						]
+					}
+				}
 	
 	for item in equips:
-		profile.equips[item] = {"arrayValue": equips[item]}
+		profile.inventory.mapValue.fields.equips.mapValue.fields[item] = {
+				"arrayValue": {
+						"values": [
+							{"stringValue": equips[item][0]},
+							{"integerValue": equips[item][1]}
+						]
+					}
+				}
+		

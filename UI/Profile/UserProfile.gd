@@ -1,5 +1,6 @@
 extends Control
 
+# TODO: Merge with Save.gd
 onready var http: HTTPRequest = $HTTPRequest
 onready var notification: AcceptDialog = $Notification
 var information_sent = false
@@ -142,82 +143,62 @@ func set_profile(value: Dictionary) -> void:
 	dexterity.text = profile.dexterity.integerValue
 	coins.text = profile.coins.integerValue
 	gems.text = profile.gems.integerValue
+	set_inventory()
 
 func set_inventory():
 	var label = $PopupPanel/RichTextLabel
 	label.text = "Inventory:"
-	if new_profile:
-		set_default_inventory(label)
-	else:
-		var inv = profile.inventory.mapValue.fields.inventory.mapValue.fields
-		var hb = profile.inventory.mapValue.fields.hotbar.mapValue.fields
-		var eq = profile.inventory.mapValue.fields.equips.mapValue.fields
+	
+	var inv = profile.inventory.mapValue.fields.inventory.mapValue.fields
+	var hb = profile.inventory.mapValue.fields.hotbar.mapValue.fields
+	var eq = profile.inventory.mapValue.fields.equips.mapValue.fields
+	
+	for item in inv:
+		var item_name = inv[item].arrayValue.values[0].stringValue
+		var quantity = inv[item].arrayValue.values[1].integerValue
+		label.text += "\n\t" + item_name + ", " + quantity
 		
-		for item in inv:
-			var item_name = inv[item].arrayValue.values[0].stringValue
-			var quantity = inv[item].arrayValue.values[1].integerValue
-			label.text += "\n\t" + item_name + ", " + quantity
-			
-		label.text += "\n\nHotbar:"
-		
-		for item in hb:
-			var item_name = hb[item].arrayValue.values[0].stringValue
-			var quantity = hb[item].arrayValue.values[1].integerValue
-			label.text += "\n\t" + item_name + ", " + quantity
-		
-		label.text += "\n\nEquips:"
-		
-		for item in eq:
-			var item_name = eq[item].arrayValue.values[0].stringValue
-			var quantity = eq[item].arrayValue.values[1].integerValue
-			label.text += "\n\t" + item_name + ", " + quantity
+	label.text += "\n\nHotbar:"
+	
+	for item in hb:
+		var item_name = hb[item].arrayValue.values[0].stringValue
+		var quantity = hb[item].arrayValue.values[1].integerValue
+		label.text += "\n\t" + item_name + ", " + quantity
+	
+	label.text += "\n\nEquips:"
+	
+	for item in eq:
+		var item_name = eq[item].arrayValue.values[0].stringValue
+		var quantity = eq[item].arrayValue.values[1].integerValue
+		label.text += "\n\t" + item_name + ", " + quantity
 
 func save_inventory():
-	#var text = $PopupPanel/RichTextLabel.get_text()
-	#var inventory = PlayerInventory
-	#var lines = text.split("\n")
+	var text = $PopupPanel/RichTextLabel.get_text()
+	var inventory = PlayerInventory
+	var lines = text.split("\n")
 	
+	var stage = "inventory"
+	var item_idx = 0;
 	# inventory
-	#for line in lines:
-	#	if line.find("Inventory") == -1:
-	#		pass
-	#	if line.find("Hotbar") != -1:
-	#		break
-	
-	#hotbar
-	var inventory = PlayerInventory.inventory
-	var hotbar = PlayerInventory.hotbar
-	var equips = PlayerInventory.equips
-	
-	for item in inventory:
-		profile.inventory.mapValue.fields.inventory.mapValue.fields[item] = {
+	for line in lines:
+		if line.find("Hotbar") != -1:
+			stage = "hotbar"
+			item_idx = 0
+		elif line.find("Equips") != -1:
+			stage = "equips"
+			item_idx = 0
+		elif line.find("\t") != - 1:
+			line = line.trim_prefix("\t")
+			var strs = line.split(", ");
+			profile.inventory.mapValue.fields[stage].mapValue.fields[str(item_idx)] = {
 				"arrayValue": {
 						"values": [
-							{"stringValue": inventory[item][0]},
-							{"integerValue": inventory[item][1]}
+							{"stringValue": strs[0]},
+							{"integerValue": strs[1]}
 						]
 					}
-				}
-	
-	for item in hotbar:
-		profile.inventory.mapValue.fields.hotbar.mapValue.fields[item] = {
-				"arrayValue": {
-						"values": [
-							{"stringValue": hotbar[item][0]},
-							{"integerValue": hotbar[item][1]}
-						]
-					}
-				}
-	
-	for item in equips:
-		profile.inventory.mapValue.fields.equips.mapValue.fields[item] = {
-				"arrayValue": {
-						"values": [
-							{"stringValue": equips[item][0]},
-							{"integerValue": equips[item][1]}
-						]
-					}
-				}
+			}
+			item_idx += 1;
 			
 func set_default_inventory(label):
 	label.text = "Inventory:"
@@ -245,7 +226,8 @@ func set_default_inventory(label):
 		label.text += "\n\t" + item_name + ", " + quantity
 
 func _on_Inventory_pressed():
-	set_inventory()
+	if new_profile:
+		set_default_inventory($PopupPanel/RichTextLabel)
 	$PopupPanel.popup()
 
 

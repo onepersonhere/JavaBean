@@ -57,3 +57,10 @@ func get_active_item_name():
 		var item_name = PlayerInventory.hotbar[PlayerInventory.active_item_slot_index][0]
 		return item_name;
 	else: return null;
+
+func refresh_inventory():
+	var inventory = get_node("/root/UI/CanvasLayer/UserInterface/Inventory")
+	var hotbar = get_node("/root/UI/CanvasLayer/UserInterface/Hotbar")
+	inventory.initialise_inventory()
+	inventory.initialise_equip_slots()
+	hotbar.initialise_hotbar()

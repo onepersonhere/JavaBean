@@ -102,8 +102,19 @@ func set_location(profile, player):
 	return load("res://World/"+ world_name +".tscn").instance()
 	
 func load_inventory(profile):
-	#if !profile.inventory.empty():
-	#	PlayerInventory.inventory = {}
-	#	for item in profile.inventory.inventory:
-			pass
-		
+	PlayerInventory.inventory = {}
+	var stages = ["inventory", "hotbar", "equips"]
+	
+	for stage in stages:
+		var map = profile.inventory.mapValue.fields[stage].mapValue.fields
+		for item in map:
+			var item_name = map[item].arrayValue.values[0].stringValue
+			var item_quantity = int(map[item].arrayValue.values[1].integerValue)
+			match stage:
+				"inventory":
+					PlayerInventory.inventory[int(item)] = [item_name, item_quantity];
+				"hotbar":
+					PlayerInventory.hotbar[int(item)] = [item_name, item_quantity];
+				"equips":
+					PlayerInventory.equips[int(item)] = [item_name, item_quantity];
+	InventoryManager.refresh_inventory()
