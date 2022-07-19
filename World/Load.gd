@@ -102,8 +102,8 @@ func set_location(profile, player):
 	return load("res://World/"+ world_name +".tscn").instance()
 	
 func load_inventory(profile):
-	if profile.inventory != null:
-		PlayerInventory.inventory = {}
-		for item in profile.inventory.inventory:
+	#if !profile.inventory.empty():
+	#	PlayerInventory.inventory = {}
+	#	for item in profile.inventory.inventory:
 			pass
 		

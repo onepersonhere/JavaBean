@@ -14,14 +14,28 @@ var profile = {
 	"dexterity": {},
 	"coins": {},
 	"gems": {},
-	"inventory": {}
+	"inventory": {
+		"mapValue": {
+			"fields": {
+				"inventory": {
+					"mapValue": {
+						"fields": {}
+					}
+				},
+				"hotbar": {
+					"mapValue": {
+						"fields": {}
+					}
+				},
+				"equips": {
+					"mapValue": {
+						"fields": {}
+					}
+				}
+			}
+		}
+	},
 } 
-
-var all_inv = {
-	"inventory": {},
-	"hotbar": {},
-	"equips": {}
-}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,7 +53,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	if response_code == 200:
 		print_debug("saved")
 	else:
-		print_debug(body)
+		print_debug(JSON.parse(body.get_string_from_ascii()).result)
 
 # TODO: SAVE the following: Quest System
 func save_stats():
@@ -48,18 +62,17 @@ func save_stats():
 	profile.nickname = {"stringValue": player.NICKNAME}
 	profile.character_class = {"stringValue": player.CHARACTER_CLASS}
 	profile.location = {"stringValue": get_world_name() + " (" + str(round(player.get_position().x)) + "," + str(round(player.get_position().y)) + ")"}
-	profile.max_hp = {"integerValue": player.MAX_HEALTH}
-	profile.max_sp = {"integerValue": player.MAX_SP}
-	profile.curr_hp = {"integerValue": player.CURR_HEALTH}
-	profile.curr_sp = {"integerValue": player.CURR_SP}
-	profile.strength = {"integerValue": player.STRENGTH}
-	profile.intelligence = {"integerValue": player.INTELLIGENCE}
-	profile.dexterity = {"integerValue": player.DEXTERITY}
-	profile.coins = {"integerValue": player.COINS}
-	profile.gems = {"integerValue": player.GEMS}
+	profile.max_hp = {"integerValue": PlayerStats.MAX_HEALTH}
+	profile.max_sp = {"integerValue": PlayerStats.MAX_SP}
+	profile.curr_hp = {"integerValue": PlayerStats.CURR_HEALTH}
+	profile.curr_sp = {"integerValue": PlayerStats.CURR_SP}
+	profile.strength = {"integerValue": PlayerStats.STRENGTH}
+	profile.intelligence = {"integerValue": PlayerStats.INTELLIGENCE}
+	profile.dexterity = {"integerValue": PlayerStats.DEXTERITY}
+	profile.coins = {"integerValue": PlayerStats.COINS}
+	profile.gems = {"integerValue": PlayerStats.GEMS}
 	
 	save_inventory()
-	profile.inventory = {"mapValue": all_inv}
 
 func get_world_name():
 	var map = get_tree().get_nodes_in_group("map")[0].get_name()
@@ -90,10 +103,10 @@ func save_inventory():
 	var equips = PlayerInventory.equips
 	
 	for item in inventory:
-		all_inv.inventory[item] = {"arrayValue": inventory[item]}
+		profile.inventory[item] = {"arrayValue": inventory[item]}
 	
 	for item in hotbar:
-		all_inv.hotbar[item] = {"arrayValue": hotbar[item]}
+		profile.hotbar[item] = {"arrayValue": hotbar[item]}
 	
 	for item in equips:
-		all_inv.equips[item] = {"arrayValue": equips[item]}
+		profile.equips[item] = {"arrayValue": equips[item]}

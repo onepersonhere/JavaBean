@@ -13,7 +13,6 @@ func _on_SaveGame_pressed():
 	$Label.visible = true
 	yield(get_tree().create_timer(1), "timeout")
 	$Label.visible = false
-	remove_child(get_node("Save"))
 
 
 func _on_Settings_pressed():

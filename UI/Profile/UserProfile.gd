@@ -41,7 +41,27 @@ var profile = {
 	"dexterity": {},
 	"coins": {},
 	"gems": {},
-	"inventory": {},
+	"inventory": {
+		"mapValue": {
+			"fields": {
+				"inventory": {
+					"mapValue": {
+						"fields": {}
+					}
+				},
+				"hotbar": {
+					"mapValue": {
+						"fields": {}
+					}
+				},
+				"equips": {
+					"mapValue": {
+						"fields": {}
+					}
+				}
+			}
+		}
+	},
 } setget set_profile
 
 func _ready():
@@ -65,6 +85,8 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 				information_sent = false
 			if !delete:
 				self.profile = result_body.fields
+		_:
+			print_debug(result_body)
 
 func _on_Confirm_pressed():
 	if nickname.text.empty() or character_class.text.empty():
@@ -87,14 +109,17 @@ func _on_Confirm_pressed():
 	profile.coins = {"integerValue": int(coins.text)}
 	profile.gems = {"integerValue": int(gems.text)}
 	# inventory remains the same
+	save_inventory()
 	
 	match new_profile:
 		true:
 			Firebase.save_document("users?documentId=%s" % Firebase.user_info.id, profile, http)
 		false:
 			Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
+	
 	information_sent = true
-	yield(get_tree().create_timer(1), "timeout")
+	
+	yield(http, "request_completed")
 	get_tree().root.add_child(load("res://UI/UI.tscn").instance())
 	
 	PlayerStats.initialize()
@@ -117,37 +142,83 @@ func set_profile(value: Dictionary) -> void:
 	dexterity.text = profile.dexterity.integerValue
 	coins.text = profile.coins.integerValue
 	gems.text = profile.gems.integerValue
-	set_inventory()
 
 func set_inventory():
 	var label = $PopupPanel/RichTextLabel
 	label.text = "Inventory:"
-	if profile.inventory == null:
+	if new_profile:
 		set_default_inventory(label)
 	else:
-		var inv = profile.inventory.inventory.mapValue
-		var hb = profile.inventory.hotbar.mapValue
-		var eq = profile.inventory.equips.mapValue
+		var inv = profile.inventory.mapValue.fields.inventory.mapValue.fields
+		var hb = profile.inventory.mapValue.fields.hotbar.mapValue.fields
+		var eq = profile.inventory.mapValue.fields.equips.mapValue.fields
 		
 		for item in inv:
-			var item_name = inv[item]["integerValue"][0]["stringValue"]
-			var quantity = str(inv[item]["integerValue"][1]["integerValue"])
+			var item_name = inv[item].arrayValue.values[0].stringValue
+			var quantity = inv[item].arrayValue.values[1].integerValue
 			label.text += "\n\t" + item_name + ", " + quantity
 			
 		label.text += "\n\nHotbar:"
 		
 		for item in hb:
-			var item_name = hb[item]["integerValue"][0]["stringValue"]
-			var quantity = str(hb[item]["integerValue"][1]["integerValue"])
+			var item_name = hb[item].arrayValue.values[0].stringValue
+			var quantity = hb[item].arrayValue.values[1].integerValue
 			label.text += "\n\t" + item_name + ", " + quantity
 		
 		label.text += "\n\nEquips:"
 		
 		for item in eq:
-			var item_name = eq[item]["integerValue"][0]["stringValue"]
-			var quantity = str(eq[item]["integerValue"][1]["integerValue"])
+			var item_name = eq[item].arrayValue.values[0].stringValue
+			var quantity = eq[item].arrayValue.values[1].integerValue
 			label.text += "\n\t" + item_name + ", " + quantity
+
+func save_inventory():
+	#var text = $PopupPanel/RichTextLabel.get_text()
+	#var inventory = PlayerInventory
+	#var lines = text.split("\n")
 	
+	# inventory
+	#for line in lines:
+	#	if line.find("Inventory") == -1:
+	#		pass
+	#	if line.find("Hotbar") != -1:
+	#		break
+	
+	#hotbar
+	var inventory = PlayerInventory.inventory
+	var hotbar = PlayerInventory.hotbar
+	var equips = PlayerInventory.equips
+	
+	for item in inventory:
+		profile.inventory.mapValue.fields.inventory.mapValue.fields[item] = {
+				"arrayValue": {
+						"values": [
+							{"stringValue": inventory[item][0]},
+							{"integerValue": inventory[item][1]}
+						]
+					}
+				}
+	
+	for item in hotbar:
+		profile.inventory.mapValue.fields.hotbar.mapValue.fields[item] = {
+				"arrayValue": {
+						"values": [
+							{"stringValue": hotbar[item][0]},
+							{"integerValue": hotbar[item][1]}
+						]
+					}
+				}
+	
+	for item in equips:
+		profile.inventory.mapValue.fields.equips.mapValue.fields[item] = {
+				"arrayValue": {
+						"values": [
+							{"stringValue": equips[item][0]},
+							{"integerValue": equips[item][1]}
+						]
+					}
+				}
+			
 func set_default_inventory(label):
 	label.text = "Inventory:"
 	var inv = PlayerInventory.inventory
@@ -174,6 +245,7 @@ func set_default_inventory(label):
 		label.text += "\n\t" + item_name + ", " + quantity
 
 func _on_Inventory_pressed():
+	set_inventory()
 	$PopupPanel.popup()
 
 
