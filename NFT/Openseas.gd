@@ -24,7 +24,7 @@ func get_req_headers() -> PoolStringArray:
 func get_assets():
 	var url = base_url + "assets?owner=" + address + "&order_direction=desc&offset=0&limit=20"
 	http.request(url, [], false, HTTPClient.METHOD_GET)
-
+	
 
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	if !pic:
@@ -80,3 +80,4 @@ func check_purchase(token_id, contract):
 	var purchase_scanner = load("res://NFT/PurchaseScanner.tscn").instance()
 	add_child(purchase_scanner)
 	purchase_scanner.initialise(token_id, contract)
+
