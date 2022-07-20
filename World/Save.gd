@@ -36,6 +36,11 @@ var profile = {
 			}
 		}
 	},
+	"quest": {
+		"mapValue": {
+			"fields": {}
+		}
+	}
 } 
 
 # Called when the node enters the scene tree for the first time.
@@ -97,7 +102,7 @@ func get_world_name():
 	return world_name
 
 func save_quests():
-	pass
+	profile.quest.mapValue.fields = QuestManager.quest_system_to_dict()
 
 func save_inventory():
 	var inventory = PlayerInventory.inventory
