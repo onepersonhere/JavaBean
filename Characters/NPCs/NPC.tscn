@@ -37,7 +37,6 @@ height = 8.0
 
 [node name="NPC" type="Area2D"]
 pause_mode = 2
-collision_layer = 3
 collision_mask = 3
 script = ExtResource( 3 )
 __meta__ = {
@@ -52,6 +51,7 @@ scale = Vector2( 0.2, 0.2 )
 position = Vector2( 0, 1 )
 frames = SubResource( 4 )
 animation = "Idle"
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -61,7 +61,6 @@ __meta__ = {
 }
 
 [node name="CollideArea" type="StaticBody2D" parent="."]
-collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollideArea"]

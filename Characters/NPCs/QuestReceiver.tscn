@@ -32,6 +32,6 @@ animations = [ {
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 9 )
-frame = 1
+frame = 2
 
 [node name="CompleteQuestAction" parent="Actions" index="0" instance=ExtResource( 2 )]
