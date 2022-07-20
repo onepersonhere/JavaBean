@@ -8,7 +8,7 @@ onready var notification : AcceptDialog = $Notification
 func _ready():
 	pass 
 
-func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+func _on_HTTPRequest_request_completed(_result, response_code, _headers, body):
 	var response_body = JSON.parse(body.get_string_from_ascii())
 	if response_code == 0:
 		notification.dialog_text = "Please connect to the internet!!"
@@ -18,6 +18,7 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 		notification.popup_centered()
 	else:
 		yield(get_tree().create_timer(0.5), "timeout")
+		#warning-ignore:return_value_discarded
 		get_tree().change_scene("res://UI/Profile/UserProfile.tscn")
 
 
@@ -31,4 +32,5 @@ func _on_Login_pressed():
 
 
 func _on_Back_pressed():
+	#warning-ignore:return_value_discarded
 	get_tree().change_scene("res://Main.tscn")

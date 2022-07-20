@@ -1531,7 +1531,7 @@
 58/shapes = [  ]
 58/z_index = 0
 
-[node name="FarmHouse" type="Node2D"]
+[node name="FarmHouse" type="Node2D" groups=["map"]]
 
 [node name="Background" type="Node2D" parent="." groups=["Map"]]
 position = Vector2( -8, -8 )

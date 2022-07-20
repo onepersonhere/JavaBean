@@ -26,13 +26,17 @@ func _ready() -> void:
 
 func _on_quest_started(quest: Quest) -> void:
 	var quest_root = _add_tree_item(tree_root, quest.title, active_icon, quest)
+	#warning-ignore:return_value_discarded
 	_add_tree_item(quest_root, quest.description)
 	
 	for reward_text in quest.get_rewards_as_text():
+		#warning-ignore:return_value_discarded
 		_add_tree_item(quest_root, reward_text)
 		
 	for objective in quest.get_objectives():
+		#warning-ignore:return_value_discarded
 		objective.connect("updated", self, "_on_Objective_updated")
+		#warning-ignore:return_value_discarded
 		objective.connect("completed", self, "_on_Objective_completed")
 		
 		_add_tree_item(

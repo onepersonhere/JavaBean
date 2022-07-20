@@ -123,13 +123,13 @@ func create_quest_node(quest_no, description, name, objective, rewards, type):
 	
 	match quest_no:
 		"quest_1":
-			quest_node_1 = QuestManager.create_quest(name, description, objective, rewards, type)
+			quest_node_1 = QuestManager.create_quest(name, description, objective, rewards, type, true, "Quest_1")
 		"quest_2":
-			quest_node_2 = QuestManager.create_quest(name, description, objective, rewards, type)
+			quest_node_2 = QuestManager.create_quest(name, description, objective, rewards, type, true, "Quest_2")
 		"quest_3":
-			quest_node_3 = QuestManager.create_quest(name, description, objective, rewards, type)
+			quest_node_3 = QuestManager.create_quest(name, description, objective, rewards, type, true, "Quest_3")
 
 func add_quest(quest):
-	QuestManager.add_quest(quest)
+	QuestManager.add_quest_and_start(quest)
 
 

@@ -41,4 +41,5 @@ frame = 3
 [node name="CollideArea" parent="." index="3"]
 collision_layer = 1
 
+
 [node name="ShopAction" parent="Actions" index="0" instance=ExtResource( 2 )]

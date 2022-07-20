@@ -2,6 +2,11 @@ extends Node
 
 onready var http = $HTTPRequest
 var profile = {
+	"curr_exp": {},
+	"max_exp": {},
+	"level": {},
+	"new_game": {},
+	"nft_addr": {},
 	"nickname": {},
 	"character_class": {},
 	"location": {},
@@ -14,6 +19,32 @@ var profile = {
 	"dexterity": {},
 	"coins": {},
 	"gems": {},
+	"inventory": {
+		"mapValue": {
+			"fields": {
+				"inventory": {
+					"mapValue": {
+						"fields": {}
+					}
+				},
+				"hotbar": {
+					"mapValue": {
+						"fields": {}
+					}
+				},
+				"equips": {
+					"mapValue": {
+						"fields": {}
+					}
+				}
+			}
+		}
+	},
+	"quest": {
+		"mapValue": {
+			"fields": {}
+		}
+	}
 } 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,29 +58,91 @@ func save():
 	
 	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 
-
-func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+#warning-ignore:unused_argument
+func _on_HTTPRequest_request_completed(result, response_code, _headers, body):
 	if response_code == 200:
 		print_debug("saved")
 	else:
-		print_debug(body)
+		print_debug(JSON.parse(body.get_string_from_ascii()).result)
 
-# TODO: SAVE the following: Quest System
 func save_stats():
-	var player = get_node("/root/World/YSort/Player")
+	var player = get_tree().get_nodes_in_group("Player")[0]
 	
-	profile.nickname = {"stringValue": player.NICKNAME}
-	profile.character_class = {"stringValue": player.CHARACTER_CLASS}
-	profile.location = {"stringValue": player.MAP + " (" + str(round(player.get_position().x)) + "," + str(round(player.get_position().y)) + ")"}
-	profile.max_hp = {"integerValue": player.MAX_HEALTH}
-	profile.max_sp = {"integerValue": player.MAX_SP}
-	profile.curr_hp = {"integerValue": player.CURR_HEALTH}
-	profile.curr_sp = {"integerValue": player.CURR_SP}
-	profile.strength = {"integerValue": player.STRENGTH}
-	profile.intelligence = {"integerValue": player.INTELLIGENCE}
-	profile.dexterity = {"integerValue": player.DEXTERITY}
-	profile.coins = {"integerValue": player.COINS}
-	profile.gems = {"integerValue": player.GEMS}
+	profile.curr_exp = {"integerValue": PlayerStats.CURR_EXP}
+	profile.max_exp = {"integerValue": PlayerStats.MAX_EXP}
+	profile.level = {"integerValue": PlayerStats.LEVEL}
+	profile.new_game = {"booleanValue": GlobalVar.new_game}
+	profile.nft_addr = {"stringValue": GlobalVar.nft_addr}
+	profile.nickname = {"stringValue": PlayerStats.NICKNAME}
+	profile.character_class = {"stringValue": PlayerStats.CHARACTER_CLASS}
+	profile.location = {"stringValue": get_world_name() + " (" + str(round(player.get_position().x)) + "," + str(round(player.get_position().y)) + ")"}
+	profile.max_hp = {"integerValue": PlayerStats.MAX_HEALTH}
+	profile.max_sp = {"integerValue": PlayerStats.MAX_SP}
+	profile.curr_hp = {"integerValue": PlayerStats.CURR_HEALTH}
+	profile.curr_sp = {"integerValue": PlayerStats.CURR_SP}
+	profile.strength = {"integerValue": PlayerStats.STRENGTH}
+	profile.intelligence = {"integerValue": PlayerStats.INTELLIGENCE}
+	profile.dexterity = {"integerValue": PlayerStats.DEXTERITY}
+	profile.coins = {"integerValue": PlayerStats.COINS}
+	profile.gems = {"integerValue": PlayerStats.GEMS}
+	
+	save_inventory()
+
+func get_world_name():
+	var map = get_tree().get_nodes_in_group("map")[0].get_name()
+	var world_name = "Lombok" # default
+	
+	match map:
+		"House":
+			world_name = "Lombok-House";
+		"HouseSecondFloor":
+			world_name = "Lombok-House-2"
+		"FarmHouse":
+			world_name = "Lombok-Farmhouse"
+		"FortifiedHouse":
+			world_name = "Lombok-Fort-House"
+		"Inn":
+			world_name = "Lombok-Fort-Inn"
+		"InnSecondFloor":
+			world_name = "Lombok-Fort-Inn-2"
+		# others can add below
+	return world_name
 
 func save_quests():
-	pass
+	profile.quest.mapValue.fields = QuestManager.quest_system_to_dict()
+
+func save_inventory():
+	var inventory = PlayerInventory.inventory
+	var hotbar = PlayerInventory.hotbar
+	var equips = PlayerInventory.equips
+	
+	for item in inventory:
+		profile.inventory.mapValue.fields.inventory.mapValue.fields[item] = {
+				"arrayValue": {
+						"values": [
+							{"stringValue": inventory[item][0]},
+							{"integerValue": inventory[item][1]}
+						]
+					}
+				}
+	
+	for item in hotbar:
+		profile.inventory.mapValue.fields.hotbar.mapValue.fields[item] = {
+				"arrayValue": {
+						"values": [
+							{"stringValue": hotbar[item][0]},
+							{"integerValue": hotbar[item][1]}
+						]
+					}
+				}
+	
+	for item in equips:
+		profile.inventory.mapValue.fields.equips.mapValue.fields[item] = {
+				"arrayValue": {
+						"values": [
+							{"stringValue": equips[item][0]},
+							{"integerValue": equips[item][1]}
+						]
+					}
+				}
+		

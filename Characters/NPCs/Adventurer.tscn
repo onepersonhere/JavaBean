@@ -99,6 +99,18 @@ region = Rect2( 32, 96, 32, 32 )
 atlas = ExtResource( 4 )
 region = Rect2( 64, 96, 32, 32 )
 
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 4 )
+region = Rect2( 32, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 4 )
+region = Rect2( 64, 96, 32, 32 )
+
 [sub_resource type="SpriteFrames" id=18]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
@@ -125,6 +137,11 @@ animations = [ {
 "loop": true,
 "name": "Walking Up",
 "speed": 3.0
+}, {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ) ],
+"loop": true,
+"name": "Walking Up",
+"speed": 3.0
 } ]
 
 [node name="Adventurer" groups=["quest"] instance=ExtResource( 1 )]
@@ -143,7 +160,7 @@ position = Vector2( 0, -27 )
 
 [node name="AnimatedSprite" parent="." index="2"]
 frames = SubResource( 18 )
-frame = 4
+frame = 2
 
 [node name="CollideArea" parent="." index="4"]
 collision_layer = 1

@@ -6,7 +6,7 @@ func _ready():
 func is_full():
 	return PlayerInventory.inventory.size() >= PlayerInventory.NUM_INVENTORY_SLOTS
 
-func add_new_item(item_name, quantity, traits: Dictionary, texture):
+func add_new_item(item_name, quantity, traits: Dictionary, _texture):
 	JsonData.item_data[item_name] = traits
 	JsonData.SaveData(JsonData.path)
 	
@@ -14,7 +14,7 @@ func add_new_item(item_name, quantity, traits: Dictionary, texture):
 
 func parse_traits(traits: Array, description):
 	# convert from array to dictionary
-	var dic_traits: Dictionary;
+	var dic_traits: Dictionary = {};
 	for trait in traits:
 		dic_traits[trait.trait_type] = trait.value
 		
@@ -57,3 +57,10 @@ func get_active_item_name():
 		var item_name = PlayerInventory.hotbar[PlayerInventory.active_item_slot_index][0]
 		return item_name;
 	else: return null;
+
+func refresh_inventory():
+	var inventory = get_node("/root/UI/CanvasLayer/UserInterface/Inventory")
+	var hotbar = get_node("/root/UI/CanvasLayer/UserInterface/Hotbar")
+	inventory.initialise_inventory()
+	inventory.initialise_equip_slots()
+	hotbar.initialise_hotbar()

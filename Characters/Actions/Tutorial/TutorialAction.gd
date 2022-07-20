@@ -1,22 +1,22 @@
 extends DialogueAction
 
 var dialog_scene = "Tutorial"
-
+onready var TutorialQuest = load("res://Quest/quests/TutorialQuest.tscn")
 func _ready():
-	if not GlobalVar.new_game:
-		var dialog = get_node_or_null("/root/QuestSystem/Active/TutorialQuest/Objectives/TutorialObjective")
+	if not GlobalVar.new_game and QuestSystem.find_available(TutorialQuest.instance()) == null:
+		var dialog = QuestSystem.find_active(TutorialQuest.instance())
 		if dialog == null:
-			dialog = get_node_or_null("/root/QuestSystem/Delivered/TutorialQuest/Objectives/TutorialObjective")
-		dialog_scene = dialog.get_stage()
+			dialog = QuestSystem.find_delivered(TutorialQuest.instance())
+		dialog_scene = dialog.get_objectives()[0].get_stage()
 		if dialog_scene == "skipped" || dialog_scene == "completed":
 			skipped()
 
 func interact():
-	if not GlobalVar.new_game:
-		var dialog = get_node_or_null("/root/QuestSystem/Active/TutorialQuest/Objectives/TutorialObjective")
+	if not GlobalVar.new_game and QuestSystem.find_available(TutorialQuest.instance()) == null:
+		var dialog = QuestSystem.find_active(TutorialQuest.instance())
 		if dialog == null:
-			dialog = get_node_or_null("/root/QuestSystem/Delivered/TutorialQuest/Objectives/TutorialObjective")
-		dialog_scene = dialog.get_stage()
+			dialog = QuestSystem.find_delivered(TutorialQuest.instance())
+		dialog_scene = dialog.get_objectives()[0].get_stage()
 		if dialog_scene == "skipped" || dialog_scene == "completed":
 			skipped()
 		

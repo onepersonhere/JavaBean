@@ -1,6 +1,9 @@
 extends Node
 signal update
 
+var NICKNAME = ""
+var CHARACTER_CLASS = "Warrior"
+
 var ACCELERATION = 1000
 var CLIMB_SPEED = 50
 var WALK_SPEED = 120
@@ -45,8 +48,7 @@ var is_climbing = false
 var can_sprint = true
 var IS_ALIVE = true
 
-var EXPERIENCE = 0
-var LEVEL
+var LEVEL = 0
 var COINS = 0
 var GEMS = 0
 
@@ -57,31 +59,22 @@ var DEXTERITY = 0
 var MAP = "Lombok"
 
 func initialize():
-	PlayerInventory.connect("active_item_updated", self, "update");
+	if !PlayerInventory.is_connected("active_item_updated", self, "update"):
+		# warning-ignore:return_value_discarded
+		PlayerInventory.connect("active_item_updated", self, "update");
 	UI_created()
 	
 func base_stat_assigned():
-	reset()
+	reset();
 	update();
+	load_stats();
 	
 func UI_created():
 	UI = get_tree().get_nodes_in_group("UI")[0].get_node("Stats/GUI/HBoxContainer")
 	life_bar = UI.find_node("LifeBar")
 	energy_bar = UI.find_node("EnergyBar")
 	exp_bar = UI.find_node("ExpBar")
-
-	CURR_HEALTH = life_bar.CURRENT_HEALTH
-	MAX_HEALTH = life_bar.MAX_HEALTH
-
-	CURR_SP = energy_bar.CURRENT_SP
-	MAX_SP = energy_bar.MAX_SP
-	REGEN = energy_bar.RECHARGE
 	
-	CURR_EXP = exp_bar.CURRENT_EXP
-	MAX_EXP = exp_bar.MAX_EXP
-	LEVEL = exp_bar.LEVEL
-	
-
 func reset():
 	ACCELERATION = BASE_ACCELERATION
 	WALK_SPEED = BASE_WALK_SPEED
@@ -123,3 +116,20 @@ func is_weapon(item):
 			return true;
 		_:
 			return false; 
+
+func load_stats():
+	life_bar.CURRENT_HEALTH = CURR_HEALTH
+	life_bar.MAX_HEALTH = MAX_HEALTH
+
+	energy_bar.CURRENT_SP = CURR_SP
+	energy_bar.MAX_SP = MAX_SP
+	energy_bar.RECHARGE = REGEN
+	
+	exp_bar.CURRENT_EXP = CURR_EXP
+	exp_bar.MAX_EXP = MAX_EXP
+	exp_bar.LEVEL = LEVEL
+	
+	life_bar._ready()
+	energy_bar._ready()
+	energy_bar.stopped()
+	exp_bar._ready()

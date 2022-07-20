@@ -111,7 +111,7 @@ func _on_Stats_no_health():
 func _on_Timer_timeout():
 	$HitBox/CollisionShape2D.set_disabled(false)
 	
-func _on_HitBox_area_entered(area):
+func _on_HitBox_area_entered(_area):
 	$HitBox/CollisionShape2D.set_deferred("disabled", true)
 	timer.start(ATTACK_RATE)
 
