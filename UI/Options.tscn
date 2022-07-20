@@ -165,7 +165,11 @@ Assets used:
 	Pipoya RPG Character 
 	Sprites
 	Arkeve Inventory 
-	Assets"
+	Assets
+	Genshin Impact
+	(Background Music)
+	Minecraft
+	(Sound Effects)"
 
 [connection signal="toggled" from="Control/VBoxContainer/Fullscreen/CheckButton" to="." method="_on_CheckButton_toggled"]
 [connection signal="toggled" from="Control/VBoxContainer/VSync/CheckButton" to="." method="_on_CheckButton_toggled_VSync"]
