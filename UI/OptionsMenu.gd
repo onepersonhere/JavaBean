@@ -11,7 +11,7 @@ func _on_SaveGame_pressed():
 	Save.save()
 	$Label.text = "Done"
 	$Label.visible = true
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	$Label.visible = false
 
 
@@ -58,8 +58,9 @@ func _on_Help_pressed():
 
 func _on_Main_Menu_pressed():
 	get_tree().paused = false
-	get_node("/root/World").queue_free()
+	get_tree().get_nodes_in_group("map")[0].queue_free()
 	get_node("/root/UI").queue_free()
+	#warning-ignore:return_value_discarded
 	get_tree().change_scene("res://UI/Main Menu.tscn")
 
 

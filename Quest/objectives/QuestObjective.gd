@@ -2,6 +2,7 @@ extends Node
 class_name QuestObjective
 
 signal completed(objective)
+#warning-ignore:unused_variable
 signal updated(objective)
 
 var completed: bool = false

@@ -34,7 +34,7 @@ func refresh(parent, item_name):
 func stack_items(item_name, location):
 	var max_stack_size = int(JsonData.item_data[item_name]["StackSize"])
 	
-	var stack_size_array: Array;
+	var stack_size_array: Array = []
 	stack_size_array.resize(PlayerInventory.NUM_INVENTORY_SLOTS + 1)
 	var curr_stack_size = 0;
 	

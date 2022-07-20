@@ -6,6 +6,11 @@ func load(profile):
 	# for i in save_nodes:
 	# 	i.queue_free()
 	
+	# exp
+	PlayerStats.CURR_EXP = int(profile.curr_exp.integerValue)
+	PlayerStats.MAX_EXP = int(profile.max_exp.integerValue)
+	PlayerStats.LEVEL = int(profile.level.integerValue)
+	
 	# new game
 	GlobalVar.new_game = bool(profile.new_game.booleanValue)
 	
@@ -16,8 +21,12 @@ func load(profile):
 	var world: Node2D = set_location(profile, player)
 	
 	# get YSort
-	var ysort = world.find_node("YSort")
-	ysort.add_child(player)
+	if world.name == "World":
+		var ysort = world.find_node("YSort")
+		ysort.add_child(player)
+	else:
+		world.add_child(player)
+
 	player.scale = Vector2(1, 1)
 	player.find_node("Camera2D").zoom = Vector2(0.45, 0.45)
 	
@@ -25,12 +34,12 @@ func load(profile):
 	PlayerStats.IS_ALIVE = true
 	
 	# nickname
-	player.NICKNAME = profile["nickname"]["stringValue"]
+	PlayerStats.NICKNAME = profile["nickname"]["stringValue"]
 	
 	# class
 	match profile["character_class"]["stringValue"]:
 		"warrior":
-			player.CHARACTER_CLASS = "warrior"
+			PlayerStats.CHARACTER_CLASS = "warrior"
 	
 	# movement
 	PlayerStats.BASE_ACCELERATION = 1000 + 1 * int(profile["dexterity"]["integerValue"])
@@ -54,14 +63,6 @@ func load(profile):
 	
 	# regen
 	PlayerStats.BASE_REGEN = 10 + int(profile["intelligence"]["integerValue"])
-	
-	# experience
-	PlayerStats.EXPERIENCE = int(profile["strength"]["integerValue"]) 
-	+ int(profile["intelligence"]["integerValue"]) 
-	+ int(profile["dexterity"]["integerValue"])
-	
-	# level
-	PlayerStats.LEVEL = round(PlayerStats.EXPERIENCE / 10)
 	
 	# coins
 	PlayerStats.COINS = int(profile["coins"]["integerValue"])

@@ -30,7 +30,7 @@ func get_completed_objectives():
 		completed.append(objective)
 	return completed
 
-func _on_Objective_completed(objective) -> void:
+func _on_Objective_completed(_objective) -> void:
 	if get_completed_objectives().size() == get_objectives().size():
 		emit_signal("completed")
 

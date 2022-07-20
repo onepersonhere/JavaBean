@@ -115,7 +115,7 @@ flat = true
 [node name="Stats" type="VBoxContainer" parent="MainContainer/Col1"]
 margin_top = 64.0
 margin_right = 182.0
-margin_bottom = 146.0
+margin_bottom = 175.0
 rect_pivot_offset = Vector2( -91, 69 )
 custom_constants/separation = 5
 
@@ -135,7 +135,7 @@ text = "Strength:"
 margin_left = 101.0
 margin_right = 159.0
 margin_bottom = 24.0
-text = "0"
+text = "5"
 editable = false
 
 [node name="Intelligence" type="HBoxContainer" parent="MainContainer/Col1/Stats"]
@@ -155,7 +155,7 @@ text = "Intelligence:"
 margin_left = 101.0
 margin_right = 159.0
 margin_bottom = 24.0
-text = "0"
+text = "3"
 editable = false
 
 [node name="Dexterity" type="HBoxContainer" parent="MainContainer/Col1/Stats"]
@@ -175,13 +175,33 @@ text = "Dexterity:"
 margin_left = 101.0
 margin_right = 159.0
 margin_bottom = 24.0
-text = "0"
+text = "4"
+editable = false
+
+[node name="Level" type="HBoxContainer" parent="MainContainer/Col1/Stats"]
+margin_top = 87.0
+margin_right = 182.0
+margin_bottom = 111.0
+custom_constants/separation = 62
+
+[node name="Label" type="Label" parent="MainContainer/Col1/Stats/Level"]
+margin_top = 3.0
+margin_right = 39.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 5 )
+text = "Level:"
+
+[node name="LineEdit" type="LineEdit" parent="MainContainer/Col1/Stats/Level"]
+margin_left = 101.0
+margin_right = 159.0
+margin_bottom = 24.0
+text = "1"
 editable = false
 
 [node name="Inventory" type="HBoxContainer" parent="MainContainer/Col1"]
-margin_top = 156.0
+margin_top = 185.0
 margin_right = 182.0
-margin_bottom = 176.0
+margin_bottom = 205.0
 custom_constants/separation = 33
 
 [node name="Inventory" type="Button" parent="MainContainer/Col1/Inventory"]
@@ -255,7 +275,7 @@ text = "SP:"
 margin_left = 49.0
 margin_right = 107.0
 margin_bottom = 24.0
-text = "100"
+text = "20"
 editable = false
 
 [node name="Coins" type="HBoxContainer" parent="MainContainer/Col2"]

@@ -2,6 +2,9 @@ extends Node
 
 onready var http = $HTTPRequest
 var profile = {
+	"curr_exp": {},
+	"max_exp": {},
+	"level": {},
 	"new_game": {},
 	"nft_addr": {},
 	"nickname": {},
@@ -55,8 +58,8 @@ func save():
 	
 	Firebase.update_document("users/%s" % Firebase.user_info.id, profile, http)
 
-
-func _on_HTTPRequest_request_completed(result, response_code, headers, body):
+#warning-ignore:unused_argument
+func _on_HTTPRequest_request_completed(result, response_code, _headers, body):
 	if response_code == 200:
 		print_debug("saved")
 	else:
@@ -65,10 +68,13 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 func save_stats():
 	var player = get_tree().get_nodes_in_group("Player")[0]
 	
+	profile.curr_exp = {"integerValue": PlayerStats.CURR_EXP}
+	profile.max_exp = {"integerValue": PlayerStats.MAX_EXP}
+	profile.level = {"integerValue": PlayerStats.LEVEL}
 	profile.new_game = {"booleanValue": GlobalVar.new_game}
 	profile.nft_addr = {"stringValue": GlobalVar.nft_addr}
-	profile.nickname = {"stringValue": player.NICKNAME}
-	profile.character_class = {"stringValue": player.CHARACTER_CLASS}
+	profile.nickname = {"stringValue": PlayerStats.NICKNAME}
+	profile.character_class = {"stringValue": PlayerStats.CHARACTER_CLASS}
 	profile.location = {"stringValue": get_world_name() + " (" + str(round(player.get_position().x)) + "," + str(round(player.get_position().y)) + ")"}
 	profile.max_hp = {"integerValue": PlayerStats.MAX_HEALTH}
 	profile.max_sp = {"integerValue": PlayerStats.MAX_SP}

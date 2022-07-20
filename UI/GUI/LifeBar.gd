@@ -1,5 +1,7 @@
 extends HBoxContainer
 
+signal no_health
+
 var MAX_HEALTH = 100
 var CURRENT_HEALTH = 100
 
@@ -27,6 +29,4 @@ func heal(value):
 	
 func is_full_health():
 	return CURRENT_HEALTH == MAX_HEALTH
-
-signal no_health
 

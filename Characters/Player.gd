@@ -8,9 +8,6 @@ enum {
 	WALK, RUN, CLIMB, ATTACK
 }
 
-export var NICKNAME = ""
-export var CHARACTER_CLASS = "Warrior"
-
 var state = WALK
 var velocity = Vector2.ZERO
 

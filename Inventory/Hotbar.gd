@@ -5,9 +5,11 @@ onready var hotbar = $HotbarSlots
 onready var active_item_label = $ActiveItemLabel
 onready var slots = hotbar.get_children()
 func _ready():
+	#warning-ignore:return_value_discarded
 	PlayerInventory.connect("active_item_updated", self, "update_active_item_label")
 	for i in range(slots.size()):
 		slots[i].connect("gui_input", self, "slot_gui_input", [slots[i]])
+		#warning-ignore:return_value_discarded
 		PlayerInventory.connect("active_item_updated", slots[i], "refresh_style")
 		slots[i].slot_index = i
 		slots[i].slot_type = SlotClass.SlotType.HOTBAR

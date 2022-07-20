@@ -29,7 +29,7 @@ func register(email:String, password: String, http: HTTPRequest) -> void:
 		"email": email,
 		"password": password,
 	}
-	
+	# warning-ignore:return_value_discarded
 	http.request(register_url, [], false, HTTPClient.METHOD_POST, to_json(body))
 	
 	var result = yield(http, "request_completed") as Array
@@ -42,7 +42,7 @@ func login(email:String, password: String, http: HTTPRequest) -> void:
 		"password": password,
 		"returnSecureToken": true
 	}
-	
+	# warning-ignore:return_value_discarded
 	http.request(login_url, [], false, HTTPClient.METHOD_POST, to_json(body))
 	
 	var result = yield(http, "request_completed") as Array
@@ -53,12 +53,13 @@ func save_document(path: String, fields: Dictionary, http: HTTPRequest) -> void:
 	var document = {"fields": fields}
 	var body = to_json(document)
 	var url = FIRESTORE_URL + path
-	
+	# warning-ignore:return_value_discarded
 	http.request(url, get_req_headers(), false, HTTPClient.METHOD_POST, body)
 	
 func get_document(path: String, http: HTTPRequest) -> void:
 	var url = FIRESTORE_URL + path
 	if http.get_http_client_status() == 0:
+		# warning-ignore:return_value_discarded
 		http.request(url, get_req_headers(), false, HTTPClient.METHOD_GET)
 	else: 
 		yield(get_tree().create_timer(1), "timeout")
@@ -67,9 +68,10 @@ func update_document(path: String, fields: Dictionary, http: HTTPRequest) -> voi
 	var document = {"fields": fields}
 	var body = to_json(document)
 	var url = FIRESTORE_URL + path
-	
+	# warning-ignore:return_value_discarded
 	http.request(url, get_req_headers(), false, HTTPClient.METHOD_PATCH, body)
 	
 func delete_document(path: String, http: HTTPRequest) -> void:
 	var url = FIRESTORE_URL + path
+	# warning-ignore:return_value_discarded
 	http.request(url, get_req_headers(), false, HTTPClient.METHOD_DELETE)

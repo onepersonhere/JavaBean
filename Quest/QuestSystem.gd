@@ -23,6 +23,7 @@ func is_available(reference: Quest) -> bool:
 
 func start(reference: Quest):
 	var quest: Quest = available_quests.find(reference)
+	# warning-ignore:return_value_discarded
 	quest.connect("completed", self, "_on_Quest_completed", [quest])
 	available_quests.remove_child(quest)
 	active_quests.add_child(quest)

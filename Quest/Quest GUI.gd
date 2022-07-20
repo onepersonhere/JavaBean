@@ -9,6 +9,7 @@ onready var animation_player := $Container/AnimationPlayer
 
 
 func _ready() -> void:
+	#warning-ignore:return_value_discarded
 	quest_journal.connect("updated", self, "_wiggle_element", [quest_button])
 
 

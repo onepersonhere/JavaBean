@@ -39,8 +39,8 @@ func create_slay_quest(name, description, objective, rewards, reward_on_delivery
 	quest_scene.get_node("Objectives").add_child(objective_scene)
 	quest_scene.reward_on_delivery = reward_on_delivery
 	return quest_scene
-
-func create_interact_quest(name, description, objective, rewards, reward_on_delivery):
+#warning-ignore:unused_argument
+func create_interact_quest(name, _description, _objective, _rewards, _reward_on_delivery):
 	pass
 	
 func create_tutorial_quest(objective):

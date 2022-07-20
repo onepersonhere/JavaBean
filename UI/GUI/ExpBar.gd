@@ -27,3 +27,8 @@ func gain_exp(value):
 		CURRENT_EXP += value
 		$TextureProgress.value = CURRENT_EXP
 		$Count/Background/Progress.text = str(CURRENT_EXP) + "/" + str(MAX_EXP)
+		
+	#update the PlayerStats
+	PlayerStats.CURR_EXP = CURRENT_EXP
+	PlayerStats.LEVEL = LEVEL
+	PlayerStats.MAX_EXP = MAX_EXP
