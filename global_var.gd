@@ -39,7 +39,6 @@ func random_background_music():
 			file_name = dir.get_next()
 
 func get_as_AudioStreamMp3(path):
-	print_debug(path)
 	var file = File.new()
 	if file.file_exists(path):
 		file.open(path, file.READ)
