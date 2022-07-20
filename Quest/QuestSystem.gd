@@ -66,7 +66,16 @@ func find_active(reference: Quest) -> Quest:
 	
 func add_available_quest(reference: Quest):
 	available_quests.add_child(reference)
-	
+
+func add_active_quest(reference: Quest):
+	active_quests.add_child(reference)
+
+func add_completed_quest(reference: Quest):
+	completed_quests.add_child(reference)
+
+func add_delivered_quest(reference: Quest):
+	delivered_quests.add_child(reference)
+
 func skip_quest(reference: Quest):
 	start(reference)
 	_on_Quest_completed(reference)
@@ -83,3 +92,13 @@ func find_completed(reference: Quest) -> Quest:
 
 func find_delivered(reference: Quest) -> Quest:
 	return delivered_quests.find(reference)
+
+func reset_quest_system():
+	for quest in available_quests.get_children():
+		quest.queue_free()
+	for quest in active_quests.get_children():
+		quest.queue_free()
+	for quest in completed_quests.get_children():
+		quest.queue_free()
+	for quest in delivered_quests.get_children():
+		quest.queue_free()

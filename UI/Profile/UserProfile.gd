@@ -29,6 +29,7 @@ onready var gems: LineEdit = $MainContainer/Col2/Gems/LineEdit
 onready var profile_pic: TextureRect = $MainContainer/CenterContainer/Col3/CenterContainer/Profile
 
 var profile = {
+	"new_game" : {"booleanValue": "True"},
 	"nft_addr": {},
 	"nickname": {},
 	"character_class": {},
@@ -63,6 +64,11 @@ var profile = {
 			}
 		}
 	},
+	"quest": {
+		"mapValue": {
+			"fields": {}
+		}
+	}
 } setget set_profile
 
 func _ready():
@@ -110,6 +116,8 @@ func _on_Confirm_pressed():
 	profile.coins = {"integerValue": int(coins.text)}
 	profile.gems = {"integerValue": int(gems.text)}
 	# inventory remains the same
+	if new_profile:
+		set_default_inventory($PopupPanel/RichTextLabel)
 	save_inventory()
 	
 	match new_profile:

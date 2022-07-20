@@ -20,7 +20,7 @@ func _start():
 	emit_signal("started")
 
 func get_objectives():
-	return objectives.get_children()
+	return $Objectives.get_children()
 	
 func get_completed_objectives():
 	var completed: Array = []

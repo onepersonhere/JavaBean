@@ -6,7 +6,12 @@ func load(profile):
 	# for i in save_nodes:
 	# 	i.queue_free()
 	
+	# new game
+	GlobalVar.new_game = bool(profile.new_game.booleanValue)
+	
+	#player
 	var player: KinematicBody2D = load("res://Characters/MainCharacter.tscn").instance()
+	
 	# location
 	var world: Node2D = set_location(profile, player)
 	
@@ -74,6 +79,9 @@ func load(profile):
 	# inventory
 	load_inventory(profile);
 	
+	# quest system
+	load_quests(profile);
+	
 	get_tree().get_root().add_child(world)
 	print_debug("loaded")
 
@@ -118,3 +126,39 @@ func load_inventory(profile):
 				"equips":
 					PlayerInventory.equips[int(item)] = [item_name, item_quantity];
 	InventoryManager.refresh_inventory()
+
+func load_quests(profile):
+	if not get_node("/root/UserProfile").new_profile:
+		# QuestSystem.reset_quest_system()
+		
+		if profile.quest.mapValue.fields.available.arrayValue.has("values"):
+			for quest in profile.quest.mapValue.fields.available.arrayValue.values:
+				var quest_instance = parse_quest_dict(quest.mapValue.fields)
+				QuestSystem.add_available_quest(quest_instance)
+				
+		if profile.quest.mapValue.fields.active.arrayValue.has("values"):
+			for quest in profile.quest.mapValue.fields.active.arrayValue.values:
+				QuestSystem.add_active_quest(
+					parse_quest_dict(quest.mapValue.fields)
+				)
+		if profile.quest.mapValue.fields.completed.arrayValue.has("values"):
+			for quest in profile.quest.mapValue.fields.completed.arrayValue.values:
+				QuestSystem.add_completed_quest(
+					parse_quest_dict(quest.mapValue.fields)
+				)
+		if profile.quest.mapValue.fields.delivered.arrayValue.has("values"):
+			for quest in profile.quest.mapValue.fields.delivered.arrayValue.values:
+				QuestSystem.add_delivered_quest(
+					parse_quest_dict(quest.mapValue.fields)
+				)
+
+	
+func parse_quest_dict(quest):
+	return QuestManager.create_quest(
+		quest.name.stringValue,
+		quest.description.stringValue,
+		quest.objective.mapValue.fields,
+		quest.reward.arrayValue.values,
+		quest.type.stringValue,
+		bool(quest.reward_on_delivery.booleanValue)
+	)

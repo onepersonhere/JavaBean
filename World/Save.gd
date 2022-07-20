@@ -63,8 +63,9 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 
 # TODO: SAVE the following: Quest System
 func save_stats():
-	var player = get_node("/root/World/YSort/Player")
+	var player = get_tree().get_nodes_in_group("player")[0]
 	
+	profile.new_game = {"booleanValue": GlobalVar.new_game}
 	profile.nft_addr = {"stringValue": GlobalVar.nft_addr}
 	profile.nickname = {"stringValue": player.NICKNAME}
 	profile.character_class = {"stringValue": player.CHARACTER_CLASS}
