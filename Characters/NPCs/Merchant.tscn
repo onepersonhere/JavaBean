@@ -36,6 +36,10 @@ visible = false
 [node name="AnimatedSprite" parent="." index="1"]
 pause_mode = 2
 frames = SubResource( 8 )
-frame = 2
+frame = 3
+
+[node name="CollideArea" parent="." index="3"]
+collision_layer = 1
+
 
 [node name="ShopAction" parent="Actions" index="0" instance=ExtResource( 2 )]

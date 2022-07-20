@@ -3,6 +3,7 @@
 [ext_resource path="res://World/BackgroundMusic.gd" type="Script" id=1]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer"]
+volume_db = -5.0
 script = ExtResource( 1 )
 
 [connection signal="finished" from="." to="." method="_on_BackgroundMusic_finished"]

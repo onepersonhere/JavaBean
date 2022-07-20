@@ -1247,6 +1247,15 @@ entering_area = "res://World/Inn/Inn.tscn"
 entering_area_name = "Inn"
 exit_area_name = "World"
 
+[node name="Entrance6" parent="YSort/Doors" instance=ExtResource( 10 )]
+position = Vector2( 2964, 2286 )
+rotation = 1.5708
+pos_x = 505
+pos_y = 183
+entering_area = "res://World/Basement/Basement.tscn"
+entering_area_name = "Basement"
+exit_area_name = "World"
+
 [node name="NPC" type="YSort" parent="YSort"]
 
 [node name="Merchant" parent="YSort/NPC" instance=ExtResource( 14 )]
