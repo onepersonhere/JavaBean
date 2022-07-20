@@ -2,6 +2,7 @@ extends Node
 
 onready var http = $HTTPRequest
 var profile = {
+	"new_game": {},
 	"nft_addr": {},
 	"nickname": {},
 	"character_class": {},
@@ -61,9 +62,8 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	else:
 		print_debug(JSON.parse(body.get_string_from_ascii()).result)
 
-# TODO: SAVE the following: Quest System
 func save_stats():
-	var player = get_tree().get_nodes_in_group("player")[0]
+	var player = get_tree().get_nodes_in_group("Player")[0]
 	
 	profile.new_game = {"booleanValue": GlobalVar.new_game}
 	profile.nft_addr = {"stringValue": GlobalVar.nft_addr}

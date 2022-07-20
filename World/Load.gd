@@ -128,8 +128,8 @@ func load_inventory(profile):
 	InventoryManager.refresh_inventory()
 
 func load_quests(profile):
-	if not get_node("/root/UserProfile").new_profile:
-		# QuestSystem.reset_quest_system()
+	if not get_node("/root/UserProfile").new_profile && not profile.quest.mapValue.empty():
+		QuestSystem.reset_quest_system()
 		
 		if profile.quest.mapValue.fields.available.arrayValue.has("values"):
 			for quest in profile.quest.mapValue.fields.available.arrayValue.values:
@@ -160,5 +160,6 @@ func parse_quest_dict(quest):
 		quest.objective.mapValue.fields,
 		quest.reward.arrayValue.values,
 		quest.type.stringValue,
-		bool(quest.reward_on_delivery.booleanValue)
+		bool(quest.reward_on_delivery.booleanValue),
+		quest.quest_name.stringValue
 	)

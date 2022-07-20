@@ -33,7 +33,7 @@ animations = [ {
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 5 )
-frame = 2
+frame = 3
 
 [node name="DialogueAction" parent="Actions" index="0" instance=ExtResource( 2 )]
 timeline = "Lore"

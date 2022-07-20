@@ -4,7 +4,7 @@ extends Node
 func find(_quest: Quest) -> Quest:
 	# Finds a quest by reference and returns it
 	for quest in get_children():
-		if quest.name == _quest.name:
+		if quest.name.find(_quest.name) != -1:
 			return quest
 	return null
 

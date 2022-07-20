@@ -2,7 +2,7 @@ extends Node
 onready var quest_loader = load("res://Quest/Quest.tscn")
 onready var rewards_loader = load("res://Quest/QuestItemReward.tscn")
 
-func create_quest(name, description, objective, rewards, type, reward_on_delivery):
+func create_quest(name, description, objective, rewards, type, reward_on_delivery, quest_name):
 	var quest = null
 	match type:
 		"QuestSlayObjective":
@@ -11,13 +11,13 @@ func create_quest(name, description, objective, rewards, type, reward_on_deliver
 			quest = create_interact_quest(name, description, objective, rewards, reward_on_delivery)
 		"TutorialObjective":
 			quest = create_tutorial_quest(objective)
+	quest.set_name(quest_name)
 	return quest;
 
 func create_slay_quest(name, description, objective, rewards, reward_on_delivery):
 	var quest_scene = quest_loader.instance()
 	quest_scene.title = name
 	quest_scene.description = description
-	quest_scene.reward_on_delivery = true
 	
 	var objective_scene = load("res://Quest/objectives/QuestSlayObjective.tscn").instance()
 	
@@ -45,7 +45,7 @@ func create_interact_quest(name, description, objective, rewards, reward_on_deli
 	
 func create_tutorial_quest(objective):
 	var quest = load("res://Quest/quests/TutorialQuest.tscn").instance()
-	quest.get_objectives()[0].stage = objective.stage
+	quest.get_objectives()[0].stage = objective.stage.stringValue
 	return quest
 	
 func add_quest_and_start(quest):
@@ -70,9 +70,8 @@ func quest_to_dict(quest: Quest):
 					}
 				},
 				"reward_on_delivery": {"booleanValue": {}},
-				"type": {
-					"stringValue": {}
-				}
+				"type": {"stringValue": {}},
+				"quest_name": {"stringValue": {}}
 			}
 		}
 	}
@@ -83,13 +82,13 @@ func quest_to_dict(quest: Quest):
 	
 	# objectives
 	var objective = quest.get_objectives()[0]
+	# QuestSlayObjective
 	if objective.name == "QuestSlayObjective":
 		quest_dict.mapValue.fields.objective.mapValue.fields = add_slay_objective_to_dict(objective.battler_to_slay.instance().name, objective.amount)
 		quest_dict.mapValue.fields.type.stringValue = "QuestSlayObjective"
+	# TutorialObjective
 	if objective.name == "TutorialObjective":
-		quest_dict.mapValue.fields.objective.mapValue.fields = {
-			"stage": {"stringValue": objective.stage}
-		}
+		quest_dict.mapValue.fields.objective.mapValue.fields = add_tutorial_objective_to_dict(objective.stage)
 		quest_dict.mapValue.fields.type.stringValue = "TutorialObjective"
 		
 	# rewards
@@ -105,6 +104,8 @@ func quest_to_dict(quest: Quest):
 		}
 	})
 	
+	# quest_name
+	quest_dict.mapValue.fields.quest_name.stringValue = quest.name
 	return quest_dict
 
 func add_slay_objective_to_dict(battler_to_slay, amt): # there will be other objectives
@@ -113,6 +114,11 @@ func add_slay_objective_to_dict(battler_to_slay, amt): # there will be other obj
 		"amount": {"integerValue": amt}
 	}
 	return objective
+
+func add_tutorial_objective_to_dict(stage):
+	return {
+				"stage": {"stringValue": stage}
+			}
 
 func add_reward_to_dict(reward: QuestItemReward):
 	return {
