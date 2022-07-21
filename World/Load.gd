@@ -107,6 +107,14 @@ func set_location(profile, player):
 			world_name = "Inn/Inn"
 		"Lombok-Fort-Inn-2":
 			world_name = "Inn/InnSecondFloor"
+		"Lombok-Fort-Basement":
+			world_name = "Basement"
+		"Lombok-Dungeon-1":
+			world_name = "DungeonBottomLeft"
+		"Lombok-Dungeon-2":
+			world_name = "DungeonBottomRight"
+		"Lombok-Dungeon-3":
+			world_name = "DungeonTop"
 		# others can add below
 	return load("res://World/"+ world_name +".tscn").instance()
 	

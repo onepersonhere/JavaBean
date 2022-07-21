@@ -105,6 +105,14 @@ func get_world_name():
 			world_name = "Lombok-Fort-Inn"
 		"InnSecondFloor":
 			world_name = "Lombok-Fort-Inn-2"
+		"Basement":
+			world_name = "Lombok-Fort-Basement"
+		"DungeonBottomLeft":
+			world_name = "Lombok-Dungeon-1"
+		"DungeonBottomRight":
+			world_name = "Lombok-Dungeon-2"
+		"DungeonTop":
+			world_name = "Lombok-Dungeon-3"
 		# others can add below
 	return world_name
 
