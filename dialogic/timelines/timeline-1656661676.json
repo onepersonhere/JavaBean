@@ -25,7 +25,7 @@
 			"character": "character-1656661598.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "..."
+			"text": "[fade start=4 length=14]...........................[/fade]"
 		},
 		{
 			"character": "character-1656662326.json",

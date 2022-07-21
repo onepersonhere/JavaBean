@@ -4,7 +4,7 @@
 			"character": "",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "After one hour..."
+			"text": "[wave amp=50 freq=2]After one hour...[/wave]"
 		},
 		{
 			"event_id": "dialogic_023",

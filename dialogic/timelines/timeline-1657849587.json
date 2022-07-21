@@ -33,7 +33,7 @@
 			"character": "character-1656662136.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Please go speak to him first!"
+			"text": "Please go [shake rate=15 level=10]speak[/shake] to him first!"
 		},
 		{
 			"emit_signal": "end",
@@ -50,13 +50,13 @@
 			"character": "character-1656662136.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "The Javanese are the original inhabitants of Java, \nour ancestors have been on the island for thousands of years. \nWe have been living in an enclosed harmonious state, \nworshipping our gods until the Hollandaise came with their magnificent ships.\nDespite living in peace and tranquillity, we have not developed much in their technological advances. \nThis makes use incredibly vulnerable when the Hollandaise come. "
+			"text": "The Javanese are the [shake rate=15 level=10]original[/shake] inhabitants of Java!\nOur ancestors have been on the island for thousands of years. \nWe have been living in an enclosed harmonious state, \nworshipping our gods until the Hollandaise came with their magnificent ships.\nDespite living in peace and tranquillity, we have not developed much in their technological advances. \nThis makes use incredibly vulnerable when the Hollandaise come. "
 		},
 		{
 			"character": "character-1656662136.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "The Hollandaise are natural explorers. \nThey have been to places that the Javanese have never even heard of. \nThey have acquired technologies that seemed godlike to the Javanese. \nDespite arriving on Java with peaceful intentions, tensions between the Hollandaise and the Javanese simmer and build.\nThis is because of the forceful conversion of the Javanese religion to adhere to what the Hollandaise believed in. \nThe Whites believed in the Cross that protects them throughout their voyages."
+			"text": "The Hollandaise are natural explorers. \nThey have been to places that the Javanese have never even heard of. \nThey have acquired technologies that seemed godlike to the Javanese. \nDespite arriving on Java with peaceful intentions, tensions between the Hollandaise and the Javanese simmer and build.\nThis is because of the forceful conversion of the Javanese religion to adhere to what the Hollandaise believed in. \nThe Hollandaise believed in the Cross that protects them throughout their voyages."
 		},
 		{
 			"character": "character-1656662136.json",
@@ -68,7 +68,7 @@
 			"character": "character-1656662136.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Bean 1: Colour [color=red]red[/color]. It is the embodiment of courage in the face of great adversity. \nBean 2: Colour [color=#00BFFF]blue[/color]. It enables the user to control the flow of water.\nBean 3: Colour [color=green]green[/color]. It represents truth among lies.\nBean 4: Colour [color=#D2691E]brown[/color]. It corrects sleep deprivation.\nBean 5: Colour [color=#FFD700]gold[/color]. It gives you wealth.\nBean 6: Colour [color=black]black[/color]. Great power flows through you.\nBean 7: Colour [color=#E6E6FA]unknown[/color]. It only exists in legends foretold."
+			"text": "Bean 1: Colour [color=red]red[/color]. It is the embodiment of courage in the face of great adversity. \nBean 2: Colour [color=#00BFFF]blue[/color]. It enables the user to control the flow of water.\nBean 3: Colour [color=green]green[/color]. It represents truth among lies.\nBean 4: Colour [color=#D2691E]brown[/color]. It corrects sleep deprivation.\nBean 5: Colour [color=#FFD700]gold[/color]. It gives you wealth.\nBean 6: Colour [color=black]black[/color]. Great power flows through you.\nBean 7: Colour [rainbow freq=0.2 sat=10 val=20]unknown[/rainbow]. It only exists in legends foretold."
 		},
 		{
 			"character": "character-1656662136.json",
