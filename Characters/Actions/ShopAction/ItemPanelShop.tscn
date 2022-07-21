@@ -93,3 +93,4 @@ align = 0
 [connection signal="pressed" from="Buy 1" to="." method="_on_Buy_1_pressed"]
 [connection signal="pressed" from="Buy Half" to="." method="_on_Buy_Half_pressed"]
 [connection signal="pressed" from="Buy All" to="." method="_on_Buy_All_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
