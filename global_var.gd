@@ -33,7 +33,7 @@ func random_background_music():
 			elif prev_played == file_name:
 				pass
 			else:
-				if rng.randf_range(0, 100) < 30:
+				if rng.randf_range(0, 100) < 20:
 					prev_played = file_name
 					return get_as_AudioStreamMp3(background_music_path + file_name);
 			file_name = dir.get_next()

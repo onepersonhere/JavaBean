@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/PIPOYA FREE RPG Character Sprites 32x32/Female/Female 02-2.png" type="Texture" id=1]
 [ext_resource path="res://Quest/QuestBubble.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Characters/NPCs/NPC.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Imported Assets/Shadows/MediumShadow.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 1 )
@@ -69,6 +70,11 @@ rotation = 1.5708
 shape = SubResource( 9 )
 
 [node name="Actions" type="Node" parent="."]
+
+[node name="Shadow" type="Sprite" parent="."]
+show_behind_parent = true
+position = Vector2( 1, 16 )
+texture = ExtResource( 4 )
 
 [connection signal="body_entered" from="." to="." method="_on_NPC_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_NPC_body_exited"]

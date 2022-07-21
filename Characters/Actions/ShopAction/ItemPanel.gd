@@ -80,3 +80,9 @@ func update_shop_panels():
 	var nodes = get_tree().get_nodes_in_group("item_panel_shop")
 	for node in nodes:
 		node.check_empty()
+
+
+func _on_MenuButton_pressed():
+	var item = JsonData.item_data[item_name]
+	for properties in item:
+		$MenuButton.get_popup().add_item(properties + ": " + str(item[properties]))

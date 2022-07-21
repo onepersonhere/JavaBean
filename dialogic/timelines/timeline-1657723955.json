@@ -4,7 +4,7 @@
 			"character": "character-1656662326.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Your training starts now!"
+			"text": "Your training starts [shake rate=5 level=7]now![/shake]"
 		},
 		{
 			"character": "character-1656662326.json",
@@ -16,7 +16,7 @@
 			"character": "character-1656662326.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "To swing your sword, right click"
+			"text": "To swing your sword, [wave amp=50 freq=2]right click[/wave]"
 		},
 		{
 			"character": "character-1656662326.json",
@@ -34,7 +34,7 @@
 			"character": "character-1656662326.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Lets see if you can recall some of the tactics I taught you"
+			"text": "Lets see if you can recall some of the tactics I taught you..."
 		},
 		{
 			"character": "character-1656662326.json",

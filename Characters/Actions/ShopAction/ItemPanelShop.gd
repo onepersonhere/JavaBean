@@ -81,3 +81,9 @@ func check_stack():
 	if stack_size <= 1:
 		$"Buy Half".disabled = true
 		$"Buy All".disabled = true
+
+
+func _on_MenuButton_pressed():
+	var item = JsonData.item_data[item_name]
+	for properties in item:
+		$MenuButton.get_popup().add_item(properties + ": " + str(item[properties]))
