@@ -1259,7 +1259,7 @@ exit_area_name = "World"
 [node name="NPC" type="YSort" parent="YSort"]
 
 [node name="Merchant" parent="YSort/NPC" instance=ExtResource( 14 )]
-position = Vector2( 1648, 880 )
+position = Vector2( 1648, 876 )
 
 [node name="QuestGiver" parent="YSort/NPC" instance=ExtResource( 6 )]
 position = Vector2( 1952, 1072 )
