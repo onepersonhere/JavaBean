@@ -1259,7 +1259,7 @@ exit_area_name = "World"
 [node name="Entrance7" parent="YSort/Doors" instance=ExtResource( 10 )]
 position = Vector2( 3216, 238 )
 pos_x = 816
-pos_y = 409
+pos_y = 377
 entering_area = "res://World/Dungeon/DungeonTop.tscn"
 entering_area_name = "DungeonTop"
 exit_area_name = "World"
