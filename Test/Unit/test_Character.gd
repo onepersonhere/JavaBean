@@ -50,6 +50,6 @@ func test_item_pickup():
 	a.pressed = true
 	_player._input(a)
 	
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(2), "timeout")
 	assert_freed(item_drop)
 
