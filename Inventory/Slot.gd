@@ -21,7 +21,11 @@ enum SlotType {
 	SHOES,
 }
 
+var mouse_not_exited = false;
+
 func _ready():
+	self.connect("mouse_entered", self, "_on_mouse_entered")
+	self.connect("mouse_exited", self, "_on_mouse_exited")
 	default_style = StyleBoxTexture.new()
 	empty_style = StyleBoxTexture.new()
 	selected_style = StyleBoxTexture.new()
@@ -72,3 +76,18 @@ func reset():
 	item = null
 	refresh_style()
 
+var tooltip;
+func _on_mouse_entered():
+	mouse_not_exited = true
+	yield(get_tree().create_timer(1), "timeout") 
+	if mouse_not_exited && item != null && weakref(tooltip).get_ref() == null:
+		var item_name = item.item_name;
+		tooltip = load("res://Inventory/Items/ItemTooltip.tscn").instance()
+		tooltip._popup(item_name)
+		add_child(tooltip)
+		tooltip.popupMenu.popup()
+
+func _on_mouse_exited():
+	mouse_not_exited = false;
+	if weakref(tooltip).get_ref() != null:
+		weakref(tooltip).get_ref().queue_free();
