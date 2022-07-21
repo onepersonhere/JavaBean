@@ -86,7 +86,8 @@ func pick_random_state(state_list):
 	return state_list.pop_front()
 
 func _on_Bat_HurtBox_area_entered(area):
-	get_node("/root/World").combat_start()
+	if get_node_or_null("/root/World") != null:
+		get_node("/root/World").combat_start()
 	spawn_damage_indicator(area.damage)
 	knockback = area.knockback_vector * 150
 	stats.health -= area.damage
