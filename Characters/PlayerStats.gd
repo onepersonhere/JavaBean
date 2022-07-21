@@ -25,7 +25,7 @@ var BASE_DMG_SPEED = 0
 var BASE_DEFENSE = 0
 var BASE_CRITIC_PERCENTAGE = 0
 
-var UI 
+var UI
 var life_bar
 var energy_bar 
 var exp_bar

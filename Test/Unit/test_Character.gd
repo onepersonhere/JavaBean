@@ -11,7 +11,10 @@ func before_each():
 	_world = world.instance()
 	_UI = UI.instance()
 	_player = player.instance()
+	
 	get_node("/root").add_child(_UI)
+	PlayerStats.UI_created()
+	
 	get_node("/root").add_child(_world)
 	get_node("/root/World/YSort").add_child(_player)
 	
@@ -35,6 +38,7 @@ func test_item_position():
 	item_drop.queue_free()
 	
 func test_item_pickup():
+	# Sometimes fails for some reason? Not really sure why
 	var item_drop = load("res://Inventory/Items/ItemDrop.tscn").instance()
 	get_node("/root/World/YSort").add_child(item_drop)
 	
@@ -42,7 +46,7 @@ func test_item_pickup():
 	pick_up_zone._on_PickupZone_body_entered(item_drop)
 	
 	var a = InputEventAction.new()
-	a.action = "pickup"
+	a.action = "interact"
 	a.pressed = true
 	_player._input(a)
 	

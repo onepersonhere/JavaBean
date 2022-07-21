@@ -11,20 +11,21 @@ func after_each():
 	_MainMenu.queue_free()
 
 func test_Login():
-	#_MainMenu.get_node("Video").OnLoginGuiInput(fake_click())
+	# _MainMenu.get_node("Video").OnLoginGuiInput(fake_click())
 	# should change to login screen
-	#var login = get_tree().get_nodes_in_group("Login")
-	
-	#gut.p(login)
-	#assert_not_null(login)
-	#assert_true(login.name == "Login")
-	#login.queue_free()
+	# however, will queue_free() GUT
 	pass
-
+	
 func test_Register():
+	# _MainMenu.get_node("Video").OnRegisterGuiInput(fake_click())
+	# should change to reg screen
+	# however, will queue_free() GUT
 	pass
 
 func test_Options():
+	_MainMenu.get_node("Video")._on_Options_pressed()
+	assert_not_null(get_node_or_null("/root/Options"))
+	get_node_or_null("/root/Options").queue_free()
 	pass
 
 func fake_click():
