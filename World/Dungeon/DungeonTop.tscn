@@ -2245,7 +2245,7 @@
 22/shapes = [  ]
 22/z_index = 0
 
-[node name="DungeonTop" type="Node2D"]
+[node name="DungeonTop" type="Node2D" groups=["map"]]
 
 [node name="Background" type="Node2D" parent="."]
 

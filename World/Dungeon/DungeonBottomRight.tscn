@@ -3095,7 +3095,7 @@
 34/shapes = [  ]
 34/z_index = 0
 
-[node name="DungeonBottomRight" type="Node2D"]
+[node name="DungeonBottomRight" type="Node2D" groups=["map"]]
 
 [node name="Background" type="Node2D" parent="."]
 position = Vector2( 5, -1 )

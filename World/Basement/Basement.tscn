@@ -979,7 +979,7 @@
 16/shapes = [  ]
 16/z_index = 0
 
-[node name="Basement" type="Node2D"]
+[node name="Basement" type="Node2D" groups=["map"]]
 
 [node name="Background" type="Node2D" parent="."]
 
