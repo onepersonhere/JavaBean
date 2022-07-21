@@ -2329,7 +2329,13 @@ entering_area_name = "World/YSort"
 exit_area_name = "DungeonTop"
 
 [node name="Entrance2" parent="Background/Entrances" instance=ExtResource( 2 )]
-position = Vector2( 209, 303 )
+position = Vector2( 208, 304 )
+scale = Vector2( 0.6, 1 )
+pos_x = 593
+pos_y = -152
+entering_area = "res://World/Dungeon/DungeonBottomLeft.tscn"
+entering_area_name = "DungeonBottomLeft"
+exit_area_name = "DungeonTop"
 
 [node name="Entrance3" parent="Background/Entrances" instance=ExtResource( 2 )]
 position = Vector2( 1136, 503 )

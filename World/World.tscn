@@ -913,10 +913,7 @@ position = Vector2( 3552, 512 )
 position = Vector2( 3584, 480 )
 
 [node name="Tree275" parent="YSort/Vegetation" instance=ExtResource( 3 )]
-position = Vector2( 3616, 576 )
-
-[node name="Tree276" parent="YSort/Vegetation" instance=ExtResource( 3 )]
-position = Vector2( 3648, 544 )
+position = Vector2( 3584, 608 )
 
 [node name="Tree277" parent="YSort/Vegetation" instance=ExtResource( 3 )]
 position = Vector2( 3712, 512 )
@@ -924,11 +921,8 @@ position = Vector2( 3712, 512 )
 [node name="Tree278" parent="YSort/Vegetation" instance=ExtResource( 3 )]
 position = Vector2( 3744, 480 )
 
-[node name="Tree279" parent="YSort/Vegetation" instance=ExtResource( 3 )]
-position = Vector2( 3744, 608 )
-
 [node name="Tree280" parent="YSort/Vegetation" instance=ExtResource( 3 )]
-position = Vector2( 3776, 576 )
+position = Vector2( 3808, 544 )
 
 [node name="Tree281" parent="YSort/Vegetation" instance=ExtResource( 3 )]
 position = Vector2( 3840, 608 )
@@ -1258,10 +1252,19 @@ exit_area_name = "World"
 
 [node name="Entrance7" parent="YSort/Doors" instance=ExtResource( 10 )]
 position = Vector2( 3216, 238 )
-pos_x = 816
+pos_x = 817
 pos_y = 377
 entering_area = "res://World/Dungeon/DungeonTop.tscn"
 entering_area_name = "DungeonTop"
+exit_area_name = "World"
+
+[node name="Entrance8" parent="YSort/Doors" instance=ExtResource( 10 )]
+position = Vector2( 2512, 368 )
+scale = Vector2( 0.6, 1 )
+pos_x = 240
+pos_y = 266
+entering_area = "res://World/Dungeon/DungeonBottomLeft.tscn"
+entering_area_name = "DungeonBottomLeft"
 exit_area_name = "World"
 
 [node name="NPC" type="YSort" parent="YSort"]
