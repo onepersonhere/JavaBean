@@ -13,13 +13,13 @@ func after_each():
 func test_Login():
 	# _MainMenu.get_node("Video").OnLoginGuiInput(fake_click())
 	# should change to login screen
-	# however, will queue_free() GUT
+	# however, will queue_free() GUT due to how change_scene() works
 	pass
 	
 func test_Register():
 	# _MainMenu.get_node("Video").OnRegisterGuiInput(fake_click())
 	# should change to reg screen
-	# however, will queue_free() GUT
+	# however, will queue_free() GUT due to how change_scene() works
 	pass
 
 func test_Options():
