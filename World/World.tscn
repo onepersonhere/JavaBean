@@ -1267,6 +1267,15 @@ entering_area = "res://World/Dungeon/DungeonBottomLeft.tscn"
 entering_area_name = "DungeonBottomLeft"
 exit_area_name = "World"
 
+[node name="Entrance9" parent="YSort/Doors" instance=ExtResource( 10 )]
+position = Vector2( 3408, 784 )
+scale = Vector2( 0.6, 1 )
+pos_x = 502
+pos_y = 399
+entering_area = "res://World/Dungeon/DungeonBottomRight.tscn"
+entering_area_name = "DungeonBottomRight"
+exit_area_name = "World"
+
 [node name="NPC" type="YSort" parent="YSort"]
 
 [node name="Merchant" parent="YSort/NPC" instance=ExtResource( 14 )]
