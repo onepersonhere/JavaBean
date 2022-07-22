@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/assets/buttons/Main Menu/Button Hover.png" type="Texture" id=2]
+[ext_resource path="res://UI/assets/buttons/Main Menu/Button Pressed.png" type="Texture" id=3]
+[ext_resource path="res://UI/assets/buttons/Main Menu/Button Normal.png" type="Texture" id=4]
+[ext_resource path="res://Inventory/Fonts/m5x7.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://UI/GameOver.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=2]
+size = 128
+outline_size = 3
+outline_color = Color( 0.878431, 0.74902, 0.74902, 1 )
+font_data = ExtResource( 5 )
+
+[node name="CanvasLayer" type="CanvasLayer"]
+pause_mode = 2
+layer = 3
+script = ExtResource( 6 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.988235, 0.427451, 0.427451, 0.156863 )
+
+[node name="Main Menu" type="TextureButton" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -139.0
+margin_top = 273.0
+margin_right = 1.0
+margin_bottom = 313.0
+rect_scale = Vector2( 2, 2 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 2 )
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 320.0
+margin_top = -40.0
+margin_right = -384.0
+margin_bottom = 152.0
+custom_colors/default_color = Color( 1, 0.0117647, 0.0117647, 1 )
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "	[tornado radius=5 freq=2]You Died...[/tornado]"
+text = "	You Died..."
+
+[connection signal="pressed" from="Control/Main Menu" to="." method="_on_Main_Menu_pressed"]

@@ -26,6 +26,7 @@ func _ready():
 	animationTree.active = true
 	update_stat_vals()
 	randomize()
+	PlayerStats.life_bar.connect("no_health", self, "_on_LifeBar_no_health")
 
 func _physics_process(delta):
 	match state:
@@ -161,8 +162,9 @@ func _on_PlayerHurtBox_area_entered(area):
 	spawn_receive_damage_indicator("-" + str(area.damage))
 
 func _on_LifeBar_no_health():
+	get_tree().paused = true
 	audioPlayer.play_death()
-	queue_free()
+	get_node("/root/UI").add_child(load("res://UI/GameOver.tscn").instance())
 	
 func _on_EnergyBar_got_stamina():
 	PlayerStats.can_sprint = true
