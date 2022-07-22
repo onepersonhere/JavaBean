@@ -20,6 +20,7 @@ func _ready() -> void:
 		quest.connect("started", self, "_on_quest_started", [quest])
 		quest.connect("completed", self, "_on_quest_completed", [quest])
 		quest.connect("delivered", self, "_on_quest_delivered", [quest])
+		print_debug(quest.name)
 	tree.set_hide_root(true)
 	tree_root = tree.create_item()
 

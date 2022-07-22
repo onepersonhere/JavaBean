@@ -8,19 +8,19 @@ onready var delivered_quests = $Delivered
 
 var player: Player
 
-func initialise(game, _player: Player) -> void:
-	game.connect("combat_started", self, "_on_Game_combat_started")
-	player = _player
-	
+func reset():
+	reset_quest_system()
 	var default_quest1 = load("res://Quest/quests/TestQuest.tscn").instance()
 	var default_quest2 = load("res://Quest/quests/TutorialQuest.tscn").instance()
 	reset_quest(default_quest1)
 	reset_quest(default_quest2)
+	
+func initialise(game, _player: Player) -> void:
+	game.connect("combat_started", self, "_on_Game_combat_started")
+	player = _player
 
 func reset_quest(quest):
-	if find_available(quest) != null:
-		find_available(quest).queue_free()
-		add_available_quest(quest)
+	add_available_quest(quest)
 		
 func find_available(reference: Quest) -> Quest:
 	return available_quests.find(reference)
