@@ -63,7 +63,8 @@ func left_click_different_item(event: InputEvent, slot: SlotClass):
 	temp_item.global_position = event.global_position
 	slot.putIntoSlot(find_parent("UserInterface").holding_item)
 	find_parent("UserInterface").holding_item = temp_item
-
+	PlayerStats.update()
+	
 func left_click_same_item(slot: SlotClass):
 	var stack_size = int(JsonData.item_data[slot.item.item_name]["StackSize"])
 	var able_to_add = stack_size - slot.item.item_quantity
