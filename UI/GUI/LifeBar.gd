@@ -19,6 +19,9 @@ func deal_damage(value):
 	if CURRENT_HEALTH <= 0:
 		emit_signal("no_health")
 		
+	PlayerStats.CURR_HEALTH = CURRENT_HEALTH
+	PlayerStats.update()
+		
 func heal(value):
 	if value >= MAX_HEALTH - CURRENT_HEALTH:
 		CURRENT_HEALTH = MAX_HEALTH
@@ -26,6 +29,10 @@ func heal(value):
 		CURRENT_HEALTH += value
 	$TextureProgress.value = CURRENT_HEALTH
 	$Count/Background/Number.text = str(int(CURRENT_HEALTH))
+	
+	PlayerStats.CURR_HEALTH = CURRENT_HEALTH
+	PlayerStats.update()
+	
 	
 func is_full_health():
 	return CURRENT_HEALTH == MAX_HEALTH
