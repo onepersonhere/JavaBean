@@ -35,6 +35,9 @@ __meta__ = {
 [node name="Chest" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 1977, 943 )
 
+[node name="Chest2" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 4048, 358 )
+
 [node name="Vegetation" type="YSort" parent="YSort"]
 
 [node name="Bush" parent="YSort/Vegetation" instance=ExtResource( 2 )]
@@ -1297,6 +1300,9 @@ position = Vector2( 1544, 1000 )
 
 [node name="NoticeBoard" parent="YSort" instance=ExtResource( 15 )]
 position = Vector2( 1920, 920 )
+
+[node name="NoticeBoard2" parent="YSort" instance=ExtResource( 15 )]
+position = Vector2( 3872, 1076 )
 
 [node name="Climbable" type="YSort" parent="YSort"]
 
