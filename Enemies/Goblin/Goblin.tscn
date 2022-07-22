@@ -200,6 +200,7 @@ wander_range = 64
 
 [node name="Timer" type="Timer" parent="."]
 
+[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="area_entered" from="HurtBox" to="HurtBox" method="_on_HurtBox_area_entered"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
