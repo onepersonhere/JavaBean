@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Assets/PIPOYA FREE RPG Character Sprites 32x32/Enemy/Enemy 20.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Imported Assets/Shadows/MediumShadow.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Hitboxes and Hurtboxes/Hitbox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Enemies/PlayerDetectionZone.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemies/Goblin/Goblin.gd" type="Script" id=8]
+[ext_resource path="res://Enemies/Stats.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 7.0
@@ -167,6 +168,8 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/blend_position = Vector2( 0, 0 )
 
+[node name="Stats" parent="." instance=ExtResource( 9 )]
+
 [node name="HurtBox" parent="." instance=ExtResource( 5 )]
 collision_layer = 16
 
@@ -201,6 +204,7 @@ wander_range = 64
 [connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
+[editable path="Stats"]
 [editable path="HurtBox"]
 [editable path="PlayerDetectionZone"]
 [editable path="HitBox"]
