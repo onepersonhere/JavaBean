@@ -16,14 +16,19 @@ var active := false
 
 
 func _ready() -> void:
-	for quest in QuestSystem.get_available_quests():
-		quest.connect("started", self, "_on_quest_started", [quest])
-		quest.connect("completed", self, "_on_quest_completed", [quest])
-		quest.connect("delivered", self, "_on_quest_delivered", [quest])
-		print_debug(quest.name)
+	set_signals()
 	tree.set_hide_root(true)
 	tree_root = tree.create_item()
 
+func set_signals():
+	for quest in QuestSystem.get_available_quests():
+		if !quest.is_connected("started", self, "_on_quest_started"):
+			quest.connect("started", self, "_on_quest_started", [quest])
+		if !quest.is_connected("completed", self, "_on_quest_completed"):
+			quest.connect("completed", self, "_on_quest_completed", [quest])
+		if !quest.is_connected("delivered", self, "_on_quest_delivered"):
+			quest.connect("delivered", self, "_on_quest_delivered", [quest])
+		print_debug(quest.name)
 
 func _on_quest_started(quest: Quest) -> void:
 	var quest_root = _add_tree_item(tree_root, quest.title, active_icon, quest)

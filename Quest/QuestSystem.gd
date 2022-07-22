@@ -114,3 +114,8 @@ func reset_quest_system():
 		quest.queue_free()
 	for quest in delivered_quests.get_children():
 		quest.queue_free()
+
+# For tutorial quest -> setting the stage
+func set_stage(_stage):
+	var tutorialQuest = QuestSystem.find_active(load("res://Quest/quests/TutorialQuest.tscn").instance())
+	tutorialQuest.get_objectives()[0].set_stage(_stage)

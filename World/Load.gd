@@ -160,6 +160,7 @@ func load_quests(profile):
 				QuestSystem.add_delivered_quest(
 					parse_quest_dict(quest.mapValue.fields)
 				)
+	get_tree().get_nodes_in_group("QuestJournal")[0].set_signals()
 
 	
 func parse_quest_dict(quest):

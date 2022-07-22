@@ -91,7 +91,7 @@
 					"Combat Tutorial"
 				],
 				"method_name": "set_stage",
-				"target_node_path": "QuestSystem/Active/TutorialQuest/Objectives/TutorialObjective"
+				"target_node_path": "QuestSystem"
 			},
 			"event_id": "dialogic_042"
 		},
