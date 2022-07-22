@@ -38,7 +38,7 @@ func dialog_listener(string):
 			emit_signal("finished")
 		
 		"skipped":
-			var quest = QuestSystem.get_node("Available/TutorialQuest")
+			var quest = QuestSystem.find_available(TutorialQuest.instance())
 			QuestSystem.skip_quest(quest)
 			get_tree().paused = false
 			active = false

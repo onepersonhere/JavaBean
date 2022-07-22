@@ -90,7 +90,8 @@ func add_delivered_quest(reference: Quest):
 func skip_quest(reference: Quest):
 	start(reference)
 	_on_Quest_completed(reference)
-	deliver(reference)
+	if !reference.reward_on_delivery:
+		deliver(reference)
 
 func is_completed(reference: Quest):
 	return completed_quests.find(reference) != null;
