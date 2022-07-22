@@ -1,0 +1,207 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Assets/PIPOYA FREE RPG Character Sprites 32x32/Enemy/Enemy 20.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Imported Assets/Shadows/MediumShadow.png" type="Texture" id=2]
+[ext_resource path="res://Hitboxes and Hurtboxes/SoftCollision.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/WanderController.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hitboxes and Hurtboxes/Hurtbox.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hitboxes and Hurtboxes/Hitbox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/PlayerDetectionZone.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemies/Goblin/Goblin.gd" type="Script" id=8]
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 7.0
+height = 0.0
+
+[sub_resource type="Animation" id=6]
+resource_name = "Backward Walk"
+length = 0.9
+loop = true
+step = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Forward Walk"
+length = 0.9
+loop = true
+step = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Left Walk"
+length = 0.9
+loop = true
+step = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 6 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Right Walk"
+length = 0.9
+loop = true
+step = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "Left Walk"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "Right Walk"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "Forward Walk"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Backward Walk"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=15]
+blend_point_0/node = SubResource( 11 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 12 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 13 )
+blend_point_2/pos = Vector2( 0, 1 )
+blend_point_3/node = SubResource( 14 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_mode = 1
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 9.0
+height = 8.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 118.004
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 5.0
+height = 6.0
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 5.0
+
+[node name="Goblin" type="KinematicBody2D"]
+collision_layer = 32
+script = ExtResource( 8 )
+
+[node name="Shadow" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -16 )
+texture = ExtResource( 1 )
+hframes = 3
+vframes = 4
+frame = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/Backward Walk" = SubResource( 6 )
+"anims/Forward Walk" = SubResource( 7 )
+"anims/Left Walk" = SubResource( 8 )
+anims/RESET = SubResource( 9 )
+"anims/Right Walk" = SubResource( 10 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 15 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/blend_position = Vector2( 0, 0 )
+
+[node name="HurtBox" parent="." instance=ExtResource( 5 )]
+collision_layer = 16
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2( 0, -14 )
+shape = SubResource( 1 )
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 7 )]
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+shape = SubResource( 2 )
+
+[node name="HitBox" parent="." instance=ExtResource( 6 )]
+collision_layer = 64
+collision_mask = 8
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2( 0, -14 )
+shape = SubResource( 3 )
+
+[node name="SoftCollision" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+shape = SubResource( 4 )
+
+[node name="WanderController" parent="." instance=ExtResource( 4 )]
+wander_range = 64
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_HitBox_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[editable path="HurtBox"]
+[editable path="PlayerDetectionZone"]
+[editable path="HitBox"]
+[editable path="SoftCollision"]
