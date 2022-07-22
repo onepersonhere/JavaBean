@@ -61,7 +61,7 @@ shader_param/velocity = Vector2( 0.1, 0.1 )
 shader_param/fog_color = Color( 1, 1, 1, 1 )
 shader_param/noise = SubResource( 3 )
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="fog" type="CanvasLayer"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource( 4 )
