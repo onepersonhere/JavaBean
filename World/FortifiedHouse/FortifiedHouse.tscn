@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Pipoya RPG Tileset 32x32/[Base]BaseChip_pipo.png" type="Texture" id=1]
 [ext_resource path="res://World/House/Entrance.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Invisible Collision Tile.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/Door/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/BackgroundMusic.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=1]
 0/name = "[Base]BaseChip_pipo.png 0"
@@ -1618,3 +1619,5 @@ pos_y = 1545
 entering_area = "res://World/World.tscn"
 entering_area_name = "World/YSort"
 exit_area_name = "FortifiedHouse"
+
+[node name="BackgroundMusic" parent="." instance=ExtResource( 5 )]

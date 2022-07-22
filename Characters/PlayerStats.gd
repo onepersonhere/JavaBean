@@ -133,3 +133,21 @@ func load_stats():
 	energy_bar._ready()
 	energy_bar.stopped()
 	exp_bar._ready()
+	exp_bar.gain_exp(0)
+
+func refresh_base_stats():
+	# damage
+	PlayerStats.BASE_DAMAGE = 10 + PlayerStats.STRENGTH
+	
+	# defense
+	PlayerStats.BASE_DEFENSE = 10 + PlayerStats.INTELLIGENCE
+	
+	# regen
+	PlayerStats.BASE_REGEN = 10 + PlayerStats.INTELLIGENCE
+	
+	# movement
+	PlayerStats.BASE_ACCELERATION = 1000 + 1 * PlayerStats.DEXTERITY
+	PlayerStats.BASE_FRICTION = 1000 + 1 * PlayerStats.DEXTERITY
+	PlayerStats.BASE_WALK_SPEED = 120 + 0.1 * PlayerStats.DEXTERITY
+	PlayerStats.BASE_RUN_SPEED = 220 + 0.1 * PlayerStats.DEXTERITY
+	update()

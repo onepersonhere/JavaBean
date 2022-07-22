@@ -48,3 +48,14 @@ func get_as_AudioStreamMp3(path):
 		return stream;
 	else:
 		return null;
+
+func get_as_AudioStreamOGG(path):
+	var file = File.new()
+	if file.file_exists(path):
+		file.open(path, file.READ)
+		var buffer = file.get_buffer(file.get_len())
+		var stream = AudioStreamOGGVorbis.new()
+		stream.data = buffer
+		return stream;
+	else:
+		return null;
