@@ -70,7 +70,7 @@ func base_stat_assigned():
 	load_stats();
 	
 func UI_created():
-	UI = get_tree().get_nodes_in_group("UI")[0].get_node("Stats/GUI/HBoxContainer")
+	UI = get_node("/root/UI/Stats/GUI/HBoxContainer")
 	life_bar = UI.find_node("LifeBar")
 	energy_bar = UI.find_node("EnergyBar")
 	exp_bar = UI.find_node("ExpBar")
