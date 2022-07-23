@@ -9,7 +9,21 @@ var player = null
 var being_picked_up = false
 
 func _ready():
-	item_name = "Slime Potion"
+	# Random item drop
+	var items: Dictionary = JsonData.item_data;
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	for item in items:
+		if items[item].has("Price(ETH)"):
+			continue;
+		if item == "Red Bean":
+			continue;
+		if (rng.randi_range(1, 10) < 3):
+			item_name = item;
+			break;
+	if item_name == null:
+		item_name = "Slime Potion"
+	$Sprite.texture = load("res://Inventory/Icons/" + item_name + ".png")
 	$Timer.start()
 
 func _physics_process(delta):

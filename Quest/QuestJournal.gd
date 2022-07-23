@@ -28,7 +28,6 @@ func set_signals():
 			quest.connect("completed", self, "_on_quest_completed", [quest])
 		if !quest.is_connected("delivered", self, "_on_quest_delivered"):
 			quest.connect("delivered", self, "_on_quest_delivered", [quest])
-		print_debug(quest.name)
 
 func _on_quest_started(quest: Quest) -> void:
 	var quest_root = _add_tree_item(tree_root, quest.title, active_icon, quest)
