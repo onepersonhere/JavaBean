@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready():
-	if QuestSystem.get_node_or_null("Available/TutorialQuest") == null:
+	if QuestSystem.find_available(load("res://Quest/quests/TutorialQuest.tscn").instance()) == null:
 		add_npc()
 
 func add_npc():

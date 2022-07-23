@@ -1,26 +1,103 @@
 extends CanvasLayer
 
-onready var map = $Control/ViewportContainer/Viewport/Background
 onready var player_pin = $Control/ViewportContainer/Viewport/Pins/PlayerLocation
 onready var camera = $Control/ViewportContainer/Viewport/Camera2D
 onready var viewport = $Control/ViewportContainer/Viewport
 
-const offset_x = -1100
-const offset_y = 100
+var offset_x = -1100
+var offset_y = 100
+var zoom = 1
 
 func _ready():
-	# set_map()
-	# set_offsets()
+	set_offsets()
+	set_map()
 	set_player_pin()
 	set_quest_pins()
 
 func set_map():
-	var _map = get_tree().get_nodes_in_group("Map")[0]
-	map = _map
+	var _map = get_map_background()
+	_map.set_position(Vector2(offset_x, offset_y))
+	viewport.add_child(_map)
+	viewport.move_child(_map, 0)
+	camera.zoom = zoom
 
 func set_offsets():
-	pass
+	var map_name = get_tree().get_nodes_in_group("map")[0].name
+	match map_name:
+		# TODO: Fine Tuning
+		"House":
+			offset_x = 0
+			offset_y = 0
+			zoom = Vector2(1, 1)
+		"HouseSecondFloor":
+			offset_x = -0
+			offset_y = 0
+			zoom = Vector2(1, 1)
+		"FarmHouse":
+			offset_x = -0
+			offset_y = 0
+			zoom = Vector2(1, 1)
+		"FortifiedHouse":
+			offset_x = -0
+			offset_y = 0
+			zoom = Vector2(1, 1)
+		"Inn":
+			offset_x = -0
+			offset_y = 0
+			zoom = Vector2(1, 1)
+		"InnSecondFloor":
+			offset_x = -0
+			offset_y = 0
+			zoom = Vector2(1, 1)
+		"Basement":
+			offset_x = -0
+			offset_y = 0
+			zoom = Vector2(1, 1)
+		"DungeonBottomLeft":
+			offset_x = -0
+			offset_y = 0
+			zoom = Vector2(1, 1)
+		"DungeonBottomRight":
+			offset_x = -0
+			offset_y = 0
+			zoom = Vector2(1, 1)
+		"DungeonTop":
+			offset_x = -0
+			offset_y = 0
+			zoom = Vector2(1, 1)
+		_:
+			offset_x = -1100
+			offset_y = 100
+			zoom = Vector2(1, 1)
 
+func get_map_background():
+	var map_name = get_tree().get_nodes_in_group("map")[0].name
+	var background;
+	match map_name:
+		"House":
+			background = load("res://World/House/House.tscn").instance()
+		"HouseSecondFloor":
+			background = load("res://World/House/HouseSecondFloor.tscn").instance()
+		"FarmHouse":
+			background = load("res://World/FarmHouse/FarmHouse.tscn").instance()
+		"FortifiedHouse":
+			background = load("res://World/FortifiedHouse/FortifiedHouse.tscn").instance()
+		"Inn":
+			background = load("res://World/Inn/Inn.tscn").instance()
+		"InnSecondFloor":
+			background = load("res://World/Inn/InnSecondFloor.tscn").instance()
+		"Basement":
+			background = load("res://World/Basement/Basement.tscn").instance()
+		"DungeonBottomLeft":
+			background = load("res://World/Dungeon/DungeonBottomLeft.tscn").instance()
+		"DungeonBottomRight":
+			background = load("res://World/Dungeon/DungeonBottomRight.tscn").instance()
+		"DungeonTop":
+			background = load("res://World/Dungeon/DungeonTop.tscn").instance()
+		_:
+			background = load("res://World/Background.tscn").instance()
+	return background
+	
 func set_player_pin():
 	var player = get_tree().get_nodes_in_group("Player")[0]
 	var pos_x = player.position.x

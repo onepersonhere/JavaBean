@@ -44,7 +44,6 @@ margin_left = -83.52
 margin_top = -48.08
 margin_right = -0.52002
 margin_bottom = 9.91998
-rect_scale = Vector2( 2, 2 )
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
