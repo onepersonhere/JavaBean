@@ -25,7 +25,7 @@ jobs:
       - name: Check out personal godot-tester repository
         uses: actions/checkout@v3
         with:
-          repository: onepersonhere/godot-tester
+          repository: db0/godot-tester
           path: ./.github/actions/godot-tester
       # Runs a single command using the runners shell
       - name: ⚙ Run Tests
