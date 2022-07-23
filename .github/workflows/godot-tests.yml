@@ -38,7 +38,7 @@ jobs:
           # the folder with your projects.godot file in it
           path: ""
           # how long to spend importing assets before tests are run
-          import-time: "120"
+          import-time: "300"
           # how long tests can run in seconds
           test-timeout: "45"
           # the ratio of tests that must pass for this action to pass
@@ -57,7 +57,7 @@ jobs:
           # uses relative path from your godot project directory
           direct-scene: "Test/GUT.tscn" 
           # default is false, set true to count asserts instead of tests
-          assert-check: "false" 
+          assert-check: "true" 
           # not checked by default, set to a number to limit the 
           # maximum amount of failed tests for a passing test suite
           max-fails: 3  
