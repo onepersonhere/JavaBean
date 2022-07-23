@@ -22,7 +22,14 @@ jobs:
         with:
           name: DEV_ENV_FILE
           path: UI/Firebase/PrivateKey.gd
-      - uses: croconut/godot-tester@v2.5
+      - name: Check out personal godot-tester repository
+        uses: actions/checkout@v3
+        with:
+          repository: onepersonhere/godot-tester
+          path: ./.github/actions/godot-tester
+      # Runs a single command using the runners shell
+      - name: ⚙ Run Tests
+        uses: ./.github/actions/godot-tester
         with:
           version: "3.4.4"
           # the type of release of godot that the tests should be run with
