@@ -51,9 +51,9 @@ func _on_Inventory_pressed():
 
 func _on_Help_pressed():
 	# Expansion: implement a help screen
-	$Label.text = "No help for you!"
+	$Label.text = "WASD to move, E to interact."
 	$Label.visible = true
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(2), "timeout")
 	$Label.visible = false
 
 
