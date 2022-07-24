@@ -26,10 +26,11 @@ func test_back():
 	assert_false(is_instance_valid(_openseas))
 
 func test_item_appears_in_inventory():
+	GlobalVar.nft_addr = "0xd8b6eb581F77B1205fa312EC9C1A22D960B5900F"
 	_openseas.check_purchase(
 		"98022765745955927761920208486426559694950621028490842310820234511019612831754",
 		"0x88b48f654c30e99bc2e4a1559b4dcf1ad93fa656")
-	
-	yield(get_tree().create_timer(10), "timeout")
+	_openseas.get_node("Control")._on_ConfirmationDialog_confirmed()
+	yield(_openseas.get_node("Control/AcceptDialog"), "about_to_show")
 	assert_not_null(PlayerInventory.inventory[3][0])
 

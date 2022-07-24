@@ -23,7 +23,12 @@ func after_each():
 	_UI.queue_free()
 
 func test_receive_damage():
-	pass
+	var damage = load("res://Hitboxes and Hurtboxes/Hitbox.tscn").instance()
+	var dmg_amt = 10
+	damage.damage = dmg_amt
+	# get player's current health
+	_player._on_PlayerHurtBox_area_entered(damage)
+	assert_eq(PlayerStats.CURR_HEALTH, 90);
 
 func test_give_damage():
 	pass
