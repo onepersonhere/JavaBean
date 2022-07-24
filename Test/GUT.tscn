@@ -21,6 +21,5 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 _font_size = 30
-_run_on_load = true
 _should_maximize = true
 _directory1 = "res://Test/Unit"
