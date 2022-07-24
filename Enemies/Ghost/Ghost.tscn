@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Assets/PIPOYA FREE RPG Character Sprites 32x32/Enemy/Enemy 15-1.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Imported Assets/Shadows/MediumShadow.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Enemies/PlayerDetectionZone.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Enemies/Ghost/Ghost.gd" type="Script" id=8]
 [ext_resource path="res://Enemies/Stats.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemies/EnemySound.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Sounds/Enemies Sound/ghost.wav" type="AudioStream" id=11]
 
 [sub_resource type="CapsuleShape2D" id=11]
 radius = 7.0
@@ -198,6 +200,9 @@ shape = SubResource( 15 )
 wander_range = 64
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource( 10 )]
+stream = ExtResource( 11 )
 
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
