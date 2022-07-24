@@ -15,6 +15,7 @@ onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitBoxDirection/SwordHitBox
+onready var axeHitbox = $AxeHitBox
 onready var audioPlayer = $AudioManager
 
 func _ready():

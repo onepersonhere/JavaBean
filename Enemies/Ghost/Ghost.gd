@@ -91,7 +91,11 @@ func _on_HurtBox_area_entered(area):
 	if get_node_or_null("/root/World") != null:
 		get_node("/root/World").combat_start()
 	spawn_damage_indicator(area.damage)
-	knockback = area.knockback_vector * 150
+	if area.name == "AxeHitBox":
+		var direction = global_position.direction_to(playerDetectionZone.player.global_position).normalized()
+		knockback = Vector2(direction.x * -1, direction.y * -1) * 150
+	else:
+		knockback = area.knockback_vector * 150
 	stats.health -= area.damage
 
 func _on_Stats_no_health():
