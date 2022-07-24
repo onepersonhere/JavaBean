@@ -4,7 +4,7 @@ export(bool) var show_hit = true
 
 const HitEffect = preload("res://Effects/HitEffect.tscn")
 
-func _on_HurtBox_area_entered(_area):
+func _on_Hurtbox_area_entered(area):
 	if show_hit:
 		var effect = HitEffect.instance()
 		var main = get_tree().get_nodes_in_group("map")[0]

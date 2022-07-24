@@ -107,15 +107,25 @@ func find_delivered(reference: Quest) -> Quest:
 
 func reset_quest_system():
 	for quest in available_quests.get_children():
-		quest.queue_free()
+		quest.free()
 	for quest in active_quests.get_children():
-		quest.queue_free()
+		quest.free()
 	for quest in completed_quests.get_children():
-		quest.queue_free()
+		quest.free()
 	for quest in delivered_quests.get_children():
-		quest.queue_free()
+		quest.free()
 
 # For tutorial quest -> setting the stage
 func set_stage(_stage):
 	var tutorialQuest = QuestSystem.find_active(load("res://Quest/quests/TutorialQuest.tscn").instance())
 	tutorialQuest.get_objectives()[0].set_stage(_stage)
+
+func get_quest_ref(quest: Quest):
+	if QuestSystem.is_available(quest):
+		return QuestSystem.find_available(quest)
+	elif QuestSystem.is_active(quest):
+		return QuestSystem.find_active(quest)
+	elif QuestSystem.is_completed(quest):
+		return QuestSystem.find_completed(quest)
+	else:
+		return QuestSystem.find_delivered(quest)

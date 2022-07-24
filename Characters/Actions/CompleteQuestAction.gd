@@ -10,7 +10,7 @@ func _ready() -> void:
 		quest = QuestSystem.find_available(quest_reference.instance())
 	else:
 		quest = QuestSystem.find_active(quest_reference.instance())
-	# BUG: quest is null when entrance
+	
 	active = false
 	quest.connect("completed", self, "_on_Quest_completed")
 

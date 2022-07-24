@@ -36,7 +36,7 @@ func interact() -> void:
 		return
 	
 	QuestSystem.start(quest)
-	emit_signal("finished")
+	emit_signal("finished") 
 
 func is_quest_in_progress():
 	return QuestSystem.is_active(quest_reference.instance())

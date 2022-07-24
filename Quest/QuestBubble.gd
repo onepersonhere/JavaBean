@@ -21,18 +21,21 @@ func initialize(quest_actions: Array):
 			action_give = action
 		if action is CompleteQuestAction:
 			action_complete = action
-
+		
+	# get quest ref
+	var new_quest = QuestSystem.get_quest_ref(quest)
+	
 	if action_give:
-		if not quest.is_connected("started", self, "_on_Quest_started"):
-			quest.connect("started", self, "_on_Quest_started")
+		if not new_quest.is_connected("started", self, "_on_Quest_started"):
+			new_quest.connect("started", self, "_on_Quest_started")
 		if not action_complete:
-			if not quest.is_connected("completed", self, "hide"):
-				quest.connect("completed", self, "hide")
+			if not new_quest.is_connected("completed", self, "hide"):
+				new_quest.connect("completed", self, "hide")
 		show()
 		
 	if action_complete:
-		quest.connect("completed", self, "_on_Quest_completed")
-		quest.connect("delivered", self, "_on_Quest_delivered")
+		new_quest.connect("completed", self, "_on_Quest_completed")
+		new_quest.connect("delivered", self, "_on_Quest_delivered")
 
 
 func _on_Quest_started():
