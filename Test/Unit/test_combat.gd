@@ -44,11 +44,11 @@ func test_give_damage():
 
 func test_damage_changed():
 	var before_val = PlayerStats.DAMAGE
-	yield(get_tree().create_timer(0.5), "timeout")
-	PlayerInventory.active_item_scroll_down()
+	yield(get_tree().create_timer(1), "timeout")
+	PlayerInventory.active_item_scroll_up()
 	var after_val = PlayerStats.DAMAGE
-	yield(get_tree().create_timer(0.5), "timeout")
-	# based on current default inventory
+	yield(get_tree().create_timer(1), "timeout")
+	# based on current default inventory (Inventory is not defaut)
 	assert_ne(before_val, after_val)
 
 func test_distance_to_receive_damage():
@@ -66,7 +66,11 @@ func test_death_screen():
 	assert_not_null(get_node("/root/UI/GameOver"))
 
 func test_enemy_death():
-	pass
+	var damage = _player.get_node("HitBoxDirection/SwordHitBox")
+	for i in range(100):
+		_enemy._on_Bat_HurtBox_area_entered(damage)
+	yield(get_tree().create_timer(1), "timeout")
+	assert_false(is_instance_valid(_enemy))
 
 func test_enemy_ai():
 	pass
