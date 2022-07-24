@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=102 format=2]
 
 [ext_resource path="res://Characters/Player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Imported Assets/Shadows/MediumShadow.png" type="Texture" id=2]
@@ -16,6 +16,10 @@
 [ext_resource path="res://Characters/Player Animations/Left Attack.png" type="Texture" id=14]
 [ext_resource path="res://Characters/AudioManager.gd" type="Script" id=15]
 [ext_resource path="res://Characters/Player Animations/Axe Attack.png" type="Texture" id=16]
+[ext_resource path="res://Characters/Player Animations/Forward Punch.png" type="Texture" id=17]
+[ext_resource path="res://Characters/Player Animations/Left Punch.png" type="Texture" id=18]
+[ext_resource path="res://Characters/Player Animations/Backward Punch.png" type="Texture" id=19]
+[ext_resource path="res://Characters/Player Animations/Right Punch.png" type="Texture" id=20]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.0
@@ -206,6 +210,97 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=123]
+resource_name = "Backward Punch"
+length = 0.45
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 19 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.45 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PunchHitboxDirection:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("PunchHitboxDirection:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, -20 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("PunchHitboxDirection/PunchHitBox/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=100]
@@ -478,6 +573,97 @@ tracks/4/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="Animation" id=124]
+resource_name = "Forward Punch"
+length = 0.45
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 17 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.45 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PunchHitboxDirection:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("PunchHitboxDirection/PunchHitBox/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("PunchHitboxDirection:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -2, -9 ) ]
+}
+
 [sub_resource type="Animation" id=101]
 resource_name = "Forward Run"
 length = 0.6
@@ -682,6 +868,97 @@ tracks/2/keys = {
 "values": [ 4 ]
 }
 
+[sub_resource type="Animation" id=125]
+resource_name = "Left Punch"
+length = 0.45
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 18 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.45 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PunchHitboxDirection:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 90.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("PunchHitboxDirection:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -8 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("PunchHitboxDirection/PunchHitBox/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
 [sub_resource type="Animation" id=102]
 resource_name = "Left Run"
 length = 0.6
@@ -840,6 +1117,42 @@ tracks/5/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("PunchHitboxDirection:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("PunchHitboxDirection/PunchHitBox/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("PunchHitboxDirection:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -8 ) ]
+}
 
 [sub_resource type="Animation" id=67]
 resource_name = "Right Attack"
@@ -959,6 +1272,97 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=126]
+resource_name = "Right Punch"
+length = 0.45
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 20 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.45 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attack_animation_finished"
+} ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("PunchHitboxDirection:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("PunchHitboxDirection:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, -8 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("PunchHitboxDirection/PunchHitBox/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="Animation" id=103]
@@ -1120,6 +1524,29 @@ blend_point_3/node = SubResource( 78 )
 blend_point_3/pos = Vector2( 1, 0 )
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id=127]
+animation = "Forward Punch"
+
+[sub_resource type="AnimationNodeAnimation" id=128]
+animation = "Left Punch"
+
+[sub_resource type="AnimationNodeAnimation" id=129]
+animation = "Backward Punch"
+
+[sub_resource type="AnimationNodeAnimation" id=130]
+animation = "Right Punch"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=131]
+blend_point_0/node = SubResource( 127 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 128 )
+blend_point_1/pos = Vector2( -1, 0 )
+blend_point_2/node = SubResource( 129 )
+blend_point_2/pos = Vector2( 0, -1 )
+blend_point_3/node = SubResource( 130 )
+blend_point_3/pos = Vector2( 1, 0 )
+blend_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id=80]
 animation = "Left Run"
 
@@ -1198,22 +1625,28 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=122]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=132]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=133]
+
 [sub_resource type="AnimationNodeStateMachine" id=98]
 states/Attack/node = SubResource( 74 )
 states/Attack/position = Vector2( 272.5, 131.5 )
 "states/Axe Attack/node" = SubResource( 120 )
-"states/Axe Attack/position" = Vector2( 465.776, 25.3429 )
+"states/Axe Attack/position" = Vector2( 611.776, 24.8429 )
 "states/Backward Idle/node" = SubResource( 106 )
 "states/Backward Idle/position" = Vector2( 788.301, 348.352 )
 states/Climbing/node = SubResource( 107 )
 states/Climbing/position = Vector2( 787.051, 246.989 )
 states/Idle/node = SubResource( 79 )
 states/Idle/position = Vector2( 466.5, 132 )
+states/Punch/node = SubResource( 131 )
+states/Punch/position = Vector2( 385.051, 26.5929 )
 states/Run/node = SubResource( 84 )
 states/Run/position = Vector2( 573.5, 248.625 )
 states/Walk/node = SubResource( 89 )
 states/Walk/position = Vector2( 673.5, 131 )
-transitions = [ "Idle", "Walk", SubResource( 90 ), "Walk", "Idle", SubResource( 91 ), "Idle", "Run", SubResource( 92 ), "Run", "Idle", SubResource( 93 ), "Run", "Walk", SubResource( 94 ), "Walk", "Run", SubResource( 95 ), "Idle", "Attack", SubResource( 97 ), "Attack", "Idle", SubResource( 104 ), "Walk", "Climbing", SubResource( 108 ), "Climbing", "Walk", SubResource( 109 ), "Run", "Climbing", SubResource( 110 ), "Climbing", "Run", SubResource( 111 ), "Climbing", "Backward Idle", SubResource( 112 ), "Backward Idle", "Climbing", SubResource( 113 ), "Idle", "Axe Attack", SubResource( 121 ), "Axe Attack", "Idle", SubResource( 122 ) ]
+transitions = [ "Idle", "Walk", SubResource( 90 ), "Walk", "Idle", SubResource( 91 ), "Idle", "Run", SubResource( 92 ), "Run", "Idle", SubResource( 93 ), "Run", "Walk", SubResource( 94 ), "Walk", "Run", SubResource( 95 ), "Idle", "Attack", SubResource( 97 ), "Attack", "Idle", SubResource( 104 ), "Walk", "Climbing", SubResource( 108 ), "Climbing", "Walk", SubResource( 109 ), "Run", "Climbing", SubResource( 110 ), "Climbing", "Run", SubResource( 111 ), "Climbing", "Backward Idle", SubResource( 112 ), "Backward Idle", "Climbing", SubResource( 113 ), "Idle", "Axe Attack", SubResource( 121 ), "Axe Attack", "Idle", SubResource( 122 ), "Punch", "Idle", SubResource( 132 ), "Idle", "Punch", SubResource( 133 ) ]
 start_node = "Idle"
 graph_offset = Vector2( 83.5512, -23.6571 )
 
@@ -1225,6 +1658,10 @@ height = 0.0
 
 [sub_resource type="CapsuleShape2D" id=55]
 height = 26.0
+
+[sub_resource type="CapsuleShape2D" id=134]
+radius = 7.0
+height = 12.0
 
 [sub_resource type="CircleShape2D" id=115]
 radius = 31.0
@@ -1259,20 +1696,24 @@ shape = SubResource( 1 )
 "anims/Axe Attack" = SubResource( 114 )
 "anims/Backward Attack" = SubResource( 57 )
 "anims/Backward Idle" = SubResource( 58 )
+"anims/Backward Punch" = SubResource( 123 )
 "anims/Backward Run" = SubResource( 100 )
 "anims/Backward Walk" = SubResource( 59 )
 anims/Climbing = SubResource( 105 )
 "anims/Forward Attack" = SubResource( 60 )
 "anims/Forward Idle" = SubResource( 61 )
+"anims/Forward Punch" = SubResource( 124 )
 "anims/Forward Run" = SubResource( 101 )
 "anims/Forward Walk" = SubResource( 62 )
 "anims/Left Attack" = SubResource( 63 )
 "anims/Left Idle" = SubResource( 64 )
+"anims/Left Punch" = SubResource( 125 )
 "anims/Left Run" = SubResource( 102 )
 "anims/Left Walk" = SubResource( 65 )
 anims/RESET = SubResource( 66 )
 "anims/Right Attack" = SubResource( 67 )
 "anims/Right Idle" = SubResource( 68 )
+"anims/Right Punch" = SubResource( 126 )
 "anims/Right Run" = SubResource( 103 )
 "anims/Right Walk" = SubResource( 69 )
 
@@ -1283,10 +1724,12 @@ parameters/playback = SubResource( 99 )
 parameters/Attack/blend_position = Vector2( 0, 0 )
 "parameters/Axe Attack/blend_position" = Vector2( 0, 0 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
+parameters/Punch/blend_position = Vector2( 0, 0 )
 parameters/Run/blend_position = Vector2( 0, 0 )
 parameters/Walk/blend_position = Vector2( 0, 0 )
 
 [node name="PickupZone" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4
 script = ExtResource( 3 )
@@ -1296,6 +1739,7 @@ position = Vector2( 0, -8 )
 shape = SubResource( 23 )
 
 [node name="HitBoxDirection" type="Position2D" parent="."]
+visible = false
 position = Vector2( 0, -11 )
 rotation = -1.5708
 
@@ -1307,7 +1751,20 @@ script = ExtResource( 9 )
 position = Vector2( -12, -9.53674e-07 )
 shape = SubResource( 55 )
 
+[node name="PunchHitboxDirection" type="Position2D" parent="."]
+position = Vector2( 0, -8 )
+
+[node name="PunchHitBox" parent="PunchHitboxDirection" instance=ExtResource( 7 )]
+collision_mask = 16
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" parent="PunchHitboxDirection/PunchHitBox" index="0"]
+position = Vector2( 0, 4 )
+shape = SubResource( 134 )
+disabled = true
+
 [node name="AxeHitBox" parent="." instance=ExtResource( 7 )]
+visible = false
 collision_mask = 16
 script = ExtResource( 9 )
 
@@ -1316,6 +1773,7 @@ position = Vector2( 0, -16 )
 shape = SubResource( 115 )
 
 [node name="PlayerHurtBox" parent="." instance=ExtResource( 8 )]
+visible = false
 collision_layer = 8
 collision_mask = 64
 
@@ -1334,5 +1792,6 @@ script = ExtResource( 15 )
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_PlayerHurtBox_area_entered"]
 
 [editable path="HitBoxDirection/SwordHitBox"]
+[editable path="PunchHitboxDirection/PunchHitBox"]
 [editable path="AxeHitBox"]
 [editable path="PlayerHurtBox"]

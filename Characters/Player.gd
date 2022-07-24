@@ -16,10 +16,13 @@ onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
 onready var swordHitbox = $HitBoxDirection/SwordHitBox
 onready var axeHitbox = $AxeHitBox
+onready var punchHitbox = $PunchHitboxDirection/PunchHitBox
 onready var audioPlayer = $AudioManager
 
 func _ready():
 	swordHitbox.knockback_vector = Vector2.DOWN
+	punchHitbox.knockback_vector = Vector2.DOWN
+	animationTree.set("parameters/Punch/blend_position", Vector2.DOWN)
 	animationTree.set("parameters/Idle/blend_position", Vector2.DOWN)
 	animationTree.set("parameters/Walk/blend_position", Vector2.DOWN)
 	animationTree.set("parameters/Run/blend_position", Vector2.DOWN)
@@ -49,6 +52,8 @@ func walk_state(delta):
 	
 	if input_vector != Vector2.ZERO:
 		swordHitbox.knockback_vector = input_vector
+		punchHitbox.knockback_vector = input_vector
+		animationTree.set("parameters/Punch/blend_position", input_vector)
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Walk/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
@@ -81,6 +86,8 @@ func run_state(delta):
 	if input_vector != Vector2.ZERO:
 		PlayerStats.energy_bar.sprint(3 * delta)
 		swordHitbox.knockback_vector = input_vector
+		punchHitbox.knockback_vector = input_vector
+		animationTree.set("parameters/Punch/blend_position", input_vector)
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Walk/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
@@ -135,12 +142,10 @@ func attack_state(_delta):
 	var category = InventoryManager.get_active_item_category()
 	if category == "Sword":
 		animationState.travel("Attack")
-	else:
+	elif category == "Axe":
 		animationState.travel("Axe Attack")
-	"""
 	else:
-		animationState.travel("Fist Attack")
-	"""
+		animationState.travel("Punch")
 	
 func attack_animation_finished():
 	state = WALK
