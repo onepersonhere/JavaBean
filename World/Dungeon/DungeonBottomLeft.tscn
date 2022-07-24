@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Assets/Pipoya RPG Tileset 32x32/[Base]BaseChip_pipo.png" type="Texture" id=1]
 [ext_resource path="res://World/Invisible Collision Tile.tscn" type="PackedScene" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://World/Block.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/BackgroundMusic.tscn" type="PackedScene" id=9]
 [ext_resource path="res://World/Dungeon/Dungeon.gd" type="Script" id=10]
+[ext_resource path="res://Enemies/Goblin/Goblin.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Enemies/Ghost/Ghost.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Enemies/Bat.tscn" type="PackedScene" id=13]
 
 [sub_resource type="TileSet" id=1]
 0/name = "[Base]BaseChip_pipo.png 0"
@@ -2802,6 +2805,36 @@ position = Vector2( 815, -89 )
 position = Vector2( 465, -125 )
 
 [node name="Enemies" type="YSort" parent="Background"]
+
+[node name="Goblin" parent="Background/Enemies" instance=ExtResource( 11 )]
+position = Vector2( 102, 17 )
+
+[node name="Goblin2" parent="Background/Enemies" instance=ExtResource( 11 )]
+position = Vector2( 223, -81 )
+
+[node name="Goblin3" parent="Background/Enemies" instance=ExtResource( 11 )]
+position = Vector2( 316, -52 )
+
+[node name="Goblin4" parent="Background/Enemies" instance=ExtResource( 11 )]
+position = Vector2( 544, 342 )
+
+[node name="Ghost" parent="Background/Enemies" instance=ExtResource( 12 )]
+position = Vector2( 666, 53 )
+
+[node name="Ghost2" parent="Background/Enemies" instance=ExtResource( 12 )]
+position = Vector2( 440, 83 )
+
+[node name="Ghost3" parent="Background/Enemies" instance=ExtResource( 12 )]
+position = Vector2( 764, 309 )
+
+[node name="Bat" parent="Background/Enemies" instance=ExtResource( 13 )]
+position = Vector2( 410, 363 )
+
+[node name="Bat2" parent="Background/Enemies" instance=ExtResource( 13 )]
+position = Vector2( 852, 129 )
+
+[node name="Bat3" parent="Background/Enemies" instance=ExtResource( 13 )]
+position = Vector2( 562, -106 )
 
 [node name="Blocks" type="YSort" parent="Background"]
 

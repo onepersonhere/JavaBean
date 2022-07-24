@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://World/Invisible Collision Tile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World/House/Entrance.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Assets/Water Animations/Animated Cave Waterfall.tres" type="Texture" id=7]
 [ext_resource path="res://World/BackgroundMusic.tscn" type="PackedScene" id=8]
 [ext_resource path="res://World/Dungeon/Dungeon.gd" type="Script" id=9]
+[ext_resource path="res://Enemies/Goblin/Goblin.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Enemies/Ghost/Ghost.tscn" type="PackedScene" id=11]
 
 [sub_resource type="TileSet" id=1]
 0/name = "[Base]BaseChip_pipo.png 0"
@@ -2326,6 +2328,27 @@ position = Vector2( 1004, 229 )
 
 [node name="Bat8" parent="Background/Enemies" instance=ExtResource( 4 )]
 position = Vector2( 1013, 217 )
+
+[node name="Goblin" parent="Background/Enemies" instance=ExtResource( 10 )]
+position = Vector2( 212, 91 )
+
+[node name="Goblin2" parent="Background/Enemies" instance=ExtResource( 10 )]
+position = Vector2( 187, 215 )
+
+[node name="Goblin3" parent="Background/Enemies" instance=ExtResource( 10 )]
+position = Vector2( 804, 78 )
+
+[node name="Goblin4" parent="Background/Enemies" instance=ExtResource( 10 )]
+position = Vector2( 1365, 59 )
+
+[node name="Goblin5" parent="Background/Enemies" instance=ExtResource( 10 )]
+position = Vector2( 1511, 135 )
+
+[node name="Ghost" parent="Background/Enemies" instance=ExtResource( 11 )]
+position = Vector2( 1004, 427 )
+
+[node name="Ghost2" parent="Background/Enemies" instance=ExtResource( 11 )]
+position = Vector2( 480, 395 )
 
 [node name="Entrances" type="YSort" parent="Background"]
 
