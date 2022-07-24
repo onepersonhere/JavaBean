@@ -30,7 +30,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 35.0
+radius = 17.0
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 4.0
@@ -56,10 +56,8 @@ frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 12 )
 shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="CollideArea" type="StaticBody2D" parent="."]
 collision_mask = 3
