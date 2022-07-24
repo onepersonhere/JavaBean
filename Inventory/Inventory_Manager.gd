@@ -64,3 +64,9 @@ func refresh_inventory():
 	inventory.initialise_inventory()
 	inventory.initialise_equip_slots()
 	hotbar.initialise_hotbar()
+
+func get_active_item_category():
+	var item_name = get_active_item_name()
+	if  item_name != null:
+		return JsonData.item_data[item_name]["ItemCategory"]
+	else: return null;
