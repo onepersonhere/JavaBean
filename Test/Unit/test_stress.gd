@@ -8,20 +8,20 @@ var UI = load("res://UI/UI.tscn")
 var _UI = null
 
 func before_each():
-	_world = world.instance()
-	_UI = UI.instance()
-	_player = player.instance()
+	#_world = world.instance()
+	#_UI = UI.instance()
+	#_player = player.instance()
 	
-	get_node("/root").add_child(_UI)
-	PlayerStats.UI_created()
+	#get_node("/root").add_child(_UI)
+	#PlayerStats.UI_created()
 	
-	get_node("/root").add_child(_world)
-	get_node("/root/World/YSort").add_child(_player)
-
+	#get_node("/root").add_child(_world)
+	#get_node("/root/World/YSort").add_child(_player)
+	pass
 func after_each():
-	_world.queue_free()
-	_UI.queue_free()
-
+	#_world.queue_free()
+	#_UI.queue_free()
+	pass
 # These tests should be run in isolation
 func test_stress_bat_100():
 	#var bat = load("res://Enemies/Bat.tscn")
