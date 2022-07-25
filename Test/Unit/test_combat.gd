@@ -23,8 +23,8 @@ func before_each():
 	get_node("/root/World/YSort/Enemies").add_child(_enemy)
 
 func after_each():
-	_world.queue_free()
-	_UI.queue_free()
+	_world.free()
+	_UI.free()
 
 func test_receive_damage():
 	var damage = load("res://Hitboxes and Hurtboxes/Hitbox.tscn").instance()
