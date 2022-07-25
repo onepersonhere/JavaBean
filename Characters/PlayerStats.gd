@@ -114,6 +114,8 @@ func is_weapon(item):
 	match item["ItemCategory"]:
 		"Sword":
 			return true;
+		"Axe":
+			return true;
 		_:
 			return false; 
 

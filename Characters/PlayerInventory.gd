@@ -19,6 +19,7 @@ var hotbar = {
 	0: ["Iron Sword", 1],
 	1: ["Slime Potion", 98],
 	2: ["Slime Potion", 45],
+	3: ["Iron Axe", 1]
 }
 
 var equips = {

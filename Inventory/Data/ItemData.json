@@ -34,7 +34,7 @@
         "Speed": 0.75,
         "StackSize": 1
     },
-	"Iron Axe": {
+    "Iron Axe": {
         "Description": "Quite a rusty axe, but should be able to get teh job done.",
         "Damage": 5,
         "ItemCategory": "Axe",
