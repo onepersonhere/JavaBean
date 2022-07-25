@@ -40,7 +40,7 @@ func _physics_process(delta):
 func pick_up_item(body):
 	player = body
 	being_picked_up = true
-
+	$AudioStreamPlayer2D.play()
 
 func _on_Timer_timeout():
 	queue_free()
