@@ -140,6 +140,7 @@ func climb_state(delta):
 func attack_state(_delta):
 	velocity = Vector2.ZERO
 	var category = InventoryManager.get_active_item_category()
+	
 	if category == "Sword":
 		animationState.travel("Attack")
 	elif category == "Axe":

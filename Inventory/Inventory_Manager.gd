@@ -46,14 +46,14 @@ func save_img(item_name, img):
 		yield(get_tree().create_timer(1), "timeout")
 
 func get_active_item_stats():
-	if PlayerInventory.active_item_slot_index < PlayerInventory.hotbar.size():
+	if PlayerInventory.hotbar.has(PlayerInventory.active_item_slot_index):
 		var item_name = PlayerInventory.hotbar[PlayerInventory.active_item_slot_index][0]
 		var stats = JsonData.item_data[item_name];
 		return stats;
 	else: return null;
 	
 func get_active_item_name():
-	if PlayerInventory.active_item_slot_index < PlayerInventory.hotbar.size():
+	if PlayerInventory.hotbar.has(PlayerInventory.active_item_slot_index):
 		var item_name = PlayerInventory.hotbar[PlayerInventory.active_item_slot_index][0]
 		return item_name;
 	else: return null;
@@ -67,6 +67,6 @@ func refresh_inventory():
 
 func get_active_item_category():
 	var item_name = get_active_item_name()
-	if  item_name != null:
+	if item_name != null:
 		return JsonData.item_data[item_name]["ItemCategory"]
 	else: return null;
