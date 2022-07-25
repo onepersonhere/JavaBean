@@ -25,7 +25,7 @@ func _on_Area2D_body_exited(body):
 
 func play_audio(path):
 	var audio = AudioStreamPlayer2D.new()
-	audio.set_stream(GlobalVar.get_as_AudioStreamMp3(path))
+	audio.set_stream(GlobalVar.get_as_AudioStream(path))
 	audio.connect("finished", self, "finished", [audio])
 	add_child(audio)
 	audio.play()

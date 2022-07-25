@@ -1,8 +1,8 @@
 extends Node
 
 # load audio
-onready var walking_on_grass = get_as_AudioStream("res://Assets/Sounds/Impact/footstep_grass_004.ogg")
-onready var climbing = get_as_AudioStream("res://Assets/Sounds/RPG/footstep05.ogg")
+onready var walking_on_grass = GlobalVar.get_as_AudioStream("res://Assets/Sounds/Impact/footstep_grass_004.ogg")
+onready var climbing = GlobalVar.get_as_AudioStream("res://Assets/Sounds/RPG/footstep05.ogg")
 
 # audio
 func play_footsteps(state):
@@ -48,21 +48,10 @@ func play_hurt():
 func setup_audioPlayer(path, pitch):
 	var audioPlayer = AudioStreamPlayer.new()
 	audioPlayer.set_pitch_scale(pitch)
-	audioPlayer.set_stream(get_as_AudioStream(path))
+	audioPlayer.set_stream(GlobalVar.get_as_AudioStream(path))
 	audioPlayer.play()
 	audioPlayer.connect("finished", self, "_free", [audioPlayer])
 	add_child(audioPlayer)
-	
-func get_as_AudioStream(path):
-	var file = File.new()
-	if file.file_exists(path):
-		file.open(path, file.READ)
-		var buffer = file.get_buffer(file.get_len())
-		var stream = AudioStreamOGGVorbis.new()
-		stream.data = buffer
-		return stream;
-	else:
-		return null;
 
 func _free(audioPlayer):
 	remove_child(audioPlayer)

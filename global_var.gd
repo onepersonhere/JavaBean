@@ -28,34 +28,21 @@ func random_background_music():
 		while file_name != "":
 			if dir.current_is_dir():
 				pass
-			elif file_name.find(".import") != -1:
+			elif !file_name.ends_with(".import"):
 				pass
 			elif prev_played == file_name:
 				pass
 			else:
 				if rng.randf_range(0, 100) < 20:
 					prev_played = file_name
-					return get_as_AudioStreamMp3(background_music_path + file_name);
+					return get_as_AudioStream(background_music_path + file_name.replace(".import", ""));
 			file_name = dir.get_next()
-
-func get_as_AudioStreamMp3(path):
-	var file = File.new()
-	if file.file_exists(path):
-		file.open(path, file.READ)
-		var buffer = file.get_buffer(file.get_len())
-		var stream = AudioStreamMP3.new()
-		stream.data = buffer
-		return stream;
 	else:
-		return null;
+		print_debug("directory cannot be found")
 
-func get_as_AudioStreamOGG(path):
+func get_as_AudioStream(path):
 	var file = File.new()
-	if file.file_exists(path):
-		file.open(path, file.READ)
-		var buffer = file.get_buffer(file.get_len())
-		var stream = AudioStreamOGGVorbis.new()
-		stream.data = buffer
-		return stream;
+	if file.file_exists(path + ".import"):
+		return load(path)
 	else:
 		return null;

@@ -40,7 +40,7 @@ func gain_stats():
 	var i = rand.randi_range(0,2);
 	
 	var audio = AudioStreamPlayer.new()
-	audio.set_stream(GlobalVar.get_as_AudioStreamOGG("res://Assets/Sounds/Voiceover/Male/level_up.ogg"))
+	audio.set_stream(GlobalVar.get_as_AudioStream("res://Assets/Sounds/Voiceover/Male/level_up.ogg"))
 	add_child(audio)
 	audio.play()
 	
@@ -48,13 +48,13 @@ func gain_stats():
 	match i:
 		0:
 			PlayerStats.STRENGTH += 1;
-			audio2.set_stream(GlobalVar.get_as_AudioStreamMp3("res://Assets/Sounds/Voiceover/Strength-up_.mp3"))
+			audio2.set_stream(GlobalVar.get_as_AudioStream("res://Assets/Sounds/Voiceover/Strength-up_.mp3"))
 		1:
 			PlayerStats.DEXTERITY += 1;
-			audio2.set_stream(GlobalVar.get_as_AudioStreamMp3("res://Assets/Sounds/Voiceover/Dexterity-up_.mp3"))
+			audio2.set_stream(GlobalVar.get_as_AudioStream("res://Assets/Sounds/Voiceover/Dexterity-up_.mp3"))
 		2:
 			PlayerStats.INTELLIGENCE += 1;
-			audio2.set_stream(GlobalVar.get_as_AudioStreamMp3("res://Assets/Sounds/Voiceover/Intelligence-up__1.mp3"))
+			audio2.set_stream(GlobalVar.get_as_AudioStream("res://Assets/Sounds/Voiceover/Intelligence-up__1.mp3"))
 	add_child(audio2)
 	PlayerStats.refresh_base_stats();
 	

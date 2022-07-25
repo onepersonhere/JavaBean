@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Assets/Imported Assets/Shadows/SmallShadow.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/Bat.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Hitboxes and Hurtboxes/Hitbox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Hitboxes and Hurtboxes/SoftCollision.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/WanderController.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemies/EnemySound.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Sounds/Enemies Sound/BatSound.mp3" type="AudioStream" id=11]
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 2 )
@@ -62,7 +64,6 @@ script = ExtResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 6 )
 animation = "Fly"
-frame = 3
 playing = true
 offset = Vector2( 0, -12 )
 
@@ -108,6 +109,9 @@ shape = SubResource( 21 )
 
 [node name="WanderController" parent="." instance=ExtResource( 9 )]
 wander_range = 64
+
+[node name="AudioStreamPlayer2D" parent="." instance=ExtResource( 10 )]
+stream = ExtResource( 11 )
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_Bat_HurtBox_area_entered"]
 [connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
