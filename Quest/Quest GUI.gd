@@ -44,7 +44,7 @@ func _wiggle_element(element) -> void:
 			wiggles * 0.05
 		)
 		tween.start()
-
+	$AudioStreamPlayer.play()
 
 func _on_QuestButton_pressed():
 	animation_player.play(

@@ -24,7 +24,14 @@ func play_footsteps(state):
 
 func play_attack():
 	# should be enemy hurt sound? res://Assets/Sounds/Impact/impactPunch_medium_000.ogg
-	setup_audioPlayer("res://Assets/Sounds/RPG/knifeSlice.ogg", 1)
+	var category = InventoryManager.get_active_item_category()
+	match category:
+		"Sword":
+			setup_audioPlayer("res://Assets/Sounds/RPG/knifeSlice.ogg", 1)
+		"Axe":
+			setup_audioPlayer("res://Assets/Sounds/RPG/knifeSlice2.ogg", 1)
+		_:
+			setup_audioPlayer("res://Assets/Sounds/Impact/impactPunch_medium_002.ogg", 1)
 	
 func play_death():
 	setup_audioPlayer("res://Assets/Sounds/Voiceover/Fighter/game_over.ogg", 1)

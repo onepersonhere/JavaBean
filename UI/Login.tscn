@@ -38,7 +38,7 @@ margin_left = 74.0
 margin_right = 284.0
 margin_bottom = 24.0
 custom_constants/minimum_spaces = 50
-text = "invtest@test.com"
+text = "test@test.com"
 caret_blink = true
 
 [node name="Password" type="HBoxContainer" parent="VBoxContainer"]
@@ -58,7 +58,7 @@ margin_left = 74.0
 margin_right = 284.0
 margin_bottom = 24.0
 custom_constants/minimum_spaces = 50
-text = "123456"
+text = "testing123"
 secret = true
 caret_blink = true
 
