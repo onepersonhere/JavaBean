@@ -30,7 +30,8 @@ func test_item_appears_in_inventory():
 	_openseas.check_purchase(
 		"98022765745955927761920208486426559694950621028490842310820234511019612831754",
 		"0x88b48f654c30e99bc2e4a1559b4dcf1ad93fa656")
+	yield(yield_for(1), YIELD)
 	_openseas.get_node("Control")._on_ConfirmationDialog_confirmed()
-	yield(_openseas.get_node("Control/AcceptDialog"), "about_to_show")
+	yield(yield_to(_openseas.get_node("Control/AcceptDialog"), "about_to_show", 30), YIELD)
 	assert_not_null(PlayerInventory.inventory[3][0])
 
