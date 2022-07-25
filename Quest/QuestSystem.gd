@@ -27,6 +27,15 @@ func find_available(reference: Quest) -> Quest:
 
 func get_available_quests() -> Array:
 	return available_quests.get_quests()
+	
+func get_active_quests() -> Array:
+	return active_quests.get_quests()
+	
+func get_completed_quests() -> Array:
+	return completed_quests.get_quests()
+	
+func get_delivered_quests() -> Array:
+	return delivered_quests.get_quests()
 
 func is_available(reference: Quest) -> bool:
 	return available_quests.find(reference) != null
@@ -37,6 +46,12 @@ func start(reference: Quest):
 	quest.connect("completed", self, "_on_Quest_completed", [quest])
 	available_quests.remove_child(quest)
 	active_quests.add_child(quest)
+	quest._start()
+
+func start_loaded(reference: Quest):
+	var quest: Quest = active_quests.find(reference)
+	# warning-ignore:return_value_discarded
+	quest.connect("completed", self, "_on_Quest_completed", [quest])
 	quest._start()
 
 func _on_Quest_completed(quest):
@@ -80,6 +95,7 @@ func add_available_quest(reference: Quest):
 
 func add_active_quest(reference: Quest):
 	active_quests.add_child(reference, true)
+	start_loaded(reference)
 
 func add_completed_quest(reference: Quest):
 	completed_quests.add_child(reference, true)

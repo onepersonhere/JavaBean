@@ -31,6 +31,7 @@ func get_completed_objectives():
 	return completed
 
 func _on_Objective_completed(_objective) -> void:
+	print_debug("objective completed")
 	if get_completed_objectives().size() == get_objectives().size():
 		emit_signal("completed")
 
@@ -49,6 +50,7 @@ func get_rewards() -> Dictionary:
 func get_rewards_as_text() -> Array:
 	var text := []
 	text.append(" - Experience: %s" % str(_reward_experience))
-	for item in _reward_items.get_children():
-		text.append(" - [%s] x (%s)\n" % [item.item_name, str(item.amount)])
+	if _reward_items != null:
+		for item in _reward_items.get_children():
+			text.append(" - [%s] x (%s)\n" % [item.item_name, str(item.amount)])
 	return text

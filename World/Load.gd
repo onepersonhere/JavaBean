@@ -137,6 +137,8 @@ func load_inventory(profile):
 	InventoryManager.refresh_inventory()
 
 func load_quests(profile):
+	var journal = get_tree().get_nodes_in_group("QuestJournal")[0]
+	
 	if not get_node("/root/UserProfile").new_profile && not profile.quest.mapValue.empty():
 		QuestSystem.reset_quest_system()
 		
@@ -147,9 +149,13 @@ func load_quests(profile):
 				
 		if profile.quest.mapValue.fields.active.arrayValue.has("values"):
 			for quest in profile.quest.mapValue.fields.active.arrayValue.values:
+				var q = parse_quest_dict(quest.mapValue.fields)
+				
 				QuestSystem.add_active_quest(
-					parse_quest_dict(quest.mapValue.fields)
+					q
 				)
+				journal._on_quest_started(q)
+				
 		if profile.quest.mapValue.fields.completed.arrayValue.has("values"):
 			for quest in profile.quest.mapValue.fields.completed.arrayValue.values:
 				QuestSystem.add_completed_quest(
@@ -160,7 +166,7 @@ func load_quests(profile):
 				QuestSystem.add_delivered_quest(
 					parse_quest_dict(quest.mapValue.fields)
 				)
-	get_tree().get_nodes_in_group("QuestJournal")[0].set_signals()
+	journal.set_signals()
 	
 func parse_quest_dict(quest):
 	return QuestManager.create_quest(

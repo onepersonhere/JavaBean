@@ -36,6 +36,7 @@ func initialize(quest_actions: Array):
 	if action_complete:
 		new_quest.connect("completed", self, "_on_Quest_completed")
 		new_quest.connect("delivered", self, "_on_Quest_delivered")
+	
 
 
 func _on_Quest_started():
