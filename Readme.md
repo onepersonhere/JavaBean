@@ -71,7 +71,7 @@ flowchart TD;
 	L -->|Firebase| P(Cloud-Based Server)
 ```
 ## Links
-[JavaBean ReadMe](https://docs.google.com/document/d/1wQjGsiPLWeSY_6v22aFV54N9r4aaHnMU-TmhsJElN44/edit?usp=sharing)
+[Docs](https://docs.google.com/document/d/1wQjGsiPLWeSY_6v22aFV54N9r4aaHnMU-TmhsJElN44/edit?usp=sharing)
 [Poster](https://drive.google.com/file/d/1Pbd7DQy5UR8q-0CrDaljOnSG60CKCDUc/view?usp=sharing)
 [Video](https://youtu.be/8bh4gXz2Xrk)
 [Downloads](https://drive.google.com/drive/folders/1ut8uZUZ6C1Buhvb6ztNxSndZzi016PuH?usp=sharing)
