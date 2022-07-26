@@ -57,7 +57,7 @@ flowchart TD;
 	B --> G(Inventory System)
 	E --> H(Quest System)
 	F --> H
-	A --> I(In Game Curreny Trading System)
+	A --> I(In Game Currency Trading System)
 	I --> J(NFT Shop)
 	I --> K(Login & Registration)
 	H --> L(Save and Load System)
