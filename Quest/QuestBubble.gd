@@ -36,6 +36,16 @@ func initialize(quest_actions: Array):
 	if action_complete:
 		new_quest.connect("completed", self, "_on_Quest_completed")
 		new_quest.connect("delivered", self, "_on_Quest_delivered")
+		
+	check_quest(new_quest)
+	
+func check_quest(quest):
+	if QuestSystem.is_active(quest):
+		_on_Quest_started()
+	elif QuestSystem.is_completed(quest):
+		_on_Quest_completed()
+	elif QuestSystem.is_delivered(quest):
+		_on_Quest_delivered()
 	
 
 
