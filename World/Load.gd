@@ -120,6 +120,8 @@ func set_location(profile, player):
 	
 func load_inventory(profile):
 	PlayerInventory.inventory = {}
+	PlayerInventory.equips = {}
+	PlayerInventory.hotbar = {}
 	var stages = ["inventory", "hotbar", "equips"]
 	
 	for stage in stages:
