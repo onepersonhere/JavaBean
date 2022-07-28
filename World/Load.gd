@@ -75,10 +75,10 @@ func load(profile):
 	PlayerStats.INTELLIGENCE = int(profile["intelligence"]["integerValue"])
 	PlayerStats.DEXTERITY = int(profile["dexterity"]["integerValue"])
 	
-	PlayerStats.base_stat_assigned()
-	
 	# inventory
 	load_inventory(profile);
+	
+	PlayerStats.base_stat_assigned()
 	
 	# quest system
 	load_quests(profile);

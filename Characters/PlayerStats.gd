@@ -91,7 +91,7 @@ func reset():
 	REGEN = BASE_REGEN
 	
 func update():
-	yield(PlayerInventory, "active_item_updated")
+	# yield(PlayerInventory, "active_item_updated")
 	var active_item = InventoryManager.get_active_item_stats()
 	if is_weapon(active_item):
 		set_stats_weapon(active_item);
