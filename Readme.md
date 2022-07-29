@@ -8,7 +8,7 @@
 | A | Moves Player Left |
 | S | Moves Player Down |
 | D | Moves Player Right |
-| E | Interact with items, chest and NPCs |
+| E | Interact with items, chest and NPCs, exit from interaction |
 | F | Consumes Potions to heal up
 | ESC | Opens the ESC Menu |
 | Left Click | Drags item (in inventory), Skips Dialogues
