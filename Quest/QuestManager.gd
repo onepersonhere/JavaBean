@@ -50,8 +50,9 @@ func create_tutorial_quest(objective):
 	
 func add_quest_and_start(quest):
 	QuestSystem.add_available_quest(quest)
+	var quest_journal = get_tree().get_nodes_in_group("QuestJournal")[0]
+	quest_journal.set_signals()
 	QuestSystem.start(quest)
-	get_tree().get_nodes_in_group("QuestJournal")[0]._on_quest_started(quest)
 
 func quest_to_dict(quest: Quest):
 	var quest_dict = {
