@@ -30,7 +30,7 @@ Please follow the following steps:
  1. Download [python3](https://www.python.org/downloads/)
  2. Extract the contents in the zip folder
  3. Open terminal/cmd in the directory of the extracted contents
- 4. Enter `python -m http.server`
+ 4. Enter `python3 -m http.server`
  5. Open your browser and go to `http://localhost:8000`
  6. Click on JavaBean.html
  7. Enjoy the Game!
