@@ -28,9 +28,11 @@ func _ready():
 
 func _physics_process(delta):
 	if being_picked_up == true:
+		# move to player
 		var direction = global_position.direction_to(player.global_position)
 		velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
 		
+		# check distance
 		var distance = global_position.distance_to(player.global_position)
 		if distance < 5:
 			PlayerInventory.add_item(item_name, 1)
